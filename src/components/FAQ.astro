@@ -1,0 +1,37 @@
+---
+/**
+ * FAQ.astro — Accessible accordion FAQ
+ * Uses native <details>/<summary> — zero JS, works without JavaScript
+ * Matches FAQPage schema structure exactly
+ */
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  items: FAQItem[];
+  title?: string;
+}
+
+const { items, title = 'Frequently Asked Questions' } = Astro.props;
+
+const ChevronIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+  aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>`;
+---
+
+<section class="faq-section" aria-label="Frequently asked questions">
+  <h2>{title}</h2>
+  {items.map((item) => (
+    <details class="faq-item">
+      <summary class="faq-question">
+        <span>{item.q}</span>
+        <Fragment set:html={ChevronIcon} />
+      </summary>
+      <div class="faq-answer">
+        <p set:html={item.a} />
+      </div>
+    </details>
+  ))}
+</section>

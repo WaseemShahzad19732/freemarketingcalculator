@@ -1,0 +1,71 @@
+---
+import Base from '../layouts/Base.astro';
+
+const slug        = '';
+const title       = 'Free Marketing Calculators — ROI, Budget, Salary & More (2026)';
+const description = 'Free marketing calculators for ROI, budget planning, conversion rate, email ROI, salary benchmarks, and campaign metrics. Instant results, no signup required.';
+
+const tools = [
+  { href: '/marketing-roi-calculator/', name: 'Marketing ROI Calculator',
+    desc: 'Computes basic ROMI and gross-profit ROI with COGS. Channel presets for email, SEO, paid, content, and social.', cta: 'Calculate ROI →', badge: 'Most popular' },
+  { href: '/marketing-budget-calculator/', name: 'Marketing Budget Calculator',
+    desc: 'Recommends marketing budget from annual revenue and industry, with 9-sector benchmarks and Google Sheets download.', cta: 'Calculate Budget →', badge: '' },
+  { href: '/conversion-rate-calculator/', name: 'Conversion Rate Calculator',
+    desc: 'Calculates CVR, reverse-computes traffic needed for a revenue goal, and benchmarks your rate by channel.', cta: 'Calculate CVR →', badge: '' },
+  { href: '/email-marketing-roi-calculator/', name: 'Email Marketing ROI Calculator',
+    desc: 'Computes email ROMI from list size, open rate, click rate, conversion rate, and monthly platform cost.', cta: 'Calculate Email ROI →', badge: '' },
+  { href: '/social-media-budget-calculator/', name: 'Social Media Budget Calculator',
+    desc: 'Recommends paid and organic social budget by platform and campaign goal, with CPM benchmarks.', cta: 'Calculate Social Budget →', badge: '' },
+  { href: '/digital-marketing-calculator/', name: 'Digital Marketing Calculator',
+    desc: 'Computes CPM, CPC, CTR, ROAS, and CPA from a single set of campaign inputs — all metrics at once.', cta: 'Calculate Metrics →', badge: '' },
+  { href: '/marketing-salary-calculator/', name: 'Marketing Salary Calculator',
+    desc: 'Estimates marketing salary range by role, seniority, and US location. Covers managers, directors, CMOs.', cta: 'Check Salary →', badge: '' },
+  { href: '/marketing-agency-valuation-calculator/', name: 'Agency Valuation Calculator',
+    desc: 'Estimates a marketing agency market value using revenue multiples, EBITDA, and client retention rate.', cta: 'Value Your Agency →', badge: '' },
+  { href: '/marketing-automation-roi-calculator/', name: 'Marketing Automation ROI',
+    desc: 'Calculates ROI of marketing automation from time savings, lead lift %, and platform cost. Built for B2B.', cta: 'Calculate Automation ROI →', badge: '' },
+  { href: '/inbound-marketing-calculator/', name: 'Inbound Marketing Calculator',
+    desc: 'Reverse-funnel calculator: enter a revenue goal and get the traffic, MQL, and lead targets needed.', cta: 'Plan Inbound →', badge: '' },
+];
+
+const websiteSchema = {
+  "@type": "WebPage",
+  "name": "Free Marketing Calculators",
+  "url": "https://freemarketingcalculator.com/",
+  "description": "Free marketing calculators for ROI, budget, salary, conversion rate, email ROI, and more.",
+  "publisher": { "@id": "https://freemarketingcalculator.com/#org" }
+};
+---
+
+<Base title={title} description={description} slug={slug} schema={[websiteSchema]}>
+  <section class="page-hero" style="padding-bottom: var(--space-12);" aria-labelledby="home-h1">
+    <div class="container">
+      <p class="eyebrow">Free Marketing Tools — 2026</p>
+      <h1 id="home-h1">Marketing Calculators</h1>
+      <p class="citation">Ten free calculators for marketing ROI, budget planning, conversion rates, email performance, salary benchmarks, and campaign metrics. Instant results. No signup. No email gate.</p>
+      <div class="meta-badges">
+        <span class="badge">✓ 10 calculators</span>
+        <span class="badge">✓ Free forever</span>
+        <span class="badge">✓ Updated July 2026</span>
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <nav aria-label="All marketing calculators">
+      <ul class="tool-grid" style="list-style:none; padding:0; margin:0;">
+        {tools.map(tool => (
+          <li>
+            <a href={tool.href} class="tool-card">
+              <div class="tool-card__name">
+                {tool.name}
+                {tool.badge && <span style="margin-left:0.5rem;font-size:10px;font-weight:700;background:var(--teal-faint);color:var(--teal-dark);padding:2px 8px;border-radius:100px;vertical-align:middle;">{tool.badge}</span>}
+              </div>
+              <p class="tool-card__desc">{tool.desc}</p>
+              <span class="tool-card__cta">{tool.cta}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</Base>

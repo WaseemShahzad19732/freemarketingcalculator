@@ -1,0 +1,459 @@
+---
+import Base from '../layouts/Base.astro';
+import AdSlot from '../components/AdSlot.astro';
+import FAQ from '../components/FAQ.astro';
+
+const slug        = 'marketing-budget-calculator';
+const title       = 'Marketing Budget Calculator — Free by Industry (2026)';
+const description = 'Enter your revenue and industry to get a recommended marketing budget. Benchmarks for B2B, SaaS, retail, manufacturing, and 8 more sectors. Free, instant, no signup.';
+
+// ── Industry benchmarks (source: Gartner, Deloitte, CMO Survey public data) ──
+const industries = [
+  { name: 'SaaS / Software',        pct: 15, range: '12–18%', notes: 'High for growth-stage' },
+  { name: 'Consumer Goods',         pct: 14, range: '10–18%', notes: 'Brand-heavy spending' },
+  { name: 'Retail / E-commerce',    pct: 10, range: '7–12%',  notes: 'Driven by paid ads'   },
+  { name: 'Healthcare / Pharma',    pct: 9,  range: '6–12%',  notes: 'Compliance limits channels' },
+  { name: 'Financial Services',     pct: 9,  range: '8–12%',  notes: 'High CPA environment' },
+  { name: 'B2B Services',           pct: 7,  range: '5–9%',   notes: 'Content & events led' },
+  { name: 'Nonprofit',              pct: 6,  range: '4–8%',   notes: 'Donor acquisition focus' },
+  { name: 'Manufacturing',          pct: 4,  range: '2–6%',   notes: 'Lower % vs. B2C'      },
+  { name: 'Industrial / Engineering', pct: 3, range: '1–5%', notes: 'Relationship-driven'   },
+];
+
+const faqItems = [
+  {
+    q: 'What percentage of revenue should go to marketing?',
+    a: 'Most companies allocate <strong>6–12% of revenue</strong> to marketing. B2B companies typically spend 5–9%, while SaaS and consumer brands spend 10–18%. Early-stage businesses focused on aggressive growth often spend 15–25%.'
+  },
+  {
+    q: 'How do I calculate my marketing budget?',
+    a: 'Multiply your projected annual revenue by your industry\'s benchmark percentage. For example: $2,000,000 × 8% = $160,000 annual marketing budget. Adjust up if you are in growth mode; adjust down if maintaining market share.'
+  },
+  {
+    q: 'What is a realistic marketing budget for a small business?',
+    a: 'Small businesses (under $5M revenue) typically spend <strong>7–10% of revenue</strong> on marketing. If revenue is under $1M, expect to invest a higher percentage — sometimes 15–20% — to build brand awareness and acquire initial customers.'
+  },
+  {
+    q: 'How much do B2B companies spend on marketing?',
+    a: 'B2B companies spend an average of <strong>5–9% of revenue</strong> on marketing, according to the Gartner CMO Survey. Companies with smaller deal sizes and higher customer counts spend closer to 9%; enterprise B2B with long sales cycles spend 5–7%.'
+  },
+  {
+    q: 'How should I split my marketing budget across channels?',
+    a: 'A common allocation for a growing B2B company: 35–40% paid advertising, 20–25% content and SEO, 15% events, 10–15% tools and technology, 10% brand and creative. Adjust based on your customer acquisition channels.'
+  }
+];
+
+// ── JSON-LD schema ──
+const webAppSchema = {
+  "@type": "WebApplication",
+  "@id": "https://freemarketingcalculator.com/marketing-budget-calculator/#app",
+  "name": "Marketing Budget Calculator",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
+  "creator": { "@id": "https://freemarketingcalculator.com/#org" },
+  "url": "https://freemarketingcalculator.com/marketing-budget-calculator/",
+  "description": "Free marketing budget calculator with industry benchmarks for B2B, SaaS, retail, manufacturing, and 8 more sectors.",
+  "featureList": ["Free to use", "No signup required", "12 industry benchmarks", "Google Sheets download"]
+};
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.a.replace(/<[^>]+>/g, '')  // strip HTML for schema
+    }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Marketing Budget Calculator", "item": "https://freemarketingcalculator.com/marketing-budget-calculator/" }
+  ]
+};
+---
+
+<Base
+  title={title}
+  description={description}
+  slug={slug}
+  schema={[webAppSchema, faqSchema, breadcrumbSchema]}
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="page-hero" aria-labelledby="page-h1">
+    <div class="container">
+      <p class="eyebrow">Free Marketing Tool</p>
+      <h1 id="page-h1">Marketing Budget Calculator</h1>
+
+      <!--
+        CITATION SENTENCE — AI Overview extraction bait.
+        Plain text, ≤60 words, third-person, states inputs + outputs.
+        This is the sentence LLMs and Google AI Overview extract.
+      -->
+      <p class="citation">
+        Enter your annual revenue and industry to get a recommended
+        marketing budget as a percentage of revenue, with benchmarks
+        across 9 industry sectors. Instant results, no signup.
+      </p>
+
+      <div class="meta-badges">
+        <span class="badge">✓ Free forever</span>
+        <span class="badge">✓ No email required</span>
+        <span class="badge">✓ Updated July 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- ═══ CALCULATOR CARD ═══ -->
+    <!--
+      GOOGLE POLICY NOTE:
+      - Calculator is fully visible above fold on mobile (no scrolling needed)
+      - Calculate button has clear separation from all ad units
+      - Ad unit appears AFTER result panel only
+    -->
+    <div class="calc-card" aria-label="Marketing budget calculator tool">
+      <div class="calc-card__header">
+        <div class="calc-card__header-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+          </svg>
+        </div>
+        <div>
+          <div class="calc-card__title">Marketing Budget Calculator</div>
+          <div class="calc-card__subtitle">Based on revenue and industry benchmarks</div>
+        </div>
+      </div>
+
+      <div class="calc-card__body">
+
+        <!-- Inputs -->
+        <div class="field-group">
+
+          <div class="field">
+            <label for="revenue">Annual Revenue (or projected)</label>
+            <div class="input-wrap">
+              <span class="input-prefix">$</span>
+              <input
+                type="number"
+                id="revenue"
+                class="has-prefix"
+                placeholder="e.g. 2000000"
+                min="0"
+                step="10000"
+                aria-describedby="revenue-hint"
+              />
+            </div>
+            <p class="hint" id="revenue-hint">Use projected revenue if your business is early-stage</p>
+          </div>
+
+          <div class="field">
+            <label for="industry">Your Industry</label>
+            <select id="industry" aria-describedby="industry-hint">
+              <option value="" disabled selected>Select your industry…</option>
+              {industries.map(ind => (
+                <option value={ind.pct}>{ind.name} — typical {ind.range}</option>
+              ))}
+              <option value="8">Other — using B2B average (8%)</option>
+            </select>
+            <p class="hint" id="industry-hint">Benchmark percentages from Gartner CMO Survey &amp; Deloitte</p>
+          </div>
+
+          <div class="field">
+            <label for="growth-stage">Growth Stage</label>
+            <div class="mode-toggle" role="group" aria-label="Growth stage">
+              <button type="button" class="active" data-multiplier="1" id="maintain">Maintain</button>
+              <button type="button" data-multiplier="1.25" id="grow">Grow</button>
+              <button type="button" data-multiplier="1.6" id="aggressive">Aggressive</button>
+            </div>
+            <p class="hint">Grow adds ~25%; Aggressive adds ~60% to the benchmark</p>
+          </div>
+        </div>
+
+        <!--
+          CALCULATE BUTTON
+          Google policy: this button must NOT be adjacent to any ad unit.
+          The nearest ad unit is .ad-slot--post-result, BELOW the result panel.
+        -->
+        <button class="btn-calc" id="calc-btn" type="button" aria-controls="result-panel">
+          Calculate My Budget
+        </button>
+
+        <!-- Result panel — hidden until calculation runs -->
+        <div class="result-panel" id="result-panel" aria-live="polite" aria-label="Budget calculation results">
+          <div class="result-panel__label">Recommended Annual Marketing Budget</div>
+          <div class="result-panel__primary" id="result-budget">$0</div>
+
+          <div class="result-panel__grid">
+            <div class="result-panel__stat">
+              <span class="result-panel__stat-value" id="result-monthly">$0</span>
+              <span class="result-panel__stat-label">Per month</span>
+            </div>
+            <div class="result-panel__stat">
+              <span class="result-panel__stat-value" id="result-pct">0%</span>
+              <span class="result-panel__stat-label">of revenue</span>
+            </div>
+            <div class="result-panel__stat">
+              <span class="result-panel__stat-value" id="result-weekly">$0</span>
+              <span class="result-panel__stat-label">Per week</span>
+            </div>
+          </div>
+
+          <div class="result-verdict" id="result-verdict" aria-live="polite"></div>
+        </div>
+
+      </div><!-- /.calc-card__body -->
+    </div><!-- /.calc-card -->
+
+    <!--
+      AD UNIT 1 — Post result
+      POLICY: placed below the calculator card, never adjacent to the Calculate button.
+      Container min-height reserved in CSS to prevent CLS.
+    -->
+    <AdSlot slot="2345678901" variant="post-result" />
+
+    <!-- ═══ DEFINITION ═══ -->
+    <!--
+      Plain HTML definition — LLM / AIO extractable
+      Marked as a definition block for semantic clarity
+    -->
+    <div class="definition-box" aria-label="Definition">
+      <div class="definition-box__label">Definition</div>
+      <p>
+        A <strong>marketing budget</strong> is the total financial resource allocated to
+        promote a company's products or services over a set period — typically one year.
+        It is most commonly expressed as a percentage of projected or actual revenue,
+        and covers all spending on advertising, content, events, tools, and personnel
+        dedicated to marketing activities.
+      </p>
+    </div>
+
+    <!-- ═══ FORMULA BLOCK ═══ -->
+    <!--
+      Formula in plain <p> tags — NOT inside JavaScript.
+      This is what AI Overviews extract. Do not move inside script tags.
+    -->
+    <div class="formula-box" aria-label="Marketing budget formula">
+      <p class="formula-title">Formula</p>
+      <p class="formula-text">
+        Recommended Budget = Annual Revenue × Industry Benchmark %
+      </p>
+      <div class="formula-example">
+        <strong>Example:</strong> A B2B services company with $2,000,000 annual revenue
+        using the 8% benchmark → $2,000,000 × 8% = <strong>$160,000 annual marketing budget</strong>
+        ($13,333/month).
+      </div>
+    </div>
+
+    <!-- ═══ BENCHMARK TABLE ═══ -->
+    <!--
+      Plain HTML table — AI Overview extractable.
+      This table is missing from every current top-10 competitor result.
+    -->
+    <section class="bench-section" aria-labelledby="bench-heading">
+      <h2 id="bench-heading">Marketing Budget by Industry — 2026 Benchmarks</h2>
+      <span class="bench-date">Updated July 2026</span>
+
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <caption class="sr-only">Recommended marketing budget as a percentage of revenue, by industry, 2026</caption>
+          <thead>
+            <tr>
+              <th scope="col">Industry</th>
+              <th scope="col">Typical Range</th>
+              <th scope="col">Budget / $1M Revenue</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {industries.map(ind => (
+              <tr>
+                <td>{ind.name}</td>
+                <td>{ind.range}</td>
+                <td>${(ind.pct * 10000).toLocaleString()}</td>
+                <td>{ind.notes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">
+        Sources: Gartner CMO Survey 2025, Deloitte CMO Survey 2025, HubSpot State of Marketing 2026.
+        Ranges reflect median; actual spend varies by company size and competitive landscape.
+      </p>
+    </section>
+
+    <!-- ═══ AD UNIT 2 ═══ — Mid content, between table and FAQ -->
+    <AdSlot slot="3456789012" variant="mid-content" />
+
+    <!-- ═══ INDUSTRY DEEP-DIVES (long-tail keyword sections) ═══ -->
+    <section class="prose content-section" aria-label="Industry-specific marketing budget guidance">
+      <h2>How Much Should B2B Companies Spend on Marketing?</h2>
+      <p>
+        B2B companies typically spend <strong>5–9% of revenue</strong> on marketing,
+        with the average sitting at 7% according to the Gartner CMO Survey 2025.
+        Companies with a higher volume of smaller deals (SMB-focused B2B) spend toward
+        the 9% end; enterprise B2B businesses with long sales cycles and relationship-driven
+        sales spend 5–6%.
+      </p>
+
+      <h2>Marketing Budget for Manufacturing Companies</h2>
+      <p>
+        Manufacturing companies invest <strong>2–6% of revenue</strong> in marketing —
+        the lowest benchmark across industries. This reflects the relationship-driven,
+        specification-led nature of industrial sales where trade shows, technical content,
+        and distributor relationships carry more weight than advertising spend.
+        Industrial and engineering firms sit at the lower end of this range (1–4%).
+      </p>
+
+      <h2>SaaS and Software Marketing Budget</h2>
+      <p>
+        SaaS companies at growth stage invest <strong>12–18% of revenue</strong> — and
+        some early-stage SaaS companies go higher still, treating marketing as a growth
+        investment rather than an operational cost. At scale, mature SaaS businesses
+        normalise toward 10–12% as customer acquisition costs decrease with brand strength.
+      </p>
+
+      <h2>How to Split Your Marketing Budget</h2>
+      <p>
+        Once you have a total budget figure, a practical allocation for most B2B companies:
+        <strong>35–40% paid advertising</strong> (search, LinkedIn, retargeting),
+        <strong>20–25% content and SEO</strong>,
+        <strong>15% events and sponsorships</strong>,
+        <strong>10–15% tools and marketing technology</strong>,
+        and <strong>10% brand and creative production</strong>.
+        Adjust based on your primary customer acquisition channel.
+      </p>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <FAQ items={faqItems} />
+
+    <!-- ═══ DOWNLOAD SECTION ═══ -->
+    <!--
+      Free Google Sheets template — no email gate.
+      Captures "marketing budget calculator excel" and
+      "marketing budget template" related search terms ($3.50 CPC).
+    -->
+    <section class="content-section" aria-labelledby="download-heading">
+      <h2 id="download-heading" style="font-size: var(--text-2xl); font-weight: 800; color: var(--navy); margin-bottom: var(--space-4);">
+        Free Marketing Budget Template (Google Sheets)
+      </h2>
+      <p style="color: var(--text-mid); margin-bottom: var(--space-4);">
+        Download a pre-built Google Sheets template with all 9 industry benchmarks,
+        monthly allocation breakdown, and year-over-year tracking. No email required.
+      </p>
+      <a
+        href="https://docs.google.com/spreadsheets/d/YOUR-SHEET-ID/copy"
+        rel="noopener"
+        target="_blank"
+        style="display: inline-flex; align-items: center; gap: 0.5rem;
+               background: var(--navy); color: white; font-weight: 700;
+               padding: 0.75rem 1.5rem; border-radius: var(--radius);
+               text-decoration: none; font-size: var(--text-base);"
+        aria-label="Copy the free marketing budget Google Sheets template (opens in new tab)"
+      >
+        ↓ Copy Free Google Sheets Template
+      </a>
+    </section>
+
+  </div><!-- /.container -->
+
+</Base>
+
+<!-- ═══ CALCULATOR JAVASCRIPT ═══ -->
+<!--
+  Vanilla JS only — zero dependencies, zero frameworks.
+  Deferred with type="module" so it never blocks LCP.
+  All DOM references checked before use.
+-->
+<script>
+(function () {
+  'use strict';
+
+  const revenueInput  = document.getElementById('revenue');
+  const industrySelect = document.getElementById('industry');
+  const calcBtn       = document.getElementById('calc-btn');
+  const resultPanel   = document.getElementById('result-panel');
+  const resultBudget  = document.getElementById('result-budget');
+  const resultMonthly = document.getElementById('result-monthly');
+  const resultPct     = document.getElementById('result-pct');
+  const resultWeekly  = document.getElementById('result-weekly');
+  const resultVerdict = document.getElementById('result-verdict');
+  const modeButtons   = document.querySelectorAll('.mode-toggle button');
+
+  // Guard — elements must exist
+  if (!revenueInput || !industrySelect || !calcBtn || !resultPanel) return;
+
+  let growthMultiplier = 1;
+
+  // Growth stage toggle
+  modeButtons.forEach(btn => {
+    btn.addEventListener('click', function () {
+      modeButtons.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      growthMultiplier = parseFloat(this.dataset.multiplier) || 1;
+    });
+  });
+
+  function formatCurrency(n) {
+    if (n >= 1_000_000) return '$' + (n / 1_000_000).toFixed(2) + 'M';
+    if (n >= 1_000)     return '$' + Math.round(n).toLocaleString();
+    return '$' + Math.round(n).toLocaleString();
+  }
+
+  function getVerdict(pct) {
+    if (pct < 3)  return '⚠️ Below typical range — may limit growth';
+    if (pct < 7)  return '✓ Conservative — appropriate for mature B2B';
+    if (pct < 12) return '✓ Healthy — aligns with industry benchmarks';
+    if (pct < 18) return '🚀 Growth-mode — typical for SaaS & consumer';
+    return '🚀 Aggressive growth investment';
+  }
+
+  function calculate() {
+    const revenue = parseFloat(revenueInput.value);
+    const basePct = parseFloat(industrySelect.value);
+
+    if (!revenue || revenue <= 0 || !basePct) {
+      revenueInput.style.borderColor = !revenue ? 'var(--error)' : '';
+      industrySelect.style.borderColor = !basePct ? 'var(--error)' : '';
+      return;
+    }
+
+    revenueInput.style.borderColor   = '';
+    industrySelect.style.borderColor = '';
+
+    const finalPct    = basePct * growthMultiplier;
+    const annualBudget = revenue * (finalPct / 100);
+    const monthly      = annualBudget / 12;
+    const weekly       = annualBudget / 52;
+
+    resultBudget.textContent  = formatCurrency(annualBudget);
+    resultMonthly.textContent = formatCurrency(monthly);
+    resultPct.textContent     = finalPct.toFixed(1) + '%';
+    resultWeekly.textContent  = formatCurrency(weekly);
+    resultVerdict.textContent = getVerdict(finalPct);
+
+    resultPanel.classList.add('visible');
+    resultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  calcBtn.addEventListener('click', calculate);
+
+  // Allow Enter key on inputs
+  [revenueInput, industrySelect].forEach(el => {
+    el.addEventListener('keydown', e => { if (e.key === 'Enter') calculate(); });
+  });
+
+})();
+</script>

@@ -1,0 +1,488 @@
+---
+import Base from '../layouts/Base.astro';
+import AdSlot from '../components/AdSlot.astro';
+import FAQ from '../components/FAQ.astro';
+
+const slug        = 'marketing-roi-calculator';
+const title       = 'Marketing ROI Calculator — ROMI Formula + COGS Variant (2026)';
+const description = 'Calculate marketing ROI instantly. Supports basic ROMI and gross-margin ROI with COGS. Channel presets for email, SEO, paid, and content. Free, no signup.';
+
+const faqItems = [
+  {
+    q: 'How do you calculate marketing ROI?',
+    a: '<strong>Marketing ROI = (Revenue from marketing − Marketing cost) ÷ Marketing cost × 100.</strong> For example: $50,000 revenue generated from a $10,000 campaign → ($50,000 − $10,000) ÷ $10,000 × 100 = <strong>400% ROI</strong>. For a more accurate figure, use the gross-profit variant that accounts for Cost of Goods Sold (COGS).'
+  },
+  {
+    q: 'What is a 1000% return on $1000?',
+    a: 'A 1000% ROI on a $1,000 investment means you gained $10,000 — so your total return including the original investment is $11,000. The formula: ROI % = (Net profit ÷ Investment) × 100. $10,000 ÷ $1,000 × 100 = 1000%. In marketing, this is exceptional but achievable with email marketing and organic SEO.'
+  },
+  {
+    q: 'Is a 2% ROI good for marketing?',
+    a: 'No. A 2% marketing ROI means you earned $0.02 for every dollar spent — you are operating at a significant loss. A healthy marketing ROI starts at <strong>100%</strong> (doubling your spend), with direct-response channels targeting 200–400%. Email marketing typically achieves 4200%+; paid search targets 200%+.'
+  },
+  {
+    q: 'What does 22% ROI mean?',
+    a: 'A 22% marketing ROI means you earned $0.22 for every $1 spent on marketing — below break-even. This could indicate poor targeting, weak conversion, or attribution issues. Campaigns running at 22% ROI should be paused or restructured unless they are pure top-of-funnel brand awareness plays.'
+  },
+  {
+    q: 'What is a good marketing ROI?',
+    a: 'A commonly cited benchmark is <strong>5:1 (500%)</strong> — earning $5 for every $1 spent. 10:1 (1000%) is considered excellent. Anything below 2:1 (200%) is typically not worth the investment once overhead costs are factored in. Benchmarks vary significantly by channel: email often achieves 4200%+, while paid social averages 100–200%.'
+  }
+];
+
+const channelBenchmarks = [
+  { channel: 'Email Marketing',   typical: '4,200%', range: '2,000–8,000%', bar: 100 },
+  { channel: 'SEO / Organic',     typical: '275%',   range: '100–600%',     bar: 45  },
+  { channel: 'Content Marketing', typical: '300%',   range: '150–500%',     bar: 48  },
+  { channel: 'Paid Search (SEM)', typical: '200%',   range: '100–400%',     bar: 36  },
+  { channel: 'Paid Social',       typical: '120%',   range: '50–250%',      bar: 24  },
+  { channel: 'Events / Webinars', typical: '140%',   range: '80–300%',      bar: 28  },
+  { channel: 'Affiliate',         typical: '400%',   range: '200–800%',     bar: 56  },
+];
+
+const webAppSchema = {
+  "@type": "WebApplication",
+  "@id": "https://freemarketingcalculator.com/marketing-roi-calculator/#app",
+  "name": "Marketing ROI Calculator",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "creator": { "@id": "https://freemarketingcalculator.com/#org" },
+  "url": "https://freemarketingcalculator.com/marketing-roi-calculator/",
+  "description": "Free marketing ROI calculator supporting basic ROMI and gross-profit ROI with COGS, with channel presets and 2026 benchmark table.",
+  "featureList": ["Basic ROMI formula", "Gross-profit ROI with COGS", "Channel presets", "Free, no signup"]
+};
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": { "@type": "Answer", "text": item.a.replace(/<[^>]+>/g, '') }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Marketing ROI Calculator", "item": "https://freemarketingcalculator.com/marketing-roi-calculator/" }
+  ]
+};
+---
+
+<Base
+  title={title}
+  description={description}
+  slug={slug}
+  schema={[webAppSchema, faqSchema, breadcrumbSchema]}
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="page-hero" aria-labelledby="page-h1">
+    <div class="container">
+      <p class="eyebrow">Free Marketing Tool</p>
+      <h1 id="page-h1">Marketing ROI Calculator</h1>
+      <!--
+        CITATION SENTENCE — AI Overview extraction.
+        Matches the "multi-channel tool with COGS" categorisation
+        that gets tools cited alongside HubSpot and SE Ranking.
+      -->
+      <p class="citation">
+        A multi-channel marketing ROI calculator supporting basic ROMI
+        and gross-profit ROI with COGS — with channel presets for email,
+        SEO, paid search, content, and social, plus a 2026 benchmark table.
+      </p>
+      <div class="meta-badges">
+        <span class="badge">✓ Basic + COGS formula</span>
+        <span class="badge">✓ Channel presets</span>
+        <span class="badge">✓ No signup</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- ═══ CALCULATOR CARD ═══ -->
+    <div class="calc-card" aria-label="Marketing ROI calculator tool">
+      <div class="calc-card__header">
+        <div class="calc-card__header-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+            <polyline points="16 7 22 7 22 13"/>
+          </svg>
+        </div>
+        <div>
+          <div class="calc-card__title">Marketing ROI Calculator</div>
+          <div class="calc-card__subtitle">Simple mode or Advanced (COGS/gross margin)</div>
+        </div>
+      </div>
+
+      <div class="calc-card__body">
+
+        <!-- Mode toggle: Simple / Advanced -->
+        <div class="field">
+          <label>Calculation Mode</label>
+          <div class="mode-toggle" role="group" aria-label="Calculation mode">
+            <button type="button" class="active" id="mode-simple">Simple (2 inputs)</button>
+            <button type="button" id="mode-advanced">Advanced (with COGS)</button>
+          </div>
+        </div>
+
+        <!-- Channel preset -->
+        <div class="field">
+          <label for="channel-preset">Channel Preset (optional)</label>
+          <select id="channel-preset" aria-label="Channel preset">
+            <option value="">None — enter my own numbers</option>
+            <option value="email">Email Marketing</option>
+            <option value="seo">SEO / Organic Search</option>
+            <option value="paid-search">Paid Search (Google Ads)</option>
+            <option value="paid-social">Paid Social (Meta / LinkedIn)</option>
+            <option value="content">Content Marketing</option>
+            <option value="events">Events / Webinars</option>
+          </select>
+        </div>
+
+        <div class="field-group" id="main-inputs">
+
+          <div class="field">
+            <label for="revenue-gen">Revenue Generated from Marketing</label>
+            <div class="input-wrap">
+              <span class="input-prefix">$</span>
+              <input type="number" id="revenue-gen" class="has-prefix"
+                placeholder="e.g. 50000" min="0" aria-describedby="rev-hint" />
+            </div>
+            <p class="hint" id="rev-hint">Total revenue attributable to this campaign or channel</p>
+          </div>
+
+          <div class="field">
+            <label for="marketing-cost">Total Marketing Cost / Spend</label>
+            <div class="input-wrap">
+              <span class="input-prefix">$</span>
+              <input type="number" id="marketing-cost" class="has-prefix"
+                placeholder="e.g. 10000" min="0" />
+            </div>
+          </div>
+
+          <!-- Advanced fields — hidden in Simple mode -->
+          <div id="advanced-fields" style="display:none;">
+            <div class="field" style="margin-top: var(--space-4);">
+              <label for="gross-margin">Gross Margin %</label>
+              <div class="input-wrap">
+                <input type="number" id="gross-margin" class="has-suffix"
+                  placeholder="e.g. 65" min="0" max="100" />
+                <span class="input-suffix">%</span>
+              </div>
+              <p class="hint">Revenue minus Cost of Goods Sold (COGS), divided by revenue</p>
+            </div>
+          </div>
+
+        </div><!-- /#main-inputs -->
+
+        <!-- Calculate button — NOT adjacent to any ad unit -->
+        <button class="btn-calc" id="roi-calc-btn" type="button" aria-controls="roi-result">
+          Calculate ROI
+        </button>
+
+        <!-- Result panel -->
+        <div class="result-panel" id="roi-result" aria-live="polite" aria-label="ROI calculation results">
+          <div class="result-panel__label" id="roi-result-label">Marketing ROI (ROMI)</div>
+          <div class="result-panel__primary" id="roi-primary">0%</div>
+
+          <div class="result-panel__grid">
+            <div class="result-panel__stat">
+              <span class="result-panel__stat-value" id="roi-net-profit">$0</span>
+              <span class="result-panel__stat-label">Net profit</span>
+            </div>
+            <div class="result-panel__stat">
+              <span class="result-panel__stat-value" id="roi-ratio">0:1</span>
+              <span class="result-panel__stat-label">Revenue ratio</span>
+            </div>
+            <div class="result-panel__stat">
+              <span class="result-panel__stat-value" id="roi-per-dollar">$0.00</span>
+              <span class="result-panel__stat-label">Return per $1 spent</span>
+            </div>
+          </div>
+
+          <div class="result-verdict" id="roi-verdict" aria-live="polite"></div>
+        </div>
+
+      </div><!-- /.calc-card__body -->
+    </div><!-- /.calc-card -->
+
+    <!-- AD UNIT 1 — post result, policy-compliant position -->
+    <AdSlot slot="4567890123" variant="post-result" />
+
+    <!-- ═══ DEFINITION (AIO extractable) ═══ -->
+    <div class="definition-box" aria-label="Definition of marketing ROI">
+      <div class="definition-box__label">Definition</div>
+      <p>
+        <strong>Marketing ROI (Return on Marketing Investment / ROMI)</strong> measures the
+        revenue generated relative to the cost of a marketing campaign or channel.
+        It is expressed as a percentage and tells you how much revenue each dollar of
+        marketing spend produces. A 5:1 ratio (500%) is a commonly cited healthy benchmark;
+        10:1 (1000%) is considered excellent for direct-response marketing.
+      </p>
+    </div>
+
+    <!-- ═══ FORMULA BLOCKS ═══ -->
+    <!--
+      Both formulas in plain HTML — NOT inside JavaScript.
+      The COGS variant is what got Riman Agency cited in the AI Overview despite DR 15.
+    -->
+    <div class="formula-box" aria-label="Basic marketing ROI formula">
+      <p class="formula-title">Formula 1 — Basic ROMI</p>
+      <p class="formula-text">
+        ROMI = (Marketing Revenue − Marketing Cost) ÷ Marketing Cost × 100
+      </p>
+      <div class="formula-example">
+        <strong>Example:</strong> Campaign generated $50,000 revenue, cost $10,000.
+        ($50,000 − $10,000) ÷ $10,000 × 100 = <strong>400% ROMI</strong>
+      </div>
+    </div>
+
+    <div class="formula-box" aria-label="Gross profit marketing ROI formula with COGS">
+      <p class="formula-title">Formula 2 — Gross Profit ROI (accounts for COGS)</p>
+      <p class="formula-text">
+        ROI = ((Revenue × Gross Margin %) − Marketing Spend) ÷ Marketing Spend × 100
+      </p>
+      <div class="formula-example">
+        <strong>Example:</strong> $200,000 revenue, 60% gross margin, $50,000 marketing spend.
+        (($200,000 × 60%) − $50,000) ÷ $50,000 × 100 =
+        ($120,000 − $50,000) ÷ $50,000 × 100 = <strong>140% gross-profit ROI</strong>.
+        More accurate than basic ROMI for product businesses.
+      </div>
+    </div>
+
+    <!-- ═══ ROI BENCHMARK TABLE ═══ -->
+    <section class="bench-section" aria-labelledby="roi-bench-heading">
+      <h2 id="roi-bench-heading">Marketing ROI by Channel — 2026 Benchmarks</h2>
+      <span class="bench-date">Updated July 2026</span>
+
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <caption class="sr-only">Typical marketing ROI by channel, 2026</caption>
+          <thead>
+            <tr>
+              <th scope="col">Channel</th>
+              <th scope="col">Typical ROI</th>
+              <th scope="col">Range</th>
+              <th scope="col">Visualisation</th>
+            </tr>
+          </thead>
+          <tbody>
+            {channelBenchmarks.map(row => (
+              <tr>
+                <td>{row.channel}</td>
+                <td><strong>{row.typical}</strong></td>
+                <td>{row.range}</td>
+                <td>
+                  <div class="bench-bar">
+                    <div class="bench-bar__fill" style={`width: ${row.bar}%`}></div>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">
+        Sources: Litmus Email ROI Report, Demand Gen Report, WordStream Google Ads benchmarks,
+        Salesforce State of Marketing 2026. ROI figures are industry medians; individual results vary.
+      </p>
+    </section>
+
+    <!-- ═══ AD UNIT 2 ═══ -->
+    <AdSlot slot="5678901234" variant="mid-content" />
+
+    <!-- ═══ WHAT IS GOOD MARKETING ROI SECTION (PAA match) ═══ -->
+    <section class="prose content-section" aria-label="What is a good marketing ROI">
+      <h2>What Is a Good Marketing ROI?</h2>
+      <p>
+        The most widely cited benchmark for a healthy marketing ROI is <strong>5:1</strong> —
+        earning $5 for every $1 spent (500%). A 10:1 ratio is considered excellent.
+        Anything below 2:1 (200%) is generally not sustainable once overhead and
+        attribution costs are factored in.
+      </p>
+      <p>
+        However, benchmarks vary sharply by channel and campaign type:
+      </p>
+
+      <h3>ROI Benchmark Ranges</h3>
+      <p>
+        <strong>Under 0%:</strong> Operating at a loss. The campaign should be paused
+        or restructured immediately. Common causes: poor targeting, weak landing page
+        conversion, or incorrect revenue attribution.
+      </p>
+      <p>
+        <strong>0% – 100%:</strong> Breaking even to modest return. Acceptable for
+        top-of-funnel brand awareness campaigns where lifetime value (LTV) extends
+        beyond the measurement window.
+      </p>
+      <p>
+        <strong>100% – 300%:</strong> Strong performance for direct-response marketing.
+        This is the target range for paid search, paid social, and event marketing.
+      </p>
+      <p>
+        <strong>Over 300%:</strong> Excellent return. Typical of well-optimised email
+        marketing, organic SEO, and high-quality content marketing programs measured
+        over a 12-month horizon.
+      </p>
+    </section>
+
+    <!-- ═══ GOOGLE SHEETS DOWNLOAD ═══ -->
+    <section class="content-section" aria-labelledby="dl-heading">
+      <h2 id="dl-heading" style="font-size: var(--text-2xl); font-weight: 800; color: var(--navy); margin-bottom: var(--space-4);">
+        Free Marketing ROI Spreadsheet (Google Sheets)
+      </h2>
+      <p style="color: var(--text-mid); margin-bottom: var(--space-4);">
+        Pre-built template with both ROMI formulas, channel comparison tabs,
+        and 12-month tracking. No email required.
+      </p>
+      <a
+        href="https://docs.google.com/spreadsheets/d/YOUR-ROMI-SHEET-ID/copy"
+        rel="noopener"
+        target="_blank"
+        style="display:inline-flex; align-items:center; gap:0.5rem;
+               background:var(--navy); color:white; font-weight:700;
+               padding:0.75rem 1.5rem; border-radius:var(--radius);
+               text-decoration:none; font-size:var(--text-base);"
+        aria-label="Copy the free marketing ROI Google Sheets template (opens in new tab)"
+      >
+        ↓ Copy Free Google Sheets Template
+      </a>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <FAQ items={faqItems} />
+
+  </div><!-- /.container -->
+
+</Base>
+
+<!-- ═══ CALCULATOR JAVASCRIPT ═══ -->
+<script>
+(function () {
+  'use strict';
+
+  const revenueInput   = document.getElementById('revenue-gen');
+  const costInput      = document.getElementById('marketing-cost');
+  const marginInput    = document.getElementById('gross-margin');
+  const presetSelect   = document.getElementById('channel-preset');
+  const calcBtn        = document.getElementById('roi-calc-btn');
+  const resultPanel    = document.getElementById('roi-result');
+  const roiPrimary     = document.getElementById('roi-primary');
+  const roiLabel       = document.getElementById('roi-result-label');
+  const roiNetProfit   = document.getElementById('roi-net-profit');
+  const roiRatio       = document.getElementById('roi-ratio');
+  const roiPerDollar   = document.getElementById('roi-per-dollar');
+  const roiVerdict     = document.getElementById('roi-verdict');
+  const modeSimple     = document.getElementById('mode-simple');
+  const modeAdvanced   = document.getElementById('mode-advanced');
+  const advancedFields = document.getElementById('advanced-fields');
+
+  if (!calcBtn || !resultPanel) return;
+
+  // Channel presets — example values
+  const PRESETS = {
+    'email':       { revenue: 42000, cost: 1000 },
+    'seo':         { revenue: 27500, cost: 5000 },
+    'paid-search': { revenue: 20000, cost: 8000 },
+    'paid-social': { revenue: 12000, cost: 8000 },
+    'content':     { revenue: 15000, cost: 4000 },
+    'events':      { revenue: 28000, cost: 10000 },
+  };
+
+  let isAdvanced = false;
+
+  // Mode toggle
+  modeSimple.addEventListener('click', function () {
+    isAdvanced = false;
+    modeSimple.classList.add('active');
+    modeAdvanced.classList.remove('active');
+    advancedFields.style.display = 'none';
+  });
+
+  modeAdvanced.addEventListener('click', function () {
+    isAdvanced = true;
+    modeAdvanced.classList.add('active');
+    modeSimple.classList.remove('active');
+    advancedFields.style.display = 'block';
+  });
+
+  // Channel preset fill
+  presetSelect.addEventListener('change', function () {
+    const preset = PRESETS[this.value];
+    if (preset && revenueInput && costInput) {
+      revenueInput.value = preset.revenue;
+      costInput.value    = preset.cost;
+    }
+  });
+
+  function fmt(n) {
+    return '$' + Math.abs(Math.round(n)).toLocaleString();
+  }
+
+  function getVerdict(roi) {
+    if (roi < 0)   return '🔴 Operating at a loss — pause and review targeting';
+    if (roi < 100) return '🟡 Below breakeven — consider LTV before stopping';
+    if (roi < 300) return '🟢 Solid — within healthy direct-response range';
+    if (roi < 500) return '✅ Strong — above the 5:1 benchmark';
+    return '🚀 Excellent — exceeds the 10:1 best-in-class target';
+  }
+
+  function calculate() {
+    const revenue = parseFloat(revenueInput.value);
+    const cost    = parseFloat(costInput.value);
+
+    let valid = true;
+    if (!revenue || revenue < 0) { revenueInput.style.borderColor = 'var(--error)'; valid = false; }
+    else revenueInput.style.borderColor = '';
+    if (!cost || cost <= 0)      { costInput.style.borderColor = 'var(--error)'; valid = false; }
+    else costInput.style.borderColor = '';
+    if (!valid) return;
+
+    let roi, netProfit, label;
+
+    if (isAdvanced) {
+      const margin = parseFloat(marginInput.value) / 100;
+      if (!margin || margin <= 0 || margin > 1) {
+        marginInput.style.borderColor = 'var(--error)'; return;
+      }
+      marginInput.style.borderColor = '';
+      const grossProfit = revenue * margin;
+      netProfit = grossProfit - cost;
+      roi       = (netProfit / cost) * 100;
+      label     = 'Gross-Profit ROI (COGS adjusted)';
+    } else {
+      netProfit = revenue - cost;
+      roi       = (netProfit / cost) * 100;
+      label     = 'Marketing ROI (ROMI)';
+    }
+
+    const ratio      = (revenue / cost).toFixed(1);
+    const perDollar  = (revenue / cost).toFixed(2);
+
+    roiLabel.textContent      = label;
+    roiPrimary.textContent    = roi.toFixed(1) + '%';
+    roiNetProfit.textContent  = fmt(netProfit);
+    roiRatio.textContent      = ratio + ':1';
+    roiPerDollar.textContent  = '$' + perDollar;
+    roiVerdict.textContent    = getVerdict(roi);
+
+    // Tint primary value by result
+    roiPrimary.style.color = roi >= 0 ? 'var(--teal)' : '#ff6b6b';
+
+    resultPanel.classList.add('visible');
+    resultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  calcBtn.addEventListener('click', calculate);
+  [revenueInput, costInput, marginInput].forEach(el => {
+    if (el) el.addEventListener('keydown', e => { if (e.key === 'Enter') calculate(); });
+  });
+
+})();
+</script>

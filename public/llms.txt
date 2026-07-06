@@ -1,0 +1,46 @@
+# MarketCalcs — Free Marketing Calculators
+# https://freemarketingcalculator.com
+# llms.txt v1.0 — July 2026
+
+> Free marketing calculator tools for ROI, budget planning, salary benchmarks, conversion rates, and campaign metrics. All tools are free, require no signup, and produce instant results.
+
+## Tools
+
+- [Marketing ROI Calculator](https://freemarketingcalculator.com/marketing-roi-calculator/): Computes basic ROMI and gross-profit ROI with COGS, with channel presets for email, SEO, paid search, content, and social marketing — includes a 2026 benchmark table by channel.
+
+- [Marketing Budget Calculator](https://freemarketingcalculator.com/marketing-budget-calculator/): Recommends annual marketing budget from revenue and industry sector, with benchmarks across 9 industries (B2B, SaaS, retail, manufacturing, healthcare, financial services, consumer goods, nonprofit, industrial) and a free Google Sheets download.
+
+- [Conversion Rate Calculator](https://freemarketingcalculator.com/conversion-rate-calculator/): Calculates marketing conversion rate from visits and conversions, reverse-computes traffic needed to hit a sales goal, and benchmarks results against 2026 industry averages by channel.
+
+- [Email Marketing ROI Calculator](https://freemarketingcalculator.com/email-marketing-roi-calculator/): Computes email marketing ROMI from list size, send frequency, open rate, click rate, conversion rate, and monthly platform cost — with platform cost comparison table.
+
+- [Social Media Budget Calculator](https://freemarketingcalculator.com/social-media-budget-calculator/): Recommends paid and organic social media marketing budget by platform (Facebook, Instagram, TikTok, LinkedIn, Pinterest) and campaign goal, with CPM benchmarks.
+
+- [Digital Marketing Calculator](https://freemarketingcalculator.com/digital-marketing-calculator/): Computes CPM, CPC, CTR, ROAS, and CPA simultaneously from a single set of digital campaign inputs — the only multi-metric marketing calculator.
+
+- [Marketing Salary Calculator](https://freemarketingcalculator.com/marketing-salary-calculator/): Estimates marketing salary range by role (manager, director, VP, CMO, specialist), seniority level, and US location with national and city-level benchmarks.
+
+- [Marketing Agency Valuation Calculator](https://freemarketingcalculator.com/marketing-agency-valuation-calculator/): Estimates a digital marketing agency's market value using revenue multiples, EBITDA multiple, and client retention rate — with 2026 M&A benchmark multiples.
+
+- [Marketing Automation ROI Calculator](https://freemarketingcalculator.com/marketing-automation-roi-calculator/): Calculates B2B marketing automation ROI from weekly time savings, hourly cost, platform subscription cost, and expected lead volume lift percentage.
+
+- [Inbound Marketing Calculator](https://freemarketingcalculator.com/inbound-marketing-calculator/): Reverse-funnel calculator that converts a revenue goal into required monthly traffic, leads, MQLs, and SQLs using stage-by-stage conversion benchmarks.
+
+## Formulas Used
+
+Marketing ROI (ROMI) = (Revenue from marketing - Marketing cost) / Marketing cost * 100
+Gross-Profit ROI = ((Revenue * Gross margin %) - Marketing spend) / Marketing spend * 100
+Marketing Budget = Annual revenue * Industry benchmark %
+Conversion Rate = (Conversions / Visitors) * 100
+CPM = (Cost / Impressions) * 1000
+CPC = Cost / Clicks
+ROAS = Revenue / Ad spend
+CPA = Cost / Conversions
+
+## About
+
+MarketCalcs publishes free, no-signup marketing calculators with industry-sourced benchmarks updated quarterly. Formulas are based on standard industry definitions. Benchmarks are compiled from Gartner CMO Survey, Deloitte CMO Survey, Litmus Email ROI Report, and other publicly available sources.
+
+## Contact
+
+hello@freemarketingcalculator.com

@@ -1,0 +1,838 @@
+/* ============================================================
+   DESIGN TOKENS
+   Palette: deep navy authority + electric teal accent + warm white
+   Type: Inter (data/UI) + system serif fallback for definitions
+   Signature element: teal gradient result panel that "lights up"
+   ============================================================ */
+:root {
+  /* Colours */
+  --navy:        #0f1f38;
+  --navy-mid:    #1a3358;
+  --navy-light:  #2a4a7f;
+  --teal:        #00c4b3;
+  --teal-dark:   #00a396;
+  --teal-faint:  #e6faf9;
+  --amber:       #f59e0b;
+  --white:       #ffffff;
+  --off-white:   #f8fafc;
+  --text-main:   #1e293b;
+  --text-mid:    #475569;
+  --text-light:  #94a3b8;
+  --border:      #e2e8f0;
+  --error:       #ef4444;
+  --success:     #10b981;
+
+  /* Type scale */
+  --font-ui:     'Inter', system-ui, -apple-system, sans-serif;
+  --text-xs:     0.75rem;
+  --text-sm:     0.875rem;
+  --text-base:   1rem;
+  --text-lg:     1.125rem;
+  --text-xl:     1.25rem;
+  --text-2xl:    1.5rem;
+  --text-3xl:    1.875rem;
+  --text-4xl:    2.25rem;
+
+  /* Spacing */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Layout */
+  --max-w:    820px;
+  --radius:   8px;
+  --radius-lg:16px;
+  --shadow:   0 1px 3px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg:0 4px 24px rgba(0,0,0,.12);
+}
+
+/* ============================================================
+   RESET + BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-family: var(--font-ui);
+  font-size: 16px;
+  color: var(--text-main);
+  background: var(--white);
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body { line-height: 1.6; }
+
+img, svg { display: block; max-width: 100%; }
+
+a { color: var(--teal-dark); text-decoration: underline; }
+a:hover { color: var(--navy); }
+a:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+.page-wrap {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+
+/* ============================================================
+   SITE HEADER
+   ============================================================ */
+.site-header {
+  background: var(--navy);
+  padding: var(--space-4) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.site-logo {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.site-logo span { color: var(--teal); }
+
+.site-nav {
+  display: flex;
+  gap: var(--space-4);
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  color: rgba(255,255,255,.8);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: color .15s;
+}
+
+.site-nav a:hover, .site-nav a[aria-current="page"] {
+  color: var(--teal);
+}
+
+/* ============================================================
+   HERO / PAGE INTRO
+   ============================================================ */
+.page-hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  padding: var(--space-12) 0 var(--space-8);
+  color: var(--white);
+}
+
+.page-hero .eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: var(--space-3);
+}
+
+.page-hero h1 {
+  font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl));
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-4);
+}
+
+.page-hero .citation {
+  font-size: var(--text-lg);
+  color: rgba(255,255,255,.8);
+  max-width: 640px;
+  line-height: 1.5;
+  margin-bottom: var(--space-4);
+}
+
+.page-hero .meta-badges {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.9);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: var(--space-1) var(--space-3);
+  border-radius: 100px;
+}
+
+/* ============================================================
+   CONTENT SECTIONS
+   ============================================================ */
+.content-section {
+  padding: var(--space-12) 0;
+}
+
+.content-section + .content-section {
+  padding-top: 0;
+}
+
+/* ============================================================
+   CALCULATOR CARD
+   — Must appear fully without scrolling on mobile (Google policy)
+   ============================================================ */
+.calc-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-top: calc(-1 * var(--space-8));  /* pull up into hero */
+  position: relative;
+  z-index: 10;
+}
+
+.calc-card__header {
+  background: var(--teal-faint);
+  border-bottom: 1px solid var(--border);
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.calc-card__header-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--teal);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.calc-card__header-icon svg { color: var(--white); }
+
+.calc-card__title {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.calc-card__subtitle {
+  font-size: var(--text-sm);
+  color: var(--text-mid);
+}
+
+.calc-card__body {
+  padding: var(--space-6);
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* ============================================================
+   FORM FIELDS
+   ============================================================ */
+.field-group {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.field label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.field .hint {
+  font-size: var(--text-xs);
+  color: var(--text-mid);
+  margin-top: calc(-1 * var(--space-1));
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-prefix {
+  position: absolute;
+  left: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-mid);
+  pointer-events: none;
+}
+
+.input-suffix {
+  position: absolute;
+  right: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-mid);
+  pointer-events: none;
+}
+
+input[type="number"],
+input[type="text"],
+select {
+  width: 100%;
+  height: 44px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  font-size: var(--text-base);
+  font-family: var(--font-ui);
+  color: var(--text-main);
+  background: var(--white);
+  transition: border-color .15s, box-shadow .15s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+input[type="number"].has-prefix,
+input[type="text"].has-prefix { padding: 0 var(--space-4) 0 var(--space-8); }
+input[type="number"].has-suffix { padding: 0 var(--space-8) 0 var(--space-4); }
+input[type="number"]:not(.has-prefix):not(.has-suffix),
+input[type="text"]:not(.has-prefix),
+select { padding: 0 var(--space-4); }
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(0,196,179,.15);
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 6px;
+  accent-color: var(--teal);
+  cursor: pointer;
+}
+
+/* Toggle / mode switcher */
+.mode-toggle {
+  display: flex;
+  background: var(--off-white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-1);
+  gap: var(--space-1);
+}
+
+.mode-toggle button {
+  flex: 1;
+  height: 36px;
+  border: none;
+  background: transparent;
+  border-radius: calc(var(--radius) - 2px);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+
+.mode-toggle button.active {
+  background: var(--white);
+  color: var(--navy);
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}
+
+/* ============================================================
+   CALCULATE BUTTON
+   — Never placed adjacent to ad units (Google policy compliance)
+   ============================================================ */
+.btn-calc {
+  width: 100%;
+  height: 52px;
+  background: var(--teal);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  font-family: var(--font-ui);
+  cursor: pointer;
+  transition: background .15s, transform .1s;
+  letter-spacing: -0.01em;
+  margin-top: var(--space-2);
+}
+
+.btn-calc:hover { background: var(--teal-dark); }
+.btn-calc:active { transform: scale(.99); }
+.btn-calc:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   RESULT PANEL — signature "lights up" element
+   ============================================================ */
+.result-panel {
+  display: none;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  border-radius: var(--radius);
+  padding: var(--space-6);
+  color: var(--white);
+  animation: resultFadeIn .35s ease;
+}
+
+.result-panel.visible { display: block; }
+
+@keyframes resultFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.result-panel__primary {
+  font-size: clamp(var(--text-3xl), 8vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--teal);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+
+.result-panel__label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: rgba(255,255,255,.7);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: var(--space-4);
+}
+
+.result-panel__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+
+.result-panel__stat { display: flex; flex-direction: column; gap: 2px; }
+.result-panel__stat-value { font-size: var(--text-xl); font-weight: 700; color: var(--white); }
+.result-panel__stat-label { font-size: var(--text-xs); color: rgba(255,255,255,.6); }
+
+.result-verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(255,255,255,.1);
+  border-radius: 100px;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-top: var(--space-4);
+}
+
+/* ============================================================
+   AD CONTAINERS — CLS-safe reserved heights (Google policy)
+   Ad unit 1: BELOW result panel — never adjacent to calc button
+   Ad unit 2: Mid-content between benchmark table and FAQ
+   Ad unit 3: Mobile anchor — Google's own anchor format only
+   ============================================================ */
+.ad-slot {
+  width: 100%;
+  background: var(--off-white);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  overflow: hidden;
+  /* Reserved heights prevent CLS — do NOT remove these */
+}
+
+.ad-slot--post-result {
+  min-height: 250px;
+  margin-top: var(--space-6);
+  /* Positioned AFTER result panel, with clear visual separation */
+  /* Never overlaps or is adjacent to .btn-calc */
+}
+
+.ad-slot--mid-content {
+  min-height: 280px;
+  margin: var(--space-8) 0;
+}
+
+/* ============================================================
+   FORMULA BLOCK — plain HTML, AIO-extractable
+   ============================================================ */
+.formula-box {
+  background: var(--off-white);
+  border-left: 4px solid var(--teal);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: var(--space-4) var(--space-6);
+  margin: var(--space-6) 0;
+}
+
+.formula-box .formula-title {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--teal-dark);
+  margin-bottom: var(--space-2);
+}
+
+.formula-box .formula-text {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.formula-box .formula-example {
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--text-mid);
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-3);
+}
+
+.formula-box .formula-example strong { color: var(--text-main); }
+
+/* ============================================================
+   BENCHMARK TABLE
+   ============================================================ */
+.bench-section { margin: var(--space-8) 0; }
+
+.bench-section h2 {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: var(--space-2);
+}
+
+.bench-date {
+  display: inline-block;
+  background: var(--teal-faint);
+  color: var(--teal-dark);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  padding: 2px var(--space-3);
+  border-radius: 100px;
+  margin-bottom: var(--space-4);
+}
+
+.bench-table-wrap { overflow-x: auto; }
+
+.bench-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.bench-table th {
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  background: var(--navy);
+  color: rgba(255,255,255,.85);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  white-space: nowrap;
+}
+
+.bench-table th:first-child { border-radius: var(--radius) 0 0 0; }
+.bench-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+
+.bench-table td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-main);
+  vertical-align: middle;
+}
+
+.bench-table tr:nth-child(even) td { background: var(--off-white); }
+.bench-table tr:last-child td { border-bottom: none; }
+
+.bench-table td:first-child { font-weight: 600; }
+
+.bench-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.bench-bar__fill {
+  height: 8px;
+  background: var(--teal);
+  border-radius: 100px;
+  min-width: 4px;
+  transition: width .4s ease;
+}
+
+.bench-table tr:nth-child(even) .bench-bar__fill { background: var(--navy-light); }
+
+.bench-source {
+  font-size: var(--text-xs);
+  color: var(--text-light);
+  margin-top: var(--space-2);
+}
+
+/* ============================================================
+   FAQ SECTION
+   ============================================================ */
+.faq-section { margin: var(--space-8) 0; }
+
+.faq-section h2 {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: var(--space-6);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-item:first-of-type { border-top: 1px solid var(--border); }
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--navy);
+  user-select: none;
+}
+
+.faq-question::-webkit-details-marker { display: none; }
+
+.faq-question svg {
+  flex-shrink: 0;
+  transition: transform .2s;
+  color: var(--teal);
+}
+
+details[open] .faq-question svg { transform: rotate(180deg); }
+
+.faq-answer {
+  padding: 0 0 var(--space-4);
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+
+/* ============================================================
+   CONTENT PROSE
+   ============================================================ */
+.prose h2 {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin: var(--space-8) 0 var(--space-3);
+}
+
+.prose h3 {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--navy);
+  margin: var(--space-6) 0 var(--space-2);
+}
+
+.prose p { color: var(--text-mid); margin-bottom: var(--space-4); line-height: 1.75; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--text-main); font-weight: 600; }
+
+/* ============================================================
+   DEFINITION BLOCK
+   ============================================================ */
+.definition-box {
+  background: var(--teal-faint);
+  border: 1px solid rgba(0,196,179,.25);
+  border-radius: var(--radius);
+  padding: var(--space-4) var(--space-6);
+  margin: var(--space-6) 0;
+}
+
+.definition-box__label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--teal-dark);
+  margin-bottom: var(--space-2);
+}
+
+.definition-box p {
+  font-size: var(--text-base);
+  color: var(--navy);
+  line-height: 1.65;
+  font-weight: 500;
+}
+
+/* ============================================================
+   HOMEPAGE TOOL GRID
+   ============================================================ */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-4);
+  padding: var(--space-8) 0;
+}
+
+.tool-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color .15s, box-shadow .15s, transform .15s;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.tool-card:hover {
+  border-color: var(--teal);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.tool-card__icon {
+  width: 44px;
+  height: 44px;
+  background: var(--teal-faint);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tool-card__icon svg { color: var(--teal-dark); }
+
+.tool-card__name {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.tool-card__desc {
+  font-size: var(--text-sm);
+  color: var(--text-mid);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.tool-card__cta {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--teal-dark);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  background: var(--navy);
+  color: rgba(255,255,255,.6);
+  padding: var(--space-8) 0;
+  margin-top: var(--space-16);
+  font-size: var(--text-sm);
+}
+
+.site-footer .container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.site-footer a { color: var(--teal); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+
+.footer-links { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .container { padding-inline: var(--space-4); }
+  .site-nav { display: none; }
+  .calc-card__body { padding: var(--space-4); }
+  .site-footer .container { grid-template-columns: 1fr; }
+  .tool-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}

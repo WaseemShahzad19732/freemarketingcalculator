@@ -1,0 +1,30 @@
+# MarketCalcs robots.txt
+# All AI crawlers explicitly welcomed — citations from ChatGPT/Perplexity/Claude are a referral channel
+
+User-agent: *
+Allow: /
+
+# Allow all AI crawlers for AEO/GEO citations
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# Sitemap
+Sitemap: https://freemarketingcalculator.com/sitemap-index.xml

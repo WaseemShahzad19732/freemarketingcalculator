@@ -1,0 +1,174 @@
+---
+/**
+ * Base.astro — Master layout
+ * Every page passes: title, description, slug, schema (array of JSON-LD objects),
+ * citationSentence, pageType ('calculator' | 'home' | 'article')
+ */
+interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  schema?: object[];
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  slug,
+  schema = [],
+  ogImage = '/og-default.png',
+  noindex = false,
+} = Astro.props;
+
+const siteUrl   = 'https://freemarketingcalculator.com'; // ← replace before deploy
+const canonical = `${siteUrl}/${slug ? slug + '/' : ''}`;
+const ogUrl     = canonical;
+
+// Merge Organisation schema into every page's JSON-LD array
+const orgSchema = {
+  "@type": "Organization",
+  "@id": `${siteUrl}/#org`,
+  "name": "MarketCalcs",
+  "url": siteUrl,
+  "logo": {
+    "@type": "ImageObject",
+    "url": `${siteUrl}/logo.png`
+  },
+  "description": "Free marketing calculators for ROI, budget, salary, conversion rate, and more.",
+  "sameAs": [
+    "https://www.linkedin.com/company/marketcalcs",
+    "https://twitter.com/marketcalcs"
+  ]
+};
+
+const websiteSchema = {
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  "name": "MarketCalcs",
+  "url": siteUrl,
+  "publisher": { "@id": `${siteUrl}/#org` }
+};
+
+const fullSchema = {
+  "@context": "https://schema.org",
+  "@graph": [orgSchema, websiteSchema, ...schema]
+};
+
+// AdSense publisher ID — replace with yours
+const ADSENSE_PUB = 'ca-pub-XXXXXXXXXXXXXXXXX';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Primary meta -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex, follow" />}
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={ogUrl} />
+  <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+  <meta property="og:site_name" content="MarketCalcs" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+  <!-- JSON-LD structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify(fullSchema)} />
+
+  <!-- Inter font — self-hosted subset for performance (swap to avoid FOIT) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+  />
+
+  <!-- Global styles -->
+  <link rel="stylesheet" href="/src/styles/global.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!--
+    Google AdSense — async, non-render-blocking
+    Policy note: script loads async so it never blocks LCP.
+    Ad units are placed ONLY in reserved .ad-slot containers.
+    NO ads adjacent to calculator buttons or results.
+    replace XXXXXXXXXXXXXXXXX with your publisher ID.
+  -->
+  <script
+    async
+    src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_PUB}`}
+    crossorigin="anonymous"
+  ></script>
+</head>
+
+<body>
+  <div class="page-wrap">
+
+    <!-- ===== SITE HEADER ===== -->
+    <header class="site-header" role="banner">
+      <div class="container">
+        <a href="/" class="site-logo" aria-label="MarketCalcs home">
+          Market<span>Calcs</span>
+        </a>
+        <nav aria-label="Main navigation">
+          <ul class="site-nav">
+            <li><a href="/marketing-roi-calculator/">ROI Calculator</a></li>
+            <li><a href="/marketing-budget-calculator/">Budget</a></li>
+            <li><a href="/conversion-rate-calculator/">Conversion Rate</a></li>
+            <li><a href="/email-marketing-roi-calculator/">Email ROI</a></li>
+            <li><a href="/marketing-salary-calculator/">Salary</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <!-- ===== SITE FOOTER ===== -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div>
+          <p>
+            &copy; {new Date().getFullYear()} MarketCalcs &mdash;
+            Free marketing calculators, no signup required.
+          </p>
+          <p style="margin-top: 0.5rem;">
+            Formulas sourced from industry-standard definitions.
+            Benchmarks compiled from public data; updated quarterly.
+            Not financial advice.
+          </p>
+        </div>
+        <nav aria-label="Footer navigation">
+          <ul class="footer-links">
+            <li><a href="/">All Calculators</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/privacy-policy/">Privacy</a></li>
+            <li><a href="/sitemap-index.xml">Sitemap</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

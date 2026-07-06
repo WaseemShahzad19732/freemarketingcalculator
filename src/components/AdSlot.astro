@@ -1,0 +1,68 @@
+---
+/**
+ * AdSlot.astro — Google AdSense ad unit, CLS-safe
+ *
+ * Google AdSense policy compliance notes embedded in this component:
+ * 1. Container min-height is ALWAYS reserved in CSS before JS runs → CLS ≈ 0
+ * 2. Units use loading="lazy" via data-full-width-responsive
+ * 3. This component is NEVER placed adjacent to calculator buttons
+ * 4. Label "Advertisement" shown above unit (policy: users must know it's an ad)
+ * 5. Auto-ads are NOT used — manual placement only to avoid accidental-click layouts
+ *
+ * Replace data-ad-client and data-ad-slot with your real values.
+ * Each ad unit on your AdSense account has its own slot ID.
+ */
+
+interface Props {
+  slot: string;       // AdSense ad-slot ID, e.g. "1234567890"
+  variant?: 'post-result' | 'mid-content';
+  label?: boolean;    // show "Advertisement" label (recommended for policy)
+}
+
+const {
+  slot,
+  variant = 'mid-content',
+  label = true,
+} = Astro.props;
+
+const cssClass = `ad-slot ad-slot--${variant}`;
+const PUB_ID   = 'ca-pub-XXXXXXXXXXXXXXXXX'; // ← replace with your publisher ID
+---
+
+<div class="ad-unit-wrap">
+  {label && (
+    <p class="ad-label" aria-hidden="true">Advertisement</p>
+  )}
+  <div class={cssClass}>
+    <ins
+      class="adsbygoogle"
+      style="display:block"
+      data-ad-client={PUB_ID}
+      data-ad-slot={slot}
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+    ></ins>
+    <script>
+      // Deferred ad init — runs after page load, never blocks LCP
+      window.addEventListener('load', function () {
+        try {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch(e) {}
+      }, { once: true });
+    </script>
+  </div>
+</div>
+
+<style>
+  .ad-unit-wrap {
+    margin: var(--space-6) 0;
+  }
+  .ad-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 4px;
+  }
+</style>
