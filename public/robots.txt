@@ -1,30 +1,123 @@
-# MarketCalcs robots.txt
-# All AI crawlers explicitly welcomed — citations from ChatGPT/Perplexity/Claude are a referral channel
+# robots.txt — freemarketingcalculator.com
+# Free Marketing Calculators — freemarketingcalculator.com
+# Updated: July 2026
 
+# ── All standard crawlers ───────────────────────────────────────────────────
 User-agent: *
 Allow: /
 
-# Allow all AI crawlers for AEO/GEO citations
-User-agent: GPTBot
+# Block no pages — all 14 pages are public and indexable
+# No admin, no login, no private sections exist on this site
+
+# ── Google ──────────────────────────────────────────────────────────────────
+User-agent: Googlebot
 Allow: /
 
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
+# Allow Google to use site data for AI training (improves AI citation visibility)
 User-agent: Google-Extended
 Allow: /
 
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+# ── Bing / Microsoft ────────────────────────────────────────────────────────
+# Bing powers ChatGPT Browse — being in Bing = being citable in ChatGPT
 User-agent: Bingbot
 Allow: /
 
-User-agent: DuckAssistBot
+User-agent: msnbot
 Allow: /
 
+User-agent: msnbot-media
+Allow: /
+
+# ── OpenAI / ChatGPT ────────────────────────────────────────────────────────
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# ── Anthropic / Claude ──────────────────────────────────────────────────────
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# ── Perplexity ──────────────────────────────────────────────────────────────
+User-agent: PerplexityBot
+Allow: /
+
+# ── You.com ─────────────────────────────────────────────────────────────────
 User-agent: YouBot
 Allow: /
 
-# Sitemap
+# ── DuckDuckGo ──────────────────────────────────────────────────────────────
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# ── Meta / Facebook ─────────────────────────────────────────────────────────
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# ── Apple ───────────────────────────────────────────────────────────────────
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ── Common / other search engines ───────────────────────────────────────────
+User-agent: Slurp
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Sogou
+Allow: /
+
+# ── SEO research tools (allow — helps with legitimate audits) ────────────────
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+User-agent: MJ12bot
+Allow: /
+
+User-agent: DotBot
+Allow: /
+
+# ── Crawl-delay for heavy bots (be a good citizen) ──────────────────────────
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 10
+
+# ── Sitemap ──────────────────────────────────────────────────────────────────
 Sitemap: https://freemarketingcalculator.com/sitemap-index.xml
