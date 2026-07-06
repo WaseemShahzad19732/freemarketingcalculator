@@ -6,79 +6,134 @@ const slug        = 'social-media-budget-calculator';
 const title       = 'Social Media Budget Calculator — By Platform and Goal 2026';
 const description = 'Calculate your social media marketing budget by platform and campaign goal. Benchmarks for paid and organic across Facebook, Instagram, TikTok, and LinkedIn.';
 
-const faqItems = [
-  { q: 'How do I use this calculator?', a: 'Enter your numbers in the fields above and click Calculate. Results appear instantly with no signup or email required.' },
-  { q: 'Is this calculator free?', a: 'Yes, completely free with no subscription, email gate, or hidden costs.' },
-  { q: 'How accurate are the benchmarks?', a: 'Benchmarks are compiled from public industry research (Gartner, HubSpot, Salesforce). They represent industry medians — individual results vary.' },
+const platforms = [
+  { name: 'Facebook / Instagram', cpm: 8.5,  cpc: 0.90, best: 'B2C, Retail, eCommerce' },
+  { name: 'LinkedIn',             cpm: 35.0, cpc: 5.50, best: 'B2B, SaaS, Recruiting' },
+  { name: 'TikTok',               cpm: 9.5,  cpc: 1.00, best: 'Gen Z, Consumer brands' },
+  { name: 'Twitter / X',          cpm: 6.0,  cpc: 0.40, best: 'News, Tech, Finance' },
+  { name: 'Pinterest',            cpm: 5.0,  cpc: 0.15, best: 'Home, Fashion, Food' },
+  { name: 'YouTube',              cpm: 10.0, cpc: 2.00, best: 'Video, Brand awareness' },
 ];
 
-const webAppSchema = {
-  "@type": "WebApplication",
-  "name": "Social Media Budget Calculator — By Platform and Goal 2026",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Any",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@id": "https://freemarketingcalculator.com/#org" },
-  "url": "https://freemarketingcalculator.com/social-media-budget-calculator/",
-  "description": "Recommends paid and organic social media budget by platform and campaign goal, with CPM benchmarks for Facebook, Instagram, TikTok, LinkedIn, and Pinterest.",
-  "featureList": ["Free to use", "No signup required", "Instant results"]
-};
+const faqItems = [
+  { q: 'How much should I spend on social media marketing?', a: 'Most companies allocate 12–20% of their total marketing budget to social media. For a $100,000 marketing budget, expect $12,000–$20,000 for social. Early-stage brands building awareness spend toward the top of this range.' },
+  { q: 'What is CPM in social media?', a: 'CPM (Cost Per Mille) is the cost to show your ad 1,000 times. Facebook averages $8–$10 CPM, LinkedIn $30–$40 CPM, TikTok $9–$11 CPM. Higher CPM channels like LinkedIn often yield better quality leads for B2B.' },
+  { q: 'How do I calculate how many impressions my budget will get?', a: 'Impressions = (Budget ÷ CPM) × 1,000. A $1,000 budget on Facebook ($9 CPM) gets approximately 111,000 impressions.' },
+  { q: 'Which social media platform has the best ROI?', a: 'For B2C and eCommerce, Facebook and Instagram typically deliver the strongest ROI. For B2B, LinkedIn generates higher-quality leads despite its higher CPM. TikTok offers strong reach for younger demographics at lower cost.' },
+  { q: 'Is this calculator free?', a: 'Yes — completely free, no signup, no email required.' },
+];
 
-const faqSchema = {
-  "@type": "FAQPage",
-  "mainEntity": faqItems.map(item => ({
-    "@type": "Question", "name": item.q,
-    "acceptedAnswer": { "@type": "Answer", "text": item.a }
-  }))
-};
-
-const breadcrumbSchema = {
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Social Media Budget Calculator — By Platform and Goal 2026", "item": "https://freemarketingcalculator.com/social-media-budget-calculator/" }
-  ]
-};
+const webAppSchema = { "@type": "WebApplication", "name": title, "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "creator": { "@id": "https://freemarketingcalculator.com/#org" }, "url": "https://freemarketingcalculator.com/social-media-budget-calculator/", "description": "Recommends paid and organic social media budget by platform and campaign goal, with CPM benchmarks for Facebook, Instagram, TikTok, LinkedIn, and Pinterest.", "featureList": ["Platform CPM benchmarks", "Impressions & reach calculator", "Budget allocation by goal"] };
+const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
+const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" }, { "@type": "ListItem", "position": 2, "name": "Social Media Budget Calculator", "item": "https://freemarketingcalculator.com/social-media-budget-calculator/" }] };
 ---
 
 <Base title={title} description={description} slug={slug} schema={[webAppSchema, faqSchema, breadcrumbSchema]}>
-
   <section class="page-hero" aria-labelledby="page-h1">
     <div class="container">
       <p class="eyebrow">Free Marketing Tool</p>
-      <h1 id="page-h1">{title}</h1>
-      <p class="citation">Recommends paid and organic social media budget by platform and campaign goal, with CPM benchmarks for Facebook, Instagram, TikTok, LinkedIn, and Pinterest.</p>
+      <h1 id="page-h1">Social Media Budget Calculator</h1>
+      <p class="citation">Recommends paid and organic social media budget by platform and campaign goal, with 2026 CPM benchmarks for Facebook, Instagram, TikTok, LinkedIn, Pinterest, and YouTube.</p>
       <div class="meta-badges">
-        <span class="badge">✓ Free forever</span>
-        <span class="badge">✓ No signup required</span>
-        <span class="badge">✓ Updated July 2026</span>
+        <span class="badge">✓ 6 platforms</span>
+        <span class="badge">✓ 2026 CPM benchmarks</span>
+        <span class="badge">✓ No signup</span>
       </div>
     </div>
   </section>
 
   <div class="container">
-
-    <div class="calc-card" aria-label="Calculator tool">
+    <div class="calc-card">
       <div class="calc-card__header">
-        <div>
-          <div class="calc-card__title">{title}</div>
-          <div class="calc-card__subtitle">Full calculator — enter your numbers for instant results</div>
+        <div class="calc-card__header-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
         </div>
+        <div><div class="calc-card__title">Social Media Budget Calculator</div><div class="calc-card__subtitle">Enter your budget to see reach estimates by platform</div></div>
       </div>
       <div class="calc-card__body">
-        <p style="color: var(--text-mid); font-size: var(--text-sm);">
-          Full calculator widget goes here. See the ROI and Budget calculators for the complete implementation pattern.
-          <a href="/marketing-roi-calculator/">View the ROI Calculator as a reference →</a>
-        </p>
+        <div class="field-group">
+          <div class="field"><label for="sm-budget">Monthly Ad Budget ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="sm-budget" class="has-prefix" placeholder="e.g. 2000" min="0"/></div></div>
+          <div class="field"><label for="sm-platform">Primary Platform</label>
+            <select id="sm-platform">
+              <option value="8.5">Facebook / Instagram (avg CPM $8.50)</option>
+              <option value="35">LinkedIn (avg CPM $35.00)</option>
+              <option value="9.5">TikTok (avg CPM $9.50)</option>
+              <option value="6">Twitter / X (avg CPM $6.00)</option>
+              <option value="5">Pinterest (avg CPM $5.00)</option>
+              <option value="10">YouTube (avg CPM $10.00)</option>
+            </select>
+          </div>
+          <div class="field"><label for="sm-goal">Campaign Goal</label>
+            <select id="sm-goal">
+              <option value="awareness">Brand Awareness (CPM optimised)</option>
+              <option value="traffic">Website Traffic (CPC optimised)</option>
+              <option value="leads">Lead Generation</option>
+              <option value="conversions">Conversions / Sales</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-calc" id="sm-calc-btn" type="button">Calculate Reach</button>
+        <div class="result-panel" id="sm-result" aria-live="polite">
+          <div class="result-panel__label">Estimated Monthly Impressions</div>
+          <div class="result-panel__primary" id="sm-impressions">0</div>
+          <div class="result-panel__grid">
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="sm-reach">0</span><span class="result-panel__stat-label">Est. unique reach</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="sm-clicks">0</span><span class="result-panel__stat-label">Est. clicks</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="sm-cpm-shown">$0</span><span class="result-panel__stat-label">CPM used</span></div>
+          </div>
+          <div class="result-verdict" id="sm-verdict"></div>
+        </div>
       </div>
     </div>
 
-    <section class="prose content-section">
-      <h2>About This Calculator</h2>
-      <p>Recommends paid and organic social media budget by platform and campaign goal, with CPM benchmarks for Facebook, Instagram, TikTok, LinkedIn, and Pinterest.</p>
+    <div class="definition-box">
+      <div class="definition-box__label">Formula</div>
+      <p><strong>Impressions = (Budget ÷ CPM) × 1,000</strong><br/>
+      Estimated Reach ≈ Impressions ÷ Average Frequency (typically 2–3×)<br/>
+      Example: $1,000 ÷ $8.50 CPM × 1,000 = ~117,647 impressions</p>
+    </div>
+
+    <section class="bench-section">
+      <h2>Social Media CPM Benchmarks — 2026</h2>
+      <span class="bench-date">Updated July 2026</span>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead><tr><th>Platform</th><th>Avg CPM</th><th>Avg CPC</th><th>Best For</th></tr></thead>
+          <tbody>
+            {platforms.map(p => (<tr><td>{p.name}</td><td>${p.cpm.toFixed(2)}</td><td>${p.cpc.toFixed(2)}</td><td>{p.best}</td></tr>))}
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">Sources: WordStream Social Media Benchmarks 2026, Revealbot, HubSpot State of Marketing 2026. Averages vary by industry, audience and ad quality.</p>
     </section>
 
     <FAQ items={faqItems} />
-
   </div>
 </Base>
+
+<script>
+(function(){
+  'use strict';
+  const btn = document.getElementById('sm-calc-btn');
+  const result = document.getElementById('sm-result');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const budget   = parseFloat(document.getElementById('sm-budget').value) || 0;
+    const cpm      = parseFloat(document.getElementById('sm-platform').value) || 8.5;
+    const goal     = document.getElementById('sm-goal').value;
+    if (!budget) return;
+    const impressions = (budget / cpm) * 1000;
+    const freq        = 2.5;
+    const reach       = Math.round(impressions / freq);
+    const ctr         = goal === 'traffic' ? 0.018 : goal === 'leads' ? 0.012 : goal === 'conversions' ? 0.015 : 0.008;
+    const clicks      = Math.round(impressions * ctr);
+    document.getElementById('sm-impressions').textContent = Math.round(impressions).toLocaleString();
+    document.getElementById('sm-reach').textContent       = reach.toLocaleString();
+    document.getElementById('sm-clicks').textContent      = clicks.toLocaleString();
+    document.getElementById('sm-cpm-shown').textContent   = '$' + cpm.toFixed(2);
+    document.getElementById('sm-verdict').textContent     = '📊 Budget of $' + budget.toLocaleString() + ' at $' + cpm + ' CPM = ' + Math.round(impressions).toLocaleString() + ' impressions, ~' + reach.toLocaleString() + ' unique users reached';
+    result.classList.add('visible');
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+})();
+</script>

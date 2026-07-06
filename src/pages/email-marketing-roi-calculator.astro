@@ -6,79 +6,125 @@ const slug        = 'email-marketing-roi-calculator';
 const title       = 'Email Marketing ROI Calculator — Free Tool 2026';
 const description = 'Calculate email marketing ROI from list size, open rate, click rate, conversion rate, and platform cost. Includes 2026 benchmarks. Free, no signup.';
 
-const faqItems = [
-  { q: 'How do I use this calculator?', a: 'Enter your numbers in the fields above and click Calculate. Results appear instantly with no signup or email required.' },
-  { q: 'Is this calculator free?', a: 'Yes, completely free with no subscription, email gate, or hidden costs.' },
-  { q: 'How accurate are the benchmarks?', a: 'Benchmarks are compiled from public industry research (Gartner, HubSpot, Salesforce). They represent industry medians — individual results vary.' },
+const platforms = [
+  { name: 'Mailchimp',      cost1k: 11, cost5k: 50,  cost10k: 75 },
+  { name: 'Klaviyo',        cost1k: 20, cost5k: 60,  cost10k: 100 },
+  { name: 'ActiveCampaign', cost1k: 15, cost5k: 49,  cost10k: 79 },
+  { name: 'Brevo',          cost1k: 9,  cost5k: 25,  cost10k: 65 },
+  { name: 'Constant Contact', cost1k: 12, cost5k: 45, cost10k: 80 },
 ];
 
-const webAppSchema = {
-  "@type": "WebApplication",
-  "name": "Email Marketing ROI Calculator — Free Tool 2026",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Any",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@id": "https://freemarketingcalculator.com/#org" },
-  "url": "https://freemarketingcalculator.com/email-marketing-roi-calculator/",
-  "description": "Computes email marketing ROMI from list size, send frequency, open rate, click rate, conversion rate, and monthly platform cost with 2026 benchmarks.",
-  "featureList": ["Free to use", "No signup required", "Instant results"]
-};
+const faqItems = [
+  { q: 'What is a good email marketing ROI?', a: 'The industry average is $36–$42 return for every $1 spent — a 3600–4200% ROI. Top performers achieve 6000%+. Even at the low end, email marketing outperforms most other channels.' },
+  { q: 'How do I calculate email marketing ROI?', a: 'Email ROI = (Revenue from emails − Email marketing cost) ÷ Email marketing cost × 100. Factor in platform cost, creative cost, and staff time for an accurate figure.' },
+  { q: 'What is a good email open rate in 2026?', a: 'Average open rates are 20–25% across industries. B2B averages 22%, retail 18%, nonprofits 28%. With Apple Mail Privacy Protection, opens are inflated — click rates (2–4%) are a more reliable engagement metric.' },
+  { q: 'How do I improve email marketing ROI?', a: 'Segment your list by behaviour and purchase history, personalise subject lines, clean inactive subscribers quarterly, A/B test send times, and automate triggered sequences (welcome, abandoned cart, re-engagement).' },
+  { q: 'Is this calculator free?', a: 'Yes — completely free, no signup, no email required.' },
+];
 
-const faqSchema = {
-  "@type": "FAQPage",
-  "mainEntity": faqItems.map(item => ({
-    "@type": "Question", "name": item.q,
-    "acceptedAnswer": { "@type": "Answer", "text": item.a }
-  }))
-};
-
-const breadcrumbSchema = {
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Email Marketing ROI Calculator — Free Tool 2026", "item": "https://freemarketingcalculator.com/email-marketing-roi-calculator/" }
-  ]
-};
+const webAppSchema = { "@type": "WebApplication", "name": title, "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "creator": { "@id": "https://freemarketingcalculator.com/#org" }, "url": "https://freemarketingcalculator.com/email-marketing-roi-calculator/", "description": "Computes email marketing ROMI from list size, send frequency, open rate, click rate, conversion rate, and monthly platform cost with 2026 benchmarks.", "featureList": ["Email ROMI calculation", "Platform cost comparison", "2026 benchmarks"] };
+const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
+const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" }, { "@type": "ListItem", "position": 2, "name": "Email Marketing ROI Calculator", "item": "https://freemarketingcalculator.com/email-marketing-roi-calculator/" }] };
 ---
 
 <Base title={title} description={description} slug={slug} schema={[webAppSchema, faqSchema, breadcrumbSchema]}>
-
   <section class="page-hero" aria-labelledby="page-h1">
     <div class="container">
       <p class="eyebrow">Free Marketing Tool</p>
-      <h1 id="page-h1">{title}</h1>
-      <p class="citation">Computes email marketing ROMI from list size, send frequency, open rate, click rate, conversion rate, and monthly platform cost with 2026 benchmarks.</p>
+      <h1 id="page-h1">Email Marketing ROI Calculator</h1>
+      <p class="citation">Computes email marketing ROMI from list size, send frequency, open rate, click rate, conversion rate, and monthly platform cost — with 2026 industry benchmarks and platform cost comparison.</p>
       <div class="meta-badges">
-        <span class="badge">✓ Free forever</span>
-        <span class="badge">✓ No signup required</span>
-        <span class="badge">✓ Updated July 2026</span>
+        <span class="badge">✓ Full ROMI calculation</span>
+        <span class="badge">✓ Platform cost included</span>
+        <span class="badge">✓ No signup</span>
       </div>
     </div>
   </section>
 
   <div class="container">
-
-    <div class="calc-card" aria-label="Calculator tool">
+    <div class="calc-card">
       <div class="calc-card__header">
-        <div>
-          <div class="calc-card__title">{title}</div>
-          <div class="calc-card__subtitle">Full calculator — enter your numbers for instant results</div>
+        <div class="calc-card__header-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </div>
+        <div><div class="calc-card__title">Email Marketing ROI Calculator</div><div class="calc-card__subtitle">Enter your email campaign metrics</div></div>
       </div>
       <div class="calc-card__body">
-        <p style="color: var(--text-mid); font-size: var(--text-sm);">
-          Full calculator widget goes here. See the ROI and Budget calculators for the complete implementation pattern.
-          <a href="/marketing-roi-calculator/">View the ROI Calculator as a reference →</a>
-        </p>
+        <div class="field-group">
+          <div class="field"><label for="em-listsize">Email List Size</label><input type="number" id="em-listsize" placeholder="e.g. 5000" min="0"/></div>
+          <div class="field"><label for="em-sends">Sends per Month</label><input type="number" id="em-sends" placeholder="e.g. 4" min="1"/></div>
+          <div class="field"><label for="em-openrate">Open Rate (%)</label><div class="input-wrap"><input type="number" id="em-openrate" class="has-suffix" placeholder="e.g. 22" min="0" max="100" step="0.1"/><span class="input-suffix">%</span></div></div>
+          <div class="field"><label for="em-ctr">Click Rate (%)</label><div class="input-wrap"><input type="number" id="em-ctr" class="has-suffix" placeholder="e.g. 2.5" min="0" max="100" step="0.1"/><span class="input-suffix">%</span></div></div>
+          <div class="field"><label for="em-cvr">Conversion Rate of Clicks (%)</label><div class="input-wrap"><input type="number" id="em-cvr" class="has-suffix" placeholder="e.g. 5" min="0" max="100" step="0.1"/><span class="input-suffix">%</span></div></div>
+          <div class="field"><label for="em-aov">Average Order Value ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="em-aov" class="has-prefix" placeholder="e.g. 150" min="0"/></div></div>
+          <div class="field"><label for="em-cost">Monthly Platform Cost ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="em-cost" class="has-prefix" placeholder="e.g. 50" min="0"/></div></div>
+        </div>
+        <button class="btn-calc" id="em-calc-btn" type="button">Calculate Email ROI</button>
+        <div class="result-panel" id="em-result" aria-live="polite">
+          <div class="result-panel__label">Email Marketing ROI (ROMI)</div>
+          <div class="result-panel__primary" id="em-primary">0%</div>
+          <div class="result-panel__grid">
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="em-revenue">$0</span><span class="result-panel__stat-label">Monthly revenue</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="em-conversions">0</span><span class="result-panel__stat-label">Conversions/mo</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="em-per-sub">$0</span><span class="result-panel__stat-label">Revenue/subscriber</span></div>
+          </div>
+          <div class="result-verdict" id="em-verdict"></div>
+        </div>
       </div>
     </div>
 
-    <section class="prose content-section">
-      <h2>About This Calculator</h2>
-      <p>Computes email marketing ROMI from list size, send frequency, open rate, click rate, conversion rate, and monthly platform cost with 2026 benchmarks.</p>
+    <div class="definition-box">
+      <div class="definition-box__label">Formula</div>
+      <p><strong>Email ROMI = (Monthly Revenue − Platform Cost) ÷ Platform Cost × 100</strong><br/>
+      Monthly Revenue = List Size × Sends × Open Rate × Click Rate × Conversion Rate × AOV<br/>
+      Industry benchmark: $36 return per $1 spent (3,600% ROI)</p>
+    </div>
+
+    <section class="bench-section">
+      <h2>Email Platform Cost Comparison — 2026</h2>
+      <span class="bench-date">Updated July 2026</span>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead><tr><th>Platform</th><th>~1K subscribers</th><th>~5K subscribers</th><th>~10K subscribers</th></tr></thead>
+          <tbody>
+            {platforms.map(p => (<tr><td>{p.name}</td><td>${p.cost1k}/mo</td><td>${p.cost5k}/mo</td><td>${p.cost10k}/mo</td></tr>))}
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">Approximate pricing based on standard plans. Prices change — verify on each platform's site.</p>
     </section>
 
     <FAQ items={faqItems} />
-
   </div>
 </Base>
+
+<script>
+(function(){
+  'use strict';
+  const btn = document.getElementById('em-calc-btn');
+  const result = document.getElementById('em-result');
+  if (!btn) return;
+  function fmt(n) { return n >= 1000000 ? '$' + (n/1000000).toFixed(2) + 'M' : '$' + Math.round(n).toLocaleString(); }
+  btn.addEventListener('click', () => {
+    const list   = parseFloat(document.getElementById('em-listsize').value) || 0;
+    const sends  = parseFloat(document.getElementById('em-sends').value) || 1;
+    const open   = parseFloat(document.getElementById('em-openrate').value) / 100 || 0;
+    const ctr    = parseFloat(document.getElementById('em-ctr').value) / 100 || 0;
+    const cvr    = parseFloat(document.getElementById('em-cvr').value) / 100 || 0;
+    const aov    = parseFloat(document.getElementById('em-aov').value) || 0;
+    const cost   = parseFloat(document.getElementById('em-cost').value) || 1;
+    if (!list || !aov) return;
+    const convs   = list * sends * open * ctr * cvr;
+    const revenue = convs * aov;
+    const roi     = cost > 0 ? ((revenue - cost) / cost) * 100 : 0;
+    const perSub  = list > 0 ? revenue / list : 0;
+    document.getElementById('em-primary').textContent    = roi.toFixed(0) + '%';
+    document.getElementById('em-revenue').textContent    = fmt(revenue);
+    document.getElementById('em-conversions').textContent = Math.round(convs).toLocaleString();
+    document.getElementById('em-per-sub').textContent    = '$' + perSub.toFixed(2);
+    document.getElementById('em-verdict').textContent    = roi >= 3600 ? '✅ At or above the $36:$1 industry benchmark' : roi >= 1000 ? '🟡 Positive ROI — optimise open rate and CTR for more' : '⚠️ Below average — review subject lines, list quality, and offer';
+    result.classList.add('visible');
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+})();
+</script>

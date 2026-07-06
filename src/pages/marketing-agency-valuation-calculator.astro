@@ -6,79 +6,152 @@ const slug        = 'marketing-agency-valuation-calculator';
 const title       = 'Marketing Agency Valuation Calculator — Free Tool 2026';
 const description = 'Estimate your digital marketing agency value using revenue multiples, EBITDA, and client retention. Free calculator with 2026 valuation benchmarks.';
 
-const faqItems = [
-  { q: 'How do I use this calculator?', a: 'Enter your numbers in the fields above and click Calculate. Results appear instantly with no signup or email required.' },
-  { q: 'Is this calculator free?', a: 'Yes, completely free with no subscription, email gate, or hidden costs.' },
-  { q: 'How accurate are the benchmarks?', a: 'Benchmarks are compiled from public industry research (Gartner, HubSpot, Salesforce). They represent industry medians — individual results vary.' },
+const multiples = [
+  { type: 'Full-service agency',      revMult: '1.5–2.5×', ebitdaMult: '4–6×'  },
+  { type: 'SEO / Content agency',     revMult: '1.0–2.0×', ebitdaMult: '3–5×'  },
+  { type: 'Paid media / PPC agency',  revMult: '1.2–2.2×', ebitdaMult: '3–5×'  },
+  { type: 'Social media agency',      revMult: '0.8–1.8×', ebitdaMult: '2–4×'  },
+  { type: 'Tech-enabled / SaaS hybrid',revMult:'2.5–5.0×', ebitdaMult: '6–10×' },
+  { type: 'Creative / Brand agency',  revMult: '0.8–1.5×', ebitdaMult: '2–4×'  },
 ];
 
-const webAppSchema = {
-  "@type": "WebApplication",
-  "name": "Marketing Agency Valuation Calculator — Free Tool 2026",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Any",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@id": "https://freemarketingcalculator.com/#org" },
-  "url": "https://freemarketingcalculator.com/marketing-agency-valuation-calculator/",
-  "description": "Estimates a digital marketing agency market value using annual recurring revenue, EBITDA margin, client retention rate, and service mix with current industry multiples.",
-  "featureList": ["Free to use", "No signup required", "Instant results"]
-};
+const faqItems = [
+  { q: 'How much is a digital marketing agency worth?', a: 'Most marketing agencies sell for 1–3× annual revenue or 3–6× EBITDA. Tech-enabled agencies with recurring revenue and proprietary tools command 3–6× revenue. Agency size, client concentration, and EBITDA margin are the biggest valuation drivers.' },
+  { q: 'What multiple do marketing agencies sell for?', a: 'Profitable agencies (20%+ EBITDA margin) typically sell for 4–6× EBITDA or 1.5–2.5× revenue. Agencies with low client concentration (<20% of revenue from any single client) and long-term retainer contracts command higher multiples.' },
+  { q: 'What factors increase agency valuation?', a: 'Key value drivers: high EBITDA margin (>25%), recurring retainer revenue (>70% of revenue), low client concentration, proprietary technology, strong team retention, and documented processes that do not depend on the founder.' },
+  { q: 'What is EBITDA for a marketing agency?', a: 'EBITDA (Earnings Before Interest, Taxes, Depreciation and Amortisation) is operating profit before non-cash expenses. For agencies, calculate: Revenue − Staff costs − Contractor costs − Software/tools − Office/overhead = EBITDA.' },
+  { q: 'Is this calculator free?', a: 'Yes — completely free, no signup, no email required.' },
+];
 
-const faqSchema = {
-  "@type": "FAQPage",
-  "mainEntity": faqItems.map(item => ({
-    "@type": "Question", "name": item.q,
-    "acceptedAnswer": { "@type": "Answer", "text": item.a }
-  }))
-};
-
-const breadcrumbSchema = {
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Marketing Agency Valuation Calculator — Free Tool 2026", "item": "https://freemarketingcalculator.com/marketing-agency-valuation-calculator/" }
-  ]
-};
+const webAppSchema = { "@type": "WebApplication", "name": title, "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "creator": { "@id": "https://freemarketingcalculator.com/#org" }, "url": "https://freemarketingcalculator.com/marketing-agency-valuation-calculator/", "description": "Estimates a digital marketing agency market value using annual recurring revenue, EBITDA margin, client retention rate, and service mix with current industry multiples.", "featureList": ["Revenue multiple valuation", "EBITDA multiple valuation", "2026 M&A benchmark multiples"] };
+const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
+const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" }, { "@type": "ListItem", "position": 2, "name": "Marketing Agency Valuation Calculator", "item": "https://freemarketingcalculator.com/marketing-agency-valuation-calculator/" }] };
 ---
 
 <Base title={title} description={description} slug={slug} schema={[webAppSchema, faqSchema, breadcrumbSchema]}>
-
   <section class="page-hero" aria-labelledby="page-h1">
     <div class="container">
       <p class="eyebrow">Free Marketing Tool</p>
-      <h1 id="page-h1">{title}</h1>
-      <p class="citation">Estimates a digital marketing agency market value using annual recurring revenue, EBITDA margin, client retention rate, and service mix with current industry multiples.</p>
+      <h1 id="page-h1">Marketing Agency Valuation Calculator</h1>
+      <p class="citation">Estimates a digital marketing agency's market value by entering annual revenue, EBITDA margin, client retention rate, and service type — outputs a valuation range using 2026 M&A benchmark multiples.</p>
       <div class="meta-badges">
-        <span class="badge">✓ Free forever</span>
-        <span class="badge">✓ No signup required</span>
-        <span class="badge">✓ Updated July 2026</span>
+        <span class="badge">✓ Revenue & EBITDA methods</span>
+        <span class="badge">✓ 2026 M&A multiples</span>
+        <span class="badge">✓ No signup</span>
       </div>
     </div>
   </section>
 
   <div class="container">
-
-    <div class="calc-card" aria-label="Calculator tool">
+    <div class="calc-card">
       <div class="calc-card__header">
-        <div>
-          <div class="calc-card__title">{title}</div>
-          <div class="calc-card__subtitle">Full calculator — enter your numbers for instant results</div>
+        <div class="calc-card__header-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
+        <div><div class="calc-card__title">Agency Valuation Calculator</div><div class="calc-card__subtitle">Enter your agency financials for an estimated range</div></div>
       </div>
       <div class="calc-card__body">
-        <p style="color: var(--text-mid); font-size: var(--text-sm);">
-          Full calculator widget goes here. See the ROI and Budget calculators for the complete implementation pattern.
-          <a href="/marketing-roi-calculator/">View the ROI Calculator as a reference →</a>
-        </p>
+        <div class="field-group">
+          <div class="field"><label for="ag-revenue">Annual Revenue ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="ag-revenue" class="has-prefix" placeholder="e.g. 1500000" min="0"/></div></div>
+          <div class="field"><label for="ag-ebitda">EBITDA Margin (%)</label><div class="input-wrap"><input type="number" id="ag-ebitda" class="has-suffix" placeholder="e.g. 22" min="0" max="100" step="0.5"/><span class="input-suffix">%</span></div><p class="hint">Profit after staff, contractors, tools, and overhead — before tax, interest and depreciation</p></div>
+          <div class="field"><label for="ag-retention">Client Retention Rate (%)</label><div class="input-wrap"><input type="number" id="ag-retention" class="has-suffix" placeholder="e.g. 85" min="0" max="100"/><span class="input-suffix">%</span></div></div>
+          <div class="field"><label for="ag-type">Agency Type</label>
+            <select id="ag-type">
+              <option value="full-service">Full-service agency</option>
+              <option value="seo">SEO / Content agency</option>
+              <option value="paid">Paid media / PPC agency</option>
+              <option value="social">Social media agency</option>
+              <option value="tech">Tech-enabled / SaaS hybrid</option>
+              <option value="creative">Creative / Brand agency</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-calc" id="ag-calc-btn" type="button">Calculate Valuation</button>
+        <div class="result-panel" id="ag-result" aria-live="polite">
+          <div class="result-panel__label">Estimated Agency Valuation Range</div>
+          <div class="result-panel__primary" id="ag-primary">$0 – $0</div>
+          <div class="result-panel__grid">
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="ag-rev-val">$0</span><span class="result-panel__stat-label">Revenue method</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="ag-ebitda-val">$0</span><span class="result-panel__stat-label">EBITDA method</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="ag-ebitda-amt">$0</span><span class="result-panel__stat-label">Annual EBITDA</span></div>
+          </div>
+          <div class="result-verdict" id="ag-verdict"></div>
+        </div>
       </div>
     </div>
 
-    <section class="prose content-section">
-      <h2>About This Calculator</h2>
-      <p>Estimates a digital marketing agency market value using annual recurring revenue, EBITDA margin, client retention rate, and service mix with current industry multiples.</p>
+    <div class="formula-box">
+      <p class="formula-title">Valuation Methods</p>
+      <p class="formula-text">Revenue Method: Agency Value = Annual Revenue × Revenue Multiple<br/>EBITDA Method: Agency Value = EBITDA × EBITDA Multiple</p>
+      <div class="formula-example"><strong>Example:</strong> $1.5M revenue, 22% EBITDA ($330K), full-service agency → Revenue method: $1.5M × 2.0× = $3M | EBITDA method: $330K × 5× = $1.65M</div>
+    </div>
+
+    <section class="bench-section">
+      <h2>Agency Valuation Multiples — 2026</h2>
+      <span class="bench-date">Updated July 2026</span>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead><tr><th>Agency Type</th><th>Revenue Multiple</th><th>EBITDA Multiple</th></tr></thead>
+          <tbody>{multiples.map(m => (<tr><td>{m.type}</td><td>{m.revMult}</td><td>{m.ebitdaMult}</td></tr>))}</tbody>
+        </table>
+      </div>
+      <p class="bench-source">Sources: Coda Agency M&A Report 2026, Digital Agency Network, EY and Deloitte M&A data. Multiples vary by deal size, client quality, and market conditions.</p>
     </section>
 
     <FAQ items={faqItems} />
-
   </div>
 </Base>
+
+<script>
+(function(){
+  'use strict';
+  const btn = document.getElementById('ag-calc-btn');
+  const result = document.getElementById('ag-result');
+  if (!btn) return;
+
+  const typeMultiples: Record<string, [number, number, number, number]> = {
+    'full-service': [1.5, 2.5, 4, 6],
+    'seo':          [1.0, 2.0, 3, 5],
+    'paid':         [1.2, 2.2, 3, 5],
+    'social':       [0.8, 1.8, 2, 4],
+    'tech':         [2.5, 5.0, 6, 10],
+    'creative':     [0.8, 1.5, 2, 4],
+  };
+
+  function fmt(n: number) {
+    if (n >= 1000000) return '$' + (n/1000000).toFixed(2) + 'M';
+    if (n >= 1000) return '$' + Math.round(n/1000) + 'K';
+    return '$' + Math.round(n).toLocaleString();
+  }
+
+  btn.addEventListener('click', () => {
+    const rev       = parseFloat((document.getElementById('ag-revenue') as HTMLInputElement).value) || 0;
+    const margin    = parseFloat((document.getElementById('ag-ebitda') as HTMLInputElement).value) / 100 || 0;
+    const retention = parseFloat((document.getElementById('ag-retention') as HTMLInputElement).value) || 80;
+    const type      = (document.getElementById('ag-type') as HTMLSelectElement).value;
+    if (!rev) return;
+    const ebitda = rev * margin;
+    const [revLo, revHi, ebitdaLo, ebitdaHi] = typeMultiples[type] || [1.5, 2.5, 4, 6];
+
+    // Retention bonus: +10% to multiple if >90%, -10% if <70%
+    const retBonus = retention >= 90 ? 1.1 : retention < 70 ? 0.9 : 1.0;
+
+    const revVal    = (rev * ((revLo + revHi) / 2)) * retBonus;
+    const ebitdaVal = ebitda > 0 ? (ebitda * ((ebitdaLo + ebitdaHi) / 2)) * retBonus : 0;
+    const low       = Math.min(rev * revLo, ebitda > 0 ? ebitda * ebitdaLo : Infinity) * retBonus;
+    const high      = Math.max(rev * revHi, ebitda > 0 ? ebitda * ebitdaHi : 0) * retBonus;
+
+    document.getElementById('ag-primary').textContent   = fmt(low) + ' – ' + fmt(high);
+    document.getElementById('ag-rev-val').textContent   = fmt(revVal);
+    document.getElementById('ag-ebitda-val').textContent = ebitda > 0 ? fmt(ebitdaVal) : 'N/A (no profit)';
+    document.getElementById('ag-ebitda-amt').textContent = fmt(ebitda);
+    document.getElementById('ag-verdict').textContent   =
+      retention >= 90 ? '✅ High retention (90%+) adds ~10% premium to valuation' :
+      retention < 70  ? '⚠️ Low retention (<70%) reduces valuation by ~10% — improve client stickiness first' :
+      '📊 Average retention — focus on retainer mix and EBITDA margin to maximise value';
+
+    result.classList.add('visible');
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+})();
+</script>

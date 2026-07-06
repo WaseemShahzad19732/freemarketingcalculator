@@ -6,79 +6,153 @@ const slug        = 'marketing-salary-calculator';
 const title       = 'Marketing Salary Calculator — By Role, Level and Location 2026';
 const description = 'Find your marketing salary range by role, seniority, and US location. Covers marketing managers, directors, CMOs, and digital marketing specialists.';
 
+// Salary data: [entry, mid, senior, director, exec] in $K
+const salaryData: Record<string, number[]> = {
+  'marketing-manager':        [55, 72, 90, 110, 135],
+  'digital-marketing-manager':[52, 68, 85, 105, 125],
+  'content-marketer':         [45, 60, 78, 95,  115],
+  'seo-specialist':           [48, 63, 82, 100, 118],
+  'paid-media-manager':       [52, 68, 88, 108, 128],
+  'marketing-director':       [90, 115, 140, 165, 190],
+  'vp-marketing':             [120, 150, 180, 210, 250],
+  'cmo':                      [150, 190, 235, 285, 350],
+  'product-marketing-manager':[65, 85, 108, 132, 155],
+  'email-marketing-specialist':[45, 58, 74, 90, 108],
+};
+
+// Location multipliers
+const locationMult: Record<string, number> = {
+  'national': 1.0, 'new-york': 1.35, 'san-francisco': 1.45,
+  'los-angeles': 1.25, 'chicago': 1.10, 'austin': 1.05,
+  'seattle': 1.20, 'boston': 1.18, 'miami': 1.02, 'remote': 0.95,
+};
+
 const faqItems = [
-  { q: 'How do I use this calculator?', a: 'Enter your numbers in the fields above and click Calculate. Results appear instantly with no signup or email required.' },
-  { q: 'Is this calculator free?', a: 'Yes, completely free with no subscription, email gate, or hidden costs.' },
-  { q: 'How accurate are the benchmarks?', a: 'Benchmarks are compiled from public industry research (Gartner, HubSpot, Salesforce). They represent industry medians — individual results vary.' },
+  { q: 'What is the average marketing manager salary in the US?', a: 'The average marketing manager salary in the US is $72,000–$90,000 (mid-level). Entry-level marketing managers earn $55,000–$65,000, while senior marketing managers in major cities can earn $100,000–$130,000.' },
+  { q: 'How much does a CMO make?', a: 'Chief Marketing Officers earn a wide range: $150,000–$350,000+ depending on company size, industry, and location. Enterprise CMOs at large corporations average $200,000–$400,000 including bonuses and equity.' },
+  { q: 'What is the highest paying marketing job?', a: 'CMO and VP of Marketing are the highest-paid marketing roles, averaging $200,000–$300,000+. Growth Marketing Directors and Product Marketing leaders at tech companies often earn $180,000–$250,000 with equity.' },
+  { q: 'How much do digital marketing specialists earn?', a: 'Digital marketing specialists earn $45,000–$85,000 depending on specialisation and experience. Paid media managers and SEO specialists with 5+ years experience average $70,000–$100,000 in most US markets.' },
+  { q: 'Is this calculator free?', a: 'Yes — completely free, no signup, no email required.' },
 ];
 
-const webAppSchema = {
-  "@type": "WebApplication",
-  "name": "Marketing Salary Calculator — By Role, Level and Location 2026",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Any",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@id": "https://freemarketingcalculator.com/#org" },
-  "url": "https://freemarketingcalculator.com/marketing-salary-calculator/",
-  "description": "Estimates marketing salary range by role, seniority level, and US location — covering managers, directors, VPs, CMOs, and channel specialists.",
-  "featureList": ["Free to use", "No signup required", "Instant results"]
-};
+const webAppSchema = { "@type": "WebApplication", "name": title, "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "creator": { "@id": "https://freemarketingcalculator.com/#org" }, "url": "https://freemarketingcalculator.com/marketing-salary-calculator/", "description": "Estimates marketing salary range by role, seniority level, and US location — covering managers, directors, VPs, CMOs, and channel specialists.", "featureList": ["10 marketing roles", "5 seniority levels", "10 US locations"] };
+const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
+const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" }, { "@type": "ListItem", "position": 2, "name": "Marketing Salary Calculator", "item": "https://freemarketingcalculator.com/marketing-salary-calculator/" }] };
 
-const faqSchema = {
-  "@type": "FAQPage",
-  "mainEntity": faqItems.map(item => ({
-    "@type": "Question", "name": item.q,
-    "acceptedAnswer": { "@type": "Answer", "text": item.a }
-  }))
-};
-
-const breadcrumbSchema = {
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Marketing Salary Calculator — By Role, Level and Location 2026", "item": "https://freemarketingcalculator.com/marketing-salary-calculator/" }
-  ]
-};
+const salaryJSON = JSON.stringify(salaryData);
+const locationJSON = JSON.stringify(locationMult);
 ---
 
 <Base title={title} description={description} slug={slug} schema={[webAppSchema, faqSchema, breadcrumbSchema]}>
-
   <section class="page-hero" aria-labelledby="page-h1">
     <div class="container">
       <p class="eyebrow">Free Marketing Tool</p>
-      <h1 id="page-h1">{title}</h1>
-      <p class="citation">Estimates marketing salary range by role, seniority level, and US location — covering managers, directors, VPs, CMOs, and channel specialists.</p>
+      <h1 id="page-h1">Marketing Salary Calculator</h1>
+      <p class="citation">Estimates marketing salary range by role, seniority level, and US location — covering marketing managers, directors, VPs, CMOs, and 7 specialist roles. Based on 2026 US market data.</p>
       <div class="meta-badges">
-        <span class="badge">✓ Free forever</span>
-        <span class="badge">✓ No signup required</span>
-        <span class="badge">✓ Updated July 2026</span>
+        <span class="badge">✓ 10 roles covered</span>
+        <span class="badge">✓ City-level adjustments</span>
+        <span class="badge">✓ No signup</span>
       </div>
     </div>
   </section>
 
   <div class="container">
-
-    <div class="calc-card" aria-label="Calculator tool">
+    <div class="calc-card">
       <div class="calc-card__header">
-        <div>
-          <div class="calc-card__title">{title}</div>
-          <div class="calc-card__subtitle">Full calculator — enter your numbers for instant results</div>
+        <div class="calc-card__header-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
         </div>
+        <div><div class="calc-card__title">Marketing Salary Calculator</div><div class="calc-card__subtitle">Select your role, level, and location</div></div>
       </div>
       <div class="calc-card__body">
-        <p style="color: var(--text-mid); font-size: var(--text-sm);">
-          Full calculator widget goes here. See the ROI and Budget calculators for the complete implementation pattern.
-          <a href="/marketing-roi-calculator/">View the ROI Calculator as a reference →</a>
-        </p>
+        <div class="field-group">
+          <div class="field"><label for="sal-role">Marketing Role</label>
+            <select id="sal-role">
+              <option value="marketing-manager">Marketing Manager</option>
+              <option value="digital-marketing-manager">Digital Marketing Manager</option>
+              <option value="content-marketer">Content Marketer / Strategist</option>
+              <option value="seo-specialist">SEO Specialist</option>
+              <option value="paid-media-manager">Paid Media Manager (PPC/SEM)</option>
+              <option value="email-marketing-specialist">Email Marketing Specialist</option>
+              <option value="product-marketing-manager">Product Marketing Manager</option>
+              <option value="marketing-director">Marketing Director</option>
+              <option value="vp-marketing">VP of Marketing</option>
+              <option value="cmo">Chief Marketing Officer (CMO)</option>
+            </select>
+          </div>
+          <div class="field"><label for="sal-level">Seniority Level</label>
+            <select id="sal-level">
+              <option value="0">Entry-level (0–2 years)</option>
+              <option value="1" selected>Mid-level (3–5 years)</option>
+              <option value="2">Senior (6–10 years)</option>
+              <option value="3">Director / Lead (10–15 years)</option>
+              <option value="4">Executive / C-suite (15+ years)</option>
+            </select>
+          </div>
+          <div class="field"><label for="sal-location">US Location</label>
+            <select id="sal-location">
+              <option value="national">US National Average</option>
+              <option value="new-york">New York City, NY</option>
+              <option value="san-francisco">San Francisco / Bay Area, CA</option>
+              <option value="los-angeles">Los Angeles, CA</option>
+              <option value="chicago">Chicago, IL</option>
+              <option value="austin">Austin, TX</option>
+              <option value="seattle">Seattle, WA</option>
+              <option value="boston">Boston, MA</option>
+              <option value="miami">Miami, FL</option>
+              <option value="remote">Fully Remote</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-calc" id="sal-calc-btn" type="button">Get Salary Range</button>
+        <div class="result-panel" id="sal-result" aria-live="polite">
+          <div class="result-panel__label">Estimated Annual Salary Range</div>
+          <div class="result-panel__primary" id="sal-primary">$0K – $0K</div>
+          <div class="result-panel__grid">
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="sal-low">$0</span><span class="result-panel__stat-label">Low estimate</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="sal-mid">$0</span><span class="result-panel__stat-label">Midpoint</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="sal-high">$0</span><span class="result-panel__stat-label">High estimate</span></div>
+          </div>
+          <div class="result-verdict" id="sal-verdict"></div>
+        </div>
       </div>
     </div>
 
-    <section class="prose content-section">
-      <h2>About This Calculator</h2>
-      <p>Estimates marketing salary range by role, seniority level, and US location — covering managers, directors, VPs, CMOs, and channel specialists.</p>
-    </section>
+    <div class="definition-box">
+      <div class="definition-box__label">About This Data</div>
+      <p>Salary ranges are based on 2026 US compensation data compiled from LinkedIn Salary, Glassdoor, BLS Occupational Outlook, and industry surveys. Figures reflect base salary only and exclude bonuses, equity, and benefits. Actual compensation varies by company size, industry, and individual negotiation.</p>
+    </div>
 
     <FAQ items={faqItems} />
-
   </div>
 </Base>
+
+<script define:vars={{ salaryJSON, locationJSON }}>
+(function(){
+  'use strict';
+  const salaryData   = JSON.parse(salaryJSON);
+  const locationMult = JSON.parse(locationJSON);
+  const btn = document.getElementById('sal-calc-btn');
+  const result = document.getElementById('sal-result');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const role     = document.getElementById('sal-role').value;
+    const level    = parseInt(document.getElementById('sal-level').value);
+    const location = document.getElementById('sal-location').value;
+    const base     = (salaryData[role] || [60,75,95,115,140])[level];
+    const mult     = locationMult[location] || 1.0;
+    const mid      = Math.round(base * mult);
+    const low      = Math.round(mid * 0.85);
+    const high     = Math.round(mid * 1.18);
+    document.getElementById('sal-primary').textContent = '$' + low + 'K – $' + high + 'K';
+    document.getElementById('sal-low').textContent     = '$' + low + 'K';
+    document.getElementById('sal-mid').textContent     = '$' + mid + 'K';
+    document.getElementById('sal-high').textContent    = '$' + high + 'K';
+    const locLabel = document.getElementById('sal-location').options[document.getElementById('sal-location').selectedIndex].text;
+    document.getElementById('sal-verdict').textContent = '📍 ' + locLabel + ' adjustment applied (' + (mult >= 1 ? '+' : '') + Math.round((mult - 1) * 100) + '% vs national average)';
+    result.classList.add('visible');
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+})();
+</script>

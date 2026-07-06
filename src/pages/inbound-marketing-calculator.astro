@@ -7,78 +7,105 @@ const title       = 'Inbound Marketing Calculator — Leads, Traffic and ROI 202
 const description = 'Calculate how much traffic, leads, and MQLs your inbound marketing program needs. Enter revenue goals and conversion benchmarks to get monthly targets.';
 
 const faqItems = [
-  { q: 'How do I use this calculator?', a: 'Enter your numbers in the fields above and click Calculate. Results appear instantly with no signup or email required.' },
-  { q: 'Is this calculator free?', a: 'Yes, completely free with no subscription, email gate, or hidden costs.' },
-  { q: 'How accurate are the benchmarks?', a: 'Benchmarks are compiled from public industry research (Gartner, HubSpot, Salesforce). They represent industry medians — individual results vary.' },
+  { q: 'How do I calculate inbound marketing goals?', a: 'Work backwards from revenue: divide revenue goal by average deal size to get customers needed. Divide customers by close rate to get SQLs. Divide SQLs by MQL-to-SQL rate to get MQLs. Divide MQLs by lead-to-MQL rate to get leads. Divide leads by CVR to get traffic.' },
+  { q: 'What is a good inbound lead conversion rate?', a: 'Industry averages: Visitor-to-lead 2–3%, Lead-to-MQL 30–40%, MQL-to-SQL 20–30%, SQL-to-customer 20–30%. B2B SaaS companies typically achieve 2–4% visitor-to-lead, while professional services average 3–5%.' },
+  { q: 'How long does inbound marketing take to produce leads?', a: 'SEO-based inbound typically takes 6–12 months to generate significant traffic. Content marketing shows results in 3–6 months. Once ranking, inbound leads compound — year 2 often 3–5× year 1 volume with the same investment.' },
+  { q: 'What is MQL vs SQL in inbound marketing?', a: 'MQL (Marketing Qualified Lead) meets criteria suggesting sales readiness (job title, company size, behaviour score). SQL (Sales Qualified Lead) has been reviewed by sales and accepted as a genuine opportunity. Both should be defined clearly in your CRM.' },
+  { q: 'Is this calculator free?', a: 'Yes — completely free, no signup, no email required.' },
 ];
 
-const webAppSchema = {
-  "@type": "WebApplication",
-  "name": "Inbound Marketing Calculator — Leads, Traffic and ROI 2026",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Any",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@id": "https://freemarketingcalculator.com/#org" },
-  "url": "https://freemarketingcalculator.com/inbound-marketing-calculator/",
-  "description": "Reverse-funnel calculator that converts a monthly revenue goal into required traffic, leads, MQLs, and SQLs using stage-by-stage conversion rate benchmarks.",
-  "featureList": ["Free to use", "No signup required", "Instant results"]
-};
-
-const faqSchema = {
-  "@type": "FAQPage",
-  "mainEntity": faqItems.map(item => ({
-    "@type": "Question", "name": item.q,
-    "acceptedAnswer": { "@type": "Answer", "text": item.a }
-  }))
-};
-
-const breadcrumbSchema = {
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Inbound Marketing Calculator — Leads, Traffic and ROI 2026", "item": "https://freemarketingcalculator.com/inbound-marketing-calculator/" }
-  ]
-};
+const webAppSchema = { "@type": "WebApplication", "name": title, "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "creator": { "@id": "https://freemarketingcalculator.com/#org" }, "url": "https://freemarketingcalculator.com/inbound-marketing-calculator/", "description": "Reverse-funnel calculator that converts a monthly revenue goal into required traffic, leads, MQLs, and SQLs using stage-by-stage conversion rate benchmarks.", "featureList": ["Reverse-funnel calculation", "MQL/SQL targets", "Traffic needed calculation"] };
+const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
+const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" }, { "@type": "ListItem", "position": 2, "name": "Inbound Marketing Calculator", "item": "https://freemarketingcalculator.com/inbound-marketing-calculator/" }] };
 ---
 
 <Base title={title} description={description} slug={slug} schema={[webAppSchema, faqSchema, breadcrumbSchema]}>
-
   <section class="page-hero" aria-labelledby="page-h1">
     <div class="container">
       <p class="eyebrow">Free Marketing Tool</p>
-      <h1 id="page-h1">{title}</h1>
-      <p class="citation">Reverse-funnel calculator that converts a monthly revenue goal into required traffic, leads, MQLs, and SQLs using stage-by-stage conversion rate benchmarks.</p>
+      <h1 id="page-h1">Inbound Marketing Calculator</h1>
+      <p class="citation">A reverse-funnel calculator: enter a monthly revenue goal and your funnel conversion rates to get the exact monthly traffic, leads, MQLs, and SQLs you need to hit your target.</p>
       <div class="meta-badges">
-        <span class="badge">✓ Free forever</span>
-        <span class="badge">✓ No signup required</span>
-        <span class="badge">✓ Updated July 2026</span>
+        <span class="badge">✓ Full funnel reverse calc</span>
+        <span class="badge">✓ MQL & SQL targets</span>
+        <span class="badge">✓ No signup</span>
       </div>
     </div>
   </section>
 
   <div class="container">
-
-    <div class="calc-card" aria-label="Calculator tool">
+    <div class="calc-card">
       <div class="calc-card__header">
-        <div>
-          <div class="calc-card__title">{title}</div>
-          <div class="calc-card__subtitle">Full calculator — enter your numbers for instant results</div>
+        <div class="calc-card__header-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
+        <div><div class="calc-card__title">Inbound Marketing Funnel Calculator</div><div class="calc-card__subtitle">Start with your revenue goal — get your monthly targets</div></div>
       </div>
       <div class="calc-card__body">
-        <p style="color: var(--text-mid); font-size: var(--text-sm);">
-          Full calculator widget goes here. See the ROI and Budget calculators for the complete implementation pattern.
-          <a href="/marketing-roi-calculator/">View the ROI Calculator as a reference →</a>
-        </p>
+        <div class="field-group">
+          <div class="field"><label for="ib-revenue">Monthly Revenue Goal ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="ib-revenue" class="has-prefix" placeholder="e.g. 50000" min="0"/></div></div>
+          <div class="field"><label for="ib-deal">Average Deal / Contract Value ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="ib-deal" class="has-prefix" placeholder="e.g. 5000" min="0"/></div></div>
+          <div class="field"><label for="ib-close">SQL → Customer Close Rate (%)</label><div class="input-wrap"><input type="number" id="ib-close" class="has-suffix" placeholder="e.g. 25" min="0" max="100"/><span class="input-suffix">%</span></div><p class="hint">Industry avg: 20–30% for B2B</p></div>
+          <div class="field"><label for="ib-mql-sql">MQL → SQL Rate (%)</label><div class="input-wrap"><input type="number" id="ib-mql-sql" class="has-suffix" placeholder="e.g. 25" min="0" max="100"/><span class="input-suffix">%</span></div><p class="hint">Industry avg: 20–30%</p></div>
+          <div class="field"><label for="ib-lead-mql">Lead → MQL Rate (%)</label><div class="input-wrap"><input type="number" id="ib-lead-mql" class="has-suffix" placeholder="e.g. 35" min="0" max="100"/><span class="input-suffix">%</span></div><p class="hint">Industry avg: 30–40%</p></div>
+          <div class="field"><label for="ib-visit-lead">Visitor → Lead CVR (%)</label><div class="input-wrap"><input type="number" id="ib-visit-lead" class="has-suffix" placeholder="e.g. 2.5" min="0" max="100" step="0.1"/><span class="input-suffix">%</span></div><p class="hint">Industry avg: 2–3% for organic traffic</p></div>
+        </div>
+        <button class="btn-calc" id="ib-calc-btn" type="button">Calculate My Inbound Targets</button>
+        <div class="result-panel" id="ib-result" aria-live="polite">
+          <div class="result-panel__label">Monthly Traffic Needed</div>
+          <div class="result-panel__primary" id="ib-traffic">0</div>
+          <div class="result-panel__grid">
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="ib-leads-needed">0</span><span class="result-panel__stat-label">Leads needed</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="ib-mqls-needed">0</span><span class="result-panel__stat-label">MQLs needed</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="ib-sqls-needed">0</span><span class="result-panel__stat-label">SQLs needed</span></div>
+          </div>
+          <div class="result-verdict" id="ib-verdict"></div>
+        </div>
       </div>
     </div>
 
-    <section class="prose content-section">
-      <h2>About This Calculator</h2>
-      <p>Reverse-funnel calculator that converts a monthly revenue goal into required traffic, leads, MQLs, and SQLs using stage-by-stage conversion rate benchmarks.</p>
-    </section>
+    <div class="definition-box">
+      <div class="definition-box__label">How the Reverse Funnel Works</div>
+      <p>
+        <strong>Customers needed</strong> = Revenue Goal ÷ Deal Value<br/>
+        <strong>SQLs needed</strong> = Customers ÷ Close Rate<br/>
+        <strong>MQLs needed</strong> = SQLs ÷ MQL-to-SQL Rate<br/>
+        <strong>Leads needed</strong> = MQLs ÷ Lead-to-MQL Rate<br/>
+        <strong>Traffic needed</strong> = Leads ÷ Visitor-to-Lead CVR
+      </p>
+    </div>
 
     <FAQ items={faqItems} />
-
   </div>
 </Base>
+
+<script>
+(function(){
+  'use strict';
+  const btn = document.getElementById('ib-calc-btn');
+  const result = document.getElementById('ib-result');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const revenue    = parseFloat((document.getElementById('ib-revenue') as HTMLInputElement).value) || 0;
+    const deal       = parseFloat((document.getElementById('ib-deal') as HTMLInputElement).value) || 1;
+    const closeRate  = parseFloat((document.getElementById('ib-close') as HTMLInputElement).value) / 100 || 0.25;
+    const mqlSql     = parseFloat((document.getElementById('ib-mql-sql') as HTMLInputElement).value) / 100 || 0.25;
+    const leadMql    = parseFloat((document.getElementById('ib-lead-mql') as HTMLInputElement).value) / 100 || 0.35;
+    const visitLead  = parseFloat((document.getElementById('ib-visit-lead') as HTMLInputElement).value) / 100 || 0.025;
+    if (!revenue) return;
+    const customers = revenue / deal;
+    const sqls      = customers / closeRate;
+    const mqls      = sqls / mqlSql;
+    const leads     = mqls / leadMql;
+    const traffic   = leads / visitLead;
+    document.getElementById('ib-traffic').textContent       = Math.ceil(traffic).toLocaleString();
+    document.getElementById('ib-leads-needed').textContent  = Math.ceil(leads).toLocaleString();
+    document.getElementById('ib-mqls-needed').textContent   = Math.ceil(mqls).toLocaleString();
+    document.getElementById('ib-sqls-needed').textContent   = Math.ceil(sqls).toLocaleString();
+    document.getElementById('ib-verdict').textContent       =
+      '📊 To earn $' + revenue.toLocaleString() + '/month: ' + Math.ceil(traffic).toLocaleString() + ' visitors → ' + Math.ceil(leads) + ' leads → ' + Math.ceil(mqls) + ' MQLs → ' + Math.ceil(sqls) + ' SQLs → ' + Math.ceil(customers) + ' customers';
+    result.classList.add('visible');
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+})();
+</script>
