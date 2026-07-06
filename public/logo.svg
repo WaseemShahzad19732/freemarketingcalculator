@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100" viewBox="0 0 400 100">
+  <rect width="400" height="100" fill="#0F1F38" rx="8"/>
+  <!-- Chart bars icon -->
+  <rect x="16" y="55" width="10" height="30" fill="#00C4B3" rx="2"/>
+  <rect x="30" y="40" width="10" height="45" fill="#00C4B3" rx="2" opacity="0.8"/>
+  <rect x="44" y="25" width="10" height="60" fill="#00C4B3" rx="2"/>
+  <rect x="58" y="35" width="10" height="50" fill="#00C4B3" rx="2" opacity="0.8"/>
+  <!-- Text -->
+  <text x="80" y="42" font-family="Arial, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" letter-spacing="-0.5">Free Marketing</text>
+  <text x="80" y="68" font-family="Arial, sans-serif" font-size="20" font-weight="800" fill="#00C4B3" letter-spacing="-0.5">Calculators</text>
+  <text x="80" y="86" font-family="Arial, sans-serif" font-size="10" fill="#94A3B8">freemarketingcalculator.com</text>
+</svg>

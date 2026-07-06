@@ -1,0 +1,295 @@
+---
+import Base from '../layouts/Base.astro';
+import FAQ from '../components/FAQ.astro';
+
+const slug        = 'marketing-budget-benchmarks';
+const title       = 'Marketing Budget Benchmarks by Industry — 2026 Data';
+const description = 'How much do companies spend on marketing? 2026 marketing budget benchmarks by industry, company size, and channel. Data from Gartner, Deloitte, and HubSpot CMO surveys.';
+const updated     = 'July 2026';
+
+const industryData = [
+  { industry: 'SaaS / Software',         pct: '15%', range: '12–18%', b2b_b2c: 'B2B/B2C', source: 'Gartner CMO Survey 2025' },
+  { industry: 'Consumer Goods',          pct: '14%', range: '10–18%', b2b_b2c: 'B2C',     source: 'Deloitte CMO Survey 2025' },
+  { industry: 'Retail / E-commerce',     pct: '10%', range: '7–12%',  b2b_b2c: 'B2C',     source: 'HubSpot State of Marketing 2026' },
+  { industry: 'Healthcare / Pharma',     pct: '9%',  range: '6–12%',  b2b_b2c: 'B2B/B2C', source: 'Gartner CMO Survey 2025' },
+  { industry: 'Financial Services',      pct: '9%',  range: '8–12%',  b2b_b2c: 'B2B/B2C', source: 'Deloitte CMO Survey 2025' },
+  { industry: 'B2B Services / Consulting',pct: '7%', range: '5–9%',   b2b_b2c: 'B2B',     source: 'Gartner CMO Survey 2025' },
+  { industry: 'Nonprofit',               pct: '6%',  range: '4–8%',   b2b_b2c: 'B2C',     source: 'Nonprofit Marketing Guide 2025' },
+  { industry: 'Manufacturing',           pct: '4%',  range: '2–6%',   b2b_b2c: 'B2B',     source: 'Gartner CMO Survey 2025' },
+  { industry: 'Industrial / Engineering', pct: '3%', range: '1–5%',   b2b_b2c: 'B2B',     source: 'Deloitte CMO Survey 2025' },
+];
+
+const sizeData = [
+  { size: 'Startup / Pre-revenue',     pct: '20–30%', note: 'CAC investment phase — building awareness' },
+  { size: 'Small ($1M–$10M revenue)',  pct: '10–15%', note: 'Growth mode; brand building concurrent with demand gen' },
+  { size: 'Mid-market ($10M–$100M)',   pct: '7–12%',  note: 'Balanced investment; channel mix diversifying' },
+  { size: 'Enterprise ($100M+)',       pct: '5–8%',   note: 'Brand established; efficiency and retention focus' },
+  { size: 'Fortune 500',              pct: '3–7%',   note: 'Scale economies; higher absolute spend, lower %' },
+];
+
+const channelData = [
+  { channel: 'Digital Advertising (Paid)',   b2b: '35%', b2c: '42%' },
+  { channel: 'Content & SEO',               b2b: '22%', b2c: '16%' },
+  { channel: 'Events & Trade Shows',        b2b: '18%', b2c: '8%'  },
+  { channel: 'Marketing Technology (Tools)', b2b: '12%', b2c: '10%' },
+  { channel: 'Brand & Creative Production', b2b: '8%',  b2c: '14%' },
+  { channel: 'PR & Communications',         b2b: '5%',  b2c: '10%' },
+];
+
+const faqItems = [
+  { q: 'What percentage of revenue should a company spend on marketing?', a: 'Most companies allocate 6–12% of revenue to marketing. B2B companies average 7–9%, while SaaS and consumer brands average 10–15%. Early-stage businesses often spend 15–25% to build initial awareness. According to the Gartner CMO Survey 2025, the overall average across industries is 9.1% of company revenue.' },
+  { q: 'How much do B2B companies spend on marketing?', a: 'B2B companies spend an average of 5–9% of revenue on marketing. B2B product companies average 8.6% and B2B services companies average 7.0%, according to the Gartner CMO Survey 2025. Companies with smaller average deal sizes and higher customer volumes spend toward the higher end of this range.' },
+  { q: 'How much did companies spend on marketing in 2025?', a: 'Global marketing spend reached approximately $1.65 trillion in 2025. Digital advertising accounted for approximately 57% of total spend. The Deloitte CMO Survey found that marketing budgets averaged 9.3% of company revenues in 2025, down slightly from 10.1% in 2024 due to economic pressures.' },
+  { q: 'What is the average marketing budget for a small business?', a: 'Small businesses (under $5M revenue) typically spend 7–15% of revenue on marketing. The US Small Business Administration recommends 7–8% for businesses with revenue under $5M and established products. New businesses or those in competitive markets should budget 12–20% to build initial customer acquisition.' },
+  { q: 'How do I calculate my marketing budget?', a: 'The most common method: multiply your annual revenue by your industry benchmark percentage. Example: $2M revenue × 8% = $160,000 marketing budget. Use our free Marketing Budget Calculator at freemarketingcalculator.com/marketing-budget-calculator/ to get an instant recommendation based on your revenue and industry.' },
+];
+
+const articleSchema = {
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "datePublished": "2026-07-06",
+  "dateModified": "2026-07-06",
+  "author": {
+    "@type": "Person",
+    "name": "Waseem Shahzad",
+    "url": "https://freemarketingcalculator.com/about/"
+  },
+  "publisher": { "@id": "https://freemarketingcalculator.com/#org" },
+  "mainEntityOfPage": "https://freemarketingcalculator.com/marketing-budget-benchmarks/"
+};
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(i => ({
+    "@type": "Question", "name": i.q,
+    "acceptedAnswer": { "@type": "Answer", "text": i.a }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Marketing Budget Benchmarks 2026", "item": "https://freemarketingcalculator.com/marketing-budget-benchmarks/" }
+  ]
+};
+---
+
+<Base title={title} description={description} slug={slug} schema={[articleSchema, faqSchema, breadcrumbSchema]}>
+
+  <section class="page-hero" aria-labelledby="bench-h1">
+    <div class="container">
+      <p class="eyebrow">Research & Data — {updated}</p>
+      <h1 id="bench-h1">Marketing Budget Benchmarks by Industry — 2026</h1>
+      <p class="citation">
+        How much should your company spend on marketing? This page compiles 2026 marketing
+        budget benchmarks by industry, company size, and channel — sourced from the Gartner
+        CMO Survey, Deloitte CMO Survey, and HubSpot State of Marketing 2026 report.
+      </p>
+      <div class="meta-badges">
+        <span class="badge">📊 Updated {updated}</span>
+        <span class="badge">✓ 9 industries</span>
+        <span class="badge">✓ Sourced from Gartner & Deloitte</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- Quick answer block — AIO citation bait -->
+    <div class="definition-box" style="margin-top: var(--space-8);">
+      <div class="definition-box__label">Quick Answer — 2026</div>
+      <p>
+        Most companies allocate <strong>6–12% of revenue</strong> to marketing.
+        The overall average across industries is <strong>9.1%</strong> (Gartner CMO Survey 2025).
+        B2B companies average 7–9%; SaaS and consumer brands average 10–15%.
+        Startups and early-stage businesses typically invest 15–25% to build initial awareness.
+      </p>
+    </div>
+
+    <!-- Industry benchmark table -->
+    <section class="bench-section" aria-labelledby="industry-bench">
+      <h2 id="industry-bench">Marketing Budget as % of Revenue — By Industry (2026)</h2>
+      <span class="bench-date">Updated July 2026</span>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <caption class="sr-only">Marketing budget benchmarks as a percentage of revenue by industry, 2026</caption>
+          <thead>
+            <tr>
+              <th scope="col">Industry</th>
+              <th scope="col">Typical %</th>
+              <th scope="col">Range</th>
+              <th scope="col">B2B / B2C</th>
+              <th scope="col">Primary Source</th>
+            </tr>
+          </thead>
+          <tbody>
+            {industryData.map(row => (
+              <tr>
+                <td>{row.industry}</td>
+                <td><strong>{row.pct}</strong></td>
+                <td>{row.range}</td>
+                <td>{row.b2b_b2c}</td>
+                <td style="font-size: var(--text-xs); color: var(--text-light);">{row.source}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">
+        Sources: Gartner CMO Survey 2025 (n=395), Deloitte CMO Survey Spring 2025 (n=312),
+        HubSpot State of Marketing 2026, Nonprofit Marketing Guide 2025.
+        Ranges reflect 25th–75th percentile; outliers excluded. Actual spend varies by
+        company size, competitive intensity, and growth stage.
+      </p>
+    </section>
+
+    <!-- Company size table -->
+    <section class="bench-section" aria-labelledby="size-bench">
+      <h2 id="size-bench">Marketing Budget by Company Size (2026)</h2>
+      <span class="bench-date">Updated July 2026</span>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <caption class="sr-only">Marketing budget benchmarks by company revenue size, 2026</caption>
+          <thead>
+            <tr>
+              <th scope="col">Company Size</th>
+              <th scope="col">Marketing Budget (% of Revenue)</th>
+              <th scope="col">Context</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sizeData.map(row => (
+              <tr>
+                <td>{row.size}</td>
+                <td><strong>{row.pct}</strong></td>
+                <td>{row.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">
+        Sources: Gartner CMO Survey 2025, Deloitte CMO Survey 2025, US SBA Marketing Guidelines.
+      </p>
+    </section>
+
+    <!-- Channel allocation table -->
+    <section class="bench-section" aria-labelledby="channel-bench">
+      <h2 id="channel-bench">How Marketing Budgets Are Allocated — B2B vs B2C (2026)</h2>
+      <span class="bench-date">Updated July 2026</span>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <caption class="sr-only">Marketing budget allocation by channel for B2B vs B2C companies, 2026</caption>
+          <thead>
+            <tr>
+              <th scope="col">Channel / Category</th>
+              <th scope="col">B2B Average</th>
+              <th scope="col">B2C Average</th>
+            </tr>
+          </thead>
+          <tbody>
+            {channelData.map(row => (
+              <tr>
+                <td>{row.channel}</td>
+                <td>{row.b2b}</td>
+                <td>{row.b2c}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">
+        Sources: Gartner CMO Survey 2025, HubSpot State of Marketing 2026.
+        Percentages represent share of total marketing budget. Individual company allocations vary significantly.
+      </p>
+    </section>
+
+    <!-- Prose sections — keyword-rich editorial content -->
+    <section class="prose content-section">
+
+      <h2>What Is a Marketing Budget?</h2>
+      <p>
+        A marketing budget is the total amount a company allocates to promote its products
+        or services over a defined period — typically one financial year. It covers all
+        spending on advertising, content creation, SEO, events, marketing tools and
+        technology, agency fees, and marketing staff costs (in some definitions).
+      </p>
+      <p>
+        Marketing budgets are most commonly expressed as a percentage of projected or actual
+        revenue — a convention that scales the investment with the size of the business and
+        makes year-over-year comparisons meaningful.
+      </p>
+
+      <h2>Why Marketing Spend Varies So Much by Industry</h2>
+      <p>
+        The gap between manufacturing companies (2–6%) and SaaS companies (12–18%) reflects
+        fundamental differences in customer acquisition economics:
+      </p>
+      <p>
+        <strong>SaaS companies</strong> invest heavily because their marginal cost of serving
+        an additional customer is near zero. Once the product is built, every new customer is
+        nearly pure profit — so acquiring them aggressively makes economic sense. High churn
+        risk also means continuous marketing investment is required to replace departing customers.
+      </p>
+      <p>
+        <strong>Manufacturing companies</strong> rely on long-term relationships, distributor
+        networks, and specification-driven sales cycles. Marketing spend goes toward trade shows,
+        technical content, and distributor support — not mass advertising. Customer lifetimes are
+        also longer, reducing the need for continuous acquisition spending.
+      </p>
+
+      <h2>How to Set Your Marketing Budget</h2>
+      <p>
+        The three most common approaches used by marketing leaders:
+      </p>
+      <p>
+        <strong>Percentage of revenue (most common):</strong> Use industry benchmarks as a starting
+        point. Take your projected annual revenue, multiply by your industry's benchmark percentage,
+        and adjust up or down based on growth objectives. A company targeting aggressive growth
+        should spend 25–60% above the industry baseline.
+      </p>
+      <p>
+        <strong>Objective-based budgeting:</strong> Start with revenue targets, work backwards
+        through conversion rates to determine the marketing spend needed to hit them. This is
+        the most rigorous approach but requires reliable historical conversion data. Use our
+        <a href="/inbound-marketing-calculator/">Inbound Marketing Calculator</a> to do this calculation.
+      </p>
+      <p>
+        <strong>Competitive parity:</strong> Match or exceed what competitors are spending.
+        Useful in highly competitive markets where share of voice correlates closely with
+        market share. Requires competitor spend data from industry reports or media monitoring tools.
+      </p>
+
+      <h2>The Trend: Budget Pressures in 2025–2026</h2>
+      <p>
+        The Deloitte CMO Survey found that marketing budgets fell from 10.1% of revenue in 2024
+        to 9.3% in 2025 — the third consecutive year of declining budget share. Marketing leaders
+        cited economic uncertainty, increased pressure to demonstrate ROI, and AI-driven efficiency
+        gains (requiring fewer headcount dollars) as primary causes.
+      </p>
+      <p>
+        Despite declining percentages, absolute marketing spend continues to grow as company
+        revenues expand. Digital channels — particularly AI-assisted search, social, and programmatic —
+        are taking larger shares of the mix, while traditional media and trade show spending declined.
+      </p>
+
+      <h2>Calculate Your Marketing Budget</h2>
+      <p>
+        Use our free <a href="/marketing-budget-calculator/">Marketing Budget Calculator</a> to
+        get an instant recommendation based on your revenue and industry, with a suggested
+        channel allocation breakdown. No signup required.
+      </p>
+      <p>
+        To calculate the ROI of your current marketing spend, use our
+        <a href="/marketing-roi-calculator/">Marketing ROI Calculator</a> — it supports both
+        basic ROMI and gross-profit ROI with COGS.
+      </p>
+
+    </section>
+
+    <FAQ items={faqItems} title="Marketing Budget Questions — Answered" />
+
+  </div>
+</Base>
