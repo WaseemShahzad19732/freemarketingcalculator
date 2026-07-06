@@ -1,19 +1,16 @@
 # robots.txt — freemarketingcalculator.com
 # Free Marketing Calculators — freemarketingcalculator.com
-# Updated: July 2026
+# Updated: July 6, 2026
 
-# ── All standard crawlers ───────────────────────────────────────────────────
+# ── All standard crawlers ────────────────────────────────────────────────────
 User-agent: *
 Allow: /
+# No pages blocked — all 14 pages are public and indexable
 
-# Block no pages — all 14 pages are public and indexable
-# No admin, no login, no private sections exist on this site
-
-# ── Google ──────────────────────────────────────────────────────────────────
+# ── Google ───────────────────────────────────────────────────────────────────
 User-agent: Googlebot
 Allow: /
 
-# Allow Google to use site data for AI training (improves AI citation visibility)
 User-agent: Google-Extended
 Allow: /
 
@@ -23,8 +20,7 @@ Allow: /
 User-agent: Googlebot-News
 Allow: /
 
-# ── Bing / Microsoft ────────────────────────────────────────────────────────
-# Bing powers ChatGPT Browse — being in Bing = being citable in ChatGPT
+# ── Bing / Microsoft (powers ChatGPT Browse) ─────────────────────────────────
 User-agent: Bingbot
 Allow: /
 
@@ -34,7 +30,7 @@ Allow: /
 User-agent: msnbot-media
 Allow: /
 
-# ── OpenAI / ChatGPT ────────────────────────────────────────────────────────
+# ── OpenAI / ChatGPT ─────────────────────────────────────────────────────────
 User-agent: GPTBot
 Allow: /
 
@@ -44,7 +40,7 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
-# ── Anthropic / Claude ──────────────────────────────────────────────────────
+# ── Anthropic / Claude ───────────────────────────────────────────────────────
 User-agent: ClaudeBot
 Allow: /
 
@@ -54,70 +50,65 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-# ── Perplexity ──────────────────────────────────────────────────────────────
+# ── Perplexity ───────────────────────────────────────────────────────────────
 User-agent: PerplexityBot
 Allow: /
 
-# ── You.com ─────────────────────────────────────────────────────────────────
+# ── You.com ──────────────────────────────────────────────────────────────────
 User-agent: YouBot
 Allow: /
 
-# ── DuckDuckGo ──────────────────────────────────────────────────────────────
+# ── DuckDuckGo ───────────────────────────────────────────────────────────────
 User-agent: DuckAssistBot
 Allow: /
 
 User-agent: DuckDuckBot
 Allow: /
 
-# ── Meta / Facebook ─────────────────────────────────────────────────────────
+# ── Meta / Facebook ──────────────────────────────────────────────────────────
 User-agent: facebookexternalhit
 Allow: /
 
 User-agent: FacebookBot
 Allow: /
 
-# ── Apple ───────────────────────────────────────────────────────────────────
+# ── Apple ────────────────────────────────────────────────────────────────────
 User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
-# ── Common / other search engines ───────────────────────────────────────────
+# ── Yandex ───────────────────────────────────────────────────────────────────
+User-agent: YandexBot
+Allow: /
+
+# ── Other search engines ──────────────────────────────────────────────────────
 User-agent: Slurp
 Allow: /
 
 User-agent: Baiduspider
 Allow: /
 
-User-agent: YandexBot
-Allow: /
-
 User-agent: Sogou
 Allow: /
 
-# ── SEO research tools (allow — helps with legitimate audits) ────────────────
+# ── SEO research tools (crawl-delay to be a good citizen) ────────────────────
 User-agent: AhrefsBot
 Allow: /
+Crawl-delay: 10
 
 User-agent: SemrushBot
 Allow: /
+Crawl-delay: 10
 
 User-agent: MJ12bot
 Allow: /
+Crawl-delay: 10
 
 User-agent: DotBot
 Allow: /
+Crawl-delay: 5
 
-# ── Crawl-delay for heavy bots (be a good citizen) ──────────────────────────
-User-agent: SemrushBot
-Crawl-delay: 10
-
-User-agent: AhrefsBot
-Crawl-delay: 10
-
-User-agent: MJ12bot
-Crawl-delay: 10
-
-# ── Sitemap ──────────────────────────────────────────────────────────────────
+# ── Sitemaps ─────────────────────────────────────────────────────────────────
 Sitemap: https://freemarketingcalculator.com/sitemap-index.xml
