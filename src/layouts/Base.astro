@@ -4,6 +4,7 @@
  * Every page passes: title, description, slug, schema (array of JSON-LD objects),
  * citationSentence, pageType ('calculator' | 'home' | 'article')
  */
+import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
@@ -98,8 +99,7 @@ const ADSENSE_PUB = 'ca-pub-XXXXXXXXXXXXXXXXX';
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
   />
 
-  <!-- Global styles -->
-  <link rel="stylesheet" href="/src/styles/global.css" />
+  <!-- Global styles injected via Astro import in frontmatter -->
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
