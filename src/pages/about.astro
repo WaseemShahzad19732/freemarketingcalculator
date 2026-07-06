@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+
+const slug        = 'about';
+const title       = 'About FreemarketingCalculator.com — Free Marketing Tools';
+const description = 'Free marketing calculators for ROI, budget, conversion rate, salary and more. Built by marketing practitioners for marketers who need fast, accurate answers.';
+
+const schema = {
+  "@type": "AboutPage",
+  "name": "About FreemarketingCalculator.com",
+  "url": "https://freemarketingcalculator.com/about/",
+  "description": description,
+  "publisher": { "@id": "https://freemarketingcalculator.com/#org" }
+};
+---
+
+<Base title={title} description={description} slug={slug} schema={[schema]}>
+  <section class="page-hero" aria-labelledby="about-h1">
+    <div class="container">
+      <p class="eyebrow">About This Site</p>
+      <h1 id="about-h1">About FreemarketingCalculator.com</h1>
+      <p class="citation">Free, instant marketing calculators built for practitioners — no signup, no paywalls, no fluff.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="content-section prose" style="max-width: 680px; margin: 0 auto;">
+
+      <h2>What This Site Does</h2>
+      <p>
+        FreemarketingCalculator.com is a free collection of marketing calculators covering
+        ROI, budget planning, conversion rates, email performance, salary benchmarks,
+        agency valuation, and campaign metrics. Every calculator gives instant results
+        with no account required, no email gate, and no hidden costs.
+      </p>
+      <p>
+        The site exists because most free marketing calculators are either buried inside
+        expensive software, gated behind lead-capture forms, or simply broken. These tools
+        are built to work the first time, every time, on any device.
+      </p>
+
+      <h2>Who Built This</h2>
+      <p>
+        FreemarketingCalculator.com is operated by <strong>Waseem Shahzad</strong>, a
+        digital marketing professional with experience across SEO, paid media, and
+        marketing analytics. The calculators are built using industry-standard formulas
+        sourced from Gartner, HubSpot, Salesforce, Litmus, and other publicly available
+        marketing research.
+      </p>
+
+      <h2>Our Methodology</h2>
+      <p>
+        Every calculator on this site uses formulas that are either industry-standard
+        definitions (such as ROMI = (Revenue − Cost) ÷ Cost × 100) or benchmarks
+        compiled from named public data sources. Benchmark tables are updated quarterly
+        and show their last update date. No data is fabricated or estimated without
+        a stated source.
+      </p>
+      <p>
+        Where benchmarks represent industry medians, this is stated clearly. Individual
+        results vary based on audience, offer, and execution — the calculators are
+        planning tools, not guarantees.
+      </p>
+
+      <h2>Calculators Available</h2>
+      <ul style="margin: var(--space-4) 0; padding-left: var(--space-6); color: var(--text-mid); line-height: 2;">
+        <li><a href="/marketing-roi-calculator/">Marketing ROI Calculator</a> — Basic ROMI and gross-profit ROI with COGS</li>
+        <li><a href="/marketing-budget-calculator/">Marketing Budget Calculator</a> — Revenue-based budgets with 9 industry benchmarks</li>
+        <li><a href="/conversion-rate-calculator/">Conversion Rate Calculator</a> — CVR, reverse-funnel, and revenue estimation</li>
+        <li><a href="/email-marketing-roi-calculator/">Email Marketing ROI Calculator</a> — Full ROMI from list size to platform cost</li>
+        <li><a href="/social-media-budget-calculator/">Social Media Budget Calculator</a> — Reach and impressions by platform</li>
+        <li><a href="/digital-marketing-calculator/">Digital Marketing Calculator</a> — CPM, CPC, CTR, ROAS, and CPA</li>
+        <li><a href="/marketing-salary-calculator/">Marketing Salary Calculator</a> — Role, seniority, and US location</li>
+        <li><a href="/marketing-agency-valuation-calculator/">Agency Valuation Calculator</a> — Revenue and EBITDA methods</li>
+        <li><a href="/marketing-automation-roi-calculator/">Marketing Automation ROI Calculator</a> — Time savings and lead lift</li>
+        <li><a href="/inbound-marketing-calculator/">Inbound Marketing Calculator</a> — Full reverse-funnel from revenue goal</li>
+      </ul>
+
+      <h2>Contact</h2>
+      <p>
+        Questions, feedback, or formula corrections welcome at
+        <a href="mailto:hello@freemarketingcalculator.com">hello@freemarketingcalculator.com</a>.
+        Response time is typically 1–3 business days.
+      </p>
+
+      <h2>Disclaimer</h2>
+      <p>
+        The calculators and benchmarks on this site are for informational and planning
+        purposes only. They do not constitute financial, legal, or professional advice.
+        Marketing results depend on many factors beyond what any calculator can capture.
+        Always validate decisions with your own data and qualified advisors where appropriate.
+      </p>
+
+    </div>
+  </div>
+</Base>
