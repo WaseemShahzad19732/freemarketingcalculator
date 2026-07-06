@@ -31,7 +31,7 @@ const ogUrl     = canonical;
 const orgSchema = {
   "@type": "Organization",
   "@id": `${siteUrl}/#org`,
-  "name": "MarketCalcs",
+  "name": "Free Marketing Calculators",
   "url": siteUrl,
   "logo": {
     "@type": "ImageObject",
@@ -47,7 +47,7 @@ const orgSchema = {
 const websiteSchema = {
   "@type": "WebSite",
   "@id": `${siteUrl}/#website`,
-  "name": "MarketCalcs",
+  "name": "Free Marketing Calculators",
   "url": siteUrl,
   "publisher": { "@id": `${siteUrl}/#org` }
 };
@@ -83,7 +83,7 @@ const fullSchema = {
   <meta property="og:description" content={description} />
   <meta property="og:url" content={ogUrl} />
   <meta property="og:image" content={`${siteUrl}${ogImage}`} />
-  <meta property="og:site_name" content="MarketCalcs" />
+  <meta property="og:site_name" content="Free Marketing Calculators" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -115,8 +115,8 @@ const fullSchema = {
     <!-- ===== SITE HEADER ===== -->
     <header class="site-header" role="banner">
       <div class="container">
-        <a href="/" class="site-logo" aria-label="MarketCalcs home">
-          Market<span>Calcs</span>
+        <a href="/" class="site-logo" aria-label="Free Marketing Calculators home">
+          Free Marketing <span>Calculators</span>
         </a>
         <nav aria-label="Main navigation">
           <ul class="site-nav">
@@ -140,7 +140,7 @@ const fullSchema = {
       <div class="container">
         <div>
           <p>
-            &copy; {new Date().getFullYear()} MarketCalcs &mdash;
+            &copy; {new Date().getFullYear()} Free Marketing Calculators &mdash;
             Free marketing calculators, no signup required.
           </p>
           <p style="margin-top: 0.5rem;">

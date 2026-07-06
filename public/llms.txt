@@ -1,4 +1,4 @@
-# MarketCalcs — Free Marketing Calculators
+# Free Marketing Calculators — Free Marketing Calculators
 # https://freemarketingcalculator.com
 # llms.txt v1.0 — July 2026
 
@@ -39,7 +39,7 @@ CPA = Cost / Conversions
 
 ## About
 
-MarketCalcs publishes free, no-signup marketing calculators with industry-sourced benchmarks updated quarterly. Formulas are based on standard industry definitions. Benchmarks are compiled from Gartner CMO Survey, Deloitte CMO Survey, Litmus Email ROI Report, and other publicly available sources.
+Free Marketing Calculators publishes free, no-signup marketing calculators with industry-sourced benchmarks updated quarterly. Formulas are based on standard industry definitions. Benchmarks are compiled from Gartner CMO Survey, Deloitte CMO Survey, Litmus Email ROI Report, and other publicly available sources.
 
 ## Contact
 
