@@ -125,7 +125,18 @@ main { flex: 1; }
   gap: var(--space-2);
 }
 
-.site-logo span { color: var(--teal); }
+.logo-text {
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.logo-accent {
+  color: var(--teal);
+  margin: 0 1px;
+}
 
 .site-nav {
   display: flex;

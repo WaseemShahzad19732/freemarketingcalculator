@@ -35,7 +35,7 @@ const orgSchema = {
   "url": siteUrl,
   "logo": {
     "@type": "ImageObject",
-    "url": `${siteUrl}/logo.png`
+    "url": `${siteUrl}/logo.svg`
   },
   "description": "Free marketing calculators for ROI, budget, salary, conversion rate, and more.",
   "sameAs": [
@@ -116,7 +116,15 @@ const fullSchema = {
     <header class="site-header" role="banner">
       <div class="container">
         <a href="/" class="site-logo" aria-label="Free Marketing Calculators home">
-          Free Marketing <span>Calculators</span>
+          <!-- Bar chart icon -->
+          <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex-shrink:0">
+            <rect width="64" height="64" rx="10" fill="#00C4B3"/>
+            <rect x="8"  y="40" width="11" height="16" rx="2" fill="white"/>
+            <rect x="23" y="28" width="11" height="28" rx="2" fill="white" opacity="0.85"/>
+            <rect x="38" y="16" width="11" height="40" rx="2" fill="white"/>
+            <polyline points="13,38 28.5,26 43.5,14 56,8" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+          </svg>
+          <span class="logo-text">Free<span class="logo-accent">Marketing</span>Calc</span>
         </a>
         <nav aria-label="Main navigation">
           <ul class="site-nav">
@@ -125,6 +133,7 @@ const fullSchema = {
             <li><a href="/conversion-rate-calculator/">Conversion Rate</a></li>
             <li><a href="/email-marketing-roi-calculator/">Email ROI</a></li>
             <li><a href="/marketing-salary-calculator/">Salary</a></li>
+            <li><a href="/blog/">Blog</a></li>
           </ul>
         </nav>
       </div>
@@ -152,8 +161,8 @@ const fullSchema = {
         <nav aria-label="Footer navigation">
           <ul class="footer-links">
             <li><a href="/">All Calculators</a></li>
+            <li><a href="/blog/">Blog</a></li>
             <li><a href="/about/">About</a></li>
-            <li><a href="/marketing-budget-benchmarks/">2026 Benchmarks</a></li>
             <li><a href="/privacy-policy/">Privacy Policy</a></li>
             <li><a href="/sitemap-index.xml">Sitemap</a></li>
           </ul>
