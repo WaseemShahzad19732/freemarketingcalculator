@@ -1,0 +1,578 @@
+---
+import Base from '../../layouts/Base.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const slug        = 'blog/what-is-a-good-marketing-roi';
+const title       = 'What Is a Good Marketing ROI? Benchmarks by Channel (2026)';
+const description = 'A good marketing ROI is 5:1 (500%) — earning $5 for every $1 spent. But it varies by channel: email averages 4,200%, SEO 275%, paid search 200%. Full benchmarks here.';
+const published   = 'July 7, 2026';
+const updated     = 'July 7, 2026';
+const readTime    = '6 min read';
+
+const channelBenchmarks = [
+  { channel: 'Email Marketing',       avg: '4,200%', range: '2,000–8,000%', note: '$36 return per $1 spent (industry average)' },
+  { channel: 'SEO / Organic Search',  avg: '275%',   range: '100–600%',     note: 'Compounds over 12+ months; slow to start' },
+  { channel: 'Content Marketing',     avg: '300%',   range: '150–500%',     note: 'Long-term asset; ROI improves with age' },
+  { channel: 'Paid Search (SEM)',     avg: '200%',   range: '100–400%',     note: 'Depends heavily on CPC and conversion rate' },
+  { channel: 'Paid Social Media',     avg: '120%',   range: '50–250%',      note: 'Higher for eCommerce; lower for B2B' },
+  { channel: 'Events / Webinars',     avg: '140%',   range: '80–300%',      note: 'Hard to attribute; LTV-dependent' },
+  { channel: 'Affiliate Marketing',   avg: '400%',   range: '200–800%',     note: 'Variable; depends on commission structure' },
+  { channel: 'Influencer Marketing',  avg: '520%',   range: '200–1,000%',   note: 'Wide variance; micro-influencers outperform' },
+  { channel: 'Direct Mail',           avg: '112%',   range: '50–200%',      note: 'Physical mail; B2B performs better than B2C' },
+];
+
+const industryBenchmarks = [
+  { industry: 'E-commerce / Retail',       target: '400–600%', note: 'High purchase frequency; AOV-dependent' },
+  { industry: 'SaaS / Software',           target: '300–500%', note: 'Measured on LTV, not single transaction' },
+  { industry: 'B2B Professional Services', target: '200–400%', note: 'Long sales cycles; pipeline attribution difficult' },
+  { industry: 'Financial Services',        target: '250–450%', note: 'High CPA offset by high lifetime value' },
+  { industry: 'Healthcare',                target: '150–300%', note: 'Compliance constraints limit channel mix' },
+  { industry: 'Real Estate',               target: '200–400%', note: 'Single transaction; referral-heavy' },
+  { industry: 'Education / e-Learning',    target: '300–500%', note: 'Strong content ROI; evergreen lead gen' },
+  { industry: 'Nonprofit',                 target: '150–250%', note: 'Measured as funds raised vs. fundraising cost' },
+];
+
+const faqItems = [
+  {
+    q: 'What is a good marketing ROI?',
+    a: 'A good marketing ROI is 5:1 — earning $5 in revenue for every $1 spent on marketing (500%). This is the most widely cited benchmark. 10:1 (1,000%) is considered excellent. Anything below 2:1 (200%) is generally not sustainable once overhead costs are factored in.',
+  },
+  {
+    q: 'Is a 2% ROI good for marketing?',
+    a: 'No. A 2% marketing ROI means you earned $0.02 for every dollar spent — you are operating at a significant loss. A healthy marketing ROI starts at 100% (breaking even plus your money back), with most direct-response channels targeting 200–400%.',
+  },
+  {
+    q: 'What does 22% ROI mean in marketing?',
+    a: 'A 22% marketing ROI means you earned $0.22 for every $1 spent — well below the break-even point. Unless this is a pure brand awareness campaign with long-term LTV justification, campaigns at 22% ROI should be paused and restructured.',
+  },
+  {
+    q: 'What is a 1000% return on $1,000?',
+    a: 'A 1,000% ROI on a $1,000 investment means you gained $10,000 in revenue, for a total return of $11,000. The formula: ROI % = (Net Profit ÷ Investment) × 100. $10,000 ÷ $1,000 × 100 = 1,000%. In marketing, this is achievable — email marketing regularly exceeds it.',
+  },
+  {
+    q: 'What is the average marketing ROI across all channels?',
+    a: 'The average marketing ROI across all channels is approximately 200–300% (earning $3–$4 per $1 spent), when blended across paid, organic, and email. However, this average is heavily influenced by channel mix — companies with strong email programs significantly outperform those relying primarily on paid social.',
+  },
+  {
+    q: 'How do I calculate marketing ROI?',
+    a: 'Basic formula: Marketing ROI = (Revenue from marketing − Marketing cost) ÷ Marketing cost × 100. For a more accurate figure accounting for COGS: ROI = ((Revenue × Gross margin %) − Marketing spend) ÷ Marketing spend × 100. Use our free Marketing ROI Calculator for instant results.',
+  },
+];
+
+const articleSchema = {
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "datePublished": "2026-07-07",
+  "dateModified": updated,
+  "author": {
+    "@type": "Person",
+    "name": "Waseem Shahzad",
+    "url": "https://freemarketingcalculator.com/about/"
+  },
+  "publisher": { "@id": "https://freemarketingcalculator.com/#org" },
+  "mainEntityOfPage": `https://freemarketingcalculator.com/${slug}/`,
+  "image": "https://freemarketingcalculator.com/logo.svg"
+};
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(i => ({
+    "@type": "Question",
+    "name": i.q,
+    "acceptedAnswer": { "@type": "Answer", "text": i.a }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://freemarketingcalculator.com/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "What Is a Good Marketing ROI?", "item": `https://freemarketingcalculator.com/${slug}/` }
+  ]
+};
+---
+
+<Base title={title} description={description} slug={slug} schema={[articleSchema, faqSchema, breadcrumbSchema]}>
+
+  <!-- HERO -->
+  <section class="page-hero" aria-labelledby="article-h1">
+    <div class="container">
+      <p class="eyebrow">ROI & Performance · {readTime}</p>
+      <h1 id="article-h1">What Is a Good Marketing ROI?</h1>
+      <p class="citation">
+        A good marketing ROI is <strong style="color:var(--teal)">5:1 (500%)</strong> — earning $5 for every $1 spent.
+        But what counts as "good" varies significantly by channel, industry, and how you measure it.
+        Here are the 2026 benchmarks.
+      </p>
+      <div class="meta-badges">
+        <span class="badge">📅 {published}</span>
+        <span class="badge">✓ {readTime}</span>
+        <span class="badge">✓ Sources cited</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="article-layout">
+
+      <!-- ARTICLE BODY -->
+      <article class="article-body prose" aria-label="Article content">
+
+        <!-- ANSWER-FIRST BLOCK — AI Overview extraction target -->
+        <div class="definition-box" style="margin-top: var(--space-8);">
+          <div class="definition-box__label">Quick Answer</div>
+          <p>
+            A good marketing ROI is <strong>5:1 (500%)</strong> — earning $5 in revenue for every $1
+            spent on marketing. This is the most widely cited benchmark. A 10:1 ratio (1,000%) is
+            considered excellent. Anything below 2:1 (200%) is generally not sustainable when overhead
+            costs are included. Benchmarks vary significantly by channel: email averages 4,200%,
+            SEO 275%, paid search 200%.
+          </p>
+        </div>
+
+        <h2>The Standard Benchmark: 5:1 ROI</h2>
+        <p>
+          The 5:1 ratio is the most commonly referenced benchmark in marketing — it means you earn
+          $5 in revenue for every $1 invested. At this level, you have recovered your spend, covered
+          typical overhead costs, and generated a meaningful profit on top.
+        </p>
+        <p>
+          Where does this number come from? It isn't a law or a published standard — it emerged
+          as a rule of thumb because most businesses running efficiently across multiple channels
+          land somewhere between 400% and 600% blended ROI when properly attributed. The 5:1 ratio
+          sits at the midpoint and has stuck.
+        </p>
+
+        <!-- ROI RANGES TABLE — plain HTML for AIO extraction -->
+        <div class="formula-box">
+          <p class="formula-title">Marketing ROI Ranges — What They Mean</p>
+          <p class="formula-text">ROI = (Revenue from marketing − Marketing cost) ÷ Marketing cost × 100</p>
+        </div>
+
+        <div class="bench-table-wrap" style="margin: var(--space-6) 0;">
+          <table class="bench-table">
+            <thead>
+              <tr>
+                <th scope="col">ROI Range</th>
+                <th scope="col">What It Means</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color:var(--error)">Below 0%</strong></td>
+                <td>Spending more than you're earning. Operating at a loss.</td>
+                <td>Pause campaign immediately. Review targeting and offer.</td>
+              </tr>
+              <tr style="background: var(--off-white);">
+                <td><strong>0% – 100%</strong></td>
+                <td>Breaking even to modest return. Recovering spend but little profit.</td>
+                <td>Acceptable for top-of-funnel brand awareness only. Not for direct response.</td>
+              </tr>
+              <tr>
+                <td><strong style="color: #92400e;">100% – 300%</strong></td>
+                <td>Positive ROI. Earning $2–$4 per $1 spent.</td>
+                <td>Solid baseline. Optimise to push toward 500%+.</td>
+              </tr>
+              <tr style="background: var(--off-white);">
+                <td><strong style="color: var(--success);">300% – 700%</strong></td>
+                <td>Strong performance. Above the 5:1 benchmark.</td>
+                <td>Scale budget. This channel is working.</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--teal);">700%+</strong></td>
+                <td>Excellent. Top-quartile performance.</td>
+                <td>Protect this channel. Investigate what's driving it and replicate.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Why "Good" Depends on the Channel</h2>
+        <p>
+          The 5:1 benchmark is a useful starting point, but treating it as universal is a mistake.
+          Email marketing routinely returns 4,200% ROI while display advertising often struggles
+          to hit 100% — both in the same company, in the same quarter. What's "good" depends
+          entirely on which channel you're measuring.
+        </p>
+        <p>
+          The reason for this spread is fundamental economics. Email has near-zero marginal cost
+          — once your list is built, sending to 10,000 people costs almost the same as sending to
+          1,000. Display advertising has hard per-impression costs that scale linearly. The ROI
+          ceiling of each channel is structurally different.
+        </p>
+
+        <!-- CHANNEL BENCHMARK TABLE -->
+        <section class="bench-section" aria-labelledby="channel-bench-heading">
+          <h2 id="channel-bench-heading">Marketing ROI Benchmarks by Channel — 2026</h2>
+          <span class="bench-date">Updated July 2026</span>
+          <div class="bench-table-wrap">
+            <table class="bench-table">
+              <caption class="sr-only">Average marketing ROI by channel, 2026</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Channel</th>
+                  <th scope="col">Average ROI</th>
+                  <th scope="col">Typical Range</th>
+                  <th scope="col">Key Consideration</th>
+                </tr>
+              </thead>
+              <tbody>
+                {channelBenchmarks.map((row, i) => (
+                  <tr style={i % 2 !== 0 ? 'background: var(--off-white)' : ''}>
+                    <td>{row.channel}</td>
+                    <td><strong>{row.avg}</strong></td>
+                    <td>{row.range}</td>
+                    <td style="font-size: var(--text-sm); color: var(--text-mid);">{row.note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="bench-source">
+            Sources: Litmus Email ROI Report 2026, WordStream Paid Search Benchmarks,
+            HubSpot State of Marketing 2026, Salesforce State of Marketing 2026,
+            Content Marketing Institute 2026 Report.
+          </p>
+        </section>
+
+        <h2>The Problem with Comparing Channels Directly</h2>
+        <p>
+          The table above can be misleading if read naively. Email's 4,200% ROI looks astonishing
+          compared to paid search's 200% — but they aren't competing for the same job.
+        </p>
+        <p>
+          Email nurtures existing relationships. Paid search acquires brand-new customers at the
+          moment of purchase intent. A business with no existing email list has no email marketing ROI
+          to speak of. Comparing the two is like comparing the cost of keeping an existing customer
+          happy versus the cost of finding a new one.
+        </p>
+        <p>
+          The more useful question is: <strong>what ROI should I expect from this specific channel,
+          at this stage of my business, in my industry?</strong>
+        </p>
+
+        <!-- INDUSTRY BENCHMARKS TABLE -->
+        <section class="bench-section" aria-labelledby="industry-bench-heading">
+          <h2 id="industry-bench-heading">What Is a Good Marketing ROI by Industry?</h2>
+          <span class="bench-date">Updated July 2026</span>
+          <div class="bench-table-wrap">
+            <table class="bench-table">
+              <caption class="sr-only">Good marketing ROI targets by industry, 2026</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Industry</th>
+                  <th scope="col">Target ROI Range</th>
+                  <th scope="col">Note</th>
+                </tr>
+              </thead>
+              <tbody>
+                {industryBenchmarks.map((row, i) => (
+                  <tr style={i % 2 !== 0 ? 'background: var(--off-white)' : ''}>
+                    <td>{row.industry}</td>
+                    <td><strong>{row.target}</strong></td>
+                    <td style="font-size: var(--text-sm); color: var(--text-mid);">{row.note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="bench-source">
+            Sources: Gartner CMO Survey 2025, HubSpot State of Marketing 2026,
+            Wordstream Industry Benchmarks 2026. Ranges represent achievable targets
+            for mid-market companies with 12+ months of marketing programme history.
+          </p>
+        </section>
+
+        <h2>The Two Marketing ROI Formulas You Need to Know</h2>
+        <p>
+          Most ROI discussions use the basic formula — but it overstates performance for
+          product businesses by ignoring the cost of what you're selling.
+        </p>
+
+        <div class="formula-box">
+          <p class="formula-title">Formula 1 — Basic ROMI (Return on Marketing Investment)</p>
+          <p class="formula-text">ROMI = (Revenue from marketing − Marketing cost) ÷ Marketing cost × 100</p>
+          <div class="formula-example">
+            <strong>Example:</strong> Campaign generated $50,000 revenue, cost $10,000.
+            ($50,000 − $10,000) ÷ $10,000 × 100 = <strong>400% ROMI</strong>
+          </div>
+        </div>
+
+        <div class="formula-box" style="margin-top: var(--space-4);">
+          <p class="formula-title">Formula 2 — Gross Profit ROI (more accurate for product businesses)</p>
+          <p class="formula-text">ROI = ((Revenue × Gross Margin %) − Marketing Spend) ÷ Marketing Spend × 100</p>
+          <div class="formula-example">
+            <strong>Example:</strong> $200,000 revenue, 60% gross margin, $50,000 marketing spend.
+            (($200,000 × 60%) − $50,000) ÷ $50,000 × 100 =
+            ($120,000 − $50,000) ÷ $50,000 × 100 = <strong>140% gross-profit ROI</strong>
+          </div>
+        </div>
+
+        <p>
+          Notice how the same campaign goes from looking like a strong performer (400% basic ROMI)
+          to a modest one (140% gross-profit ROI) once you account for the cost of goods.
+          This is why gross-profit ROI gives a more honest picture — especially for eCommerce
+          and physical product businesses with margins below 60%.
+        </p>
+
+        <h2>What Causes Low Marketing ROI — and How to Fix It</h2>
+        <p>
+          Before concluding that a channel "doesn't work," most low-ROI campaigns share common root
+          causes that are fixable:
+        </p>
+        <p>
+          <strong>Wrong audience targeting</strong> is the most common culprit in paid channels.
+          You're paying to reach people who were never going to buy. Narrow your audience, raise
+          your bids on high-intent signals, and exclude irrelevant segments before abandoning the channel.
+        </p>
+        <p>
+          <strong>Poor landing page conversion</strong> means money is being spent to send people
+          to a page that doesn't convert. Even a 1% conversion rate improvement at 10,000 monthly
+          clicks can add 100 conversions — transforming an unprofitable campaign into a profitable one
+          without spending an extra dollar.
+        </p>
+        <p>
+          <strong>Misattribution</strong> is particularly common for SEO and content marketing,
+          where value accrues over months. A blog post written in January may drive conversions in
+          August — basic last-click attribution won't capture this. Use multi-touch attribution
+          or time-lag reports in GA4 before deciding that organic channels aren't working.
+        </p>
+        <p>
+          <strong>Measuring the wrong time window</strong> affects long-cycle channels. A SaaS
+          company with a 90-day sales cycle shouldn't judge paid search ROI on 30-day results.
+          Match your measurement window to your average time-to-close.
+        </p>
+
+        <h2>ROI vs. ROAS — Which Should You Use?</h2>
+        <p>
+          ROAS (Return on Ad Spend) is often confused with ROI — they measure different things.
+        </p>
+        <p>
+          <strong>ROAS</strong> = Revenue ÷ Ad Spend. It tells you how much revenue each ad
+          dollar generates — useful for comparing individual campaigns and ad sets. A 4× ROAS
+          means $4 of revenue per $1 of ad spend.
+        </p>
+        <p>
+          <strong>ROI</strong> = (Revenue − All Marketing Costs) ÷ All Marketing Costs × 100.
+          It accounts for all costs — agency fees, tools, staff time — not just media spend.
+          ROI tells you whether the overall marketing investment is profitable.
+        </p>
+        <p>
+          Use ROAS for optimising campaigns within a channel. Use ROI to evaluate whether the
+          channel deserves budget at all. A campaign with a strong ROAS can still have a negative
+          ROI if agency fees eat the profit.
+        </p>
+
+        <!-- CALCULATOR CTA -->
+        <div style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: var(--radius-lg); padding: var(--space-8); margin: var(--space-8) 0; color: white; text-align: center;">
+          <p style="font-size: var(--text-xl); font-weight: 800; margin-bottom: var(--space-2); letter-spacing: -0.02em;">Calculate Your Marketing ROI</p>
+          <p style="color: rgba(255,255,255,.75); margin-bottom: var(--space-6);">
+            Enter your campaign revenue and cost. Supports basic ROMI and gross-profit ROI with COGS.
+            Includes channel presets and benchmark comparison.
+          </p>
+          <a
+            href="/marketing-roi-calculator/"
+            style="display: inline-block; background: var(--teal); color: var(--navy); font-weight: 800; padding: var(--space-3) var(--space-8); border-radius: var(--radius); text-decoration: none; font-size: var(--text-lg);"
+          >
+            Use the Free ROI Calculator →
+          </a>
+        </div>
+
+        <h2>What a "Good" Marketing ROI Actually Requires</h2>
+        <p>
+          Reaching and sustaining a 5:1 ROI isn't an accident — it requires three things working together:
+        </p>
+        <p>
+          <strong>Accurate attribution.</strong> You can only optimise what you can measure. At minimum,
+          you need UTM parameters on all links, a properly configured GA4 property, and consistent
+          CRM tagging to match leads to revenue. Without this, you'll be optimising based on
+          incomplete data and will systematically under-invest in channels that work.
+        </p>
+        <p>
+          <strong>Long enough measurement windows.</strong> SEO, content, and email list building
+          all have compounding returns that take 6–12 months to show up in ROI calculations.
+          Measuring them at 90 days produces misleadingly low numbers that lead to premature cuts.
+        </p>
+        <p>
+          <strong>A consistent offer and conversion path.</strong> Great marketing can only move
+          people to the edge of a decision — the product, pricing, and landing page have to close it.
+          A 5:1 ROI requires a compelling offer as much as it requires efficient media buying.
+        </p>
+
+        <!-- RELATED CALCULATORS -->
+        <div style="background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-6); margin-top: var(--space-8);">
+          <p style="font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mid); margin-bottom: var(--space-4);">Related Calculators</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-3);">
+            <a href="/marketing-roi-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📈 Marketing ROI Calculator</a>
+            <a href="/email-marketing-roi-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">✉️ Email Marketing ROI Calculator</a>
+            <a href="/digital-marketing-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📊 Digital Marketing Calculator</a>
+            <a href="/conversion-rate-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">🔄 Conversion Rate Calculator</a>
+          </div>
+        </div>
+
+        <!-- AUTHOR NOTE -->
+        <div style="display:flex; align-items:flex-start; gap: var(--space-4); padding: var(--space-6); background: var(--teal-faint); border-radius: var(--radius-lg); margin-top: var(--space-8); border: 1px solid rgba(0,196,179,.2);">
+          <div style="width:44px; height:44px; background: var(--teal); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:800; color:var(--navy); font-size: var(--text-lg);">W</div>
+          <div>
+            <p style="font-weight:700; color:var(--navy); margin-bottom: 4px;">Waseem Shahzad</p>
+            <p style="font-size: var(--text-sm); color: var(--text-mid); line-height:1.5;">
+              Digital marketing professional. Benchmarks in this article are sourced from
+              Litmus, WordStream, HubSpot, Salesforce, and Content Marketing Institute —
+              all linked in the sources section below each table.
+              <a href="/about/" style="color: var(--teal-dark);">About the author →</a>
+            </p>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- SIDEBAR / TOC (desktop) -->
+      <aside class="article-sidebar" aria-label="Table of contents">
+        <div class="toc-box">
+          <p class="toc-title">In this article</p>
+          <nav aria-label="Article table of contents">
+            <ul class="toc-list">
+              <li><a href="#article-h1">What Is a Good ROI?</a></li>
+              <li><a href="#channel-bench-heading">ROI by Channel</a></li>
+              <li><a href="#industry-bench-heading">ROI by Industry</a></li>
+              <li><a href="#faq-section">FAQ</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="toc-calc-cta">
+          <p>Calculate your ROI now</p>
+          <a href="/marketing-roi-calculator/">Try the free calculator →</a>
+        </div>
+      </aside>
+
+    </div><!-- /.article-layout -->
+
+    <!-- FAQ -->
+    <div id="faq-section" style="max-width: 720px;">
+      <FAQ items={faqItems} title="Marketing ROI — Questions Answered" />
+    </div>
+
+    <!-- Back to blog -->
+    <div style="margin: var(--space-12) 0 var(--space-8);">
+      <a href="/blog/" style="color: var(--teal-dark); font-weight: 600; text-decoration: none;">← Back to all articles</a>
+    </div>
+
+  </div>
+</Base>
+
+<style>
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: var(--space-12);
+    align-items: start;
+    margin-top: var(--space-8);
+  }
+
+  .article-body { min-width: 0; }
+
+  .article-body h2 {
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin: var(--space-8) 0 var(--space-4);
+    line-height: 1.25;
+  }
+
+  .article-body p {
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: var(--space-4);
+    font-size: var(--text-base);
+  }
+
+  .article-body strong { color: var(--text-main); }
+
+  /* Sidebar */
+  .article-sidebar {
+    position: sticky;
+    top: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .toc-box {
+    background: var(--off-white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+  }
+
+  .toc-title {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--text-light);
+    margin-bottom: var(--space-3);
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .toc-list a {
+    font-size: var(--text-sm);
+    color: var(--text-mid);
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 1.4;
+    display: block;
+    padding: 2px 0 2px var(--space-3);
+    border-left: 2px solid var(--border);
+    transition: color .15s, border-color .15s;
+  }
+
+  .toc-list a:hover {
+    color: var(--teal-dark);
+    border-left-color: var(--teal);
+  }
+
+  .toc-calc-cta {
+    background: var(--navy);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    text-align: center;
+  }
+
+  .toc-calc-cta p {
+    color: rgba(255,255,255,.7);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-3);
+    font-weight: 600;
+  }
+
+  .toc-calc-cta a {
+    display: block;
+    background: var(--teal);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius);
+    text-decoration: none;
+  }
+
+  .toc-calc-cta a:hover { background: var(--teal-dark); color: white; }
+
+  @media (max-width: 768px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+    .article-sidebar { display: none; }
+  }
+</style>
