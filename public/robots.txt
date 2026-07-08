@@ -1,11 +1,14 @@
 # robots.txt — freemarketingcalculator.com
-# Free Marketing Calculators — freemarketingcalculator.com
-# Updated: July 6, 2026
+# Free Marketing Calculators
+# Last updated: July 7, 2026
 
-# ── All standard crawlers ────────────────────────────────────────────────────
+# ── Production domain: allow all crawlers ────────────────────────────────────
+# NOTE: The *.pages.dev subdomain is blocked via 301 redirect (Cloudflare middleware)
+# All canonical URLs point to freemarketingcalculator.com
+
 User-agent: *
 Allow: /
-# No pages blocked — all 14 pages are public and indexable
+Disallow: /cdn-cgi/
 
 # ── Google ───────────────────────────────────────────────────────────────────
 User-agent: Googlebot
@@ -14,23 +17,11 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Googlebot-News
-Allow: /
-
 # ── Bing / Microsoft (powers ChatGPT Browse) ─────────────────────────────────
 User-agent: Bingbot
 Allow: /
 
-User-agent: msnbot
-Allow: /
-
-User-agent: msnbot-media
-Allow: /
-
-# ── OpenAI / ChatGPT ─────────────────────────────────────────────────────────
+# ── AI crawlers — explicitly welcomed for AEO/GEO citations ─────────────────
 User-agent: GPTBot
 Allow: /
 
@@ -40,57 +31,34 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
-# ── Anthropic / Claude ───────────────────────────────────────────────────────
 User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-Web
 Allow: /
 
 User-agent: anthropic-ai
 Allow: /
 
-# ── Perplexity ───────────────────────────────────────────────────────────────
 User-agent: PerplexityBot
 Allow: /
 
-# ── You.com ──────────────────────────────────────────────────────────────────
 User-agent: YouBot
 Allow: /
 
-# ── DuckDuckGo ───────────────────────────────────────────────────────────────
 User-agent: DuckAssistBot
 Allow: /
 
-User-agent: DuckDuckBot
-Allow: /
-
-# ── Meta / Facebook ──────────────────────────────────────────────────────────
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: FacebookBot
-Allow: /
-
-# ── Apple ────────────────────────────────────────────────────────────────────
 User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
-# ── Yandex ───────────────────────────────────────────────────────────────────
+User-agent: FacebookBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
 User-agent: YandexBot
-Allow: /
-
-# ── Other search engines ──────────────────────────────────────────────────────
-User-agent: Slurp
-Allow: /
-
-User-agent: Baiduspider
-Allow: /
-
-User-agent: Sogou
 Allow: /
 
 # ── SEO research tools (crawl-delay to be a good citizen) ────────────────────
@@ -106,9 +74,5 @@ User-agent: MJ12bot
 Allow: /
 Crawl-delay: 10
 
-User-agent: DotBot
-Allow: /
-Crawl-delay: 5
-
-# ── Sitemaps ─────────────────────────────────────────────────────────────────
+# ── Sitemap ──────────────────────────────────────────────────────────────────
 Sitemap: https://freemarketingcalculator.com/sitemap-index.xml
