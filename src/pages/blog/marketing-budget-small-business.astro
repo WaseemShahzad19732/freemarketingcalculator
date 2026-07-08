@@ -1,0 +1,221 @@
+---
+import Base from '../../layouts/Base.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const slug      = 'blog/marketing-budget-small-business';
+const title     = 'How to Set a Marketing Budget for a Small Business (2026 Guide)';
+const description = 'A step-by-step guide to setting a marketing budget for small businesses. Covers the percentage method, objective-based budgeting, channel allocation, and common mistakes.';
+const published = 'July 7, 2026';
+const readTime  = '7 min read';
+
+const stageGuide = [
+  { stage: 'Pre-revenue / Launch',      budget: '15–25% of target revenue', priority: 'Brand awareness, social proof, first customers', avoid: 'Investing heavily in SEO — too slow for early stage' },
+  { stage: 'Early Growth ($0–$500K)',   budget: '12–20% of revenue',         priority: 'Paid acquisition, email list building, content foundation', avoid: 'Spreading budget across 5+ channels at once' },
+  { stage: 'Scaling ($500K–$2M)',       budget: '8–14% of revenue',          priority: 'Double down on what works, build SEO/content moat', avoid: 'Copying enterprise tactics with startup budget' },
+  { stage: 'Established ($2M–$10M)',    budget: '6–10% of revenue',          priority: 'Channel diversification, brand investment, retention', avoid: 'Cutting marketing in slow quarters — compounding loss' },
+];
+
+const channelAlloc = [
+  { channel: 'Paid Search / Google Ads',      pct: '30–40%', why: 'Captures high-intent searches. Fast results. Measurable.' },
+  { channel: 'Social Media (paid + organic)',  pct: '20–25%', why: 'Builds brand, generates demand. TikTok/Instagram for B2C; LinkedIn for B2B.' },
+  { channel: 'Content & SEO',                 pct: '15–20%', why: 'Long-term compounding asset. Lowest CPA after 12–18 months.' },
+  { channel: 'Email Marketing',               pct: '5–10%',  why: 'Highest ROI channel. Nurtures existing audience.' },
+  { channel: 'Tools & Technology',            pct: '8–12%',  why: 'CRM, email platform, analytics, scheduling tools.' },
+  { channel: 'Other / Testing',              pct: '5–10%',  why: 'Reserve for experimentation. Don\'t over-plan this bucket.' },
+];
+
+const faqItems = [
+  { q: 'How much should a small business spend on marketing?', a: 'Small businesses with revenues under $5M typically spend 7–15% of revenue on marketing, depending on growth stage. The US Small Business Administration recommends 7–8% for established businesses. Early-stage businesses building initial awareness should budget 12–20% to drive growth.' },
+  { q: 'What is a realistic marketing budget for a startup?', a: 'Pre-revenue startups should plan 15–25% of their target revenue as a marketing budget. If you\'re targeting $500,000 in first-year revenue, budget $75,000–$125,000 for marketing. The exact figure depends on your customer acquisition cost (CAC) and how competitive your market is.' },
+  { q: 'What is the most effective marketing for small businesses?', a: 'The highest-ROI channels for small businesses are typically: (1) Email marketing — $36:$1 average ROI, low cost. (2) Local SEO — especially for service businesses. (3) Google Ads — captures high-intent searches immediately. (4) Content marketing — slower but compounds over time. Start with one or two channels you can execute well before expanding.' },
+  { q: 'Should a small business hire a marketing agency or do it in-house?', a: 'For businesses under $500K revenue, in-house with freelancer support is usually more cost-effective. Agency retainers start at $2,000–$5,000/month and make sense once you have a proven product, consistent revenue, and need to scale. Hybrid approach — freelancers for execution, strategy in-house — often works best for $500K–$2M businesses.' },
+  { q: 'How do I track if my marketing budget is being spent well?', a: 'Set up GA4 (free) with UTM parameters on all links. Track cost per lead (CPL), cost per acquisition (CPA), and ROI by channel. Review monthly: pause channels with CPA above your average order value and reinvest in those below. The biggest mistake small businesses make is spending without attribution.' },
+];
+
+const articleSchema = {
+  "@type": "Article", "headline": title, "description": description,
+  "datePublished": "2026-07-07", "dateModified": "2026-07-07",
+  "author": { "@type": "Person", "name": "Waseem Shahzad", "url": "https://freemarketingcalculator.com/about/" },
+  "publisher": { "@id": "https://freemarketingcalculator.com/#org" },
+  "mainEntityOfPage": `https://freemarketingcalculator.com/${slug}/`,
+};
+const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
+const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
+  { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://freemarketingcalculator.com/blog/" },
+  { "@type": "ListItem", "position": 3, "name": "Marketing Budget Small Business", "item": `https://freemarketingcalculator.com/${slug}/` }
+]};
+---
+
+<Base title={title} description={description} slug={slug} schema={[articleSchema, faqSchema, breadcrumbSchema]}>
+  <section class="page-hero" aria-labelledby="art-h1">
+    <div class="container">
+      <p class="eyebrow">Budget Planning · {readTime}</p>
+      <h1 id="art-h1">How to Set a Marketing Budget for a Small Business</h1>
+      <p class="citation">
+        A practical step-by-step guide — covering the percentage method,
+        objective-based budgeting, how to allocate across channels,
+        and the four mistakes that waste the most small business marketing spend.
+      </p>
+      <div class="meta-badges">
+        <span class="badge">📅 {published}</span>
+        <span class="badge">✓ {readTime}</span>
+        <span class="badge">✓ For businesses under $10M</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="article-layout">
+      <article class="article-body prose">
+
+        <div class="definition-box" style="margin-top: var(--space-8);">
+          <div class="definition-box__label">The Simple Answer</div>
+          <p>Small businesses under $5M revenue typically spend <strong>7–15% of revenue on marketing</strong>. Early-stage businesses targeting growth spend 12–20%. Use the <a href="/marketing-budget-calculator/" style="color: var(--teal-dark);">free Marketing Budget Calculator</a> to get an instant recommendation based on your revenue and industry.</p>
+        </div>
+
+        <h2>Method 1 — Percentage of Revenue (Most Common)</h2>
+        <p>The simplest and most widely used approach: take a percentage of your current or projected revenue and set that as your marketing budget.</p>
+
+        <div class="formula-box">
+          <p class="formula-title">Formula</p>
+          <p class="formula-text">Marketing Budget = Annual Revenue × Benchmark %</p>
+          <div class="formula-example">
+            <strong>Example:</strong> $800,000 revenue × 10% = $80,000 annual marketing budget ($6,667/month)
+          </div>
+        </div>
+
+        <p><strong>Advantage:</strong> Simple, scales automatically with the business, easy to communicate to stakeholders.</p>
+        <p><strong>Limitation:</strong> Doesn't account for growth ambitions. A company trying to double revenue needs to spend more than the maintenance rate. Adjust the percentage upward if you're in growth mode.</p>
+
+        <h2>Budget by Business Stage</h2>
+        <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
+          <table class="bench-table">
+            <thead><tr><th scope="col">Stage</th><th scope="col">Budget % of Revenue</th><th scope="col">Priority Channels</th><th scope="col">Avoid</th></tr></thead>
+            <tbody>
+              {stageGuide.map((row, i) => (
+                <tr style={i % 2 !== 0 ? 'background: var(--off-white)' : ''}>
+                  <td><strong>{row.stage}</strong></td>
+                  <td>{row.budget}</td>
+                  <td style="font-size: var(--text-sm);">{row.priority}</td>
+                  <td style="font-size: var(--text-sm); color: var(--text-mid);">{row.avoid}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Method 2 — Objective-Based Budgeting (More Accurate)</h2>
+        <p>Instead of starting with a percentage, start with your revenue goal and work backwards.</p>
+
+        <div class="formula-box">
+          <p class="formula-title">Step-by-Step</p>
+          <p class="formula-text" style="font-size: var(--text-base); line-height: 2;">
+            1. Set revenue goal (e.g. $1,200,000)<br/>
+            2. Divide by average deal value (e.g. $1,200) = 1,000 customers needed<br/>
+            3. Divide by close rate (e.g. 10%) = 10,000 leads needed<br/>
+            4. Multiply leads by target cost per lead (e.g. $40) = $400,000 budget
+          </p>
+          <div class="formula-example">This method tells you what you <em>need</em> to spend to hit a specific goal — not just what's typical.</div>
+        </div>
+
+        <p>Use the <a href="/inbound-marketing-calculator/" style="color: var(--teal-dark);">Inbound Marketing Calculator</a> to do this calculation automatically. Enter your revenue goal and conversion rates — it outputs exactly how much traffic, leads, and marketing investment you need.</p>
+
+        <h2>How to Allocate Your Budget Across Channels</h2>
+        <p>Once you have a total budget, the most important decision is how to split it. Here's a starting framework for a small B2B or B2C business:</p>
+
+        <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
+          <table class="bench-table">
+            <thead><tr><th scope="col">Channel</th><th scope="col">% of Budget</th><th scope="col">Why</th></tr></thead>
+            <tbody>
+              {channelAlloc.map((row, i) => (
+                <tr style={i % 2 !== 0 ? 'background: var(--off-white)' : ''}>
+                  <td><strong>{row.channel}</strong></td>
+                  <td>{row.pct}</td>
+                  <td style="font-size: var(--text-sm); color: var(--text-mid);">{row.why}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="bench-source">This is a starting framework, not a rule. Your best channel mix depends on where your customers are and what you've already tested. After 90 days, shift budget toward whatever is producing the lowest CPA.</p>
+
+        <h2>The 4 Mistakes That Waste the Most Small Business Marketing Budget</h2>
+        <p><strong>Mistake 1: Spending without tracking.</strong> If you can't tell which channel generated a sale, you'll keep funding the wrong ones. Set up UTM parameters on every link, use GA4, and connect your CRM to your advertising platforms before spending a pound on ads.</p>
+        <p><strong>Mistake 2: Spreading too thin.</strong> A $3,000/month marketing budget split across Google Ads, Facebook, Instagram, LinkedIn, TikTok, and SEO is $500 per channel — not enough to learn anything meaningful on any of them. Pick two channels, run them properly for 90 days, and only expand once you've found what works.</p>
+        <p><strong>Mistake 3: Treating SEO as free.</strong> Organic search is the channel with the highest long-term ROI — but it requires consistent investment in content, technical maintenance, and link building. Expecting SEO to "just happen" without budget is how companies end up with no organic traffic after 18 months.</p>
+        <p><strong>Mistake 4: Cutting in slow periods.</strong> Marketing has a compounding effect — audiences built in Q1 convert in Q3. Cutting budget during a slow quarter reduces the pipeline for every quarter that follows. If anything, slow periods are when you should maintain or increase spend, because your competitors are pulling back and acquisition costs are lower.</p>
+
+        <h2>A Simple 90-Day Plan</h2>
+        <p><strong>Month 1 — Foundation.</strong> Set up tracking (GA4 + UTMs). Build or audit your website's conversion rate. Start email list capture if you haven't. This month's marketing spend goes to setup, not ads.</p>
+        <p><strong>Month 2 — Test.</strong> Launch one paid channel (Google Ads for most businesses). Run a controlled budget — enough to get 50+ clicks per day — for 30 days. Don't change campaigns mid-month.</p>
+        <p><strong>Month 3 — Optimise and expand.</strong> Analyse month 2 data. Pause ad groups with CPA above your target. Increase budget on what's working. Add a second channel only if month 2 was profitable.</p>
+
+        <!-- CTA -->
+        <div style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: var(--radius-lg); padding: var(--space-8); margin: var(--space-8) 0; text-align: center; color: white;">
+          <p style="font-size: var(--text-xl); font-weight: 800; margin-bottom: var(--space-2);">Get Your Marketing Budget Recommendation</p>
+          <p style="color: rgba(255,255,255,.75); margin-bottom: var(--space-6);">Enter your revenue and industry. Get an instant budget recommendation with channel allocation breakdown. Free, no signup.</p>
+          <a href="/marketing-budget-calculator/" style="display:inline-block; background:var(--teal); color:var(--navy); font-weight:800; padding:var(--space-3) var(--space-8); border-radius:var(--radius); text-decoration:none; font-size:var(--text-lg);">Use the Free Budget Calculator →</a>
+        </div>
+
+        <div style="background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-6); margin-top: var(--space-8);">
+          <p style="font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mid); margin-bottom: var(--space-4);">Related Tools</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-3);">
+            <a href="/marketing-budget-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">💰 Marketing Budget Calculator</a>
+            <a href="/marketing-roi-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📈 Marketing ROI Calculator</a>
+            <a href="/inbound-marketing-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">🎯 Inbound Marketing Calculator</a>
+            <a href="/marketing-budget-benchmarks/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📊 2026 Budget Benchmarks</a>
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:flex-start; gap: var(--space-4); padding: var(--space-6); background: var(--teal-faint); border-radius: var(--radius-lg); margin-top: var(--space-8); border: 1px solid rgba(0,196,179,.2);">
+          <div style="width:44px; height:44px; background: var(--teal); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:800; color:var(--navy); font-size: var(--text-lg);">W</div>
+          <div>
+            <p style="font-weight:700; color:var(--navy); margin-bottom: 4px;">Waseem Shahzad</p>
+            <p style="font-size: var(--text-sm); color: var(--text-mid); line-height:1.5;">Benchmarks from Gartner CMO Survey 2025, Deloitte CMO Survey 2025, US Small Business Administration guidelines, and HubSpot State of Marketing 2026. <a href="/about/" style="color: var(--teal-dark);">About →</a></p>
+          </div>
+        </div>
+
+      </article>
+
+      <aside class="article-sidebar">
+        <div class="toc-box">
+          <p class="toc-title">In this article</p>
+          <nav><ul class="toc-list">
+            <li><a href="#art-h1">The Simple Answer</a></li>
+            <li><a href="#faq-section">FAQ</a></li>
+          </ul></nav>
+        </div>
+        <div class="toc-calc-cta">
+          <p>Get your budget</p>
+          <a href="/marketing-budget-calculator/">Free calculator →</a>
+        </div>
+      </aside>
+    </div>
+
+    <div id="faq-section" style="max-width: 720px;">
+      <FAQ items={faqItems} title="Small Business Marketing Budget — Questions Answered" />
+    </div>
+    <div style="margin: var(--space-12) 0 var(--space-8);">
+      <a href="/blog/" style="color: var(--teal-dark); font-weight: 600; text-decoration: none;">← Back to all articles</a>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .article-layout { display: grid; grid-template-columns: 1fr 260px; gap: var(--space-12); align-items: start; margin-top: var(--space-8); }
+  .article-body { min-width: 0; }
+  .article-body h2 { font-size: var(--text-2xl); font-weight: 800; letter-spacing: -0.02em; color: var(--navy); margin: var(--space-8) 0 var(--space-4); line-height: 1.25; }
+  .article-body p { color: var(--text-mid); line-height: 1.8; margin-bottom: var(--space-4); font-size: var(--text-base); }
+  .article-body strong { color: var(--text-main); }
+  .article-sidebar { position: sticky; top: 90px; display: flex; flex-direction: column; gap: var(--space-4); }
+  .toc-box { background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5); }
+  .toc-title { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-light); margin-bottom: var(--space-3); }
+  .toc-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+  .toc-list a { font-size: var(--text-sm); color: var(--text-mid); text-decoration: none; font-weight: 500; padding: 2px 0 2px var(--space-3); border-left: 2px solid var(--border); display: block; transition: color .15s, border-color .15s; }
+  .toc-list a:hover { color: var(--teal-dark); border-left-color: var(--teal); }
+  .toc-calc-cta { background: var(--navy); border-radius: var(--radius-lg); padding: var(--space-5); text-align: center; }
+  .toc-calc-cta p { color: rgba(255,255,255,.7); font-size: var(--text-sm); margin-bottom: var(--space-3); font-weight: 600; }
+  .toc-calc-cta a { display: block; background: var(--teal); color: var(--navy); font-weight: 700; font-size: var(--text-sm); padding: var(--space-2) var(--space-4); border-radius: var(--radius); text-decoration: none; }
+  @media (max-width: 768px) { .article-layout { grid-template-columns: 1fr; } .article-sidebar { display: none; } }
+</style>

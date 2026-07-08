@@ -1,0 +1,394 @@
+---
+import Base from '../../layouts/Base.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const slug      = 'blog/digital-marketing-metrics-guide';
+const title     = 'Digital Marketing Metrics Explained: CPM, CPC, CTR, ROAS, CPA (2026)';
+const description = 'CPM, CPC, CTR, ROAS, CPA — every digital marketing metric explained in plain English. Formulas, 2026 benchmarks, and when to use each one.';
+const published = 'July 7, 2026';
+const readTime  = '8 min read';
+
+const metrics = [
+  {
+    name: 'CPM',
+    full: 'Cost Per Mille (Cost Per 1,000 Impressions)',
+    formula: 'CPM = (Total Ad Spend ÷ Impressions) × 1,000',
+    example: '$500 spend, 100,000 impressions → ($500 ÷ 100,000) × 1,000 = $5.00 CPM',
+    use: 'Measuring the efficiency of brand awareness campaigns. Comparing reach across platforms.',
+    avoid: 'Judging direct-response campaign performance — a low CPM is meaningless if nobody converts.',
+    benchmarks: [
+      { platform: 'Google Display Network', value: '$2–$4' },
+      { platform: 'Facebook / Instagram',   value: '$7–$11' },
+      { platform: 'LinkedIn',               value: '$30–$45' },
+      { platform: 'TikTok',                 value: '$8–$12' },
+      { platform: 'YouTube',                value: '$8–$14' },
+      { platform: 'Twitter / X',            value: '$5–$8' },
+    ],
+  },
+  {
+    name: 'CPC',
+    full: 'Cost Per Click',
+    formula: 'CPC = Total Ad Spend ÷ Total Clicks',
+    example: '$500 spend, 250 clicks → $500 ÷ 250 = $2.00 CPC',
+    use: 'Evaluating paid search and social campaigns. Comparing ad creative or audience efficiency.',
+    avoid: 'Optimising CPC alone — a low CPC with low conversion rate is worse than a high CPC with high conversion rate.',
+    benchmarks: [
+      { platform: 'Google Ads (Search)',    value: '$2.50–$4.50' },
+      { platform: 'Google Ads (Display)',   value: '$0.50–$1.50' },
+      { platform: 'Facebook / Instagram',   value: '$0.80–$1.50' },
+      { platform: 'LinkedIn',               value: '$4.00–$8.00' },
+      { platform: 'TikTok',                 value: '$0.80–$1.20' },
+      { platform: 'Twitter / X',            value: '$0.30–$0.60' },
+    ],
+  },
+  {
+    name: 'CTR',
+    full: 'Click-Through Rate',
+    formula: 'CTR = (Clicks ÷ Impressions) × 100',
+    example: '250 clicks, 100,000 impressions → (250 ÷ 100,000) × 100 = 0.25% CTR',
+    use: 'Measuring ad creative relevance. A/B testing headlines and images. Quality Score signals in Google Ads.',
+    avoid: 'Using CTR as a primary success metric — a high CTR with poor conversion rate wastes budget.',
+    benchmarks: [
+      { platform: 'Google Ads (Search)',    value: '3–6%' },
+      { platform: 'Google Ads (Display)',   value: '0.05–0.2%' },
+      { platform: 'Facebook / Instagram',   value: '0.7–1.2%' },
+      { platform: 'LinkedIn',               value: '0.3–0.6%' },
+      { platform: 'Email Marketing',        value: '2–5%' },
+      { platform: 'Twitter / X',            value: '0.8–1.5%' },
+    ],
+  },
+  {
+    name: 'ROAS',
+    full: 'Return on Ad Spend',
+    formula: 'ROAS = Revenue Generated ÷ Ad Spend',
+    example: '$22,000 revenue, $5,000 spend → $22,000 ÷ $5,000 = 4.4× ROAS',
+    use: 'Optimising paid campaigns within a channel. Comparing ad sets and audiences. Setting budget allocation.',
+    avoid: 'Confusing ROAS with ROI — ROAS ignores agency fees, creative costs, and COGS. A 4× ROAS campaign can still lose money.',
+    benchmarks: [
+      { platform: 'Google Shopping',        value: '4–8×' },
+      { platform: 'Google Search Ads',      value: '3–6×' },
+      { platform: 'Facebook Ads (eComm)',   value: '3–6×' },
+      { platform: 'Facebook Ads (Lead Gen)',value: '2–4×' },
+      { platform: 'YouTube Ads',            value: '2–4×' },
+      { platform: 'Display Remarketing',    value: '5–10×' },
+    ],
+  },
+  {
+    name: 'CPA',
+    full: 'Cost Per Acquisition (Cost Per Conversion)',
+    formula: 'CPA = Total Ad Spend ÷ Number of Conversions',
+    example: '$5,000 spend, 90 conversions → $5,000 ÷ 90 = $55.56 CPA',
+    use: 'Setting bid strategies. Evaluating campaign profitability against average order value. Comparing acquisition efficiency across channels.',
+    avoid: 'Ignoring customer lifetime value (LTV) — a high CPA is acceptable if LTV is high enough. Always compare CPA to LTV, not just AOV.',
+    benchmarks: [
+      { platform: 'Google Ads (all sectors)', value: '$45–$80' },
+      { platform: 'Facebook Ads',             value: '$18–$55' },
+      { platform: 'B2B LinkedIn Ads',         value: '$75–$200' },
+      { platform: 'Email Marketing',          value: '$5–$25' },
+      { platform: 'Organic SEO',              value: '$10–$40' },
+      { platform: 'Industry avg (eComm)',     value: '$30–$60' },
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    q: 'What is CPM in digital marketing?',
+    a: 'CPM stands for Cost Per Mille — the cost to show your ad 1,000 times. Formula: CPM = (Ad Spend ÷ Impressions) × 1,000. It measures the cost efficiency of brand awareness campaigns. Facebook averages $7–$11 CPM; LinkedIn averages $30–$45 CPM.',
+  },
+  {
+    q: 'What is a good CTR for digital marketing?',
+    a: 'A good CTR depends on the channel. Google Search Ads average 3–6% CTR; display ads average 0.05–0.2%; Facebook ads average 0.7–1.2%. Email marketing averages 2–5% CTR. Compare your CTR to the platform average for your industry, not a universal benchmark.',
+  },
+  {
+    q: 'What is the difference between ROAS and ROI?',
+    a: 'ROAS (Return on Ad Spend) = Revenue ÷ Ad Spend. It measures how much revenue each ad dollar generates. ROI (Return on Investment) = (Revenue − All Costs) ÷ All Costs × 100. ROI accounts for all costs — agency fees, creative, COGS — not just media spend. Use ROAS to optimise campaigns; use ROI to decide if the channel is worth investing in at all.',
+  },
+  {
+    q: 'What is CPA in marketing?',
+    a: 'CPA (Cost Per Acquisition) is how much you spend to acquire one customer or conversion. Formula: CPA = Total Spend ÷ Conversions. Google Ads average $45–$80 CPA across all industries; Facebook Ads average $18–$55. Whether a CPA is acceptable depends on your average order value and customer lifetime value.',
+  },
+  {
+    q: 'What does a 4× ROAS mean?',
+    a: 'A 4× ROAS means you generated $4 in revenue for every $1 spent on advertising. It\'s often cited as a break-even benchmark for eCommerce businesses with 25% profit margins. However, 4× ROAS does not guarantee profitability — you must also account for COGS, fulfilment, and overhead costs.',
+  },
+  {
+    q: 'Which metric is most important in digital marketing?',
+    a: 'It depends on your objective. For brand awareness: CPM and reach. For ad relevance: CTR. For campaign-level optimisation: ROAS. For overall profitability: ROI. For acquisition cost evaluation: CPA. No single metric tells the full story — use CPM and CTR to diagnose, CPA and ROAS to optimise, and ROI to decide.',
+  },
+];
+
+const articleSchema = {
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "datePublished": "2026-07-07",
+  "dateModified": "2026-07-07",
+  "author": { "@type": "Person", "name": "Waseem Shahzad", "url": "https://freemarketingcalculator.com/about/" },
+  "publisher": { "@id": "https://freemarketingcalculator.com/#org" },
+  "mainEntityOfPage": `https://freemarketingcalculator.com/${slug}/`,
+};
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } }))
+};
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://freemarketingcalculator.com/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "Digital Marketing Metrics Guide", "item": `https://freemarketingcalculator.com/${slug}/` }
+  ]
+};
+---
+
+<Base title={title} description={description} slug={slug} schema={[articleSchema, faqSchema, breadcrumbSchema]}>
+
+  <section class="page-hero" aria-labelledby="art-h1">
+    <div class="container">
+      <p class="eyebrow">Metrics & Analytics · {readTime}</p>
+      <h1 id="art-h1">Digital Marketing Metrics Explained: CPM, CPC, CTR, ROAS, CPA</h1>
+      <p class="citation">
+        Every metric you'll encounter in digital marketing — what it measures,
+        the formula, what good looks like, and when to use it.
+        With 2026 benchmarks by platform.
+      </p>
+      <div class="meta-badges">
+        <span class="badge">📅 {published}</span>
+        <span class="badge">✓ {readTime}</span>
+        <span class="badge">✓ 5 metrics covered</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="article-layout">
+      <article class="article-body prose">
+
+        <!-- Quick reference -->
+        <div class="definition-box" style="margin-top: var(--space-8);">
+          <div class="definition-box__label">Quick Reference — All 5 Formulas</div>
+          <p style="font-family: monospace; font-size: var(--text-sm); line-height: 2.2; color: var(--navy);">
+            <strong>CPM</strong> = (Ad Spend ÷ Impressions) × 1,000<br/>
+            <strong>CPC</strong> = Ad Spend ÷ Clicks<br/>
+            <strong>CTR</strong> = (Clicks ÷ Impressions) × 100<br/>
+            <strong>ROAS</strong> = Revenue ÷ Ad Spend<br/>
+            <strong>CPA</strong> = Ad Spend ÷ Conversions
+          </p>
+        </div>
+
+        <p style="margin-top: var(--space-6);">
+          Digital marketing runs on metrics — but the sheer number of acronyms makes it
+          easy to lose track of what matters and when. This guide covers the five metrics
+          you'll encounter in every platform, every campaign brief, and every performance
+          report. For each one: the formula, a plain-English explanation, 2026 benchmarks
+          by platform, when to use it, and when it misleads you.
+        </p>
+
+        <!-- EACH METRIC -->
+        {metrics.map((m, idx) => (
+          <section aria-labelledby={`metric-${m.name}`} style="margin-top: var(--space-10);">
+
+            <div style="display:flex; align-items:center; gap: var(--space-3); margin-bottom: var(--space-4);">
+              <div style={`width:48px; height:48px; background: var(--teal); border-radius: var(--radius); display:flex; align-items:center; justify-content:center; font-size: var(--text-xl); font-weight:800; color: var(--navy); flex-shrink:0;`}>
+                {idx + 1}
+              </div>
+              <div>
+                <h2 id={`metric-${m.name}`} style="margin:0; font-size: var(--text-2xl);">
+                  {m.name} — {m.full}
+                </h2>
+              </div>
+            </div>
+
+            <div class="formula-box" style="margin: var(--space-4) 0;">
+              <p class="formula-title">Formula</p>
+              <p class="formula-text">{m.formula}</p>
+              <div class="formula-example"><strong>Example:</strong> {m.example}</div>
+            </div>
+
+            <p><strong>Use {m.name} when:</strong> {m.use}</p>
+            <p><strong>Don't rely on {m.name} alone:</strong> {m.avoid}</p>
+
+            <h3 style="font-size: var(--text-lg); font-weight:700; color:var(--navy); margin: var(--space-4) 0 var(--space-3);">
+              {m.name} Benchmarks by Platform — 2026
+            </h3>
+            <div class="bench-table-wrap">
+              <table class="bench-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Platform</th>
+                    <th scope="col">Average {m.name}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {m.benchmarks.map((b, i) => (
+                    <tr style={i % 2 !== 0 ? 'background: var(--off-white)' : ''}>
+                      <td>{b.platform}</td>
+                      <td><strong>{b.value}</strong></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+          </section>
+        ))}
+
+        <!-- ROAS vs ROI section -->
+        <section style="margin-top: var(--space-10);" aria-labelledby="roas-vs-roi">
+          <h2 id="roas-vs-roi">ROAS vs ROI — The Most Confused Metrics in Marketing</h2>
+          <p>
+            ROAS and ROI are used interchangeably in most marketing conversations — they shouldn't be.
+            They answer different questions and lead to different decisions.
+          </p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin: var(--space-6) 0;">
+            <div style="background: var(--teal-faint); border: 1px solid rgba(0,196,179,.3); border-radius: var(--radius-lg); padding: var(--space-5);">
+              <p style="font-weight:800; color:var(--navy); font-size:var(--text-xl); margin-bottom: var(--space-2);">ROAS</p>
+              <p style="font-size: var(--text-sm); color: var(--text-mid); margin-bottom: var(--space-3);">Revenue ÷ Ad Spend</p>
+              <p style="font-size: var(--text-sm); color: var(--text-mid); line-height:1.6;">Only counts media spend in the denominator. Ignores agency fees, creative costs, COGS. Used for <strong>campaign-level optimisation</strong>.</p>
+            </div>
+            <div style="background: var(--off-white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5);">
+              <p style="font-weight:800; color:var(--navy); font-size:var(--text-xl); margin-bottom: var(--space-2);">ROI</p>
+              <p style="font-size: var(--text-sm); color: var(--text-mid); margin-bottom: var(--space-3);">(Revenue − All Costs) ÷ All Costs × 100</p>
+              <p style="font-size: var(--text-sm); color: var(--text-mid); line-height:1.6;">Accounts for all costs including COGS, overhead, agency fees. Used for <strong>investment decisions</strong>.</p>
+            </div>
+          </div>
+
+          <p>
+            A campaign showing 6× ROAS can still lose money if the gross margin is 15% and
+            agency fees add 40% to the media cost. Always use ROI — not ROAS — when deciding
+            whether a channel is worth investing in at all.
+          </p>
+        </section>
+
+        <!-- How to read a metrics dashboard -->
+        <section style="margin-top: var(--space-10);" aria-labelledby="dashboard-heading">
+          <h2 id="dashboard-heading">How to Read a Campaign Performance Dashboard</h2>
+          <p>
+            When you're looking at a campaign report, the metrics tell a story in a specific order.
+            Read them in this sequence to diagnose performance quickly:
+          </p>
+          <p>
+            <strong>1. Impressions and CPM</strong> — Is the campaign reaching enough people at a
+            reasonable cost? Low impressions usually mean budget is too low or audience targeting
+            is too narrow.
+          </p>
+          <p>
+            <strong>2. CTR</strong> — Are people engaging with the ad? A low CTR (&lt;0.5% on
+            display, &lt;2% on search) means the creative or messaging isn't resonating. Fix the
+            ad before increasing budget.
+          </p>
+          <p>
+            <strong>3. CPC</strong> — How much is each click costing? Compare to your industry
+            benchmark. High CPC on search usually means high competition for your keywords or
+            low Quality Score.
+          </p>
+          <p>
+            <strong>4. CPA</strong> — How much is each conversion costing? Compare to your average
+            order value. If CPA is higher than AOV, the campaign is losing money on every sale.
+          </p>
+          <p>
+            <strong>5. ROAS</strong> — Is the campaign generating enough revenue relative to spend?
+            This is your campaign scorecard. Target ROAS depends on your margin.
+          </p>
+          <p>
+            A campaign with great CTR but terrible CPA has a landing page problem, not an ad problem.
+            A campaign with low CTR but acceptable CPA may still be worth running — not every click
+            has to be earned cheaply if the ones that do convert are valuable.
+          </p>
+        </section>
+
+        <!-- Calculator CTA -->
+        <div style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: var(--radius-lg); padding: var(--space-8); margin: var(--space-8) 0; color: white; text-align: center;">
+          <p style="font-size: var(--text-xl); font-weight: 800; margin-bottom: var(--space-2); letter-spacing: -0.02em;">Calculate All 5 Metrics at Once</p>
+          <p style="color: rgba(255,255,255,.75); margin-bottom: var(--space-6);">
+            Enter your campaign spend, impressions, clicks, conversions, and revenue.
+            Get CPM, CPC, CTR, ROAS, and CPA instantly — no switching between tools.
+          </p>
+          <a href="/digital-marketing-calculator/"
+            style="display:inline-block; background:var(--teal); color:var(--navy); font-weight:800; padding:var(--space-3) var(--space-8); border-radius:var(--radius); text-decoration:none; font-size:var(--text-lg);">
+            Use the Free Digital Marketing Calculator →
+          </a>
+        </div>
+
+        <!-- Related articles -->
+        <div style="background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-6); margin-top: var(--space-8);">
+          <p style="font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mid); margin-bottom: var(--space-4);">Related Calculators & Articles</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-3);">
+            <a href="/digital-marketing-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📊 Digital Marketing Calculator</a>
+            <a href="/marketing-roi-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📈 Marketing ROI Calculator</a>
+            <a href="/conversion-rate-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">🔄 Conversion Rate Calculator</a>
+            <a href="/blog/what-is-a-good-marketing-roi/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📖 What Is a Good Marketing ROI?</a>
+          </div>
+        </div>
+
+        <!-- Author -->
+        <div style="display:flex; align-items:flex-start; gap: var(--space-4); padding: var(--space-6); background: var(--teal-faint); border-radius: var(--radius-lg); margin-top: var(--space-8); border: 1px solid rgba(0,196,179,.2);">
+          <div style="width:44px; height:44px; background: var(--teal); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:800; color:var(--navy); font-size: var(--text-lg);">W</div>
+          <div>
+            <p style="font-weight:700; color:var(--navy); margin-bottom: 4px;">Waseem Shahzad</p>
+            <p style="font-size: var(--text-sm); color: var(--text-mid); line-height:1.5;">
+              Digital marketing professional. Platform benchmarks sourced from WordStream, Meta Business Insights, LinkedIn Marketing Solutions, and Google Ads benchmark reports 2026.
+              <a href="/about/" style="color: var(--teal-dark);">About the author →</a>
+            </p>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="article-sidebar">
+        <div class="toc-box">
+          <p class="toc-title">In this article</p>
+          <nav>
+            <ul class="toc-list">
+              <li><a href="#metric-CPM">1. CPM</a></li>
+              <li><a href="#metric-CPC">2. CPC</a></li>
+              <li><a href="#metric-CTR">3. CTR</a></li>
+              <li><a href="#metric-ROAS">4. ROAS</a></li>
+              <li><a href="#metric-CPA">5. CPA</a></li>
+              <li><a href="#roas-vs-roi">ROAS vs ROI</a></li>
+              <li><a href="#dashboard-heading">Reading a Dashboard</a></li>
+              <li><a href="#faq-section">FAQ</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="toc-calc-cta">
+          <p>Calculate all 5 metrics</p>
+          <a href="/digital-marketing-calculator/">Free calculator →</a>
+        </div>
+      </aside>
+
+    </div>
+
+    <div id="faq-section" style="max-width: 720px;">
+      <FAQ items={faqItems} title="Digital Marketing Metrics — Questions Answered" />
+    </div>
+
+    <div style="margin: var(--space-12) 0 var(--space-8);">
+      <a href="/blog/" style="color: var(--teal-dark); font-weight: 600; text-decoration: none;">← Back to all articles</a>
+    </div>
+
+  </div>
+</Base>
+
+<style>
+  .article-layout { display: grid; grid-template-columns: 1fr 260px; gap: var(--space-12); align-items: start; margin-top: var(--space-8); }
+  .article-body { min-width: 0; }
+  .article-body h2 { font-size: var(--text-2xl); font-weight: 800; letter-spacing: -0.02em; color: var(--navy); margin: var(--space-8) 0 var(--space-4); line-height: 1.25; }
+  .article-body h3 { font-size: var(--text-xl); font-weight: 700; color: var(--navy); margin: var(--space-6) 0 var(--space-2); }
+  .article-body p { color: var(--text-mid); line-height: 1.8; margin-bottom: var(--space-4); font-size: var(--text-base); }
+  .article-body strong { color: var(--text-main); }
+  .article-sidebar { position: sticky; top: 90px; display: flex; flex-direction: column; gap: var(--space-4); }
+  .toc-box { background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5); }
+  .toc-title { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-light); margin-bottom: var(--space-3); }
+  .toc-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+  .toc-list a { font-size: var(--text-sm); color: var(--text-mid); text-decoration: none; font-weight: 500; line-height: 1.4; display: block; padding: 2px 0 2px var(--space-3); border-left: 2px solid var(--border); transition: color .15s, border-color .15s; }
+  .toc-list a:hover { color: var(--teal-dark); border-left-color: var(--teal); }
+  .toc-calc-cta { background: var(--navy); border-radius: var(--radius-lg); padding: var(--space-5); text-align: center; }
+  .toc-calc-cta p { color: rgba(255,255,255,.7); font-size: var(--text-sm); margin-bottom: var(--space-3); font-weight: 600; }
+  .toc-calc-cta a { display: block; background: var(--teal); color: var(--navy); font-weight: 700; font-size: var(--text-sm); padding: var(--space-2) var(--space-4); border-radius: var(--radius); text-decoration: none; }
+  .toc-calc-cta a:hover { background: var(--teal-dark); color: white; }
+  @media (max-width: 768px) { .article-layout { grid-template-columns: 1fr; } .article-sidebar { display: none; } }
+</style>
