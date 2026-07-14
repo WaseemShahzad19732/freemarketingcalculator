@@ -1,0 +1,242 @@
+---
+import Base from '../layouts/Base.astro';
+import FAQ from '../components/FAQ.astro';
+
+const slug        = 'cpc-calculator';
+const title       = 'CPC Calculator — Free Cost Per Click Tool (2026)';
+const description = 'Free CPC calculator — calculate cost per click, total spend, or total clicks from any two values. Includes 2026 CPC benchmarks by platform and industry.';
+
+const industryBenchmarks = [
+  { industry: 'Legal',                cpc: '$5.88',  notes: 'Highest CPC of any industry — very competitive' },
+  { industry: 'Financial Services',   cpc: '$3.44',  notes: 'Insurance, banking, investment keywords' },
+  { industry: 'B2B / SaaS',          cpc: '$3.33',  notes: 'LinkedIn and Google Search' },
+  { industry: 'Healthcare',           cpc: '$2.62',  notes: 'Regulated — compliance limits ad copy' },
+  { industry: 'Real Estate',          cpc: '$2.37',  notes: 'Local campaigns dominate' },
+  { industry: 'eCommerce (Google)',   cpc: '$1.16',  notes: 'Shopping ads competitive but scalable' },
+  { industry: 'Education',            cpc: '$2.40',  notes: 'Course and degree keywords' },
+  { industry: 'Travel & Hospitality', cpc: '$1.53',  notes: 'Seasonal — peaks in Q1 and Q3' },
+  { industry: 'Retail',               cpc: '$0.70',  notes: 'Facebook/Instagram — visual shopping' },
+  { industry: 'Technology',           cpc: '$3.80',  notes: 'B2B software — LinkedIn premium' },
+];
+
+const platformCPC = [
+  { platform: 'Google Search',       cpc: '$2.50–$4.50',  notes: 'Varies by keyword competition' },
+  { platform: 'Google Display',      cpc: '$0.50–$1.50',  notes: 'Lower intent; use for retargeting' },
+  { platform: 'Facebook / Instagram',cpc: '$0.80–$1.50',  notes: 'Best for B2C; strong targeting' },
+  { platform: 'LinkedIn',            cpc: '$4.00–$8.00',  notes: 'Expensive but high-quality B2B leads' },
+  { platform: 'TikTok',              cpc: '$0.80–$1.20',  notes: 'Growing platform; Gen Z + millennial' },
+  { platform: 'Twitter / X',         cpc: '$0.30–$0.60',  notes: 'Low cost; declining engagement' },
+  { platform: 'Pinterest',           cpc: '$0.10–$0.30',  notes: 'Very low CPC; high purchase intent' },
+  { platform: 'YouTube',             cpc: '$1.50–$3.00',  notes: 'Video-first; TrueView format' },
+];
+
+const faqItems = [
+  { q: 'What is CPC in marketing?', a: 'CPC (Cost Per Click) is the amount you pay each time someone clicks on your ad. Formula: CPC = Total Ad Spend ÷ Total Clicks. If you spent $500 and got 250 clicks, your CPC is $2.00. It\'s the primary bidding model for search advertising and one of two main models (alongside CPM) for social media.' },
+  { q: 'What is a good CPC?', a: 'A good CPC depends entirely on your industry and the value of a conversion. Google Search averages $2.50–$4.50 CPC; Facebook averages $0.80–$1.50. What makes a CPC "good" is whether it\'s below your maximum allowable CPC — calculated as: Max CPC = (Conversion Value × Conversion Rate). If a customer is worth $500 and you convert 2% of clicks, your max CPC is $10.' },
+  { q: 'What is the difference between CPC and CPM?', a: 'CPC (Cost Per Click) charges you only when someone clicks your ad. CPM (Cost Per Mille) charges per 1,000 impressions regardless of clicks. Use CPC for direct response campaigns where traffic is the goal. Use CPM for brand awareness where reach is the goal. Most platforms let you choose between both.' },
+  { q: 'How do I calculate maximum CPC?', a: 'Maximum CPC = (Average Order Value × Gross Margin × Conversion Rate). Example: $200 AOV × 60% margin × 3% CVR = $3.60 max CPC. At this CPC, each click breaks even. Set your target CPC 20–30% below max CPC to allow for a profit margin.' },
+  { q: 'How do I lower my CPC?', a: 'The main levers: (1) Improve Quality Score on Google — better ad relevance and landing page experience lowers your CPC for the same position. (2) Use long-tail keywords — less competition means lower bids. (3) Negative keywords — exclude irrelevant searches that drive up costs. (4) Improve CTR — higher CTR improves Quality Score and lowers CPC.' },
+  { q: 'Is this CPC calculator free?', a: 'Yes — completely free, no signup, no email required.' },
+];
+
+const webAppSchema = { "@type": "WebApplication", "name": "CPC Calculator", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "creator": { "@id": "https://freemarketingcalculator.com/#org" }, "url": "https://freemarketingcalculator.com/cpc-calculator/", "description": "Free CPC calculator with three modes — calculate CPC from spend and clicks, total spend from CPC and clicks, or total clicks from spend and CPC. Includes 2026 benchmarks.", "featureList": ["CPC from spend + clicks", "Spend from CPC + clicks", "Clicks from spend + CPC", "Industry + platform benchmarks"] };
+const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
+const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
+  { "@type": "ListItem", "position": 2, "name": "CPC Calculator", "item": "https://freemarketingcalculator.com/cpc-calculator/" }
+]};
+---
+
+<Base title={title} description={description} slug={slug} schema={[webAppSchema, faqSchema, breadcrumbSchema]}>
+  <section class="page-hero" aria-labelledby="page-h1">
+    <div class="container">
+      <p class="eyebrow">Free Marketing Tool</p>
+      <h1 id="page-h1">CPC Calculator</h1>
+      <p class="citation">Calculate Cost Per Click, total ad spend, or total clicks from any two values. Three calculation modes with 2026 CPC benchmarks by platform and industry.</p>
+      <div class="meta-badges">
+        <span class="badge">✓ 3 calculation modes</span>
+        <span class="badge">✓ Industry benchmarks</span>
+        <span class="badge">✓ No signup</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="definition-box" style="margin-top: var(--space-8);">
+      <div class="definition-box__label">CPC Formula</div>
+      <p><strong>CPC = Total Ad Spend ÷ Total Clicks</strong></p>
+      <p style="margin-top: var(--space-2);">Example: $500 spend, 250 clicks → CPC = $500 ÷ 250 = <strong>$2.00 per click</strong></p>
+      <p style="margin-top: var(--space-2);">Reverse: <strong>Clicks = Spend ÷ CPC</strong> &nbsp;|&nbsp; <strong>Spend = CPC × Clicks</strong></p>
+    </div>
+
+    <div class="calc-card" style="margin-top: var(--space-6);">
+      <div class="calc-card__header">
+        <div class="calc-card__header-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 15l6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 19.8V15m0 0H4.2M9 15l-6 6"/><path d="M15 4.2V9m0 0h4.8M15 9l6-6"/><path d="M9 4.2V9m0 0H4.2M9 9L3 3"/></svg>
+        </div>
+        <div><div class="calc-card__title">CPC Calculator</div><div class="calc-card__subtitle">Choose what you want to calculate</div></div>
+      </div>
+      <div class="calc-card__body">
+        <div class="field">
+          <label>Calculate</label>
+          <div class="mode-toggle" role="group">
+            <button type="button" class="active" id="cpc-mode-cpc">CPC</button>
+            <button type="button" id="cpc-mode-spend">Total Spend</button>
+            <button type="button" id="cpc-mode-clicks">Total Clicks</button>
+          </div>
+        </div>
+
+        <div id="cpc-inputs-cpc" class="field-group">
+          <div class="field"><label for="cpc-spend">Total Ad Spend ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="cpc-spend" class="has-prefix" placeholder="e.g. 1000" min="0"/></div></div>
+          <div class="field"><label for="cpc-clicks">Total Clicks</label><input type="number" id="cpc-clicks" placeholder="e.g. 450" min="0"/></div>
+        </div>
+        <div id="cpc-inputs-spend" class="field-group" style="display:none">
+          <div class="field"><label for="cpc-rate">CPC Rate ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="cpc-rate" class="has-prefix" placeholder="e.g. 2.50" min="0" step="0.01"/></div></div>
+          <div class="field"><label for="cpc-clicks-b">Target Clicks</label><input type="number" id="cpc-clicks-b" placeholder="e.g. 500" min="0"/></div>
+        </div>
+        <div id="cpc-inputs-clicks" class="field-group" style="display:none">
+          <div class="field"><label for="cpc-spend-c">Total Ad Spend ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="cpc-spend-c" class="has-prefix" placeholder="e.g. 1200" min="0"/></div></div>
+          <div class="field"><label for="cpc-rate-c">CPC Rate ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="cpc-rate-c" class="has-prefix" placeholder="e.g. 2.50" min="0" step="0.01"/></div></div>
+        </div>
+
+        <button class="btn-calc" id="cpc-calc-btn" type="button">Calculate</button>
+        <div class="result-panel" id="cpc-result" aria-live="polite">
+          <div class="result-panel__label" id="cpc-result-label">Cost Per Click (CPC)</div>
+          <div class="result-panel__primary" id="cpc-primary">$0.00</div>
+          <div class="result-panel__grid">
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="cpc-s1">—</span><span class="result-panel__stat-label" id="cpc-l1">Ad spend</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="cpc-s2">—</span><span class="result-panel__stat-label" id="cpc-l2">Clicks</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="cpc-s3">—</span><span class="result-panel__stat-label" id="cpc-l3">Max allow. CPC*</span></div>
+          </div>
+          <div class="result-verdict" id="cpc-verdict"></div>
+          <p style="font-size: var(--text-xs); color: var(--text-light); margin-top: var(--space-2);">*Max allowable CPC shown is an estimate. Enter your AOV, margin, and CVR for an accurate figure.</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="bench-section" aria-labelledby="cpc-platform-bench">
+      <h2 id="cpc-platform-bench">Average CPC by Platform — 2026</h2>
+      <span class="bench-date">Updated July 2026</span>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead><tr><th scope="col">Platform</th><th scope="col">Avg CPC</th><th scope="col">Notes</th></tr></thead>
+          <tbody>
+            {platformCPC.map((r, i) => (
+              <tr style={i % 2 !== 0 ? 'background: var(--off-white)' : ''}>
+                <td><strong>{r.platform}</strong></td><td>{r.cpc}</td>
+                <td style="font-size: var(--text-sm); color: var(--text-mid);">{r.notes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="bench-section" aria-labelledby="cpc-industry-bench">
+      <h2 id="cpc-industry-bench">Average Google Ads CPC by Industry — 2026</h2>
+      <span class="bench-date">Updated July 2026</span>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead><tr><th scope="col">Industry</th><th scope="col">Avg CPC</th><th scope="col">Notes</th></tr></thead>
+          <tbody>
+            {industryBenchmarks.map((r, i) => (
+              <tr style={i % 2 !== 0 ? 'background: var(--off-white)' : ''}>
+                <td><strong>{r.industry}</strong></td><td>{r.cpc}</td>
+                <td style="font-size: var(--text-sm); color: var(--text-mid);">{r.notes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">Sources: WordStream Google Ads Benchmarks 2026, Meta Ads Benchmarks, LinkedIn Marketing Solutions. Averages vary by keyword, targeting, quality score, and campaign structure.</p>
+    </section>
+
+    <div style="background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0;">
+      <p style="font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mid); margin-bottom: var(--space-4);">Related Calculators</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-3);">
+        <a href="/cpm-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">🌐 CPM Calculator</a>
+        <a href="/digital-marketing-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📊 All 5 Metrics at Once</a>
+        <a href="/conversion-rate-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">🔄 Conversion Rate Calculator</a>
+        <a href="/marketing-roi-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📈 Marketing ROI Calculator</a>
+      </div>
+    </div>
+
+    <FAQ items={faqItems} title="CPC Calculator — FAQ" />
+  </div>
+</Base>
+
+<script>
+(function(){
+  'use strict';
+  const modeBtns = { cpc: document.getElementById('cpc-mode-cpc'), spend: document.getElementById('cpc-mode-spend'), clicks: document.getElementById('cpc-mode-clicks') };
+  const modeInputs = { cpc: document.getElementById('cpc-inputs-cpc'), spend: document.getElementById('cpc-inputs-spend'), clicks: document.getElementById('cpc-inputs-clicks') };
+  const btn = document.getElementById('cpc-calc-btn');
+  const result = document.getElementById('cpc-result');
+  if (!btn) return;
+  let mode = 'cpc';
+
+  Object.entries(modeBtns).forEach(([m, b]) => {
+    b.addEventListener('click', () => {
+      mode = m;
+      Object.values(modeBtns).forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      Object.values(modeInputs).forEach(i => i.style.display = 'none');
+      modeInputs[m].style.display = 'grid';
+    });
+  });
+
+  function getVerdict(cpc) {
+    if (cpc < 0.5)  return '📡 Very low CPC — likely display or Pinterest; check conversion quality';
+    if (cpc < 1.5)  return '✅ Below Facebook average ($0.80–$1.50) — good value';
+    if (cpc < 3)    return '✅ Within Google Search average range ($2.50–$4.50)';
+    if (cpc < 5)    return '🟡 Above average — ensure conversion rate justifies cost';
+    return '⚠️ High CPC — typical of legal, financial, B2B SaaS; verify campaign ROI';
+  }
+
+  btn.addEventListener('click', () => {
+    const p = document.getElementById('cpc-primary');
+    const rl = document.getElementById('cpc-result-label');
+    const s1 = document.getElementById('cpc-s1'), l1 = document.getElementById('cpc-l1');
+    const s2 = document.getElementById('cpc-s2'), l2 = document.getElementById('cpc-l2');
+    const s3 = document.getElementById('cpc-s3');
+    const v = document.getElementById('cpc-verdict');
+
+    if (mode === 'cpc') {
+      const spend = parseFloat(document.getElementById('cpc-spend').value) || 0;
+      const clicks = parseFloat(document.getElementById('cpc-clicks').value) || 0;
+      if (!spend || !clicks) return;
+      const cpc = spend / clicks;
+      rl.textContent = 'Cost Per Click (CPC)';
+      p.textContent = '$' + cpc.toFixed(2);
+      s1.textContent = '$' + spend.toLocaleString(); l1.textContent = 'Ad spend';
+      s2.textContent = clicks.toLocaleString(); l2.textContent = 'Clicks';
+      s3.textContent = '—';
+      v.textContent = getVerdict(cpc);
+    } else if (mode === 'spend') {
+      const rate = parseFloat(document.getElementById('cpc-rate').value) || 0;
+      const clicks = parseFloat(document.getElementById('cpc-clicks-b').value) || 0;
+      if (!rate || !clicks) return;
+      const spend = rate * clicks;
+      rl.textContent = 'Total Spend Required';
+      p.textContent = '$' + spend.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+      s1.textContent = '$' + rate.toFixed(2); l1.textContent = 'CPC rate';
+      s2.textContent = clicks.toLocaleString(); l2.textContent = 'Target clicks';
+      s3.textContent = '—';
+      v.textContent = '💰 ' + clicks.toLocaleString() + ' clicks at $' + rate + ' CPC = $' + spend.toLocaleString('en-US', {minimumFractionDigits:2});
+    } else {
+      const spend = parseFloat(document.getElementById('cpc-spend-c').value) || 0;
+      const rate = parseFloat(document.getElementById('cpc-rate-c').value) || 0;
+      if (!spend || !rate) return;
+      const clicks = Math.floor(spend / rate);
+      rl.textContent = 'Expected Clicks';
+      p.textContent = clicks.toLocaleString();
+      s1.textContent = '$' + spend.toLocaleString(); l1.textContent = 'Ad spend';
+      s2.textContent = '$' + rate.toFixed(2); l2.textContent = 'CPC rate';
+      s3.textContent = '—';
+      v.textContent = '🖱️ $' + spend.toLocaleString() + ' ÷ $' + rate + ' CPC = ' + clicks.toLocaleString() + ' estimated clicks';
+    }
+    result.classList.add('visible');
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+})();
+</script>

@@ -1,0 +1,126 @@
+---
+import Base from '../../layouts/Base.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const slug = 'blog/what-is-cpm';
+const title = 'What Is CPM? Cost Per Mille Explained With Formula and 2026 Benchmarks';
+const description = 'CPM (Cost Per Mille) is the cost to show your ad 1,000 times. Full explanation, formula, 2026 platform benchmarks, and a free CPM calculator.';
+const published = 'July 14, 2026';
+const readTime = '6 min read';
+
+const faqItems = [
+  { q: 'What does CPM mean in advertising?', a: 'CPM stands for Cost Per Mille — "mille" is Latin for thousand. CPM is the cost to show an advertisement 1,000 times (1,000 impressions). It is the standard pricing unit for display, social media, video, and programmatic advertising. If a campaign has a $10 CPM, you pay $10 for every 1,000 times your ad is shown.' },
+  { q: 'How do you calculate CPM?', a: 'CPM = (Total Ad Spend ÷ Total Impressions) × 1,000. Example: $500 spent to reach 100,000 impressions → ($500 ÷ 100,000) × 1,000 = $5.00 CPM. Use our free CPM Calculator for instant calculation in reverse — find total spend or total impressions from any two inputs.' },
+  { q: 'What is a good CPM for Facebook ads?', a: 'The average Facebook CPM is $7–$11 in the United States. A good CPM is below $8 for most consumer campaigns. CPM varies by audience size (broader = lower CPM), creative quality, and time of year (CPM rises 30–50% in Q4 due to holiday competition).' },
+  { q: 'What is the difference between CPM and CPC?', a: 'CPM charges per 1,000 impressions shown. CPC charges per click received. A campaign with CPM bidding pays whether or not anyone clicks. CPC bidding only charges when someone clicks. Use CPM for awareness campaigns where reach is the goal. Use CPC for traffic campaigns where clicks are the goal.' },
+  { q: 'Why is LinkedIn CPM so high?', a: 'LinkedIn\'s average CPM of $30–$45 is 3–5× higher than Facebook or TikTok because the audience is professional and highly targeted. You are paying a premium to reach decision-makers by job title, seniority, company, and industry. For B2B campaigns, the cost per qualified lead is often lower despite higher CPM.' },
+];
+
+const articleSchema = { "@type": "Article", "headline": title, "description": description, "datePublished": "2026-07-14", "dateModified": "2026-07-14", "author": { "@type": "Person", "name": "Waseem Shahzad", "url": "https://freemarketingcalculator.com/about/" }, "publisher": { "@id": "https://freemarketingcalculator.com/#org" }, "mainEntityOfPage": `https://freemarketingcalculator.com/${slug}/` };
+const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
+const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
+  { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://freemarketingcalculator.com/blog/" },
+  { "@type": "ListItem", "position": 3, "name": "What Is CPM?", "item": `https://freemarketingcalculator.com/${slug}/` }
+]};
+---
+<Base title={title} description={description} slug={slug} schema={[articleSchema, faqSchema, breadcrumbSchema]}>
+  <section class="page-hero" aria-labelledby="art-h1">
+    <div class="container">
+      <p class="eyebrow">Digital Marketing · {readTime}</p>
+      <h1 id="art-h1">What Is CPM? Cost Per Mille Explained</h1>
+      <p class="citation">CPM is the cost to show your ad 1,000 times. Here's the full formula, what good CPM looks like per platform, and how to use it alongside CPC and CTR.</p>
+      <div class="meta-badges"><span class="badge">📅 {published}</span><span class="badge">✓ {readTime}</span></div>
+    </div>
+  </section>
+  <div class="container">
+    <div class="article-layout">
+      <article class="article-body prose">
+
+        <div class="definition-box" style="margin-top: var(--space-8);">
+          <div class="definition-box__label">Quick Answer</div>
+          <p><strong>CPM (Cost Per Mille)</strong> = the cost to show your ad 1,000 times. Formula: <strong>CPM = (Ad Spend ÷ Impressions) × 1,000</strong>. Example: $500 spend, 100,000 impressions → $5.00 CPM. Average CPM: Google Display $2–$5, Facebook $7–$11, LinkedIn $30–$45, TikTok $8–$12.</p>
+        </div>
+
+        <p style="margin-top: var(--space-6);">To calculate CPM instantly — or find how many impressions your budget buys — use our <a href="/cpm-calculator/" style="color:var(--teal-dark); font-weight:700;">free CPM Calculator</a>.</p>
+
+        <h2>CPM Formula — How to Calculate Cost Per Mille</h2>
+        <div class="formula-box">
+          <p class="formula-title">CPM Formula</p>
+          <p class="formula-text">CPM = (Total Ad Spend ÷ Total Impressions) × 1,000</p>
+          <div class="formula-example">
+            <strong>Example:</strong> $1,500 spend, 300,000 impressions → ($1,500 ÷ 300,000) × 1,000 = <strong>$5.00 CPM</strong><br/>
+            <strong>Reverse (impressions from budget):</strong> $2,000 budget ÷ $8.50 CPM × 1,000 = <strong>235,294 impressions</strong>
+          </div>
+        </div>
+
+        <h2>CPM Benchmarks by Platform — 2026</h2>
+        <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
+          <table class="bench-table">
+            <thead><tr><th>Platform</th><th>Average CPM</th><th>Best For</th></tr></thead>
+            <tbody>
+              <tr><td>Google Display</td><td>$2–$5</td><td>Retargeting, brand awareness at scale</td></tr>
+              <tr style="background:var(--off-white)"><td>Facebook / Instagram</td><td>$7–$11</td><td>B2C, eCommerce, lead generation</td></tr>
+              <tr><td>TikTok</td><td>$8–$12</td><td>Gen Z, consumer products, video</td></tr>
+              <tr style="background:var(--off-white)"><td>YouTube</td><td>$8–$14</td><td>Video campaigns, brand storytelling</td></tr>
+              <tr><td>LinkedIn</td><td>$30–$45</td><td>B2B, SaaS, recruiting, professional</td></tr>
+              <tr style="background:var(--off-white)"><td>Twitter / X</td><td>$5–$8</td><td>Tech, finance, news audiences</td></tr>
+              <tr><td>Pinterest</td><td>$4–$7</td><td>Home, food, fashion, DIY buyers</td></tr>
+              <tr style="background:var(--off-white)"><td>Programmatic</td><td>$1–$4</td><td>Maximum reach at lowest cost</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="bench-source">Sources: WordStream Social Benchmarks 2026, Meta Advertising Insights, LinkedIn Marketing Solutions, Google Ads Benchmarks 2026. Averages vary by audience, creative, and industry.</p>
+
+        <h2>CPM vs CPC vs CTR — How They Relate</h2>
+        <p>CPM, CPC, and CTR are all connected. Here's the relationship:</p>
+        <div class="formula-box">
+          <p class="formula-title">The connection between CPM, CTR, and CPC</p>
+          <p class="formula-text" style="line-height: 2;">CPC = CPM ÷ (CTR × 10)<br/>Example: $10 CPM, 1% CTR → CPC = $10 ÷ (1 × 10) = $1.00 CPC</p>
+          <div class="formula-example">If your CPM is $10 and CTR is 1%, your effective CPC is $1.00. If CTR doubles to 2%, CPC halves to $0.50. Improving CTR directly lowers your effective cost per click on CPM-bought inventory.</div>
+        </div>
+
+        <h2>When to Use CPM vs CPC Bidding</h2>
+        <p><strong>Use CPM bidding when:</strong> Your goal is brand awareness, reach, or frequency. You want to ensure your ad is seen by as many people as possible. You're running a video or visual campaign where views matter more than clicks.</p>
+        <p><strong>Use CPC bidding when:</strong> Your goal is website traffic, lead generation, or direct conversions. You only want to pay when someone shows active interest. You're running search or direct-response campaigns.</p>
+
+        <div style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: var(--radius-lg); padding: var(--space-8); margin: var(--space-8) 0; text-align: center; color: white;">
+          <p style="font-size: var(--text-xl); font-weight: 800; margin-bottom: var(--space-2);">Free CPM Calculator</p>
+          <p style="color: rgba(255,255,255,.75); margin-bottom: var(--space-6);">Calculate CPM, total spend, or impressions from any two inputs. Three modes. 2026 benchmarks included.</p>
+          <a href="/cpm-calculator/" style="display:inline-block; background:var(--teal); color:var(--navy); font-weight:800; padding:var(--space-3) var(--space-8); border-radius:var(--radius); text-decoration:none; font-size:var(--text-lg);">Use the Free CPM Calculator →</a>
+        </div>
+
+        <div style="display:flex; align-items:flex-start; gap: var(--space-4); padding: var(--space-6); background: var(--teal-faint); border-radius: var(--radius-lg); margin-top: var(--space-8); border: 1px solid rgba(0,196,179,.2);">
+          <div style="width:44px; height:44px; background: var(--teal); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:800; color:var(--navy);">W</div>
+          <div><p style="font-weight:700; color:var(--navy); margin-bottom: 4px;">Waseem Shahzad</p><p style="font-size: var(--text-sm); color: var(--text-mid);">CPM benchmarks from WordStream, Meta Business Insights, LinkedIn Marketing Solutions 2026. <a href="/about/" style="color: var(--teal-dark);">About →</a></p></div>
+        </div>
+      </article>
+      <aside class="article-sidebar">
+        <div class="toc-box"><p class="toc-title">In this article</p><nav><ul class="toc-list">
+          <li><a href="#art-h1">What Is CPM?</a></li>
+          <li><a href="#faq-section">FAQ</a></li>
+        </ul></nav></div>
+        <div class="toc-calc-cta"><p>Calculate CPM free</p><a href="/cpm-calculator/">CPM Calculator →</a></div>
+      </aside>
+    </div>
+    <div id="faq-section" style="max-width: 720px;"><FAQ items={faqItems} title="CPM — Questions Answered" /></div>
+    <div style="margin: var(--space-12) 0 var(--space-8);"><a href="/blog/" style="color: var(--teal-dark); font-weight: 600; text-decoration: none;">← Back to all articles</a></div>
+  </div>
+</Base>
+<style>
+  .article-layout { display: grid; grid-template-columns: 1fr 260px; gap: var(--space-12); align-items: start; margin-top: var(--space-8); }
+  .article-body { min-width: 0; }
+  .article-body h2 { font-size: var(--text-2xl); font-weight: 800; letter-spacing: -0.02em; color: var(--navy); margin: var(--space-8) 0 var(--space-4); line-height: 1.25; }
+  .article-body p { color: var(--text-mid); line-height: 1.8; margin-bottom: var(--space-4); }
+  .article-body strong { color: var(--text-main); }
+  .article-sidebar { position: sticky; top: 90px; display: flex; flex-direction: column; gap: var(--space-4); }
+  .toc-box { background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5); }
+  .toc-title { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-light); margin-bottom: var(--space-3); }
+  .toc-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+  .toc-list a { font-size: var(--text-sm); color: var(--text-mid); text-decoration: none; font-weight: 500; padding: 2px 0 2px var(--space-3); border-left: 2px solid var(--border); display: block; }
+  .toc-list a:hover { color: var(--teal-dark); border-left-color: var(--teal); }
+  .toc-calc-cta { background: var(--navy); border-radius: var(--radius-lg); padding: var(--space-5); text-align: center; }
+  .toc-calc-cta p { color: rgba(255,255,255,.7); font-size: var(--text-sm); margin-bottom: var(--space-3); font-weight: 600; }
+  .toc-calc-cta a { display: block; background: var(--teal); color: var(--navy); font-weight: 700; font-size: var(--text-sm); padding: var(--space-2) var(--space-4); border-radius: var(--radius); text-decoration: none; }
+  @media (max-width: 768px) { .article-layout { grid-template-columns: 1fr; } .article-sidebar { display: none; } }
+</style>

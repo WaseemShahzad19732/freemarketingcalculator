@@ -1,0 +1,131 @@
+---
+import Base from '../../layouts/Base.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const slug      = 'blog/what-is-ad-spend';
+const title     = 'What Is Ad Spend? Definition, Formula, and 2026 Benchmarks';
+const description = 'Ad spend is the total amount a business spends on paid advertising. Full definition, formula, ROAS calculation, and 2026 industry benchmarks by channel.';
+const published = 'July 14, 2026';
+const readTime  = '5 min read';
+
+const faqItems = [
+  { q: 'What is ad spend?', a: 'Ad spend (advertising spend) is the total amount a business pays to run paid advertisements across any channel — search, social media, display, video, print, or broadcast. It includes the media cost (what you pay the platform per click, impression, or view) but typically excludes creative production costs and agency fees, which are tracked separately.' },
+  { q: 'What is a good ROAS for ad spend?', a: 'A ROAS (Return on Ad Spend) of 4× is often cited as the standard benchmark — earning $4 in revenue for every $1 of ad spend. However, the right ROAS target depends on your gross margin. A business with 25% margins needs at least 4× ROAS to break even. A business with 50% margins can be profitable at 2× ROAS.' },
+  { q: 'What percentage of revenue should go to ad spend?', a: 'Most companies allocate 30–40% of their total marketing budget to paid advertising. If marketing is 10% of revenue, paid ads typically account for 3–4% of revenue. E-commerce businesses frequently spend 10–20% of revenue directly on ad spend during growth phases.' },
+  { q: 'What is the difference between ad spend and marketing budget?', a: 'Ad spend is the media cost paid directly to advertising platforms (Google, Meta, LinkedIn). The marketing budget is the total of all marketing costs including ad spend, creative production, agency fees, marketing tools, events, and staff. Ad spend is typically 30–50% of the total marketing budget.' },
+  { q: 'How do I track ad spend across channels?', a: 'Use UTM parameters on all ad links and track in GA4. Each platform (Google Ads, Meta Ads Manager, LinkedIn Campaign Manager) has its own spend dashboard. For a consolidated view, use a marketing dashboard tool like Supermetrics, Funnel.io, or Google Looker Studio with multi-platform connectors.' },
+];
+
+const articleSchema = { "@type": "Article", "headline": title, "description": description, "datePublished": "2026-07-14", "dateModified": "2026-07-14", "author": { "@type": "Person", "name": "Waseem Shahzad", "url": "https://freemarketingcalculator.com/about/" }, "publisher": { "@id": "https://freemarketingcalculator.com/#org" }, "mainEntityOfPage": `https://freemarketingcalculator.com/${slug}/` };
+const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
+const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
+  { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://freemarketingcalculator.com/blog/" },
+  { "@type": "ListItem", "position": 3, "name": "What Is Ad Spend?", "item": `https://freemarketingcalculator.com/${slug}/` }
+]};
+---
+<Base title={title} description={description} slug={slug} schema={[articleSchema, faqSchema, breadcrumbSchema]}>
+  <section class="page-hero" aria-labelledby="art-h1">
+    <div class="container">
+      <p class="eyebrow">Digital Marketing · {readTime}</p>
+      <h1 id="art-h1">What Is Ad Spend?</h1>
+      <p class="citation">Ad spend is the total amount paid to advertising platforms to run paid ads. Here's the full definition, how ROAS is calculated from ad spend, and 2026 industry benchmarks.</p>
+      <div class="meta-badges"><span class="badge">📅 {published}</span><span class="badge">✓ {readTime}</span></div>
+    </div>
+  </section>
+  <div class="container">
+    <div class="article-layout">
+      <article class="article-body prose">
+
+        <div class="definition-box" style="margin-top: var(--space-8);">
+          <div class="definition-box__label">Definition</div>
+          <p><strong>Ad spend</strong> is the total amount a business pays to run paid advertisements. It covers media cost — what you pay the platform — across search (Google, Bing), social (Meta, LinkedIn, TikTok), display, video, and programmatic networks. Ad spend is tracked separately from creative production costs and agency fees.</p>
+        </div>
+
+        <h2>Ad Spend Formula — How to Calculate ROAS</h2>
+        <p>The primary metric derived from ad spend is ROAS (Return on Ad Spend):</p>
+        <div class="formula-box">
+          <p class="formula-title">ROAS = Revenue Generated ÷ Ad Spend</p>
+          <div class="formula-example"><strong>Example:</strong> $20,000 revenue from $5,000 ad spend → ROAS = $20,000 ÷ $5,000 = <strong>4× ROAS</strong> ($4 earned per $1 spent)</div>
+        </div>
+        <p>To calculate the revenue needed from a given ad spend budget: <strong>Revenue Target = Ad Spend × Target ROAS</strong>. If you spend $10,000 and need 5× ROAS, you need $50,000 in attributed revenue.</p>
+
+        <h2>Ad Spend vs Marketing Budget — Key Differences</h2>
+        <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
+          <table class="bench-table">
+            <thead><tr><th>Term</th><th>What It Includes</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Ad Spend</strong></td><td>Media cost paid to platforms only</td><td>Google Ads: $3,000/mo, Meta Ads: $2,000/mo = $5,000 ad spend</td></tr>
+              <tr style="background:var(--off-white)"><td><strong>Marketing Budget</strong></td><td>Ad spend + creative + tools + agency fees + staff</td><td>Ad spend $5,000 + agency $2,000 + tools $500 = $7,500 total</td></tr>
+              <tr><td><strong>ROAS</strong></td><td>Revenue ÷ ad spend only</td><td>$20,000 revenue ÷ $5,000 ad spend = 4× ROAS</td></tr>
+              <tr style="background:var(--off-white)"><td><strong>Marketing ROI</strong></td><td>Profit ÷ total marketing budget</td><td>($20,000 − $7,500) ÷ $7,500 = 167% ROI</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Average Ad Spend by Channel — 2026</h2>
+        <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
+          <table class="bench-table">
+            <thead><tr><th>Channel</th><th>Share of Ad Spend</th><th>Average ROAS</th></tr></thead>
+            <tbody>
+              <tr><td>Paid Search (Google, Bing)</td><td>40%</td><td>3–6×</td></tr>
+              <tr style="background:var(--off-white)"><td>Paid Social (Meta, LinkedIn, TikTok)</td><td>32%</td><td>2–5×</td></tr>
+              <tr><td>Programmatic / Display</td><td>14%</td><td>1–3×</td></tr>
+              <tr style="background:var(--off-white)"><td>Video (YouTube, streaming)</td><td>10%</td><td>2–4×</td></tr>
+              <tr><td>Other (podcast, CTV, print)</td><td>4%</td><td>Variable</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="bench-source">Sources: Statista Digital Advertising Report 2026, eMarketer Ad Spend Forecast 2026.</p>
+
+        <h2>How to Calculate Your Maximum Ad Spend</h2>
+        <p>Your maximum sustainable ad spend is determined by your unit economics:</p>
+        <div class="formula-box">
+          <p class="formula-title">Maximum CPA = Customer Lifetime Value × Target Margin</p>
+          <div class="formula-example">
+            <strong>Example:</strong> Average customer spends $1,200 over their lifetime. Target 30% margin → Max CPA = $1,200 × 0.70 = $840 maximum cost to acquire a customer. If your average conversion rate from click is 3%, your max CPC = $840 × 0.03 = $25.20.
+          </div>
+        </div>
+
+        <div style="background: var(--teal-faint); border: 1.5px solid rgba(0,196,179,.25); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap: var(--space-3);">
+          <p style="color: var(--navy); font-weight: 600; margin:0; font-size: var(--text-sm);">📈 Calculate your marketing ROI from ad spend — free ROMI Calculator</p>
+          <a href="/marketing-roi-calculator/" style="background: var(--teal); color: var(--navy); font-weight: 700; font-size: var(--text-sm); padding: var(--space-2) var(--space-5); border-radius: var(--radius); text-decoration:none; white-space:nowrap;">Calculate ROMI →</a>
+        </div>
+
+        <div style="display:flex; align-items:flex-start; gap: var(--space-4); padding: var(--space-6); background: var(--teal-faint); border-radius: var(--radius-lg); margin-top: var(--space-8); border: 1px solid rgba(0,196,179,.2);">
+          <div style="width:44px; height:44px; background: var(--teal); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:800; color:var(--navy); font-size: var(--text-lg);">W</div>
+          <div><p style="font-weight:700; color:var(--navy); margin-bottom: 4px;">Waseem Shahzad</p><p style="font-size: var(--text-sm); color: var(--text-mid);">Data from Statista Digital Advertising Report 2026, eMarketer, and WordStream benchmark data. <a href="/about/" style="color: var(--teal-dark);">About →</a></p></div>
+        </div>
+      </article>
+      <aside class="article-sidebar">
+        <div class="toc-box">
+          <p class="toc-title">In this article</p>
+          <nav><ul class="toc-list">
+            <li><a href="#art-h1">What is Ad Spend?</a></li>
+            <li><a href="#faq-section">FAQ</a></li>
+          </ul></nav>
+        </div>
+        <div class="toc-calc-cta"><p>Calculate your ROMI</p><a href="/marketing-roi-calculator/">Free calculator →</a></div>
+      </aside>
+    </div>
+    <div id="faq-section" style="max-width: 720px;"><FAQ items={faqItems} title="Ad Spend — Questions Answered" /></div>
+    <div style="margin: var(--space-12) 0 var(--space-8);"><a href="/blog/" style="color: var(--teal-dark); font-weight: 600; text-decoration: none;">← Back to all articles</a></div>
+  </div>
+</Base>
+<style>
+  .article-layout { display: grid; grid-template-columns: 1fr 260px; gap: var(--space-12); align-items: start; margin-top: var(--space-8); }
+  .article-body { min-width: 0; }
+  .article-body h2 { font-size: var(--text-2xl); font-weight: 800; letter-spacing: -0.02em; color: var(--navy); margin: var(--space-8) 0 var(--space-4); line-height: 1.25; }
+  .article-body p { color: var(--text-mid); line-height: 1.8; margin-bottom: var(--space-4); font-size: var(--text-base); }
+  .article-body strong { color: var(--text-main); }
+  .article-sidebar { position: sticky; top: 90px; display: flex; flex-direction: column; gap: var(--space-4); }
+  .toc-box { background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5); }
+  .toc-title { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-light); margin-bottom: var(--space-3); }
+  .toc-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+  .toc-list a { font-size: var(--text-sm); color: var(--text-mid); text-decoration: none; font-weight: 500; padding: 2px 0 2px var(--space-3); border-left: 2px solid var(--border); display: block; }
+  .toc-list a:hover { color: var(--teal-dark); border-left-color: var(--teal); }
+  .toc-calc-cta { background: var(--navy); border-radius: var(--radius-lg); padding: var(--space-5); text-align: center; }
+  .toc-calc-cta p { color: rgba(255,255,255,.7); font-size: var(--text-sm); margin-bottom: var(--space-3); font-weight: 600; }
+  .toc-calc-cta a { display: block; background: var(--teal); color: var(--navy); font-weight: 700; font-size: var(--text-sm); padding: var(--space-2) var(--space-4); border-radius: var(--radius); text-decoration: none; }
+  @media (max-width: 768px) { .article-layout { grid-template-columns: 1fr; } .article-sidebar { display: none; } }
+</style>

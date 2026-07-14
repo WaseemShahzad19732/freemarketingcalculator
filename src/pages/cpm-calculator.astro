@@ -1,0 +1,336 @@
+---
+import Base from '../layouts/Base.astro';
+import FAQ from '../components/FAQ.astro';
+
+const slug        = 'cpm-calculator';
+const title       = 'CPM Calculator — Free Cost Per Mille Tool (2026)';
+const description = 'Free CPM calculator — calculate cost per thousand impressions, total ad spend, or total impressions from any two inputs. With 2026 CPM benchmarks by platform.';
+
+const platformBenchmarks = [
+  { platform: 'Google Display Network', cpm: '$2–$5',   best: 'Brand awareness, retargeting' },
+  { platform: 'Facebook / Instagram',   cpm: '$7–$11',  best: 'B2C, eCommerce, lead gen' },
+  { platform: 'Instagram Stories',      cpm: '$5–$8',   best: 'Visual products, lifestyle brands' },
+  { platform: 'LinkedIn',               cpm: '$30–$45', best: 'B2B, SaaS, recruiting' },
+  { platform: 'TikTok',                 cpm: '$8–$12',  best: 'Gen Z, consumer brands, video' },
+  { platform: 'Twitter / X',            cpm: '$5–$8',   best: 'News, tech, finance' },
+  { platform: 'Pinterest',              cpm: '$4–$7',   best: 'Home, food, fashion, DIY' },
+  { platform: 'YouTube (in-stream)',    cpm: '$8–$14',  best: 'Video, brand storytelling' },
+  { platform: 'Snapchat',              cpm: '$3–$7',   best: 'Younger demographics' },
+  { platform: 'Programmatic / Display', cpm: '$1–$4',   best: 'Scale reach at low cost' },
+];
+
+const faqItems = [
+  { q: 'What does CPM mean?', a: 'CPM stands for Cost Per Mille — "mille" is Latin for thousand. CPM is the cost to show your ad 1,000 times. It\'s the standard unit for measuring the price of display, video, and social media advertising inventory.' },
+  { q: 'How do you calculate CPM?', a: 'CPM = (Total Ad Spend ÷ Total Impressions) × 1,000. Example: $500 spent, 100,000 impressions → ($500 ÷ 100,000) × 1,000 = $5.00 CPM. This means you paid $5 for every 1,000 times your ad was shown.' },
+  { q: 'What is a good CPM?', a: 'A good CPM depends heavily on the platform and audience. Google Display averages $2–$5 CPM, Facebook $7–$11, LinkedIn $30–$45. Lower CPM is better for pure reach, but a high CPM on a targeted platform (like LinkedIn for B2B) often delivers better ROI than cheap display inventory.' },
+  { q: 'What is the difference between CPM and CPC?', a: 'CPM (Cost Per Mille) is charged per 1,000 impressions regardless of clicks. CPC (Cost Per Click) is charged only when someone clicks. CPM campaigns optimise for reach and awareness; CPC campaigns optimise for traffic and conversions. Social platforms let you choose between both bidding models.' },
+  { q: 'How many impressions does my budget get?', a: 'Impressions = (Ad Spend ÷ CPM) × 1,000. Example: $1,000 budget at $8.50 CPM → ($1,000 ÷ $8.50) × 1,000 = 117,647 impressions. Use the calculator above and select "Impressions from budget" mode.' },
+  { q: 'What is CPM vs eCPM?', a: 'CPM is the rate you pay upfront. eCPM (effective CPM) is the actual rate calculated after a campaign runs — useful for comparing campaigns with different buying models. eCPM = (Total Revenue ÷ Total Impressions) × 1,000. Publishers use eCPM to measure ad revenue efficiency.' },
+  { q: 'Is this CPM calculator free?', a: 'Yes — completely free, no signup, no email required.' },
+];
+
+const webAppSchema = {
+  "@type": "WebApplication",
+  "name": "CPM Calculator",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "creator": { "@id": "https://freemarketingcalculator.com/#org" },
+  "url": "https://freemarketingcalculator.com/cpm-calculator/",
+  "description": "Free CPM calculator with three modes: calculate CPM from spend and impressions, total spend from CPM and impressions, or total impressions from spend and CPM. Includes 2026 platform benchmarks.",
+  "featureList": ["CPM from spend + impressions", "Spend from CPM + impressions", "Impressions from spend + CPM", "2026 platform benchmarks"]
+};
+const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
+const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
+  { "@type": "ListItem", "position": 2, "name": "CPM Calculator", "item": "https://freemarketingcalculator.com/cpm-calculator/" }
+]};
+---
+
+<Base title={title} description={description} slug={slug} schema={[webAppSchema, faqSchema, breadcrumbSchema]}>
+
+  <section class="page-hero" aria-labelledby="page-h1">
+    <div class="container">
+      <p class="eyebrow">Free Marketing Tool</p>
+      <h1 id="page-h1">CPM Calculator</h1>
+      <p class="citation">Calculate Cost Per Mille (CPM), total ad spend, or total impressions from any two inputs. Three calculation modes with 2026 platform benchmarks for Facebook, Google, LinkedIn, TikTok, and 6 more.</p>
+      <div class="meta-badges">
+        <span class="badge">✓ 3 calculation modes</span>
+        <span class="badge">✓ 10 platform benchmarks</span>
+        <span class="badge">✓ No signup</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- Quick Answer for AI Overview -->
+    <div class="definition-box" style="margin-top: var(--space-8);">
+      <div class="definition-box__label">CPM Formula</div>
+      <p><strong>CPM = (Total Ad Spend ÷ Impressions) × 1,000</strong></p>
+      <p style="margin-top: var(--space-2);">Example: $500 spend, 100,000 impressions → CPM = ($500 ÷ 100,000) × 1,000 = <strong>$5.00 CPM</strong></p>
+      <p style="margin-top: var(--space-2);">Reverse: <strong>Impressions = (Spend ÷ CPM) × 1,000</strong> &nbsp;|&nbsp; <strong>Spend = (CPM × Impressions) ÷ 1,000</strong></p>
+    </div>
+
+    <div class="calc-card" style="margin-top: var(--space-6);">
+      <div class="calc-card__header">
+        <div class="calc-card__header-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div>
+          <div class="calc-card__title">CPM Calculator</div>
+          <div class="calc-card__subtitle">Choose what you want to calculate</div>
+        </div>
+      </div>
+      <div class="calc-card__body">
+
+        <!-- Mode selector -->
+        <div class="field">
+          <label>Calculate</label>
+          <div class="mode-toggle" role="group">
+            <button type="button" class="active" id="mode-cpm">CPM</button>
+            <button type="button" id="mode-spend">Total Spend</button>
+            <button type="button" id="mode-imps">Impressions</button>
+          </div>
+        </div>
+
+        <!-- Mode: CPM from spend + impressions -->
+        <div id="inputs-cpm" class="field-group">
+          <div class="field">
+            <label for="cpm-spend">Total Ad Spend ($)</label>
+            <div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="cpm-spend" class="has-prefix" placeholder="e.g. 1500" min="0"/></div>
+          </div>
+          <div class="field">
+            <label for="cpm-imps">Total Impressions</label>
+            <input type="number" id="cpm-imps" placeholder="e.g. 300000" min="0"/>
+          </div>
+        </div>
+
+        <!-- Mode: Spend from CPM + impressions -->
+        <div id="inputs-spend" class="field-group" style="display:none">
+          <div class="field">
+            <label for="sp-cpm">CPM Rate ($)</label>
+            <div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="sp-cpm" class="has-prefix" placeholder="e.g. 8.50" min="0" step="0.01"/></div>
+          </div>
+          <div class="field">
+            <label for="sp-imps">Total Impressions</label>
+            <input type="number" id="sp-imps" placeholder="e.g. 500000" min="0"/>
+          </div>
+        </div>
+
+        <!-- Mode: Impressions from spend + CPM -->
+        <div id="inputs-imps" class="field-group" style="display:none">
+          <div class="field">
+            <label for="im-spend">Total Ad Spend ($)</label>
+            <div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="im-spend" class="has-prefix" placeholder="e.g. 2000" min="0"/></div>
+          </div>
+          <div class="field">
+            <label for="im-cpm">CPM Rate ($)</label>
+            <div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="im-cpm" class="has-prefix" placeholder="e.g. 9.50" min="0" step="0.01"/></div>
+          </div>
+        </div>
+
+        <button class="btn-calc" id="cpm-calc-btn" type="button">Calculate</button>
+
+        <div class="result-panel" id="cpm-result" aria-live="polite">
+          <div class="result-panel__label" id="cpm-result-label">CPM</div>
+          <div class="result-panel__primary" id="cpm-primary">$0.00</div>
+          <div class="result-panel__grid">
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="cpm-s1">—</span><span class="result-panel__stat-label" id="cpm-l1">Ad spend</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="cpm-s2">—</span><span class="result-panel__stat-label" id="cpm-l2">Impressions</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="cpm-s3">—</span><span class="result-panel__stat-label" id="cpm-l3">Cost per impression</span></div>
+          </div>
+          <div class="result-verdict" id="cpm-verdict"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- What is CPM section -->
+    <div class="definition-box" style="margin-top: var(--space-6);">
+      <div class="definition-box__label">What is CPM in Digital Marketing?</div>
+      <p>CPM (Cost Per Mille) is the standard pricing model for display, social media, and video advertising. Advertisers pay a fixed rate for every 1,000 times their ad is shown — regardless of whether anyone clicks. CPM campaigns are used for brand awareness, reach maximisation, and top-of-funnel demand generation.</p>
+      <p style="margin-top: var(--space-3);">CPM bidding is available on every major platform: Google Display, Facebook, Instagram, LinkedIn, TikTok, Twitter/X, Pinterest, YouTube, and programmatic networks.</p>
+    </div>
+
+    <!-- How to use -->
+    <div class="definition-box" style="margin-top: var(--space-4);">
+      <div class="definition-box__label">How to Use This CPM Calculator</div>
+      <p style="white-space: pre-line; line-height: 1.9;">1. Select what you want to calculate: CPM, Total Spend, or Impressions.
+2. Enter the two values you already know.
+3. Click Calculate — your result appears instantly with a benchmark comparison.</p>
+      <div class="formula-example" style="margin-top: var(--space-3);">
+        <strong>Example (CPM mode):</strong> $1,500 spend, 300,000 impressions → CPM = ($1,500 ÷ 300,000) × 1,000 = $5.00 CPM — within Google Display's average range.<br/>
+        <strong>Example (Impressions mode):</strong> $2,000 budget at $9.50 TikTok CPM → ($2,000 ÷ $9.50) × 1,000 = 210,526 impressions.
+      </div>
+    </div>
+
+    <!-- Platform benchmarks -->
+    <section class="bench-section" aria-labelledby="cpm-bench-heading">
+      <h2 id="cpm-bench-heading">CPM Benchmarks by Platform — 2026</h2>
+      <span class="bench-date">Updated July 2026</span>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <caption class="sr-only">Average CPM by advertising platform, 2026</caption>
+          <thead>
+            <tr>
+              <th scope="col">Platform</th>
+              <th scope="col">Average CPM</th>
+              <th scope="col">Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            {platformBenchmarks.map((r, i) => (
+              <tr style={i % 2 !== 0 ? 'background: var(--off-white)' : ''}>
+                <td><strong>{r.platform}</strong></td>
+                <td>{r.cpm}</td>
+                <td style="font-size: var(--text-sm); color: var(--text-mid);">{r.best}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">Sources: WordStream Social Media Benchmarks 2026, Meta Business Insights, LinkedIn Marketing Solutions, Google Ads Benchmarks 2026, Revealbot CPM data. Averages vary significantly by industry, creative quality, audience size, and bidding strategy.</p>
+    </section>
+
+    <!-- CPM vs CPC vs CPV comparison -->
+    <section class="bench-section" aria-labelledby="cpm-vs-heading">
+      <h2 id="cpm-vs-heading">CPM vs CPC vs CPV — Which Should You Use?</h2>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead>
+            <tr>
+              <th scope="col">Metric</th>
+              <th scope="col">Full Name</th>
+              <th scope="col">Charged When</th>
+              <th scope="col">Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>CPM</strong></td>
+              <td>Cost Per Mille</td>
+              <td>Per 1,000 impressions shown</td>
+              <td>Brand awareness, reach, top-of-funnel</td>
+            </tr>
+            <tr style="background: var(--off-white)">
+              <td><strong>CPC</strong></td>
+              <td>Cost Per Click</td>
+              <td>Each time someone clicks the ad</td>
+              <td>Website traffic, lead generation</td>
+            </tr>
+            <tr>
+              <td><strong>CPV</strong></td>
+              <td>Cost Per View</td>
+              <td>Each time a video is viewed (usually 30s+)</td>
+              <td>Video campaigns, YouTube, TikTok</td>
+            </tr>
+            <tr style="background: var(--off-white)">
+              <td><strong>CPA</strong></td>
+              <td>Cost Per Acquisition</td>
+              <td>Each conversion (purchase, lead, signup)</td>
+              <td>Direct response, eCommerce</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Related calculators -->
+    <div style="background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0;">
+      <p style="font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mid); margin-bottom: var(--space-4);">Related Calculators</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-3);">
+        <a href="/cpc-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">🖱️ CPC Calculator</a>
+        <a href="/digital-marketing-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📊 All 5 Metrics at Once</a>
+        <a href="/social-media-budget-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📱 Social Media Budget</a>
+        <a href="/marketing-roi-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📈 Marketing ROI Calculator</a>
+      </div>
+    </div>
+
+    <FAQ items={faqItems} title="CPM Calculator — FAQ" />
+
+  </div>
+</Base>
+
+<script>
+(function(){
+  'use strict';
+  const modes = ['cpm','spend','imps'];
+  const btns = { cpm: document.getElementById('mode-cpm'), spend: document.getElementById('mode-spend'), imps: document.getElementById('mode-imps') };
+  const inputs = { cpm: document.getElementById('inputs-cpm'), spend: document.getElementById('inputs-spend'), imps: document.getElementById('inputs-imps') };
+  const calcBtn = document.getElementById('cpm-calc-btn');
+  const result  = document.getElementById('cpm-result');
+  const primary = document.getElementById('cpm-primary');
+  const rlabel  = document.getElementById('cpm-result-label');
+  const s1 = document.getElementById('cpm-s1'), l1 = document.getElementById('cpm-l1');
+  const s2 = document.getElementById('cpm-s2'), l2 = document.getElementById('cpm-l2');
+  const s3 = document.getElementById('cpm-s3'), l3 = document.getElementById('cpm-l3');
+  const verdict = document.getElementById('cpm-verdict');
+  if (!calcBtn) return;
+
+  let mode = 'cpm';
+
+  Object.entries(btns).forEach(([m, btn]) => {
+    btn.addEventListener('click', () => {
+      mode = m;
+      Object.values(btns).forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      Object.values(inputs).forEach(i => i.style.display = 'none');
+      inputs[m].style.display = 'grid';
+    });
+  });
+
+  function fmtNum(n) {
+    if (n >= 1000000) return (n/1000000).toFixed(2) + 'M';
+    if (n >= 1000) return Math.round(n).toLocaleString();
+    return Math.round(n).toLocaleString();
+  }
+
+  function getCPMVerdict(cpm) {
+    if (cpm < 2)   return '📡 Very low CPM — likely programmatic/display inventory';
+    if (cpm < 8)   return '✅ Below Facebook average ($7–$11) — good value display buy';
+    if (cpm < 12)  return '✅ Within Facebook/TikTok average range ($7–$12)';
+    if (cpm < 20)  return '🟡 Above display average — check if audience quality justifies cost';
+    if (cpm < 35)  return '🟡 High CPM — typical for YouTube or premium placements';
+    return '⚠️ Very high CPM — typical of LinkedIn ($30–$45) or niche audiences';
+  }
+
+  calcBtn.addEventListener('click', () => {
+    if (mode === 'cpm') {
+      const spend = parseFloat(document.getElementById('cpm-spend').value) || 0;
+      const imps  = parseFloat(document.getElementById('cpm-imps').value) || 0;
+      if (!spend || !imps) return;
+      const cpm = (spend / imps) * 1000;
+      rlabel.textContent = 'CPM (Cost Per 1,000 Impressions)';
+      primary.textContent = '$' + cpm.toFixed(2);
+      s1.textContent = '$' + spend.toLocaleString(); l1.textContent = 'Ad spend';
+      s2.textContent = fmtNum(imps); l2.textContent = 'Impressions';
+      s3.textContent = '$' + (spend / imps).toFixed(4); l3.textContent = 'Cost per impression';
+      verdict.textContent = getCPMVerdict(cpm);
+    } else if (mode === 'spend') {
+      const cpm  = parseFloat(document.getElementById('sp-cpm').value) || 0;
+      const imps = parseFloat(document.getElementById('sp-imps').value) || 0;
+      if (!cpm || !imps) return;
+      const spend = (cpm * imps) / 1000;
+      rlabel.textContent = 'Total Ad Spend Required';
+      primary.textContent = '$' + spend.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+      s1.textContent = '$' + cpm.toFixed(2); l1.textContent = 'CPM rate';
+      s2.textContent = fmtNum(imps); l2.textContent = 'Impressions';
+      s3.textContent = '$' + (spend / imps).toFixed(4); l3.textContent = 'Cost per impression';
+      verdict.textContent = '💰 To reach ' + fmtNum(imps) + ' impressions at $' + cpm + ' CPM you need $' + spend.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+    } else {
+      const spend = parseFloat(document.getElementById('im-spend').value) || 0;
+      const cpm   = parseFloat(document.getElementById('im-cpm').value) || 0;
+      if (!spend || !cpm) return;
+      const imps = (spend / cpm) * 1000;
+      rlabel.textContent = 'Estimated Impressions';
+      primary.textContent = fmtNum(imps);
+      s1.textContent = '$' + spend.toLocaleString(); l1.textContent = 'Ad spend';
+      s2.textContent = '$' + cpm.toFixed(2); l2.textContent = 'CPM rate';
+      s3.textContent = '$' + (spend / imps).toFixed(4); l3.textContent = 'Cost per impression';
+      verdict.textContent = '📊 $' + spend.toLocaleString() + ' at $' + cpm + ' CPM = ' + fmtNum(imps) + ' impressions';
+    }
+    result.classList.add('visible');
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+})();
+</script>

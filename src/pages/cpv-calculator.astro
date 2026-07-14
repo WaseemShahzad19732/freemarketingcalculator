@@ -1,0 +1,211 @@
+---
+import Base from '../layouts/Base.astro';
+import FAQ from '../components/FAQ.astro';
+
+const slug        = 'cpv-calculator';
+const title       = 'CPV Calculator — Free Cost Per View Tool (2026)';
+const description = 'Free CPV calculator — calculate cost per view, total video ad spend, or total views from any two inputs. With 2026 CPV benchmarks for YouTube, TikTok, and Instagram.';
+
+const platformBenchmarks = [
+  { platform: 'YouTube (TrueView)',      cpv: '$0.03–$0.10', format: 'Skippable in-stream, 30s+', notes: 'Charged only when viewer watches 30s or full ad' },
+  { platform: 'YouTube (Non-skippable)', cpv: '$0.08–$0.15', format: 'Bumper/non-skippable',        notes: 'Higher CPV; guaranteed full watch' },
+  { platform: 'TikTok',                  cpv: '$0.01–$0.04', format: 'TopView, In-Feed',             notes: 'Lowest CPV; high volume' },
+  { platform: 'Instagram Reels',         cpv: '$0.02–$0.06', format: 'Reels ads',                    notes: 'Growing; strong engagement' },
+  { platform: 'Facebook Video',          cpv: '$0.01–$0.05', format: 'In-feed, Stories',             notes: 'CPV lowest of Meta placements' },
+  { platform: 'LinkedIn Video',          cpv: '$0.08–$0.25', format: 'In-feed video',                notes: 'Premium B2B audience — highest CPV' },
+  { platform: 'Twitter / X Video',       cpv: '$0.02–$0.05', format: 'Promoted video',               notes: 'Low cost; limited targeting' },
+  { platform: 'Programmatic Video',      cpv: '$0.01–$0.03', format: 'Pre-roll / mid-roll',          notes: 'Scale at lowest cost; lower quality' },
+];
+
+const faqItems = [
+  { q: 'What is CPV in marketing?', a: 'CPV (Cost Per View) is the amount you pay each time a viewer watches your video ad. Formula: CPV = Total Ad Spend ÷ Total Views. YouTube charges CPV when a viewer watches 30 seconds or the full ad (whichever comes first). TikTok and Facebook charge CPV when a user watches at least 2–3 seconds.' },
+  { q: 'How do you calculate CPV?', a: 'CPV = Total Ad Spend ÷ Total Views. Example: $300 spend, 10,000 views → CPV = $300 ÷ 10,000 = $0.03 per view. YouTube TrueView CPV typically ranges from $0.03 to $0.10.' },
+  { q: 'What is a good CPV on YouTube?', a: 'A good YouTube TrueView CPV is $0.03–$0.06. Industry average is $0.05–$0.10. If your CPV is above $0.12, review targeting and creative — overly broad audiences or unskippable placements inflate cost.' },
+  { q: 'What is the difference between CPV and CPM?', a: 'CPM charges per 1,000 impressions (each time the ad appears). CPV charges per view (when someone watches a minimum amount of your video). A video campaign can have both metrics — the ad might appear 100,000 times (CPM) but only be watched 30,000 times (CPV). CPV is a better metric for measuring actual video engagement.' },
+  { q: 'What counts as a "view" in video advertising?', a: 'It varies by platform. YouTube TrueView: 30 seconds watched, or full ad if shorter. Facebook/Instagram: 3 seconds. TikTok: 2 seconds. LinkedIn: 2 seconds with 50% of video visible. Twitter: 2 seconds with 50% in view. Always check platform definitions before comparing CPV across networks.' },
+  { q: 'Is this CPV calculator free?', a: 'Yes — completely free, no signup, no email required.' },
+];
+
+const webAppSchema = { "@type": "WebApplication", "name": "CPV Calculator", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "creator": { "@id": "https://freemarketingcalculator.com/#org" }, "url": "https://freemarketingcalculator.com/cpv-calculator/", "description": "Free CPV calculator with three modes — calculate cost per view, total spend, or total views. Includes 2026 benchmarks for YouTube, TikTok, Instagram, LinkedIn, and Facebook.", "featureList": ["CPV from spend + views", "Spend from CPV + views", "Views from spend + CPV", "Platform CPV benchmarks 2026"] };
+const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
+const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
+  { "@type": "ListItem", "position": 2, "name": "CPV Calculator", "item": "https://freemarketingcalculator.com/cpv-calculator/" }
+]};
+---
+
+<Base title={title} description={description} slug={slug} schema={[webAppSchema, faqSchema, breadcrumbSchema]}>
+  <section class="page-hero" aria-labelledby="page-h1">
+    <div class="container">
+      <p class="eyebrow">Free Marketing Tool</p>
+      <h1 id="page-h1">CPV Calculator — Cost Per View</h1>
+      <p class="citation">Calculate Cost Per View for YouTube, TikTok, Instagram, and LinkedIn video campaigns. Three modes: CPV, total spend, or total views. With 2026 platform benchmarks.</p>
+      <div class="meta-badges">
+        <span class="badge">✓ 3 calculation modes</span>
+        <span class="badge">✓ 8 platform benchmarks</span>
+        <span class="badge">✓ No signup</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="definition-box" style="margin-top: var(--space-8);">
+      <div class="definition-box__label">CPV Formula</div>
+      <p><strong>CPV = Total Ad Spend ÷ Total Views</strong></p>
+      <p style="margin-top: var(--space-2);">Example: $300 spend, 10,000 views → CPV = $300 ÷ 10,000 = <strong>$0.03 per view</strong></p>
+      <p style="margin-top: var(--space-2);">Reverse: <strong>Views = Spend ÷ CPV</strong> &nbsp;|&nbsp; <strong>Spend = CPV × Views</strong></p>
+    </div>
+
+    <div class="calc-card" style="margin-top: var(--space-6);">
+      <div class="calc-card__header">
+        <div class="calc-card__header-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <div><div class="calc-card__title">CPV Calculator</div><div class="calc-card__subtitle">Calculate video ad costs and views</div></div>
+      </div>
+      <div class="calc-card__body">
+        <div class="field">
+          <label>Calculate</label>
+          <div class="mode-toggle" role="group">
+            <button type="button" class="active" id="cpv-mode-cpv">CPV</button>
+            <button type="button" id="cpv-mode-spend">Total Spend</button>
+            <button type="button" id="cpv-mode-views">Total Views</button>
+          </div>
+        </div>
+
+        <div id="cpv-inputs-cpv" class="field-group">
+          <div class="field"><label for="cpv-spend">Total Ad Spend ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="cpv-spend" class="has-prefix" placeholder="e.g. 500" min="0"/></div></div>
+          <div class="field"><label for="cpv-views">Total Views</label><input type="number" id="cpv-views" placeholder="e.g. 15000" min="0"/></div>
+        </div>
+        <div id="cpv-inputs-spend" class="field-group" style="display:none">
+          <div class="field"><label for="cpv-rate">CPV Rate ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="cpv-rate" class="has-prefix" placeholder="e.g. 0.05" min="0" step="0.001"/></div></div>
+          <div class="field"><label for="cpv-views-b">Target Views</label><input type="number" id="cpv-views-b" placeholder="e.g. 50000" min="0"/></div>
+        </div>
+        <div id="cpv-inputs-views" class="field-group" style="display:none">
+          <div class="field"><label for="cpv-spend-c">Total Ad Spend ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="cpv-spend-c" class="has-prefix" placeholder="e.g. 1000" min="0"/></div></div>
+          <div class="field"><label for="cpv-rate-c">CPV Rate ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="cpv-rate-c" class="has-prefix" placeholder="e.g. 0.04" min="0" step="0.001"/></div></div>
+        </div>
+
+        <button class="btn-calc" id="cpv-calc-btn" type="button">Calculate</button>
+        <div class="result-panel" id="cpv-result" aria-live="polite">
+          <div class="result-panel__label" id="cpv-rlabel">Cost Per View (CPV)</div>
+          <div class="result-panel__primary" id="cpv-primary">$0.000</div>
+          <div class="result-panel__grid">
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="cpv-s1">—</span><span class="result-panel__stat-label" id="cpv-l1">Ad spend</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="cpv-s2">—</span><span class="result-panel__stat-label" id="cpv-l2">Views</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="cpv-s3">—</span><span class="result-panel__stat-label" id="cpv-l3">Benchmark</span></div>
+          </div>
+          <div class="result-verdict" id="cpv-verdict"></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="bench-section" aria-labelledby="cpv-bench">
+      <h2 id="cpv-bench">CPV Benchmarks by Platform — 2026</h2>
+      <span class="bench-date">Updated July 2026</span>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead><tr><th scope="col">Platform</th><th scope="col">Average CPV</th><th scope="col">Ad Format</th><th scope="col">Notes</th></tr></thead>
+          <tbody>
+            {platformBenchmarks.map((r, i) => (
+              <tr style={i % 2 !== 0 ? 'background: var(--off-white)' : ''}>
+                <td><strong>{r.platform}</strong></td>
+                <td>{r.cpv}</td>
+                <td style="font-size: var(--text-sm);">{r.format}</td>
+                <td style="font-size: var(--text-sm); color: var(--text-mid);">{r.notes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">Sources: Google Ads Benchmark Report 2026, WordStream Video Advertising Benchmarks, Meta Advertising Benchmarks, TikTok for Business data 2026. Note: "View" definitions vary by platform — see FAQ below.</p>
+    </section>
+
+    <div style="background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0;">
+      <p style="font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mid); margin-bottom: var(--space-4);">Related Calculators</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-3);">
+        <a href="/cpm-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">🌐 CPM Calculator</a>
+        <a href="/cpc-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">🖱️ CPC Calculator</a>
+        <a href="/digital-marketing-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📊 All 5 Metrics at Once</a>
+        <a href="/social-media-budget-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📱 Social Media Budget</a>
+      </div>
+    </div>
+
+    <FAQ items={faqItems} title="CPV Calculator — FAQ" />
+  </div>
+</Base>
+
+<script>
+(function(){
+  'use strict';
+  const mBtns = { cpv: document.getElementById('cpv-mode-cpv'), spend: document.getElementById('cpv-mode-spend'), views: document.getElementById('cpv-mode-views') };
+  const mInputs = { cpv: document.getElementById('cpv-inputs-cpv'), spend: document.getElementById('cpv-inputs-spend'), views: document.getElementById('cpv-inputs-views') };
+  const btn = document.getElementById('cpv-calc-btn');
+  const result = document.getElementById('cpv-result');
+  if (!btn) return;
+  let mode = 'cpv';
+
+  Object.entries(mBtns).forEach(([m, b]) => {
+    b.addEventListener('click', () => {
+      mode = m;
+      Object.values(mBtns).forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      Object.values(mInputs).forEach(i => i.style.display = 'none');
+      mInputs[m].style.display = 'grid';
+    });
+  });
+
+  function getBenchmark(cpv) {
+    if (cpv <= 0.01) return 'TikTok / Programmatic range';
+    if (cpv <= 0.05) return 'YouTube TrueView average';
+    if (cpv <= 0.10) return 'Premium YouTube / Instagram';
+    return 'LinkedIn / premium video';
+  }
+
+  btn.addEventListener('click', () => {
+    const p = document.getElementById('cpv-primary');
+    const rl = document.getElementById('cpv-rlabel');
+    const s1 = document.getElementById('cpv-s1'), l1 = document.getElementById('cpv-l1');
+    const s2 = document.getElementById('cpv-s2'), l2 = document.getElementById('cpv-l2');
+    const s3 = document.getElementById('cpv-s3');
+    const v = document.getElementById('cpv-verdict');
+
+    if (mode === 'cpv') {
+      const spend = parseFloat(document.getElementById('cpv-spend').value) || 0;
+      const views = parseFloat(document.getElementById('cpv-views').value) || 0;
+      if (!spend || !views) return;
+      const cpv = spend / views;
+      rl.textContent = 'Cost Per View (CPV)';
+      p.textContent = '$' + cpv.toFixed(3);
+      s1.textContent = '$' + spend.toLocaleString(); l1.textContent = 'Ad spend';
+      s2.textContent = views.toLocaleString(); l2.textContent = 'Views';
+      s3.textContent = getBenchmark(cpv);
+      v.textContent = cpv <= 0.05 ? '✅ Efficient CPV — within YouTube TrueView average ($0.03–$0.10)' : cpv <= 0.12 ? '🟡 Above average — check audience targeting and creative length' : '⚠️ High CPV — typical of LinkedIn or unskippable formats; verify ROI';
+    } else if (mode === 'spend') {
+      const rate = parseFloat(document.getElementById('cpv-rate').value) || 0;
+      const views = parseFloat(document.getElementById('cpv-views-b').value) || 0;
+      if (!rate || !views) return;
+      const spend = rate * views;
+      rl.textContent = 'Total Spend Required';
+      p.textContent = '$' + spend.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+      s1.textContent = '$' + rate.toFixed(3); l1.textContent = 'CPV rate';
+      s2.textContent = views.toLocaleString(); l2.textContent = 'Target views';
+      s3.textContent = getBenchmark(rate);
+      v.textContent = '🎬 ' + views.toLocaleString() + ' views at $' + rate.toFixed(3) + ' CPV = $' + spend.toLocaleString('en-US', {minimumFractionDigits:2});
+    } else {
+      const spend = parseFloat(document.getElementById('cpv-spend-c').value) || 0;
+      const rate = parseFloat(document.getElementById('cpv-rate-c').value) || 0;
+      if (!spend || !rate) return;
+      const views = Math.floor(spend / rate);
+      rl.textContent = 'Estimated Views';
+      p.textContent = views.toLocaleString();
+      s1.textContent = '$' + spend.toLocaleString(); l1.textContent = 'Ad spend';
+      s2.textContent = '$' + rate.toFixed(3); l2.textContent = 'CPV rate';
+      s3.textContent = getBenchmark(rate);
+      v.textContent = '🎬 $' + spend.toLocaleString() + ' ÷ $' + rate.toFixed(3) + ' CPV = ' + views.toLocaleString() + ' estimated views';
+    }
+    result.classList.add('visible');
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+})();
+</script>
