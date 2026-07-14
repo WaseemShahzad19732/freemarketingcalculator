@@ -85,6 +85,13 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
           </p>
         </div>
 
+        
+        <p style="margin-top: var(--space-4);">
+          <strong>Calculate your own email marketing ROI:</strong> Use our
+          <a href="/email-marketing-roi-calculator/" style="color: var(--teal-dark); font-weight:700;">free Email Marketing ROI Calculator</a> —
+          enter list size, open rate, click rate, and platform cost to get your full ROMI.
+        </p>
+
         <h2>Where Does the $36:$1 Number Come From?</h2>
         <p>
           The $36:$1 figure comes primarily from the Litmus State of Email report, which surveys
@@ -227,6 +234,64 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
           A single subject line A/B test on your existing list requires no additional spend and
           can improve open rates by 20–30%.
         </p>
+
+
+        <!-- TASK 14: Email ROI by list size -->
+        <section style="margin-top: var(--space-10);" aria-labelledby="roi-list-size">
+          <h2 id="roi-list-size">Email Marketing ROI by List Size — 2026</h2>
+          <p>
+            The $36:$1 average applies to mature email programmes with established lists.
+            Realistic ROI varies significantly based on list size, because small lists
+            have higher per-subscriber costs and lower segmentation options.
+          </p>
+          <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
+            <table class="bench-table">
+              <thead>
+                <tr>
+                  <th scope="col">List Size</th>
+                  <th scope="col">Realistic Monthly ROI</th>
+                  <th scope="col">Avg Platform Cost</th>
+                  <th scope="col">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Under 500</td><td>$8–$15:$1</td><td>$0–$15/mo</td><td>Building phase — low volume, limited segmentation</td></tr>
+                <tr style="background:var(--off-white)"><td>500–2,000</td><td>$20–$30:$1</td><td>$15–$35/mo</td><td>Engagement improves with basic segmentation</td></tr>
+                <tr><td>2,000–10,000</td><td>$30–$42:$1</td><td>$35–$100/mo</td><td>Near industry average — automation becomes viable</td></tr>
+                <tr style="background:var(--off-white)"><td>10,000–50,000</td><td>$40–$55:$1</td><td>$100–$350/mo</td><td>Scale benefits kick in — segmentation and A/B testing</td></tr>
+                <tr><td>50,000+</td><td>$50–$80:$1</td><td>$350–$1,200/mo</td><td>Full automation, advanced segmentation, highest ROI</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="bench-source">Compiled from Klaviyo Benchmark Report 2026, Mailchimp ROI data, and Campaign Monitor industry averages. ROI figures represent achievable results with consistent sending, basic segmentation, and clean list hygiene.</p>
+        </section>
+
+        <!-- TASK 15: What does $36:$1 include? -->
+        <section style="margin-top: var(--space-10);" aria-labelledby="cost-breakdown">
+          <h2 id="cost-breakdown">What Costs Does the $36:$1 Email ROI Benchmark Include?</h2>
+          <p>
+            The $36:$1 figure from Litmus includes all costs in the denominator — not just the
+            platform subscription fee. Understanding what's counted matters when comparing your own ROI.
+          </p>
+          <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
+            <table class="bench-table">
+              <thead><tr><th scope="col">Cost Type</th><th scope="col">Included in $36:$1?</th><th scope="col">Typical Monthly Cost</th></tr></thead>
+              <tbody>
+                <tr><td>Email platform subscription</td><td>✅ Yes</td><td>$15–$500/mo depending on list size</td></tr>
+                <tr style="background:var(--off-white)"><td>Copywriting / content creation</td><td>✅ Yes</td><td>$200–$2,000/mo (in-house or agency)</td></tr>
+                <tr><td>Design / creative</td><td>✅ Yes</td><td>$100–$500/mo</td></tr>
+                <tr style="background:var(--off-white)"><td>List management / hygiene</td><td>✅ Yes</td><td>$0–$150/mo (tools)</td></tr>
+                <tr><td>Strategy and management time</td><td>✅ Yes (in survey responses)</td><td>3–8 hours/month at staff rate</td></tr>
+                <tr style="background:var(--off-white)"><td>Email automation setup</td><td>Partially</td><td>One-time cost amortised over 12 months</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            <strong>Key takeaway:</strong> If you're only dividing revenue by your platform fee,
+            your calculated ROI will be artificially high. For an honest ROI number,
+            include all staff time, creative costs, and tools — not just the Mailchimp invoice.
+          </p>
+        </section>
 
         <!-- Calculator CTA -->
         <div style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: var(--radius-lg); padding: var(--space-8); margin: var(--space-8) 0; text-align: center; color: white;">

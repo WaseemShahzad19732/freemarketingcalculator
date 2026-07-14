@@ -135,7 +135,31 @@ const fullSchema = {
             <li><a href="/marketing-salary-calculator/">Salary</a></li>
             <li><a href="/blog/">Blog</a></li>
           </ul>
+          <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+            <span></span><span></span><span></span>
+          </button>
         </nav>
+
+        <!-- Mobile menu drawer -->
+        <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+          <ul class="mobile-nav">
+            <li><a href="/">🏠 All Calculators</a></li>
+            <li><a href="/marketing-roi-calculator/">📈 ROI / ROMI Calculator</a></li>
+            <li><a href="/marketing-budget-calculator/">💰 Budget Calculator</a></li>
+            <li><a href="/conversion-rate-calculator/">🔄 Conversion Rate Calculator</a></li>
+            <li><a href="/email-marketing-roi-calculator/">✉️ Email ROI Calculator</a></li>
+            <li><a href="/social-media-budget-calculator/">📱 Social Media Budget</a></li>
+            <li><a href="/digital-marketing-calculator/">📊 Digital Marketing Metrics</a></li>
+            <li><a href="/marketing-salary-calculator/">🏆 Salary Calculator</a></li>
+            <li><a href="/marketing-agency-valuation-calculator/">🏢 Agency Valuation</a></li>
+            <li><a href="/marketing-automation-roi-calculator/">⚡ Automation ROI</a></li>
+            <li><a href="/inbound-marketing-calculator/">🎯 Inbound Marketing</a></li>
+            <li class="mobile-nav__divider"></li>
+            <li><a href="/blog/">📖 Blog & Guides</a></li>
+            <li><a href="/marketing-budget-benchmarks/">📊 2026 Benchmarks</a></li>
+            <li><a href="/about/">About</a></li>
+          </ul>
+        </div>
       </div>
     </header>
 
@@ -171,5 +195,41 @@ const fullSchema = {
     </footer>
 
   </div>
+
+<script>
+(function () {
+  const toggle = document.getElementById('nav-toggle');
+  const menu   = document.getElementById('mobile-menu');
+  if (!toggle || !menu) return;
+
+  function openMenu() {
+    menu.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close menu');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('menu-open');
+  }
+
+  function closeMenu() {
+    menu.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open menu');
+    menu.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('menu-open');
+  }
+
+  toggle.addEventListener('click', () => {
+    toggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+  });
+
+  // Close on nav link click
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Close on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeMenu();
+  });
+})();
+</script>
 </body>
 </html>

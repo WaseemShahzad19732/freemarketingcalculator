@@ -4,7 +4,7 @@ import FAQ from '../components/FAQ.astro';
 
 const slug        = 'marketing-budget-benchmarks';
 const title       = 'Marketing Budget Benchmarks by Industry — 2026 Data';
-const description = 'How much do companies spend on marketing? 2026 marketing budget benchmarks by industry, company size, and channel. Data from Gartner, Deloitte, and HubSpot CMO surveys.';
+const description = 'Marketing budget percentage by industry — 2026 benchmarks from Gartner, Deloitte, and HubSpot CMO surveys. Covers 9 industries, company sizes, and channel allocation.';
 const updated     = 'July 2026';
 
 const industryData = [
@@ -83,8 +83,7 @@ const breadcrumbSchema = {
       <p class="eyebrow">Research & Data — {updated}</p>
       <h1 id="bench-h1">Marketing Budget Benchmarks by Industry — 2026</h1>
       <p class="citation">
-        How much should your company spend on marketing? This page compiles 2026 marketing
-        budget benchmarks by industry, company size, and channel — sourced from the Gartner
+        How much should your company spend on marketing? This page compiles 2026 marketing budget benchmarks — showing marketing budget percentage of revenue by industry, company size, and channel — sourced from the Gartner
         CMO Survey, Deloitte CMO Survey, and HubSpot State of Marketing 2026 report.
       </p>
       <div class="meta-badges">
@@ -110,7 +109,7 @@ const breadcrumbSchema = {
 
     <!-- Industry benchmark table -->
     <section class="bench-section" aria-labelledby="industry-bench">
-      <h2 id="industry-bench">Marketing Budget as % of Revenue — By Industry (2026)</h2>
+      <h2 id="industry-bench">Marketing Budget Percentage by Industry — 2026 Benchmarks</h2>
       <span class="bench-date">Updated July 2026</span>
       <div class="bench-table-wrap">
         <table class="bench-table">
@@ -288,6 +287,13 @@ const breadcrumbSchema = {
       </p>
 
     </section>
+
+
+    <!-- TASK 23: Related guide link -->
+    <div style="background: var(--teal-faint); border: 1.5px solid rgba(0,196,179,.25); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap: var(--space-3);">
+      <p style="color: var(--navy); font-weight: 600; margin:0; font-size: var(--text-sm);">🧮 Calculate your marketing budget free →</p>
+      <a href="/marketing-budget-calculator/" style="background: var(--teal); color: var(--navy); font-weight: 700; font-size: var(--text-sm); padding: var(--space-2) var(--space-5); border-radius: var(--radius); text-decoration:none; white-space:nowrap;">Read now →</a>
+    </div>
 
     <FAQ items={faqItems} title="Marketing Budget Questions — Answered" />
 

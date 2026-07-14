@@ -3,8 +3,8 @@ import Base from '../layouts/Base.astro';
 import FAQ from '../components/FAQ.astro';
 
 const slug        = 'marketing-agency-valuation-calculator';
-const title       = 'Marketing Agency Valuation Calculator — Free Tool 2026';
-const description = 'Estimate your digital marketing agency value using revenue multiples, EBITDA, and client retention. Free calculator with 2026 valuation benchmarks.';
+const title       = 'Marketing Agency Valuation Calculator — Free M&A Tool (2026)';
+const description = 'Free marketing agency valuation calculator — estimate your digital agency value using revenue multiples, EBITDA, and client retention with 2026 M&A benchmarks.';
 
 const multiples = [
   { type: 'Full-service agency',      revMult: '1.5–2.5×', ebitdaMult: '4–6×'  },
@@ -97,6 +97,16 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [{ "@ty
       </div>
       <p class="bench-source">Sources: Coda Agency M&A Report 2026, Digital Agency Network, EY and Deloitte M&A data. Multiples vary by deal size, client quality, and market conditions.</p>
     </section>
+
+
+    <!-- TASK 25: How to use this calculator -->
+    <div class="definition-box" style="margin-top: var(--space-8);">
+      <div class="definition-box__label">How to Use This Agency Valuation Calculator</div>
+      <p style="white-space: pre-line; line-height: 1.9;">1. Enter your agency's annual revenue. 2. Enter your EBITDA margin % (revenue minus all staff, contractor, tool, and overhead costs — before tax and depreciation). 3. Enter your client retention rate. 4. Select your agency type (6 types with different valuation multiples). 5. Click Calculate — you get both revenue method and EBITDA method valuations with a range.</p>
+      <div class="formula-example" style="margin-top: var(--space-3);">
+        <strong>Example:</strong> Example: $1.5M revenue, 22% EBITDA margin ($330K), 85% retention, full-service agency. Revenue method: $1.5M × 2.0× = $3.0M. EBITDA method: $330K × 5× = $1.65M. Blended range: $1.6M–$3.0M.
+      </div>
+    </div>
 
     <FAQ items={faqItems} />
   </div>

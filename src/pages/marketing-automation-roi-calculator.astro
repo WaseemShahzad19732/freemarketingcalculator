@@ -4,7 +4,7 @@ import FAQ from '../components/FAQ.astro';
 
 const slug        = 'marketing-automation-roi-calculator';
 const title       = 'Marketing Automation ROI Calculator — Free B2B Tool 2026';
-const description = 'Calculate the ROI of marketing automation for B2B. Compares manual vs automated costs, lead volume lift, and time savings. Free, no signup required.';
+const description = 'Marketing automation ROI calculator for B2B — enter time savings, platform cost, and lead lift to get your annual ROI and break-even timeline. Free, no signup.';
 
 const faqItems = [
   { q: 'What is the ROI of marketing automation?', a: 'Marketing automation typically delivers 14.5% increase in sales productivity and a 12.2% reduction in marketing overhead (Salesforce). Companies report 451% increase in qualified leads and 34% reduction in cost per lead within 12 months of adoption.' },
@@ -68,6 +68,16 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [{ "@ty
     <div class="formula-box">
       <p class="formula-title">Formula</p>
       <p class="formula-text">Annual Time Savings = Hours/week × 52 × Hourly Cost<br/>Revenue Lift = Additional Leads × Close Rate × Deal Value<br/>ROI = (Savings + Revenue Lift − Platform Cost) ÷ Platform Cost × 100</p>
+    </div>
+
+
+    <!-- TASK 25: How to use this calculator -->
+    <div class="definition-box" style="margin-top: var(--space-8);">
+      <div class="definition-box__label">How to Use This Marketing Automation ROI Calculator</div>
+      <p style="white-space: pre-line; line-height: 1.9;">1. Enter the hours per week your team currently spends on manual marketing tasks. 2. Enter the average hourly cost of your marketing staff (include benefits — typically 1.3× base salary). 3. Enter your monthly platform cost. 4. Enter current monthly leads, expected lift from automation (%), average deal value, and close rate. 5. Click Calculate — you see annual savings, revenue lift, net ROI %, and months to break even.</p>
+      <div class="formula-example" style="margin-top: var(--space-3);">
+        <strong>Example:</strong> Example: 15 hrs/week × $45/hr × 52 weeks = $35,100 annual time savings. 200 leads × 30% lift = 60 extra leads × 5% close × $2,500 deal = $7,500 revenue lift. Annual ROI = ($35,100 + $7,500 − $9,600 platform) ÷ $9,600 = 345%.
+      </div>
     </div>
 
     <FAQ items={faqItems} />

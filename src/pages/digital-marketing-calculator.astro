@@ -3,8 +3,8 @@ import Base from '../layouts/Base.astro';
 import FAQ from '../components/FAQ.astro';
 
 const slug        = 'digital-marketing-calculator';
-const title       = 'Digital Marketing Calculator — CPM, CPC, ROAS and More 2026';
-const description = 'Calculate CPM, CPC, CTR, ROAS, and CPA in one free digital marketing calculator. Enter campaign numbers to see all performance metrics instantly.';
+const title       = 'Digital Marketing Calculator — CPM, CPC, CTR, ROAS, CPA (2026)';
+const description = 'Digital marketing calculator: compute CPM, CPC, CTR, ROAS, and CPA from one set of campaign inputs. All 5 metrics at once. Free, no signup required.';
 
 const faqItems = [
   { q: 'What is CPM in digital marketing?', a: 'CPM (Cost Per Mille) is the cost to show your ad 1,000 times. Formula: CPM = (Ad Spend ÷ Impressions) × 1,000. Average CPM varies: Google Display ~$2, Facebook ~$8, LinkedIn ~$35.' },
@@ -73,6 +73,23 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [{ "@ty
         <strong>CPA</strong> = Ad Spend ÷ Conversions<br/>
         <strong>ROAS</strong> = Revenue ÷ Ad Spend
       </p>
+    </div>
+
+
+    <!-- TASK 23: Related guide link -->
+    <div style="background: var(--teal-faint); border: 1.5px solid rgba(0,196,179,.25); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap: var(--space-3);">
+      <p style="color: var(--navy); font-weight: 600; margin:0; font-size: var(--text-sm);">📖 CPM, CPC, CTR, ROAS, CPA Explained — Full metrics guide →</p>
+      <a href="/blog/digital-marketing-metrics-guide/" style="background: var(--teal); color: var(--navy); font-weight: 700; font-size: var(--text-sm); padding: var(--space-2) var(--space-5); border-radius: var(--radius); text-decoration:none; white-space:nowrap;">Read now →</a>
+    </div>
+
+
+    <!-- TASK 25: How to use this calculator -->
+    <div class="definition-box" style="margin-top: var(--space-8);">
+      <div class="definition-box__label">How to Use This Digital Marketing Calculator</div>
+      <p style="white-space: pre-line; line-height: 1.9;">1. Enter your total ad spend for the campaign period. 2. Enter impressions, clicks, conversions, and revenue generated. 3. You can leave any field blank — the calculator will compute whichever metrics have enough data. 4. Click Calculate All Metrics to see CPM, CPC, CTR, CPA, and ROAS simultaneously.</p>
+      <div class="formula-example" style="margin-top: var(--space-3);">
+        <strong>Example:</strong> Example: $5,000 spend, 500,000 impressions, 4,500 clicks, 90 conversions, $22,000 revenue → CPM $10 | CPC $1.11 | CTR 0.9% | CPA $55.56 | ROAS 4.4×.
+      </div>
     </div>
 
     <FAQ items={faqItems} />

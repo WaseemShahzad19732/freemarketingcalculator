@@ -94,6 +94,23 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [{ "@ty
       <p class="bench-source">Approximate pricing based on standard plans. Prices change — verify on each platform's site.</p>
     </section>
 
+
+    <!-- TASK 23: Related guide link -->
+    <div style="background: var(--teal-faint); border: 1.5px solid rgba(0,196,179,.25); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap: var(--space-3);">
+      <p style="color: var(--navy); font-weight: 600; margin:0; font-size: var(--text-sm);">📖 Is the $36:$1 Email ROI Still Accurate? Read the benchmarks guide →</p>
+      <a href="/blog/email-marketing-roi-benchmarks/" style="background: var(--teal); color: var(--navy); font-weight: 700; font-size: var(--text-sm); padding: var(--space-2) var(--space-5); border-radius: var(--radius); text-decoration:none; white-space:nowrap;">Read now →</a>
+    </div>
+
+
+    <!-- TASK 25: How to use this calculator -->
+    <div class="definition-box" style="margin-top: var(--space-8);">
+      <div class="definition-box__label">How to Use This Email Marketing ROI Calculator</div>
+      <p style="white-space: pre-line; line-height: 1.9;">1. Enter your email list size and number of sends per month. 2. Enter your open rate and click rate (use your ESP's analytics or the 2026 industry benchmarks shown below). 3. Enter conversion rate of clicks, average order value, and monthly platform cost. 4. Click Calculate — your monthly revenue, conversions, and full ROMI appear.</p>
+      <div class="formula-example" style="margin-top: var(--space-3);">
+        <strong>Example:</strong> Example: 5,000 subscribers, 4 sends/month, 22% open rate, 2.5% CTR, 5% conversion, $150 AOV, $50 platform cost. Monthly revenue = 5,000 × 4 × 0.22 × 0.025 × 0.05 × $150 = $825. ROMI = ($825 − $50) ÷ $50 × 100 = 1,550%.
+      </div>
+    </div>
+
     <FAQ items={faqItems} />
   </div>
 </Base>

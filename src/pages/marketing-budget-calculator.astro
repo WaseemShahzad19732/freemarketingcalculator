@@ -3,8 +3,8 @@ import Base from '../layouts/Base.astro';
 import FAQ from '../components/FAQ.astro';
 
 const slug        = 'marketing-budget-calculator';
-const title       = 'Marketing Budget Calculator — Free by Industry (2026)';
-const description = 'Enter your revenue and industry to get a recommended marketing budget. Benchmarks for B2B, SaaS, retail, manufacturing, and 8 more sectors. Free, instant, no signup.';
+const title       = 'Marketing Budget Calculator — Free Online Tool (2026)';
+const description = 'Free marketing budget calculator — enter your revenue and industry to get an instant budget recommendation with 9-sector benchmarks and channel allocation breakdown.';
 
 // ── Industry benchmarks (source: Gartner, Deloitte, CMO Survey public data) ──
 const industries = [
@@ -334,6 +334,23 @@ const breadcrumbSchema = {
     </section>
 
     <!-- ═══ FAQ ═══ -->
+
+    <!-- TASK 23: Related guide link -->
+    <div style="background: var(--teal-faint); border: 1.5px solid rgba(0,196,179,.25); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap: var(--space-3);">
+      <p style="color: var(--navy); font-weight: 600; margin:0; font-size: var(--text-sm);">📖 How to Set a Marketing Budget for a Small Business →</p>
+      <a href="/blog/marketing-budget-small-business/" style="background: var(--teal); color: var(--navy); font-weight: 700; font-size: var(--text-sm); padding: var(--space-2) var(--space-5); border-radius: var(--radius); text-decoration:none; white-space:nowrap;">Read now →</a>
+    </div>
+
+
+    <!-- TASK 25: How to use this calculator -->
+    <div class="definition-box" style="margin-top: var(--space-8);">
+      <div class="definition-box__label">How to Use This Marketing Budget Calculator</div>
+      <p style="white-space: pre-line; line-height: 1.9;">1. Enter your annual revenue (or projected revenue for early-stage businesses). 2. Select your industry from the dropdown — benchmarks are pre-loaded from Gartner and Deloitte. 3. Choose your growth stage: Maintain, Grow (+25%), or Aggressive (+60%). 4. Click Calculate — your annual, monthly, and weekly budget appear with a suggested channel allocation.</p>
+      <div class="formula-example" style="margin-top: var(--space-3);">
+        <strong>Example:</strong> Example: A B2B services company with $2M revenue selects 'B2B Services' (7% benchmark) and 'Grow' stage. Recommended budget = $2M × 7% × 1.25 = $175,000/year ($14,583/month).
+      </div>
+    </div>
+
     <FAQ items={faqItems} />
 
     <!-- ═══ DOWNLOAD SECTION ═══ -->

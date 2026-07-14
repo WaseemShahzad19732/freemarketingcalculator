@@ -11,7 +11,7 @@ const readTime  = '8 min read';
 const metrics = [
   {
     name: 'CPM',
-    full: 'Cost Per Mille (Cost Per 1,000 Impressions)',
+    full: 'Cost Per Mille (Cost Per 1,000 Impressions) — CPM Formula',
     formula: 'CPM = (Total Ad Spend ÷ Impressions) × 1,000',
     example: '$500 spend, 100,000 impressions → ($500 ÷ 100,000) × 1,000 = $5.00 CPM',
     use: 'Measuring the efficiency of brand awareness campaigns. Comparing reach across platforms.',
@@ -233,6 +233,57 @@ const breadcrumbSchema = {
 
           </section>
         ))}
+
+
+        <!-- TASK 12: Full campaign example -->
+        <section style="margin-top: var(--space-10);" aria-labelledby="example-heading">
+          <h2 id="example-heading">Full Campaign Example — All 5 Metrics at Once</h2>
+          <p>
+            Here is one real-world campaign with all five metrics calculated from the same set of numbers.
+            This is what a performance report actually looks like when you run it correctly.
+          </p>
+          <div class="formula-box">
+            <p class="formula-title">Campaign: Google Search — Q3 2026</p>
+            <p class="formula-text" style="line-height:2.2;">
+              Ad spend: $5,000 | Impressions: 500,000 | Clicks: 4,500 | Conversions: 90 | Revenue: $22,000
+            </p>
+            <div class="formula-example">
+              <strong>CPM</strong> = ($5,000 ÷ 500,000) × 1,000 = <strong>$10.00</strong><br/>
+              <strong>CPC</strong> = $5,000 ÷ 4,500 = <strong>$1.11</strong><br/>
+              <strong>CTR</strong> = (4,500 ÷ 500,000) × 100 = <strong>0.9%</strong><br/>
+              <strong>CPA</strong> = $5,000 ÷ 90 = <strong>$55.56</strong><br/>
+              <strong>ROAS</strong> = $22,000 ÷ $5,000 = <strong>4.4×</strong>
+            </div>
+          </div>
+          <p>
+            Reading this campaign: the CTR of 0.9% is slightly below the Google Search average (3–6%)
+            suggesting the ad creative could be improved. However the ROAS of 4.4× is solid — the
+            campaign is profitable. The CPA of $55.56 needs to be compared against the average order
+            value or customer LTV to confirm profitability at the unit level.
+          </p>
+        </section>
+
+        <!-- TASK 13: Which metric to optimise first -->
+        <section style="margin-top: var(--space-10);" aria-labelledby="optimise-heading">
+          <h2 id="optimise-heading">Which Metric Should You Optimise First?</h2>
+          <p>When a campaign underperforms, each metric points to a different problem and a different fix:</p>
+          <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
+            <table class="bench-table">
+              <thead><tr><th scope="col">If this metric is poor</th><th scope="col">The problem is</th><th scope="col">The fix</th></tr></thead>
+              <tbody>
+                <tr><td><strong>High CPM</strong></td><td>Audience too competitive or narrow</td><td>Broaden audience targeting, try a different placement</td></tr>
+                <tr style="background:var(--off-white)"><td><strong>Low CTR</strong></td><td>Ad creative not resonating</td><td>Test new headlines, images, CTAs — A/B test creatives</td></tr>
+                <tr><td><strong>High CPC</strong></td><td>Low Quality Score or high competition</td><td>Improve ad relevance, raise bids on high-intent terms</td></tr>
+                <tr style="background:var(--off-white)"><td><strong>High CPA</strong></td><td>Landing page not converting clicks</td><td>Optimise landing page — CTA, load speed, form length</td></tr>
+                <tr><td><strong>Low ROAS</strong></td><td>Revenue per customer is too low</td><td>Improve offer, raise AOV, refine audience to buyers</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            The order matters: fix creative first (CTR), then bidding (CPC), then landing page (CPA), then offer (ROAS). 
+            Optimising ROAS before fixing a broken landing page is wasted effort.
+          </p>
+        </section>
 
         <!-- ROAS vs ROI section -->
         <section style="margin-top: var(--space-10);" aria-labelledby="roas-vs-roi">

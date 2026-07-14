@@ -4,7 +4,7 @@ import FAQ from '../components/FAQ.astro';
 
 const slug        = 'marketing-salary-calculator';
 const title       = 'Marketing Salary Calculator — By Role, Level and Location 2026';
-const description = 'Find your marketing salary range by role, seniority, and US location. Covers marketing managers, directors, CMOs, and digital marketing specialists.';
+const description = 'Marketing salary calculator by role, seniority, and US city. Covers marketing managers, directors, CMOs, SEO specialists and 7 more roles. 2026 data. Free.';
 
 // Salary data: [entry, mid, senior, director, exec] in $K
 const salaryData: Record<string, number[]> = {
@@ -122,6 +122,86 @@ const locationJSON = JSON.stringify(locationMult);
     <div class="definition-box">
       <div class="definition-box__label">About This Data</div>
       <p>Salary ranges are based on 2026 US compensation data compiled from LinkedIn Salary, Glassdoor, BLS Occupational Outlook, and industry surveys. Figures reflect base salary only and exclude bonuses, equity, and benefits. Actual compensation varies by company size, industry, and individual negotiation.</p>
+    </div>
+
+
+    <!-- TASK 8: Salary comparison table -->
+    <section class="bench-section" aria-labelledby="salary-compare-heading" style="margin-top: var(--space-8);">
+      <h2 id="salary-compare-heading">Marketing Salary Comparison by Role — 2026</h2>
+      <span class="bench-date">Updated July 2026</span>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead>
+            <tr>
+              <th scope="col">Role</th>
+              <th scope="col">Entry Level</th>
+              <th scope="col">Mid-Level</th>
+              <th scope="col">Senior</th>
+              <th scope="col">Director+</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Marketing Manager</strong></td>
+              <td>$55–68K</td><td>$68–88K</td><td>$88–110K</td><td>$110–135K</td>
+            </tr>
+            <tr style="background:var(--off-white)">
+              <td><strong>Digital Marketing Manager</strong></td>
+              <td>$52–65K</td><td>$65–85K</td><td>$85–108K</td><td>$105–128K</td>
+            </tr>
+            <tr>
+              <td><strong>SEO Specialist</strong></td>
+              <td>$48–60K</td><td>$60–80K</td><td>$80–102K</td><td>$100–120K</td>
+            </tr>
+            <tr style="background:var(--off-white)">
+              <td><strong>Paid Media Manager</strong></td>
+              <td>$52–65K</td><td>$65–88K</td><td>$88–112K</td><td>$108–132K</td>
+            </tr>
+            <tr>
+              <td><strong>Content Marketer</strong></td>
+              <td>$45–58K</td><td>$58–75K</td><td>$75–95K</td><td>$95–118K</td>
+            </tr>
+            <tr style="background:var(--off-white)">
+              <td><strong>Email Marketing Specialist</strong></td>
+              <td>$45–56K</td><td>$56–72K</td><td>$72–92K</td><td>$90–110K</td>
+            </tr>
+            <tr>
+              <td><strong>Product Marketing Manager</strong></td>
+              <td>$65–80K</td><td>$80–105K</td><td>$105–132K</td><td>$130–158K</td>
+            </tr>
+            <tr style="background:var(--off-white)">
+              <td><strong>Marketing Director</strong></td>
+              <td>—</td><td>$90–115K</td><td>$115–145K</td><td>$145–190K</td>
+            </tr>
+            <tr>
+              <td><strong>VP of Marketing</strong></td>
+              <td>—</td><td>$120–150K</td><td>$150–185K</td><td>$185–255K</td>
+            </tr>
+            <tr style="background:var(--off-white)">
+              <td><strong>CMO</strong></td>
+              <td>—</td><td>$150–200K</td><td>$200–275K</td><td>$275–400K+</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">US national average base salary. Sources: LinkedIn Salary 2026, Glassdoor, BLS Occupational Outlook. Does not include bonuses, equity, or benefits (typically add 15–35%).</p>
+    </section>
+
+
+    <!-- TASK 23: Related guide link -->
+    <div style="background: var(--teal-faint); border: 1.5px solid rgba(0,196,179,.25); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap: var(--space-3);">
+      <p style="color: var(--navy); font-weight: 600; margin:0; font-size: var(--text-sm);">📖 Marketing Salaries in 2026 — Complete guide by role and city →</p>
+      <a href="/blog/marketing-salary-guide/" style="background: var(--teal); color: var(--navy); font-weight: 700; font-size: var(--text-sm); padding: var(--space-2) var(--space-5); border-radius: var(--radius); text-decoration:none; white-space:nowrap;">Read now →</a>
+    </div>
+
+
+    <!-- TASK 25: How to use this calculator -->
+    <div class="definition-box" style="margin-top: var(--space-8);">
+      <div class="definition-box__label">How to Use This Marketing Salary Calculator</div>
+      <p style="white-space: pre-line; line-height: 1.9;">1. Select your marketing role from the dropdown (10 roles available from Coordinator to CMO). 2. Choose your seniority level (Entry / Mid / Senior / Director / Executive). 3. Select your US city or choose 'US National Average' or 'Fully Remote'. 4. Click Get Salary Range — your low, midpoint, and high estimates appear with the location adjustment explained.</p>
+      <div class="formula-example" style="margin-top: var(--space-3);">
+        <strong>Example:</strong> Example: Senior Digital Marketing Manager in New York City. National midpoint $85K × 1.35 NYC multiplier = $114,750 midpoint. Range: $98K–$135K.
+      </div>
     </div>
 
     <FAQ items={faqItems} />
