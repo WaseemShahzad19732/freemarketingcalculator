@@ -47,6 +47,7 @@
   --space-4:  1rem;
   --space-6:  1.5rem;
   --space-8:  2rem;
+  --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
 
@@ -868,7 +869,7 @@ details[open] .faq-question svg { transform: rotate(180deg); }
 .site-footer {
   background: var(--navy);
   color: rgba(255,255,255,.6);
-  padding: var(--space-12) 0 var(--space-6);
+  padding: var(--space-16) 0 var(--space-8);
   margin-top: var(--space-16);
   font-size: var(--text-sm);
 }
@@ -879,8 +880,8 @@ details[open] .faq-question svg { transform: rotate(180deg); }
 .footer-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: var(--space-8);
-  padding-bottom: var(--space-6);
+  gap: var(--space-10);
+  padding-bottom: var(--space-8);
   border-bottom: 1px solid rgba(255,255,255,.1);
 }
 
@@ -888,17 +889,17 @@ details[open] .faq-question svg { transform: rotate(180deg); }
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 
 .footer-blurb {
-  font-size: var(--text-xs);
-  color: rgba(255,255,255,.55);
-  line-height: 1.6;
-  margin-bottom: var(--space-3);
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,.6);
+  line-height: 1.7;
+  margin-bottom: var(--space-4);
 }
 
-.footer-social { display: flex; gap: var(--space-3); }
+.footer-social { display: flex; gap: var(--space-4); }
 .footer-social a { color: rgba(255,255,255,.6); display: inline-flex; }
 .footer-social a:hover { color: var(--teal); }
 
@@ -908,17 +909,18 @@ details[open] .faq-question svg { transform: rotate(180deg); }
   text-transform: uppercase;
   letter-spacing: .06em;
   color: var(--teal);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-3);
   list-style: none;
+  font-size: var(--text-sm);
 }
 
-.footer-links a { color: rgba(255,255,255,.75); }
+.footer-links a { color: rgba(255,255,255,.75); line-height: 1.4; }
 .footer-links a:hover { color: var(--teal); }
 .footer-llms { display: inline-flex; align-items: center; }
 
@@ -928,7 +930,7 @@ details[open] .faq-question svg { transform: rotate(180deg); }
   align-items: center;
   flex-wrap: wrap;
   gap: var(--space-3);
-  padding-top: var(--space-4);
+  padding-top: var(--space-6);
   font-size: var(--text-xs);
 }
 
@@ -1304,32 +1306,33 @@ body.menu-open {
 .live-calc-card__header {
   background: var(--teal-faint);
   border-bottom: 1px solid var(--border);
-  padding: var(--space-4) var(--space-5);
+  padding: var(--space-5) var(--space-6);
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
 
 .live-calc-card__body {
-  padding: var(--space-5);
+  padding: var(--space-6);
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-5);
 }
 
 .live-calc-card__result {
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
   border-radius: var(--radius);
-  padding: var(--space-5);
+  padding: var(--space-6);
   color: var(--white);
 }
 
 .live-calc-card__result-value {
   font-family: var(--font-display);
-  font-size: 2.25rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: var(--teal);
   letter-spacing: -0.02em;
   line-height: 1;
+  margin-bottom: var(--space-1);
 }
 
 /* ============================================================
