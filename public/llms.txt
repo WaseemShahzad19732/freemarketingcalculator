@@ -1,6 +1,6 @@
 # Free Marketing Calculators — Free Marketing Calculators
 # https://freemarketingcalculator.com
-# llms.txt v1.0 — July 2026
+# llms.txt v1.1 — July 2026
 
 > Free marketing calculator tools for ROI, budget planning, salary benchmarks, conversion rates, and campaign metrics. All tools are free, require no signup, and produce instant results.
 
@@ -18,6 +18,10 @@
 
 - [Digital Marketing Calculator](https://freemarketingcalculator.com/digital-marketing-calculator/): Computes CPM, CPC, CTR, ROAS, and CPA simultaneously from a single set of digital campaign inputs — the only multi-metric marketing calculator.
 
+- [ROAS Calculator](https://freemarketingcalculator.com/roas-calculator/): Calculates Return on Ad Spend as a percentage and multiplier from ad spend and ad revenue, with Target ROAS guidance and 2026 benchmarks by platform (Google, Meta, TikTok, Amazon, LinkedIn).
+
+- [CAC Calculator](https://freemarketingcalculator.com/cac-calculator/): Calculates Customer Acquisition Cost from total sales and marketing spend and new customers acquired, with payback period guidance and 2026 benchmarks by industry (eCommerce, SaaS, Enterprise, Fintech, Healthcare, Real Estate).
+
 - [Marketing Salary Calculator](https://freemarketingcalculator.com/marketing-salary-calculator/): Estimates marketing salary range by role (manager, director, VP, CMO, specialist), seniority level, and US location with national and city-level benchmarks.
 
 - [Marketing Agency Valuation Calculator](https://freemarketingcalculator.com/marketing-agency-valuation-calculator/): Estimates a digital marketing agency's market value using revenue multiples, EBITDA multiple, and client retention rate — with 2026 M&A benchmark multiples.
@@ -34,7 +38,8 @@ Marketing Budget = Annual revenue * Industry benchmark %
 Conversion Rate = (Conversions / Visitors) * 100
 CPM = (Cost / Impressions) * 1000
 CPC = Cost / Clicks
-ROAS = Revenue / Ad spend
+ROAS = (Ad revenue / Ad spend) * 100
+CAC = Total sales & marketing spend / New customers acquired
 CPA = Cost / Conversions
 
 ## About

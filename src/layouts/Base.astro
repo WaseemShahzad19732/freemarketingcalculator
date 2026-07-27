@@ -23,6 +23,22 @@ const {
   noindex = false,
 } = Astro.props;
 
+const navItems = [
+  { href: 'marketing-roi-calculator', label: 'ROI Calc', icon: 'trend' },
+  { href: 'marketing-budget-calculator', label: 'Budget', icon: 'card' },
+  { href: 'conversion-rate-calculator', label: 'Conversion', icon: 'refresh' },
+  { href: 'email-marketing-roi-calculator', label: 'Email ROI', icon: 'mail' },
+  { href: 'marketing-salary-calculator', label: 'Salary', icon: 'briefcase' },
+];
+
+const iconSvgs = {
+  trend: '<polyline points="3 17 9 11 13 15 21 7"></polyline><polyline points="14 7 21 7 21 14"></polyline>',
+  card: '<rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line>',
+  refresh: '<polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>',
+  mail: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22 6 12 13 2 6"></polyline>',
+  briefcase: '<rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>',
+};
+
 const siteUrl   = 'https://freemarketingcalculator.com'; // ← replace before deploy
 const canonical = `${siteUrl}/${slug ? slug + '/' : ''}`;
 const ogUrl     = canonical;
@@ -124,7 +140,7 @@ const fullSchema = {
   <div class="page-wrap">
 
     <!-- ===== SITE HEADER ===== -->
-    <header class="site-header" role="banner">
+    <header class="site-header" role="banner" id="site-top">
       <div class="container">
         <a href="/" class="site-logo" aria-label="Free Marketing Calculators home">
           <!-- Bar chart icon -->
@@ -137,15 +153,18 @@ const fullSchema = {
           </svg>
           <span class="logo-text">Free<span class="logo-accent">Marketing</span>Calc</span>
         </a>
-        <nav aria-label="Main navigation">
+        <nav aria-label="Main navigation" class="site-nav-wrap">
           <ul class="site-nav">
-            <li><a href="/marketing-roi-calculator/">ROI Calculator</a></li>
-            <li><a href="/marketing-budget-calculator/">Budget</a></li>
-            <li><a href="/conversion-rate-calculator/">Conversion Rate</a></li>
-            <li><a href="/email-marketing-roi-calculator/">Email ROI</a></li>
-            <li><a href="/marketing-salary-calculator/">Salary</a></li>
-            <li><a href="/blog/">Blog</a></li>
+            {navItems.map(item => (
+              <li class={slug === item.href ? 'is-active' : ''}>
+                <a href={`/${item.href}/`} aria-current={slug === item.href ? 'page' : undefined}>
+                  <svg class="nav-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={iconSvgs[item.icon]}></svg>
+                  <span class="nav-label">{item.label}</span>
+                </a>
+              </li>
+            ))}
           </ul>
+          <a href="/marketing-roi-calculator/" class="btn-nav-cta">Try ROI Calculator</a>
           <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
             <span></span><span></span><span></span>
           </button>
@@ -161,6 +180,8 @@ const fullSchema = {
             <li><a href="/email-marketing-roi-calculator/">✉️ Email ROI Calculator</a></li>
             <li><a href="/social-media-budget-calculator/">📱 Social Media Budget</a></li>
             <li><a href="/digital-marketing-calculator/">📊 Digital Marketing Metrics</a></li>
+            <li><a href="/roas-calculator/">📣 ROAS Calculator</a></li>
+            <li><a href="/cac-calculator/">🎯 CAC Calculator</a></li>
             <li><a href="/marketing-salary-calculator/">🏆 Salary Calculator</a></li>
             <li><a href="/marketing-agency-valuation-calculator/">🏢 Agency Valuation</a></li>
             <li><a href="/marketing-automation-roi-calculator/">⚡ Automation ROI</a></li>
@@ -181,27 +202,66 @@ const fullSchema = {
 
     <!-- ===== SITE FOOTER ===== -->
     <footer class="site-footer" role="contentinfo">
-      <div class="container">
-        <div>
+      <div class="container footer-inner">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="/" class="footer-logo" aria-label="Free Marketing Calculators home">
+              <svg width="22" height="22" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex-shrink:0">
+                <rect width="64" height="64" rx="10" fill="#00C4B3"/>
+                <rect x="8"  y="40" width="11" height="16" rx="2" fill="white"/>
+                <rect x="23" y="28" width="11" height="28" rx="2" fill="white" opacity="0.85"/>
+                <rect x="38" y="16" width="11" height="40" rx="2" fill="white"/>
+              </svg>
+              <span class="logo-text">Free<span class="logo-accent">Marketing</span>Calc</span>
+            </a>
+            <p class="footer-blurb">15 free marketing calculators. No signup, no email gate, updated for 2026.</p>
+            <div class="footer-social">
+              <a href={orgSchema.sameAs[0]} aria-label="LinkedIn" rel="noopener" target="_blank">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              </a>
+              <a href={orgSchema.sameAs[1]} aria-label="X (Twitter)" rel="noopener" target="_blank">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <p class="footer-col__title">Calculators</p>
+            <ul class="footer-links">
+              <li><a href="/marketing-roi-calculator/">ROI Calculator</a></li>
+              <li><a href="/roas-calculator/">ROAS Calculator</a></li>
+              <li><a href="/cac-calculator/">CAC Calculator</a></li>
+              <li><a href="/marketing-budget-calculator/">Budget Calculator</a></li>
+              <li><a href="/">View all 15 →</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <p class="footer-col__title">Company</p>
+            <ul class="footer-links">
+              <li><a href="/about/">About</a></li>
+              <li><a href="/blog/">Blog</a></li>
+              <li><a href="/marketing-budget-benchmarks/">2026 Benchmarks</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <p class="footer-col__title">Legal</p>
+            <ul class="footer-links">
+              <li><a href="/privacy-policy/">Privacy Policy</a></li>
+              <li><a href="/sitemap-index.xml">Sitemap</a></li>
+              <li><a href="/llms.txt" class="footer-llms">llms.txt</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
           <p>
             &copy; {new Date().getFullYear()} Free Marketing Calculators &mdash;
-            Free marketing calculators, no signup required.
+            Free marketing calculators, no signup required. Not financial advice.
           </p>
-          <p style="margin-top: 0.5rem;">
-            Formulas sourced from industry-standard definitions.
-            Benchmarks compiled from public data; updated quarterly.
-            Not financial advice.
-          </p>
+          <a href="#site-top" class="footer-back-to-top">Back to top ↑</a>
         </div>
-        <nav aria-label="Footer navigation">
-          <ul class="footer-links">
-            <li><a href="/">All Calculators</a></li>
-            <li><a href="/blog/">Blog</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/privacy-policy/">Privacy Policy</a></li>
-            <li><a href="/sitemap-index.xml">Sitemap</a></li>
-          </ul>
-        </nav>
       </div>
     </footer>
 
