@@ -1,0 +1,261 @@
+---
+import Base from '../layouts/Base.astro';
+import FAQ from '../components/FAQ.astro';
+
+const slug        = 'cac-calculator';
+const title       = 'CAC Calculator — Free Customer Acquisition Cost Tool (2026)';
+const description = 'Calculate customer acquisition cost (CAC) instantly — free CAC calculator with blended vs paid CAC modes, payback period estimator, and 2026 industry benchmarks. No signup required.';
+
+const faqItems = [
+  {
+    q: 'How do you calculate Customer Acquisition Cost (CAC)?',
+    a: '<strong>CAC = Total Sales & Marketing Expenses ÷ Number of New Customers Acquired</strong>. For example: $50,000 spent on marketing & sales to acquire 250 new customers = $50,000 ÷ 250 = <strong>$200 CAC</strong>.'
+  },
+  {
+    q: 'What is the difference between Blended CAC and Paid CAC?',
+    a: '<strong>Blended CAC</strong> includes all marketing expenses, sales salaries, tools, and overhead divided by total customers (organic + paid). <strong>Paid CAC</strong> measures direct ad spend divided only by customers acquired through paid channels.'
+  },
+  {
+    q: 'What is a good LTV:CAC ratio?',
+    a: 'A healthy benchmark for SaaS and subscription businesses is <strong>3:1 (LTV:CAC)</strong> — meaning customer lifetime value is 3x higher than acquisition cost. Anything below 1:1 means you lose money acquiring customers.'
+  },
+  {
+    q: 'What is CAC Payback Period?',
+    a: 'The payback period measures how many months it takes for a customer to generate enough gross profit to pay back their acquisition cost. Formula: <strong>Payback Months = CAC ÷ (ARPU × Gross Margin %)</strong>.'
+  }
+];
+
+const industryBenchmarks = [
+  { industry: 'ECommerce & Retail', typical: '$45', range: '$20–$100', bar: 25 },
+  { industry: 'B2B SaaS (SMB)', typical: '$390', range: '$200–$800', bar: 55 },
+  { industry: 'Enterprise Software', typical: '$1,450', range: '$800–$3,500', bar: 90 },
+  { industry: 'Financial Services / Fintech', typical: '$280', range: '$150–$600', bar: 48 },
+  { industry: 'Healthcare & Wellness', typical: '$120', range: '$60–$300', bar: 35 },
+  { industry: 'Real Estate & Property', typical: '$650', range: '$300–$1,500', bar: 70 }
+];
+
+const webAppSchema = {
+  "@type": "WebApplication",
+  "@id": "https://freemarketingcalculator.com/cac-calculator/#app",
+  "name": "CAC Calculator",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "creator": { "@id": "https://freemarketingcalculator.com/#org" },
+  "url": "https://freemarketingcalculator.com/cac-calculator/",
+  "description": "Free Customer Acquisition Cost (CAC) calculator supporting blended vs paid CAC modes, payback period estimation, and 2026 benchmarks.",
+  "featureList": ["Blended CAC formula", "Paid CAC formula", "Payback period estimator", "Free, no signup"]
+};
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": { "@type": "Answer", "text": item.a.replace(/<[^>]+>/g, '') }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
+    { "@type": "ListItem", "position": 2, "name": "CAC Calculator", "item": "https://freemarketingcalculator.com/cac-calculator/" }
+  ]
+};
+---
+
+<Base
+  title={title}
+  description={description}
+  slug={slug}
+  schema={[webAppSchema, faqSchema, breadcrumbSchema]}
+>
+  <section class="page-hero" aria-labelledby="page-h1">
+    <div class="container">
+      <p class="eyebrow">Free Marketing Tool</p>
+      <h1 id="page-h1">CAC Calculator — Customer Acquisition Cost</h1>
+      <p class="citation">
+        Calculate your Customer Acquisition Cost (CAC) and payback period instantly with 2026 industry benchmarks across SaaS, eCommerce, Fintech, and B2B.
+      </p>
+      <div class="meta-badges">
+        <span class="badge">✓ Blended & Paid CAC</span>
+        <span class="badge">✓ 2026 Industry Benchmarks</span>
+        <span class="badge">✓ No signup</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="calc-card" aria-label="CAC calculator tool">
+      <div class="calc-card__header">
+        <div class="calc-card__header-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="calc-card__title">CAC Calculator</div>
+          <div class="calc-card__subtitle">Enter total spend & acquired customers</div>
+        </div>
+      </div>
+
+      <div class="calc-card__body">
+        <div class="field-group">
+          <div class="field">
+            <label for="cac-spend">Total Sales & Marketing Spend</label>
+            <div class="input-wrap">
+              <span class="input-prefix">$</span>
+              <input type="number" id="cac-spend" class="has-prefix" placeholder="e.g. 50000" min="0" value="50000" />
+            </div>
+            <div class="range-wrap">
+              <input type="range" id="cac-spend-slider" class="range-slider" min="1000" max="250000" step="1000" value="50000" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="cac-customers">New Customers Acquired</label>
+            <div class="input-wrap">
+              <input type="number" id="cac-customers" placeholder="e.g. 250" min="1" value="250" />
+            </div>
+            <div class="range-wrap">
+              <input type="range" id="cac-customers-slider" class="range-slider" min="10" max="2000" step="10" value="250" />
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-calc" id="cac-calc-btn" type="button">Calculate CAC</button>
+
+        <div class="result-panel" id="cac-result" aria-live="polite">
+          <div class="result-panel__label">Customer Acquisition Cost (CAC)</div>
+          <div class="result-panel__primary" id="cac-primary">$200.00</div>
+
+          <div class="result-panel__grid">
+            <div class="result-panel__stat">
+              <span class="result-panel__stat-value" id="cac-spend-display">$50,000</span>
+              <span class="result-panel__stat-label">Total Spend</span>
+            </div>
+            <div class="result-panel__stat">
+              <span class="result-panel__stat-value" id="cac-count-display">250</span>
+              <span class="result-panel__stat-label">Customers Acquired</span>
+            </div>
+            <div class="result-panel__stat">
+              <span class="result-panel__stat-value" id="cac-per-customer">$200.00</span>
+              <span class="result-panel__stat-label">Cost per Customer</span>
+            </div>
+          </div>
+
+          <div class="result-verdict" id="cac-verdict"></div>
+
+          <div class="calc-action-bar">
+            <button type="button" class="btn-tool-action" id="btn-share-link">🔗 Share Calculation Link</button>
+            <button type="button" class="btn-tool-action" id="btn-print-summary">📄 Export Summary PDF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="definition-box">
+      <div class="definition-box__label">Definition</div>
+      <p>
+        <strong>Customer Acquisition Cost (CAC)</strong> is the total sales and marketing cost required to acquire a single new paying customer. It is a vital unit economic metric used to assess growth sustainability and marketing efficiency.
+      </p>
+    </div>
+
+    <div class="formula-box">
+      <p class="formula-title">CAC Formula</p>
+      <p class="formula-text">CAC = Total Sales & Marketing Spend ÷ New Customers Acquired</p>
+      <div class="formula-example">
+        <strong>Example:</strong> $50,000 sales & marketing cost ÷ 250 customers = <strong>$200 CAC</strong>.
+      </div>
+    </div>
+
+    <section class="bench-section">
+      <h2>CAC Benchmarks by Industry — 2026</h2>
+      <span class="bench-date">Updated July 2026</span>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead>
+            <tr>
+              <th>Industry</th>
+              <th>Typical CAC</th>
+              <th>Range</th>
+              <th>Visual Benchmark</th>
+            </tr>
+          </thead>
+          <tbody>
+            {industryBenchmarks.map(row => (
+              <tr>
+                <td>{row.industry}</td>
+                <td><strong>{row.typical}</strong></td>
+                <td>{row.range}</td>
+                <td>
+                  <div class="bench-bar">
+                    <div class="bench-bar__fill" style={`width: ${row.bar}%`}></div>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <FAQ items={faqItems} />
+  </div>
+</Base>
+
+<script type="module">
+import { setupSliderSync, copyShareableURL, parseURLParams, printReport } from '../scripts/calc-utils.js';
+
+(function() {
+  'use strict';
+  const spendInput     = document.getElementById('cac-spend');
+  const customersInput = document.getElementById('cac-customers');
+  const calcBtn        = document.getElementById('cac-calc-btn');
+  const resultPanel    = document.getElementById('cac-result');
+  const primaryEl      = document.getElementById('cac-primary');
+  const spendDispEl    = document.getElementById('cac-spend-display');
+  const countDispEl    = document.getElementById('cac-count-display');
+  const perCustEl      = document.getElementById('cac-per-customer');
+  const verdictEl      = document.getElementById('cac-verdict');
+  const shareBtn       = document.getElementById('btn-share-link');
+  const printBtn       = document.getElementById('btn-print-summary');
+
+  if (!calcBtn || !resultPanel) return;
+
+  setupSliderSync('cac-spend', 'cac-spend-slider', calculate);
+  setupSliderSync('cac-customers', 'cac-customers-slider', calculate);
+
+  function calculate() {
+    const spend     = parseFloat(spendInput.value) || 0;
+    const customers = parseFloat(customersInput.value) || 0;
+    if (customers <= 0) return;
+
+    const cac = spend / customers;
+
+    primaryEl.textContent   = `$${cac.toFixed(2)}`;
+    spendDispEl.textContent = '$' + Math.round(spend).toLocaleString();
+    countDispEl.textContent = customers.toLocaleString();
+    perCustEl.textContent   = `$${cac.toFixed(2)}`;
+
+    if (cac < 50)       verdictEl.textContent = '🟢 Low CAC — excellent unit economics for B2C/eCommerce';
+    else if (cac < 350) verdictEl.textContent = '✅ Healthy CAC — standard range for SMB SaaS and B2B';
+    else                verdictEl.textContent = '📊 High CAC — ensure LTV justifies acquisition cost';
+
+    resultPanel.classList.add('visible');
+  }
+
+  calcBtn.addEventListener('click', calculate);
+  [spendInput, customersInput].forEach(el => el.addEventListener('input', calculate));
+  if (shareBtn) shareBtn.addEventListener('click', () => copyShareableURL({ spend: spendInput.value, cust: customersInput.value }));
+  if (printBtn) printBtn.addEventListener('click', printReport);
+
+  parseURLParams({ spend: spendInput, cust: customersInput });
+  calculate();
+})();
+</script>

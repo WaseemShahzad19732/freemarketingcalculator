@@ -99,12 +99,15 @@ main { flex: 1; }
    SITE HEADER
    ============================================================ */
 .site-header {
-  background: var(--navy);
+  background: rgba(15, 31, 56, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 196, 179, 0.2);
   padding: var(--space-4) 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+  box-shadow: 0 4px 20px rgba(0,0,0,.2);
 }
 
 .site-header .container {
@@ -958,7 +961,7 @@ body.menu-open {
 }
 
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE & MOBILE OPTIMIZATIONS
    ============================================================ */
 @media (max-width: 640px) {
   .container { padding-inline: var(--space-4); }
@@ -966,6 +969,36 @@ body.menu-open {
   .calc-card__body { padding: var(--space-4); }
   .site-footer .container { grid-template-columns: 1fr; }
   .tool-grid { grid-template-columns: 1fr; }
+  
+  /* Touch target & button scaling on mobile */
+  .btn-calc {
+    min-height: 52px;
+    font-size: var(--text-base);
+  }
+  
+  .btn-tool-action {
+    width: 100%;
+    justify-content: center;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+  }
+
+  .range-slider::-webkit-slider-thumb {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .toast-notification {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    text-align: center;
+  }
+  
+  .result-panel__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
 }
 
 /* ============================================================
@@ -977,3 +1010,159 @@ body.menu-open {
     transition-duration: .01ms !important;
   }
 }
+
+/* ============================================================
+   ADVANCED RANGE SLIDERS
+   ============================================================ */
+.range-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.range-slider {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 100px;
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 8px rgba(0,196,179,0.5);
+  cursor: pointer;
+  transition: transform .15s, background .15s;
+}
+
+.range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: var(--teal-dark);
+}
+
+/* ============================================================
+   CALCULATOR ACTION BAR & SHARE BUTTONS
+   ============================================================ */
+.calc-action-bar {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255,255,255,0.15);
+  flex-wrap: wrap;
+}
+
+.btn-tool-action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: var(--white);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+  text-decoration: none;
+}
+
+.btn-tool-action:hover {
+  background: rgba(255,255,255,0.22);
+  border-color: var(--teal);
+  color: var(--white);
+}
+
+/* ============================================================
+   DYNAMIC SVG CHART BREAKDOWN
+   ============================================================ */
+.calc-chart-box {
+  margin-top: var(--space-4);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.calc-chart-box__title {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: var(--space-3);
+}
+
+.calc-chart-bar-wrap {
+  height: 12px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 100px;
+  overflow: hidden;
+  display: flex;
+}
+
+.calc-chart-segment {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.calc-chart-segment--cost { background: #ff6b6b; }
+.calc-chart-segment--profit { background: var(--teal); }
+
+.calc-chart-legend {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,0.8);
+}
+
+.calc-chart-legend__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.calc-chart-legend__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* ============================================================
+   TOAST NOTIFICATIONS
+   ============================================================ */
+.toast-notification {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--navy);
+  color: var(--white);
+  border: 1px solid var(--teal);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast-notification.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+

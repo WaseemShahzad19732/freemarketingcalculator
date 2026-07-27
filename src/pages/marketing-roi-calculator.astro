@@ -153,6 +153,9 @@ const breadcrumbSchema = {
               <input type="number" id="revenue-gen" class="has-prefix"
                 placeholder="e.g. 50000" min="0" aria-describedby="rev-hint" />
             </div>
+            <div class="range-wrap">
+              <input type="range" id="revenue-gen-slider" class="range-slider" min="1000" max="250000" step="1000" value="50000" />
+            </div>
             <p class="hint" id="rev-hint">Total revenue attributable to this campaign or channel</p>
           </div>
 
@@ -162,6 +165,9 @@ const breadcrumbSchema = {
               <span class="input-prefix">$</span>
               <input type="number" id="marketing-cost" class="has-prefix"
                 placeholder="e.g. 10000" min="0" />
+            </div>
+            <div class="range-wrap">
+              <input type="range" id="marketing-cost-slider" class="range-slider" min="500" max="50000" step="500" value="10000" />
             </div>
           </div>
 
@@ -205,7 +211,36 @@ const breadcrumbSchema = {
             </div>
           </div>
 
+          <!-- SVG Visual Breakdown Chart -->
+          <div class="calc-chart-box">
+            <div class="calc-chart-box__title">Revenue Breakdown</div>
+            <div class="calc-chart-bar-wrap">
+              <div class="calc-chart-segment calc-chart-segment--cost" id="chart-cost-bar" style="width: 20%;"></div>
+              <div class="calc-chart-segment calc-chart-segment--profit" id="chart-profit-bar" style="width: 80%;"></div>
+            </div>
+            <div class="calc-chart-legend">
+              <div class="calc-chart-legend__item">
+                <span class="calc-chart-legend__dot" style="background:#ff6b6b"></span>
+                <span>Marketing Cost</span>
+              </div>
+              <div class="calc-chart-legend__item">
+                <span class="calc-chart-legend__dot" style="background:var(--teal)"></span>
+                <span>Net Profit</span>
+              </div>
+            </div>
+          </div>
+
           <div class="result-verdict" id="roi-verdict" aria-live="polite"></div>
+
+          <!-- Action bar -->
+          <div class="calc-action-bar">
+            <button type="button" class="btn-tool-action" id="btn-share-link">
+              🔗 Share Calculation Link
+            </button>
+            <button type="button" class="btn-tool-action" id="btn-print-summary">
+              📄 Export Summary PDF
+            </button>
+          </div>
         </div>
 
       </div><!-- /.calc-card__body -->
@@ -404,7 +439,9 @@ const breadcrumbSchema = {
 </Base>
 
 <!-- ═══ CALCULATOR JAVASCRIPT ═══ -->
-<script>
+<script type="module">
+import { setupSliderSync, copyShareableURL, parseURLParams, printReport } from '../scripts/calc-utils.js';
+
 (function () {
   'use strict';
 
@@ -424,9 +461,13 @@ const breadcrumbSchema = {
   const modeAdvanced   = document.getElementById('mode-advanced');
   const advancedFields = document.getElementById('advanced-fields');
 
+  const chartCostBar   = document.getElementById('chart-cost-bar');
+  const chartProfitBar = document.getElementById('chart-profit-bar');
+  const shareBtn       = document.getElementById('btn-share-link');
+  const printBtn       = document.getElementById('btn-print-summary');
+
   if (!calcBtn || !resultPanel) return;
 
-  // Channel presets — example values
   const PRESETS = {
     'email':       { revenue: 42000, cost: 1000 },
     'seo':         { revenue: 27500, cost: 5000 },
@@ -438,12 +479,17 @@ const breadcrumbSchema = {
 
   let isAdvanced = false;
 
+  // Setup slider sync
+  setupSliderSync('revenue-gen', 'revenue-gen-slider', calculate);
+  setupSliderSync('marketing-cost', 'marketing-cost-slider', calculate);
+
   // Mode toggle
   modeSimple.addEventListener('click', function () {
     isAdvanced = false;
     modeSimple.classList.add('active');
     modeAdvanced.classList.remove('active');
     advancedFields.style.display = 'none';
+    calculate();
   });
 
   modeAdvanced.addEventListener('click', function () {
@@ -451,14 +497,19 @@ const breadcrumbSchema = {
     modeAdvanced.classList.add('active');
     modeSimple.classList.remove('active');
     advancedFields.style.display = 'block';
+    calculate();
   });
 
-  // Channel preset fill
   presetSelect.addEventListener('change', function () {
     const preset = PRESETS[this.value];
     if (preset && revenueInput && costInput) {
       revenueInput.value = preset.revenue;
       costInput.value    = preset.cost;
+      const revSlider  = document.getElementById('revenue-gen-slider');
+      const costSlider = document.getElementById('marketing-cost-slider');
+      if (revSlider) revSlider.value = preset.revenue;
+      if (costSlider) costSlider.value = preset.cost;
+      calculate();
     }
   });
 
@@ -479,9 +530,9 @@ const breadcrumbSchema = {
     const cost    = parseFloat(costInput.value);
 
     let valid = true;
-    if (!revenue || revenue < 0) { revenueInput.style.borderColor = 'var(--error)'; valid = false; }
+    if (isNaN(revenue) || revenue < 0) { revenueInput.style.borderColor = 'var(--error)'; valid = false; }
     else revenueInput.style.borderColor = '';
-    if (!cost || cost <= 0)      { costInput.style.borderColor = 'var(--error)'; valid = false; }
+    if (isNaN(cost) || cost <= 0)      { costInput.style.borderColor = 'var(--error)'; valid = false; }
     else costInput.style.borderColor = '';
     if (!valid) return;
 
@@ -489,7 +540,7 @@ const breadcrumbSchema = {
 
     if (isAdvanced) {
       const margin = parseFloat(marginInput.value) / 100;
-      if (!margin || margin <= 0 || margin > 1) {
+      if (isNaN(margin) || margin <= 0 || margin > 1) {
         marginInput.style.borderColor = 'var(--error)'; return;
       }
       marginInput.style.borderColor = '';
@@ -513,17 +564,45 @@ const breadcrumbSchema = {
     roiPerDollar.textContent  = '$' + perDollar;
     roiVerdict.textContent    = getVerdict(roi);
 
-    // Tint primary value by result
-    roiPrimary.style.color = roi >= 0 ? 'var(--teal)' : '#ff6b6b';
+    // Update SVG chart bar widths
+    if (chartCostBar && chartProfitBar) {
+      const total = Math.max(revenue, cost + 1);
+      const costPct = Math.min(Math.max((cost / total) * 100, 5), 95);
+      const profitPct = 100 - costPct;
+      chartCostBar.style.width = costPct + '%';
+      chartProfitBar.style.width = profitPct + '%';
+    }
 
+    roiPrimary.style.color = roi >= 0 ? 'var(--teal)' : '#ff6b6b';
     resultPanel.classList.add('visible');
-    resultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
-  calcBtn.addEventListener('click', calculate);
-  [revenueInput, costInput, marginInput].forEach(el => {
-    if (el) el.addEventListener('keydown', e => { if (e.key === 'Enter') calculate(); });
+  calcBtn.addEventListener('click', function() {
+    calculate();
+    resultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   });
+
+  [revenueInput, costInput, marginInput].forEach(el => {
+    if (el) el.addEventListener('input', calculate);
+  });
+
+  if (shareBtn) {
+    shareBtn.addEventListener('click', () => {
+      copyShareableURL({
+        rev: revenueInput.value,
+        cost: costInput.value,
+        margin: marginInput.value
+      });
+    });
+  }
+
+  if (printBtn) {
+    printBtn.addEventListener('click', printReport);
+  }
+
+  // Load state from URL if present
+  parseURLParams({ rev: revenueInput, cost: costInput, margin: marginInput });
+  if (revenueInput.value && costInput.value) calculate();
 
 })();
 </script>

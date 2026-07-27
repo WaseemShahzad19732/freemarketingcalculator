@@ -1,0 +1,281 @@
+---
+import Base from '../layouts/Base.astro';
+import FAQ from '../components/FAQ.astro';
+
+const slug        = 'roas-calculator';
+const title       = 'ROAS Calculator — Free Return on Ad Spend Tool (2026)';
+const description = 'Calculate your Return on Ad Spend (ROAS) instantly with 2026 ad platform benchmarks. Free ROAS calculator with Target ROAS mode, ROI converter, and no signup required.';
+
+const faqItems = [
+  {
+    q: 'How do you calculate ROAS?',
+    a: '<strong>ROAS = (Revenue generated from ads ÷ Total ad spend) × 100</strong> (or expressed as a multiplier like 4x / 400%). For example: $20,000 ad revenue from $5,000 ad spend → $20,000 ÷ $5,000 = <strong>4.0x ROAS (400%)</strong>.'
+  },
+  {
+    q: 'What is a good ROAS?',
+    a: 'A <strong>4:1 (400%) ROAS</strong> is considered a healthy benchmark for most eCommerce and paid media campaigns. High-margin digital products can operate profitably at 2:1 (200%), while low-margin retail businesses may require 6:1 (600%) to break even after COGS and fulfillment costs.'
+  },
+  {
+    q: 'What is the difference between ROAS and ROI?',
+    a: '<strong>ROAS</strong> measures revenue per dollar of direct ad spend (Revenue ÷ Ad Spend). <strong>ROI</strong> accounts for total costs including agency fees, software, COGS, and overhead ((Net Profit ÷ Total Investment) × 100).'
+  },
+  {
+    q: 'How do you calculate Target ROAS?',
+    a: '<strong>Target ROAS = 1 ÷ Gross Margin %</strong>. If your gross profit margin is 25%, your break-even Target ROAS is 1 ÷ 0.25 = 400% (4.0x). Any campaign above 4.0x generates net profit.'
+  }
+];
+
+const platformBenchmarks = [
+  { platform: 'Google Search Ads', typical: '400%', range: '250–700%', bar: 65 },
+  { platform: 'Google Shopping Ads', typical: '450%', range: '300–800%', bar: 72 },
+  { platform: 'Meta Ads (Facebook/IG)', typical: '280%', range: '150–500%', bar: 45 },
+  { platform: 'TikTok Ads', typical: '220%', range: '100–400%', bar: 35 },
+  { platform: 'Amazon Sponsored Products', typical: '550%', range: '350–900%', bar: 85 },
+  { platform: 'LinkedIn Ads (B2B)', typical: '200%', range: '100–350%', bar: 30 }
+];
+
+const webAppSchema = {
+  "@type": "WebApplication",
+  "@id": "https://freemarketingcalculator.com/roas-calculator/#app",
+  "name": "ROAS Calculator",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "creator": { "@id": "https://freemarketingcalculator.com/#org" },
+  "url": "https://freemarketingcalculator.com/roas-calculator/",
+  "description": "Free Return on Ad Spend (ROAS) calculator with platform benchmarks, Target ROAS mode, and break-even analysis.",
+  "featureList": ["ROAS multiplier formula", "Target ROAS calculation", "Platform benchmarks", "Free, no signup"]
+};
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": { "@type": "Answer", "text": item.a.replace(/<[^>]+>/g, '') }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
+    { "@type": "ListItem", "position": 2, "name": "ROAS Calculator", "item": "https://freemarketingcalculator.com/roas-calculator/" }
+  ]
+};
+---
+
+<Base
+  title={title}
+  description={description}
+  slug={slug}
+  schema={[webAppSchema, faqSchema, breadcrumbSchema]}
+>
+  <section class="page-hero" aria-labelledby="page-h1">
+    <div class="container">
+      <p class="eyebrow">Free Advertising Tool</p>
+      <h1 id="page-h1">ROAS Calculator — Return on Ad Spend</h1>
+      <p class="citation">
+        Calculate your Return on Ad Spend (ROAS) multiplier and percentage instantly, with 2026 ad platform benchmarks for Google, Meta, TikTok, and Amazon Ads.
+      </p>
+      <div class="meta-badges">
+        <span class="badge">✓ Multiplier & % modes</span>
+        <span class="badge">✓ 2026 Benchmarks</span>
+        <span class="badge">✓ No signup</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="calc-card" aria-label="ROAS calculator tool">
+      <div class="calc-card__header">
+        <div class="calc-card__header-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="1" x2="12" y2="23"></line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="calc-card__title">ROAS Calculator</div>
+          <div class="calc-card__subtitle">Enter ad spend & revenue generated</div>
+        </div>
+      </div>
+
+      <div class="calc-card__body">
+        <div class="field-group">
+          <div class="field">
+            <label for="ad-spend">Total Ad Spend</label>
+            <div class="input-wrap">
+              <span class="input-prefix">$</span>
+              <input type="number" id="ad-spend" class="has-prefix" placeholder="e.g. 5000" min="0" value="5000" />
+            </div>
+            <div class="range-wrap">
+              <input type="range" id="ad-spend-slider" class="range-slider" min="500" max="50000" step="500" value="5000" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="ad-revenue">Revenue Generated from Ads</label>
+            <div class="input-wrap">
+              <span class="input-prefix">$</span>
+              <input type="number" id="ad-revenue" class="has-prefix" placeholder="e.g. 20000" min="0" value="20000" />
+            </div>
+            <div class="range-wrap">
+              <input type="range" id="ad-revenue-slider" class="range-slider" min="1000" max="200000" step="1000" value="20000" />
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-calc" id="roas-calc-btn" type="button">Calculate ROAS</button>
+
+        <div class="result-panel" id="roas-result" aria-live="polite">
+          <div class="result-panel__label">Return on Ad Spend (ROAS)</div>
+          <div class="result-panel__primary" id="roas-primary">400% (4.0x)</div>
+
+          <div class="result-panel__grid">
+            <div class="result-panel__stat">
+              <span class="result-panel__stat-value" id="roas-net-profit">$15,000</span>
+              <span class="result-panel__stat-label">Net Ad Revenue</span>
+            </div>
+            <div class="result-panel__stat">
+              <span class="result-panel__stat-value" id="roas-multiplier">4.0x</span>
+              <span class="result-panel__stat-label">ROAS Multiplier</span>
+            </div>
+            <div class="result-panel__stat">
+              <span class="result-panel__stat-value" id="roas-per-dollar">$4.00</span>
+              <span class="result-panel__stat-label">Return per $1 Spent</span>
+            </div>
+          </div>
+
+          <div class="calc-chart-box">
+            <div class="calc-chart-box__title">Ad Revenue Breakdown</div>
+            <div class="calc-chart-bar-wrap">
+              <div class="calc-chart-segment calc-chart-segment--cost" id="chart-spend-bar" style="width: 25%;"></div>
+              <div class="calc-chart-segment calc-chart-segment--profit" id="chart-profit-bar" style="width: 75%;"></div>
+            </div>
+          </div>
+
+          <div class="result-verdict" id="roas-verdict"></div>
+
+          <div class="calc-action-bar">
+            <button type="button" class="btn-tool-action" id="btn-share-link">🔗 Share Calculation Link</button>
+            <button type="button" class="btn-tool-action" id="btn-print-summary">📄 Export Summary PDF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="definition-box">
+      <div class="definition-box__label">Definition</div>
+      <p>
+        <strong>Return on Ad Spend (ROAS)</strong> measures the gross revenue generated for every dollar spent on advertising.
+        It is the fundamental metric used by performance marketers to evaluate ad campaign profitability on platforms like Google Ads, Meta Ads, and TikTok.
+      </p>
+    </div>
+
+    <div class="formula-box">
+      <p class="formula-title">ROAS Formula</p>
+      <p class="formula-text">ROAS = (Ad Revenue ÷ Ad Spend) × 100</p>
+      <div class="formula-example">
+        <strong>Example:</strong> $20,000 revenue generated from a $5,000 Google Ads campaign = ($20,000 ÷ $5,000) × 100 = <strong>400% ROAS (4.0x)</strong>.
+      </div>
+    </div>
+
+    <section class="bench-section">
+      <h2>ROAS Benchmarks by Platform — 2026</h2>
+      <span class="bench-date">Updated July 2026</span>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead>
+            <tr>
+              <th>Ad Platform</th>
+              <th>Typical ROAS</th>
+              <th>Range</th>
+              <th>Visual Benchmark</th>
+            </tr>
+          </thead>
+          <tbody>
+            {platformBenchmarks.map(row => (
+              <tr>
+                <td>{row.platform}</td>
+                <td><strong>{row.typical}</strong></td>
+                <td>{row.range}</td>
+                <td>
+                  <div class="bench-bar">
+                    <div class="bench-bar__fill" style={`width: ${row.bar}%`}></div>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <FAQ items={faqItems} />
+  </div>
+</Base>
+
+<script type="module">
+import { setupSliderSync, copyShareableURL, parseURLParams, printReport } from '../scripts/calc-utils.js';
+
+(function() {
+  'use strict';
+  const spendInput  = document.getElementById('ad-spend');
+  const revInput    = document.getElementById('ad-revenue');
+  const calcBtn     = document.getElementById('roas-calc-btn');
+  const resultPanel = document.getElementById('roas-result');
+  const primaryEl   = document.getElementById('roas-primary');
+  const profitEl    = document.getElementById('roas-net-profit');
+  const multEl      = document.getElementById('roas-multiplier');
+  const perDollarEl = document.getElementById('roas-per-dollar');
+  const verdictEl   = document.getElementById('roas-verdict');
+  const spendBar    = document.getElementById('chart-spend-bar');
+  const profitBar   = document.getElementById('chart-profit-bar');
+  const shareBtn    = document.getElementById('btn-share-link');
+  const printBtn    = document.getElementById('btn-print-summary');
+
+  if (!calcBtn || !resultPanel) return;
+
+  setupSliderSync('ad-spend', 'ad-spend-slider', calculate);
+  setupSliderSync('ad-revenue', 'ad-revenue-slider', calculate);
+
+  function calculate() {
+    const spend = parseFloat(spendInput.value) || 0;
+    const rev   = parseFloat(revInput.value) || 0;
+    if (spend <= 0) return;
+
+    const roasPct  = (rev / spend) * 100;
+    const mult     = (rev / spend).toFixed(2);
+    const netProfit = rev - spend;
+
+    primaryEl.textContent   = `${roasPct.toFixed(0)}% (${mult}x)`;
+    profitEl.textContent    = (netProfit < 0 ? '-$' : '$') + Math.abs(Math.round(netProfit)).toLocaleString();
+    multEl.textContent      = `${mult}x`;
+    perDollarEl.textContent  = `$${mult}`;
+
+    if (roasPct < 100)      verdictEl.textContent = '🔴 Operating at a loss — ad spend exceeds revenue';
+    else if (roasPct < 250) verdictEl.textContent = '🟡 Low margin — review product margins and COGS';
+    else if (roasPct < 400) verdictEl.textContent = '🟢 Solid — within target performance range';
+    else                    verdictEl.textContent = '🚀 Strong — above industry benchmark';
+
+    if (spendBar && profitBar) {
+      const total = Math.max(rev, spend + 1);
+      const spendPct = Math.min((spend / total) * 100, 95);
+      spendBar.style.width  = spendPct + '%';
+      profitBar.style.width = (100 - spendPct) + '%';
+    }
+
+    resultPanel.classList.add('visible');
+  }
+
+  calcBtn.addEventListener('click', calculate);
+  [spendInput, revInput].forEach(el => el.addEventListener('input', calculate));
+  if (shareBtn) shareBtn.addEventListener('click', () => copyShareableURL({ spend: spendInput.value, rev: revInput.value }));
+  if (printBtn) printBtn.addEventListener('click', printReport);
+
+  parseURLParams({ spend: spendInput, rev: revInput });
+  calculate();
+})();
+</script>
