@@ -1,29 +1,36 @@
 /* ============================================================
    DESIGN TOKENS
-   Palette: deep navy authority + electric teal accent + warm white
-   Type: Inter (data/UI) + system serif fallback for definitions
-   Signature element: teal gradient result panel that "lights up"
+   Palette: warm ink authority + amber accent (primary) + indigo accent (secondary/"new")
+   Rationale: amber reads "money/calculator" more distinctly than a generic SaaS teal;
+   warm ink + warm paper background feels editorial/trustworthy rather than cool-corporate.
+   Type: Space Grotesk (headlines + all numeric output) + Inter (body/UI)
+   Signature element: amber gradient result panel that "lights up"
    ============================================================ */
 :root {
   /* Colours */
-  --navy:        #0f1f38;
-  --navy-mid:    #1a3358;
-  --navy-light:  #2a4a7f;
-  --teal:        #00c4b3;
-  --teal-dark:   #00a396;
-  --teal-faint:  #e6faf9;
-  --amber:       #f59e0b;
+  --navy:        #12141c;
+  --navy-mid:    #1e2130;
+  --navy-light:  #4c56d6;
+  --teal:        #e0a02b;
+  --teal-dark:   #b87f14;
+  --teal-faint:  #fcefd6;
+  --indigo:        #4c56d6;
+  --indigo-dark:   #3a42b0;
+  --indigo-faint:  #e7e8fb;
+  --amber:       #e0a02b;
   --white:       #ffffff;
-  --off-white:   #f8fafc;
-  --text-main:   #1e293b;
-  --text-mid:    #475569;
-  --text-light:  #94a3b8;
-  --border:      #e2e8f0;
+  --off-white:   #fbf8f3;
+  --paper-tint:  #f6f2ea;
+  --text-main:   #1b1d24;
+  --text-mid:    #5b5e6b;
+  --text-light:  #9a9ca8;
+  --border:      #e4dfd6;
   --error:       #ef4444;
   --success:     #10b981;
 
   /* Type scale */
-  --font-ui:     'Inter', system-ui, -apple-system, sans-serif;
+  --font-ui:      'Inter', system-ui, -apple-system, sans-serif;
+  --font-display:  'Space Grotesk', 'Inter', system-ui, sans-serif;
   --text-xs:     0.75rem;
   --text-sm:     0.875rem;
   --text-base:   1rem;
@@ -60,7 +67,7 @@ html {
   font-family: var(--font-ui);
   font-size: 16px;
   color: var(--text-main);
-  background: var(--white);
+  background: var(--off-white);
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
 }
@@ -99,10 +106,10 @@ main { flex: 1; }
    SITE HEADER
    ============================================================ */
 .site-header {
-  background: rgba(15, 31, 56, 0.92);
+  background: rgba(18, 20, 28, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 196, 179, 0.2);
+  border-bottom: 1px solid rgba(224, 160, 43, 0.25);
   padding: var(--space-4) 0;
   position: sticky;
   top: 0;
@@ -129,6 +136,7 @@ main { flex: 1; }
 }
 
 .logo-text {
+  font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 800;
   color: var(--white);
@@ -221,6 +229,7 @@ main { flex: 1; }
 }
 
 .page-hero h1 {
+  font-family: var(--font-display);
   font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl));
   font-weight: 800;
   line-height: 1.15;
@@ -304,6 +313,7 @@ main { flex: 1; }
 .calc-card__header-icon svg { color: var(--white); }
 
 .calc-card__title {
+  font-family: var(--font-display);
   font-size: var(--text-base);
   font-weight: 700;
   color: var(--navy);
@@ -396,7 +406,7 @@ select { padding: 0 var(--space-4); }
 input:focus, select:focus {
   outline: none;
   border-color: var(--teal);
-  box-shadow: 0 0 0 3px rgba(0,196,179,.15);
+  box-shadow: 0 0 0 3px rgba(224,160,43,.18);
 }
 
 select {
@@ -450,7 +460,7 @@ input[type="range"] {
   width: 100%;
   height: 52px;
   background: var(--teal);
-  color: var(--white);
+  color: var(--navy);
   border: none;
   border-radius: var(--radius);
   font-size: var(--text-lg);
@@ -489,6 +499,7 @@ input[type="range"] {
 }
 
 .result-panel__primary {
+  font-family: var(--font-display);
   font-size: clamp(var(--text-3xl), 8vw, 3.5rem);
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -587,6 +598,7 @@ input[type="range"] {
 }
 
 .formula-box .formula-text {
+  font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 700;
   color: var(--navy);
@@ -611,6 +623,7 @@ input[type="range"] {
 .bench-section { margin: var(--space-8) 0; }
 
 .bench-section h2 {
+  font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -762,7 +775,7 @@ details[open] .faq-question svg { transform: rotate(180deg); }
    ============================================================ */
 .definition-box {
   background: var(--teal-faint);
-  border: 1px solid rgba(0,196,179,.25);
+  border: 1px solid rgba(224,160,43,.3);
   border-radius: var(--radius);
   padding: var(--space-4) var(--space-6);
   margin: var(--space-6) 0;
@@ -1138,7 +1151,7 @@ body.menu-open {
   height: 18px;
   border-radius: 50%;
   background: var(--teal);
-  box-shadow: 0 0 8px rgba(0,196,179,0.5);
+  box-shadow: 0 0 8px rgba(224,160,43,0.5);
   cursor: pointer;
   transition: transform .15s, background .15s;
 }
@@ -1266,3 +1279,232 @@ body.menu-open {
   pointer-events: auto;
 }
 
+
+/* ============================================================
+   HOMEPAGE — HERO LIVE CALCULATOR
+   ============================================================ */
+.home-hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .home-hero-grid { grid-template-columns: 1fr; }
+}
+
+.live-calc-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 70px rgba(0,0,0,.35);
+  overflow: hidden;
+}
+
+.live-calc-card__header {
+  background: var(--teal-faint);
+  border-bottom: 1px solid var(--border);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.live-calc-card__body {
+  padding: var(--space-5);
+  display: grid;
+  gap: var(--space-4);
+}
+
+.live-calc-card__result {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  color: var(--white);
+}
+
+.live-calc-card__result-value {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--teal);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* ============================================================
+   HOMEPAGE — QUICK-JUMP NAV (scroll-spy)
+   ============================================================ */
+.quickjump {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 560px) {
+  .quickjump { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; }
+}
+
+.quickjump-pill {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--white);
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.15);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s;
+}
+
+.quickjump-pill:hover {
+  background: rgba(255,255,255,.12);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.quickjump-pill.is-active {
+  background: var(--teal);
+  color: var(--navy);
+  border-color: var(--teal);
+}
+
+/* ============================================================
+   HOMEPAGE — CATEGORY SPINE
+   ============================================================ */
+.cat-spine {
+  display: flex;
+}
+
+.cat-spine--tint {
+  background: var(--paper-tint);
+}
+
+.cat-spine__gutter {
+  width: 64px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--space-10, 2.5rem);
+}
+
+.cat-spine__number {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+  background: var(--teal);
+  color: var(--navy);
+}
+
+.cat-spine__number--indigo {
+  background: var(--indigo);
+  color: var(--white);
+}
+
+.cat-spine__line {
+  width: 2px;
+  flex: 1;
+  background: var(--border);
+  margin-top: var(--space-3);
+}
+
+.cat-spine__content {
+  flex: 1;
+  padding: 2.75rem var(--space-8) var(--space-2);
+}
+
+@media (max-width: 560px) {
+  .cat-spine__gutter { width: 40px; }
+  .cat-spine__content { padding-left: var(--space-4); padding-right: var(--space-4); }
+}
+
+.cat-subtitle {
+  font-size: var(--text-sm);
+  color: var(--text-light);
+  margin: 0 0 var(--space-5);
+}
+
+/* ============================================================
+   HOMEPAGE — TOOL CARD (icon, badge, metric chip)
+   ============================================================ */
+.tool-card__icon-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.tool-card__icon-box {
+  width: 38px;
+  height: 38px;
+  background: var(--teal-faint);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tool-card__icon-box svg { color: var(--teal-dark); }
+
+.tool-card__icon-box--indigo { background: var(--indigo-faint); }
+.tool-card__icon-box--indigo svg { color: var(--indigo-dark); }
+
+.tool-card__badge {
+  flex-shrink: 0;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.tool-card__badge--popular {
+  background: var(--teal);
+  color: var(--navy);
+}
+
+.tool-card__badge--new {
+  background: var(--white);
+  color: var(--indigo-dark);
+  border: 1.5px solid var(--indigo);
+  padding: 1.5px 8px;
+}
+
+.tool-card__metric {
+  display: inline-flex;
+  align-self: flex-start;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  background: var(--paper-tint);
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+.tool-card--popular {
+  border-color: var(--teal) !important;
+  border-width: 2px !important;
+  background: linear-gradient(180deg, var(--teal-faint) 0%, var(--white) 90px);
+}
+
+/* ============================================================
+   HOMEPAGE — FOCUS STATES (keyboard accessibility)
+   ============================================================ */
+.tool-card:focus-visible,
+.quickjump-pill:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
