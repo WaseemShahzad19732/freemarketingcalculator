@@ -252,6 +252,47 @@ main { flex: 1; }
   flex-wrap: wrap;
 }
 
+/* Hero CTA — the primary action every hero was missing.
+   Reuses the site's one established accent color (amber-on-navy,
+   already AA-verified on .btn-calc) so it reads instantly as "the
+   button" against every other hero element, which are all outline/ghost. */
+.btn-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--teal);
+  color: var(--navy);
+  font-size: var(--text-base);
+  font-weight: 700;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius);
+  text-decoration: none;
+  margin-top: var(--space-5);
+  box-shadow: 0 4px 16px rgba(224,160,43,.25);
+  transition: background .15s, transform .15s, box-shadow .15s;
+}
+
+.btn-hero-cta:hover {
+  background: var(--teal-dark);
+  color: var(--white);
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(224,160,43,.35);
+}
+
+.btn-hero-cta svg { flex-shrink: 0; }
+
+@media (max-width: 640px) {
+  .btn-hero-cta {
+    width: 100%;
+    justify-content: center;
+    min-height: 52px;
+  }
+}
+
+/* Anchor targets for in-page hero CTAs — clears the sticky header */
+.calc-card { scroll-margin-top: 90px; }
+
 .badge {
   display: inline-flex;
   align-items: center;
