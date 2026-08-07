@@ -477,12 +477,17 @@ input[type="range"] {
 
 .mode-toggle button {
   flex: 1;
-  height: 36px;
+  min-height: 44px;
+  height: auto;
+  padding: var(--space-2) var(--space-1);
   border: none;
   background: transparent;
   border-radius: calc(var(--radius) - 2px);
   font-size: var(--text-sm);
   font-weight: 600;
+  line-height: 1.2;
+  white-space: normal;
+  text-align: center;
   color: var(--text-mid);
   cursor: pointer;
   transition: background .15s, color .15s;
@@ -940,9 +945,17 @@ details[open] .faq-question svg { transform: rotate(180deg); }
   margin-bottom: var(--space-4);
 }
 
-.footer-social { display: flex; gap: var(--space-4); }
-.footer-social a { color: rgba(255,255,255,.6); display: inline-flex; }
-.footer-social a:hover { color: var(--teal); }
+.footer-social { display: flex; gap: var(--space-1); }
+.footer-social a {
+  color: rgba(255,255,255,.6);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+.footer-social a:hover { color: var(--teal); background: rgba(255,255,255,.06); }
 
 .footer-col__title {
   font-size: var(--text-xs);
@@ -1006,9 +1019,11 @@ details[open] .faq-question svg { transform: rotate(180deg); }
   .nav-toggle {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
     background: none;
     border: none;
     cursor: pointer;
@@ -1018,7 +1033,7 @@ details[open] .faq-question svg { transform: rotate(180deg); }
 
   .nav-toggle span {
     display: block;
-    width: 100%;
+    width: 24px;
     height: 2.5px;
     background: var(--white);
     border-radius: 2px;
@@ -1028,14 +1043,14 @@ details[open] .faq-question svg { transform: rotate(180deg); }
 
   /* Animate to X when open */
   .nav-toggle[aria-expanded="true"] span:nth-child(1) {
-    transform: translateY(8.5px) rotate(45deg);
+    transform: translateY(7.5px) rotate(45deg);
   }
   .nav-toggle[aria-expanded="true"] span:nth-child(2) {
     opacity: 0;
     transform: scaleX(0);
   }
   .nav-toggle[aria-expanded="true"] span:nth-child(3) {
-    transform: translateY(-8.5px) rotate(-45deg);
+    transform: translateY(-7.5px) rotate(-45deg);
   }
 }
 
@@ -1099,14 +1114,14 @@ details[open] .faq-question svg { transform: rotate(180deg); }
 .mobile-menu::before {
   content: '✕';
   position: fixed;
-  top: 18px;
-  right: var(--space-6);
+  top: 12px;
+  right: var(--space-4);
   font-size: 22px;
   color: var(--white);
   cursor: pointer;
   z-index: 1002;
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1358,6 +1373,15 @@ body.menu-open {
   padding: var(--space-6);
   display: grid;
   gap: var(--space-5);
+}
+
+.hero-calc-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 375px) {
+  .hero-calc-inputs { grid-template-columns: 1fr; }
 }
 
 .live-calc-card__result {
