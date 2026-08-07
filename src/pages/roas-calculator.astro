@@ -64,13 +64,18 @@ const breadcrumbSchema = {
     { "@type": "ListItem", "position": 2, "name": "ROAS Calculator", "item": "https://freemarketingcalculator.com/roas-calculator/" }
   ]
 };
+const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "description": description, "step": [
+{ "@type": "HowToStep", "position": 1, "text": "Enter your total ad spend." },
+{ "@type": "HowToStep", "position": 2, "text": "Enter the revenue generated from those ads." },
+{ "@type": "HowToStep", "position": 3, "text": "Click Calculate ROAS to see your return on ad spend as a percentage and multiplier." }
+] };
 ---
 
 <Base
   title={title}
   description={description}
   slug={slug}
-  schema={[webAppSchema, faqSchema, breadcrumbSchema]}
+  schema={[webAppSchema, howToSchema, faqSchema, breadcrumbSchema]}
 >
   <section class="page-hero" aria-labelledby="page-h1">
     <div class="container">

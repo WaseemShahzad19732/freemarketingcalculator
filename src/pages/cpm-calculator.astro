@@ -45,9 +45,14 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
   { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
   { "@type": "ListItem", "position": 2, "name": "CPM Calculator", "item": "https://freemarketingcalculator.com/cpm-calculator/" }
 ]};
+const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "description": description, "step": [
+{ "@type": "HowToStep", "position": 1, "text": "Select what you want to calculate: CPM, Total Spend, or Impressions." },
+{ "@type": "HowToStep", "position": 2, "text": "Enter the two values you already know." },
+{ "@type": "HowToStep", "position": 3, "text": "Click Calculate \u2014 your result appears instantly with a benchmark comparison." }
+] };
 ---
 
-<Base title={title} description={description} slug={slug} schema={[webAppSchema, faqSchema, breadcrumbSchema]}>
+<Base title={title} description={description} slug={slug} schema={[webAppSchema, howToSchema, faqSchema, breadcrumbSchema]}>
 
   <section class="page-hero" aria-labelledby="page-h1">
     <div class="container">

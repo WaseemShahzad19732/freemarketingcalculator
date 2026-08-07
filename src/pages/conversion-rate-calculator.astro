@@ -35,9 +35,15 @@ const webAppSchema = {
 };
 const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
 const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" }, { "@type": "ListItem", "position": 2, "name": "Conversion Rate Calculator", "item": "https://freemarketingcalculator.com/conversion-rate-calculator/" }] };
+const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "description": description, "step": [
+{ "@type": "HowToStep", "position": 1, "text": "Choose a calculation mode: CVR from visits, reverse-compute traffic needed, or estimate revenue." },
+{ "@type": "HowToStep", "position": 2, "text": "For CVR mode, enter your total visitors and number of conversions." },
+{ "@type": "HowToStep", "position": 3, "text": "For reverse mode, enter your target conversions and current CVR." },
+{ "@type": "HowToStep", "position": 4, "text": "Click Calculate to get your conversion rate or traffic target." }
+] };
 ---
 
-<Base title={title} description={description} slug={slug} schema={[webAppSchema, faqSchema, breadcrumbSchema]}>
+<Base title={title} description={description} slug={slug} schema={[webAppSchema, howToSchema, faqSchema, breadcrumbSchema]}>
   <section class="page-hero" aria-labelledby="page-h1">
     <div class="container">
       <p class="eyebrow">Free Marketing Tool</p>

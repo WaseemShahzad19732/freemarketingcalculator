@@ -76,13 +76,19 @@ const breadcrumbSchema = {
     { "@type": "ListItem", "position": 2, "name": "Marketing Budget Calculator", "item": "https://freemarketingcalculator.com/marketing-budget-calculator/" }
   ]
 };
+const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "description": description, "step": [
+{ "@type": "HowToStep", "position": 1, "text": "Enter your annual revenue (or projected revenue for early-stage businesses)." },
+{ "@type": "HowToStep", "position": 2, "text": "Select your industry from the dropdown." },
+{ "@type": "HowToStep", "position": 3, "text": "Choose your growth stage: Maintain, Grow, or Aggressive." },
+{ "@type": "HowToStep", "position": 4, "text": "Click Calculate \u2014 your annual, monthly, and weekly budget appear with a suggested channel allocation." }
+] };
 ---
 
 <Base
   title={title}
   description={description}
   slug={slug}
-  schema={[webAppSchema, faqSchema, breadcrumbSchema]}
+  schema={[webAppSchema, howToSchema, faqSchema, breadcrumbSchema]}
 >
 
   <!-- ═══ HERO ═══ -->
@@ -339,6 +345,11 @@ const breadcrumbSchema = {
     <div style="background: var(--teal-faint); border: 1.5px solid rgba(0,196,179,.25); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap: var(--space-3);">
       <p style="color: var(--navy); font-weight: 600; margin:0; font-size: var(--text-sm);">📖 How to Set a Marketing Budget for a Small Business →</p>
       <a href="/blog/marketing-budget-small-business/" style="background: var(--teal); color: var(--navy); font-weight: 700; font-size: var(--text-sm); padding: var(--space-2) var(--space-5); border-radius: var(--radius); text-decoration:none; white-space:nowrap;">Read now →</a>
+    </div>
+
+    <div style="background: var(--teal-faint); border: 1.5px solid rgba(0,196,179,.25); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-6); margin: var(--space-4) 0 var(--space-6); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap: var(--space-3);">
+      <p style="color: var(--navy); font-weight: 600; margin:0; font-size: var(--text-sm);">💸 Ad Spend Meaning: Definition, ROAS Formula & 2026 Benchmarks →</p>
+      <a href="/blog/what-is-ad-spend/" style="background: var(--teal); color: var(--navy); font-weight: 700; font-size: var(--text-sm); padding: var(--space-2) var(--space-5); border-radius: var(--radius); text-decoration:none; white-space:nowrap;">Read now →</a>
     </div>
 
 

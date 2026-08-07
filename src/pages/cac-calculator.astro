@@ -64,13 +64,18 @@ const breadcrumbSchema = {
     { "@type": "ListItem", "position": 2, "name": "CAC Calculator", "item": "https://freemarketingcalculator.com/cac-calculator/" }
   ]
 };
+const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "description": description, "step": [
+{ "@type": "HowToStep", "position": 1, "text": "Enter your total sales and marketing spend for the period." },
+{ "@type": "HowToStep", "position": 2, "text": "Enter the number of new customers acquired in that period." },
+{ "@type": "HowToStep", "position": 3, "text": "Click Calculate CAC to see your cost per acquisition and payback period." }
+] };
 ---
 
 <Base
   title={title}
   description={description}
   slug={slug}
-  schema={[webAppSchema, faqSchema, breadcrumbSchema]}
+  schema={[webAppSchema, howToSchema, faqSchema, breadcrumbSchema]}
 >
   <section class="page-hero" aria-labelledby="page-h1">
     <div class="container">
