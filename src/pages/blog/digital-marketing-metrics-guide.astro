@@ -7,11 +7,14 @@ const title     = 'Digital Marketing Metrics: CPM, CPC, CTR, ROAS, CPA (2026)';
 const description = 'CPM, CPC, CTR, ROAS, CPA — every digital marketing metric explained in plain English. Formulas, 2026 benchmarks, and when to use each one.';
 const published = 'July 7, 2026';
 const readTime  = '8 min read';
+const updated   = 'October 8, 2026';
 
 const metrics = [
   {
     name: 'CPM',
     full: 'Cost Per Mille (Cost Per 1,000 Impressions) — CPM Formula',
+    answer: 'CPM is the price an advertiser pays for every 1,000 ad impressions, so a $500 spend that delivers 100,000 impressions equals a $5.00 CPM.',
+    calc: { href: '/cpm-calculator/', label: 'Calculate CPM with the free CPM calculator' },
     formula: 'CPM = (Total Ad Spend ÷ Impressions) × 1,000',
     example: '$500 spend, 100,000 impressions → ($500 ÷ 100,000) × 1,000 = $5.00 CPM',
     use: 'Measuring the efficiency of brand awareness campaigns. Comparing reach across platforms.',
@@ -28,14 +31,16 @@ const metrics = [
   {
     name: 'CPC',
     full: 'Cost Per Click',
+    answer: 'CPC is the average price paid for one ad click, so $500 spent on 250 clicks equals a $2.00 CPC.',
+    calc: { href: '/cpc-calculator/', label: 'Calculate CPC with the free CPC calculator' },
     formula: 'CPC = Total Ad Spend ÷ Total Clicks',
     example: '$500 spend, 250 clicks → $500 ÷ 250 = $2.00 CPC',
     use: 'Evaluating paid search and social campaigns. Comparing ad creative or audience efficiency.',
     avoid: 'Optimising CPC alone — a low CPC with low conversion rate is worse than a high CPC with high conversion rate.',
     benchmarks: [
-      { platform: 'Google Ads (Search)',    value: '$2.50–$4.50' },
+      { platform: 'Google Ads (Search)',    value: 'Above $5 (2025 avg)' },
       { platform: 'Google Ads (Display)',   value: '$0.50–$1.50' },
-      { platform: 'Facebook / Instagram',   value: '$0.80–$1.50' },
+      { platform: 'Facebook / Instagram',   value: '$0.70–$1.92 (2025)' },
       { platform: 'LinkedIn',               value: '$4.00–$8.00' },
       { platform: 'TikTok',                 value: '$0.80–$1.20' },
       { platform: 'Twitter / X',            value: '$0.30–$0.60' },
@@ -44,6 +49,8 @@ const metrics = [
   {
     name: 'CTR',
     full: 'Click-Through Rate',
+    answer: 'CTR is the percentage of ad impressions that produce a click, so 250 clicks from 100,000 impressions equals a 0.25% CTR.',
+    calc: { href: '/digital-marketing-calculator/', label: 'Calculate CTR with the digital marketing calculator' },
     formula: 'CTR = (Clicks ÷ Impressions) × 100',
     example: '250 clicks, 100,000 impressions → (250 ÷ 100,000) × 100 = 0.25% CTR',
     use: 'Measuring ad creative relevance. A/B testing headlines and images. Quality Score signals in Google Ads.',
@@ -51,7 +58,7 @@ const metrics = [
     benchmarks: [
       { platform: 'Google Ads (Search)',    value: '3–6%' },
       { platform: 'Google Ads (Display)',   value: '0.05–0.2%' },
-      { platform: 'Facebook / Instagram',   value: '0.7–1.2%' },
+      { platform: 'Facebook / Instagram',   value: '1.7–2.6% (2025)' },
       { platform: 'LinkedIn',               value: '0.3–0.6%' },
       { platform: 'Email Marketing',        value: '2–5%' },
       { platform: 'Twitter / X',            value: '0.8–1.5%' },
@@ -60,6 +67,8 @@ const metrics = [
   {
     name: 'ROAS',
     full: 'Return on Ad Spend',
+    answer: 'ROAS is the revenue earned for every dollar of ad spend, so $22,000 of revenue from $5,000 of spend equals a 4.4× ROAS.',
+    calc: { href: '/roas-calculator/', label: 'Calculate ROAS with the free ROAS calculator' },
     formula: 'ROAS = Revenue Generated ÷ Ad Spend',
     example: '$22,000 revenue, $5,000 spend → $22,000 ÷ $5,000 = 4.4× ROAS',
     use: 'Optimising paid campaigns within a channel. Comparing ad sets and audiences. Setting budget allocation.',
@@ -76,6 +85,8 @@ const metrics = [
   {
     name: 'CPA',
     full: 'Cost Per Acquisition (Cost Per Conversion)',
+    answer: 'CPA is the average advertising cost of one conversion, so $5,000 spent to win 90 conversions equals a $55.56 CPA.',
+    calc: { href: '/digital-marketing-calculator/', label: 'Calculate CPA with the digital marketing calculator' },
     formula: 'CPA = Total Ad Spend ÷ Number of Conversions',
     example: '$5,000 spend, 90 conversions → $5,000 ÷ 90 = $55.56 CPA',
     use: 'Setting bid strategies. Evaluating campaign profitability against average order value. Comparing acquisition efficiency across channels.',
@@ -97,8 +108,16 @@ const faqItems = [
     a: 'CPM stands for Cost Per Mille — the cost to show your ad 1,000 times. Formula: CPM = (Ad Spend ÷ Impressions) × 1,000. It measures the cost efficiency of brand awareness campaigns. Facebook averages $7–$11 CPM; LinkedIn averages $30–$45 CPM.',
   },
   {
+    q: 'What is the full form of CTR, CPC, CPA and ROAS?',
+    a: 'CTR stands for click-through rate, CPC for cost per click, CPA for cost per acquisition (also called cost per conversion) and ROAS for return on ad spend. CPM, the fifth core metric, stands for cost per mille, meaning cost per 1,000 impressions. Each metric is a ratio of spend, impressions, clicks, conversions or revenue. The quick-reference box at the top of this guide lists the formula for each.',
+  },
+  {
+    q: 'How are CPM, CTR and CPC related?',
+    a: 'CPC equals CPM divided by the number of clicks per 1,000 impressions. With CPM in dollars and CTR in percent, CPC = CPM ÷ (CTR × 10). A $5.00 CPM with a 0.25% CTR produces 2.5 clicks per 1,000 impressions and a $2.00 CPC. Raising CTR therefore lowers CPC without changing CPM.',
+  },
+  {
     q: 'What is a good CTR for digital marketing?',
-    a: 'A good CTR depends on the channel. Google Search Ads average 3–6% CTR; display ads average 0.05–0.2%; Facebook ads average 0.7–1.2%. Email marketing averages 2–5% CTR. Compare your CTR to the platform average for your industry, not a universal benchmark.',
+    a: 'A good CTR depends on the channel. Google Search ads average 3–6% CTR, display ads 0.05–0.2%, Facebook ads 1.7–2.6% and email 2–5%. WordStream\'s 2025 data shows a 2.59% CTR for Facebook leads campaigns and 1.71% for traffic campaigns. Compare your CTR to the average for your platform and campaign type, not to a universal benchmark.',
   },
   {
     q: 'What is the difference between ROAS and ROI?',
@@ -106,11 +125,19 @@ const faqItems = [
   },
   {
     q: 'What is CPA in marketing?',
-    a: 'CPA (Cost Per Acquisition) is how much you spend to acquire one customer or conversion. Formula: CPA = Total Spend ÷ Conversions. Google Ads average $45–$80 CPA across all industries; Facebook Ads average $18–$55. Whether a CPA is acceptable depends on your average order value and customer lifetime value.',
+    a: 'CPA (Cost Per Acquisition) is how much you spend to acquire one customer or conversion. Formula: CPA = Total Spend ÷ Conversions. Google Ads CPA averages $45–$80 across industries, and WordStream by LocaliQ reports a $70.11 average Google Ads cost per lead in 2025 against $27.66 for Facebook leads campaigns. Whether a CPA is acceptable depends on average order value and customer lifetime value.',
   },
   {
     q: 'What does a 4× ROAS mean?',
     a: 'A 4× ROAS means you generated $4 in revenue for every $1 spent on advertising. It\'s often cited as a break-even benchmark for eCommerce businesses with 25% profit margins. However, 4× ROAS does not guarantee profitability — you must also account for COGS, fulfilment, and overhead costs.',
+  },
+  {
+    q: 'How are CPC and ROAS related?',
+    a: 'ROAS equals average order value multiplied by conversion rate, divided by CPC. A $2.00 CPC, a 4% conversion rate and an $80 average order value give $3.20 of revenue per click, so ROAS is 1.6×. Lowering CPC or raising conversion rate or order value raises ROAS. This is why CPC alone never shows whether a campaign is profitable.',
+  },
+  {
+    q: 'How do you calculate CPA from CPC and conversion rate?',
+    a: 'CPA equals CPC divided by conversion rate. A $2.00 CPC with a 4% conversion rate gives a CPA of $50, because 25 clicks are needed per conversion. Doubling the conversion rate to 8% halves the CPA to $25. Improving the landing page therefore lowers CPA as effectively as lowering bids.',
   },
   {
     q: 'Which metric is most important in digital marketing?',
@@ -123,7 +150,7 @@ const articleSchema = {
   "headline": title,
   "description": description,
   "datePublished": "2026-07-07",
-  "dateModified": "2026-07-07",
+  "dateModified": "2026-10-08",
   "author": { "@type": "Person", "name": "Waseem Shahzad", "url": "https://freemarketingcalculator.com/about/" },
   "publisher": { "@id": "https://freemarketingcalculator.com/#org" },
   "mainEntityOfPage": `https://freemarketingcalculator.com/${slug}/`,
@@ -149,12 +176,13 @@ const breadcrumbSchema = {
       <p class="eyebrow">Metrics & Analytics · {readTime}</p>
       <h1 id="art-h1">Digital Marketing Metrics Explained: CPM, CPC, CTR, ROAS, CPA</h1>
       <p class="citation">
-        Every metric you'll encounter in digital marketing — what it measures,
-        the formula, what good looks like, and when to use it.
-        With 2026 benchmarks by platform.
+        The five core digital marketing metrics are CPM (cost per mille), CPC (cost per click),
+        CTR (click-through rate), ROAS (return on ad spend) and CPA (cost per acquisition).
+        Each answers one question: reach cost, click cost, ad relevance, revenue per ad dollar, and cost per customer.
       </p>
       <div class="meta-badges">
         <span class="badge">📅 {published}</span>
+        <span class="badge">🔄 Updated {updated}</span>
         <span class="badge">✓ {readTime}</span>
         <span class="badge">✓ 5 metrics covered</span>
       </div>
@@ -178,12 +206,39 @@ const breadcrumbSchema = {
           </p>
         </div>
 
+        
+        <div class="definition-box" style="margin-top: var(--space-6);">
+          <div class="definition-box__label">Key Takeaways</div>
+          <ul style="margin: var(--space-2) 0 0 var(--space-5); color: var(--text-mid); line-height: 1.8;">
+            <li>CPM prices reach, CPC prices clicks, CTR measures ad relevance, ROAS measures revenue per ad dollar, and CPA measures the cost of one customer.</li>
+            <li>Use CPM and CTR to diagnose a campaign, CPA and ROAS to optimise it, and ROI to decide whether a channel is worth funding.</li>
+            <li>WordStream's 2025 Facebook benchmarks show a 2.59% CTR, a $1.92 CPC and a $27.66 cost per lead for leads campaigns.</li>
+            <li>WordStream by LocaliQ reports a $70.11 average Google Ads cost per lead in 2025, up 5.13% from 2024.</li>
+            <li>ROAS ignores COGS and fees, so a 4× ROAS campaign can still lose money.</li>
+          </ul>
+        </div>
+
+        <section style="margin-top: var(--space-10);" aria-labelledby="quick-reference-heading">
+          <h2 id="quick-reference-heading">Digital Marketing Metrics at a Glance</h2>
+          <p>The table lists each metric's full form, the question it answers and the free calculator for it.</p>
+          <div class="bench-table-wrap">
+            <table class="bench-table">
+              <thead><tr><th scope="col">Metric</th><th scope="col">Full form</th><th scope="col">Question it answers</th><th scope="col">Calculate it</th></tr></thead>
+              <tbody>
+                <tr><td><strong>CPM</strong></td><td>Cost per mille (cost per 1,000 impressions)</td><td>What does reach cost?</td><td><a href="/cpm-calculator/">CPM calculator</a></td></tr>
+                <tr style="background: var(--off-white)"><td><strong>CPC</strong></td><td>Cost per click</td><td>What does one click cost?</td><td><a href="/cpc-calculator/">CPC calculator</a></td></tr>
+                <tr><td><strong>CTR</strong></td><td>Click-through rate</td><td>Is the ad relevant enough to earn clicks?</td><td><a href="/digital-marketing-calculator/">Digital marketing calculator</a></td></tr>
+                <tr style="background: var(--off-white)"><td><strong>CPA</strong></td><td>Cost per acquisition (cost per conversion)</td><td>What does one customer or conversion cost?</td><td><a href="/digital-marketing-calculator/">Digital marketing calculator</a></td></tr>
+                <tr><td><strong>ROAS</strong></td><td>Return on ad spend</td><td>How much revenue does each ad dollar earn?</td><td><a href="/roas-calculator/">ROAS calculator</a></td></tr>
+                <tr style="background: var(--off-white)"><td><strong>Conversion rate</strong></td><td>Conversions ÷ visitors × 100</td><td>What share of visitors take the target action?</td><td><a href="/conversion-rate-calculator/">Conversion rate calculator</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
         <p style="margin-top: var(--space-6);">
-          Digital marketing runs on metrics — but the sheer number of acronyms makes it
-          easy to lose track of what matters and when. This guide covers the five metrics
-          you'll encounter in every platform, every campaign brief, and every performance
-          report. For each one: the formula, a plain-English explanation, 2026 benchmarks
-          by platform, when to use it, and when it misleads you.
+          Each metric below follows the same pattern: a one-sentence definition, the formula,
+          a worked example, when to use it, when it misleads, and platform benchmarks.
         </p>
 
         <!-- EACH METRIC -->
@@ -201,6 +256,8 @@ const breadcrumbSchema = {
               </div>
             </div>
 
+            <p>{m.answer}</p>
+
             <div class="formula-box" style="margin: var(--space-4) 0;">
               <p class="formula-title">Formula</p>
               <p class="formula-text">{m.formula}</p>
@@ -209,6 +266,7 @@ const breadcrumbSchema = {
 
             <p><strong>Use {m.name} when:</strong> {m.use}</p>
             <p><strong>Don't rely on {m.name} alone:</strong> {m.avoid}</p>
+            <p><a href={m.calc.href}>{m.calc.label} →</a></p>
 
             <h3 style="font-size: var(--text-lg); font-weight:700; color:var(--navy); margin: var(--space-4) 0 var(--space-3);">
               {m.name} Benchmarks by Platform — 2026
@@ -236,12 +294,44 @@ const breadcrumbSchema = {
         ))}
 
 
+        <!-- Named-source benchmarks -->
+        <section style="margin-top: var(--space-10);" aria-labelledby="named-benchmarks-heading">
+          <h2 id="named-benchmarks-heading">2025 Benchmark Data From Named Sources</h2>
+          <p>
+            WordStream's 2025 benchmark reports put the average Facebook leads campaign at a 2.59% CTR and a
+            $27.66 cost per lead, and the average Google Ads cost per lead at $70.11. The table lists each
+            figure with its change from 2024.
+          </p>
+          <div class="bench-table-wrap">
+            <table class="bench-table">
+              <thead><tr><th scope="col">Source and campaign type</th><th scope="col">Metric</th><th scope="col">2025 average</th><th scope="col">2024</th></tr></thead>
+              <tbody>
+                <tr><td>WordStream, Facebook leads campaigns</td><td>CTR</td><td><strong>2.59%</strong></td><td>2.58%</td></tr>
+                <tr style="background: var(--off-white)"><td>WordStream, Facebook leads campaigns</td><td>CPC</td><td><strong>$1.92</strong></td><td>$1.88</td></tr>
+                <tr><td>WordStream, Facebook leads campaigns</td><td>Conversion rate</td><td><strong>7.72%</strong></td><td>8.67%</td></tr>
+                <tr style="background: var(--off-white)"><td>WordStream, Facebook leads campaigns</td><td>Cost per lead</td><td><strong>$27.66</strong></td><td>$22.87</td></tr>
+                <tr><td>WordStream, Facebook traffic campaigns</td><td>CTR</td><td><strong>1.71%</strong></td><td>1.57%</td></tr>
+                <tr style="background: var(--off-white)"><td>WordStream, Facebook traffic campaigns</td><td>CPC</td><td><strong>$0.70</strong></td><td>$0.77</td></tr>
+                <tr><td>WordStream by LocaliQ, Google Ads</td><td>Cost per lead</td><td><strong>$70.11</strong></td><td>$66.69 (+5.13%)</td></tr>
+                <tr style="background: var(--off-white)"><td>WordStream by LocaliQ, Google Ads</td><td>CPC</td><td><strong>Above $5</strong></td><td>$4.66</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Sources: <a href="https://www.wordstream.com/blog/facebook-ads-benchmarks-2025" rel="noopener">WordStream, Facebook Ads Benchmarks 2025</a>
+            (campaign data from April 2024 to June 2025; WordStream describes its figures as medians) and
+            <a href="https://searchengineland.com/google-ads-costs-keep-rising-but-conversion-rates-improved-in-2025-477927" rel="noopener">Search Engine Land's coverage of the WordStream by LocaliQ 2025 Google Ads report</a>
+            (more than 16,000 campaigns, published May 18, 2026). The platform ranges in the tables above are
+            typical ranges; where a named 2025 figure differs, use the named figure.
+          </p>
+        </section>
+
         <!-- TASK 12: Full campaign example -->
         <section style="margin-top: var(--space-10);" aria-labelledby="example-heading">
           <h2 id="example-heading">Full Campaign Example — All 5 Metrics at Once</h2>
           <p>
-            Here is one real-world campaign with all five metrics calculated from the same set of numbers.
-            This is what a performance report actually looks like when you run it correctly.
+            One example campaign shows how the five metrics relate: all five are calculated from the same five inputs of spend,
+            impressions, clicks, conversions and revenue.
           </p>
           <div class="formula-box">
             <p class="formula-title">Campaign: Google Search — Q3 2026</p>
@@ -267,7 +357,7 @@ const breadcrumbSchema = {
         <!-- TASK 13: Which metric to optimise first -->
         <section style="margin-top: var(--space-10);" aria-labelledby="optimise-heading">
           <h2 id="optimise-heading">Which Metric Should You Optimise First?</h2>
-          <p>When a campaign underperforms, each metric points to a different problem and a different fix:</p>
+          <p>Fix metrics in this order: CTR first, then CPC, then CPA, then ROAS. Each poor metric points to a different problem and a different fix:</p>
           <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
             <table class="bench-table">
               <thead><tr><th scope="col">If this metric is poor</th><th scope="col">The problem is</th><th scope="col">The fix</th></tr></thead>
@@ -290,8 +380,8 @@ const breadcrumbSchema = {
         <section style="margin-top: var(--space-10);" aria-labelledby="roas-vs-roi">
           <h2 id="roas-vs-roi">ROAS vs ROI — The Most Confused Metrics in Marketing</h2>
           <p>
-            ROAS and ROI are used interchangeably in most marketing conversations — they shouldn't be.
-            They answer different questions and lead to different decisions.
+            ROAS divides revenue by ad spend only, while ROI divides profit by all costs, so ROAS guides campaign optimisation
+            and ROI guides investment decisions.
           </p>
 
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin: var(--space-6) 0;">
@@ -318,8 +408,8 @@ const breadcrumbSchema = {
         <section style="margin-top: var(--space-10);" aria-labelledby="dashboard-heading">
           <h2 id="dashboard-heading">How to Read a Campaign Performance Dashboard</h2>
           <p>
-            When you're looking at a campaign report, the metrics tell a story in a specific order.
-            Read them in this sequence to diagnose performance quickly:
+            Read a campaign report in five steps: impressions and CPM, CTR, CPC, CPA, then ROAS. This order finds a problem
+            at the earliest stage of the funnel where it appears.
           </p>
           <p>
             <strong>1. Impressions and CPM</strong> — Is the campaign reaching enough people at a
@@ -362,6 +452,12 @@ const breadcrumbSchema = {
             style="display:inline-block; background:var(--teal); color:var(--navy); font-weight:800; padding:var(--space-3) var(--space-8); border-radius:var(--radius); text-decoration:none; font-size:var(--text-lg);">
             Use the Free Digital Marketing Calculator →
           </a>
+          <p style="margin-top: var(--space-4); margin-bottom: 0; font-size: var(--text-sm); color: rgba(255,255,255,.75);">
+            Or calculate a single metric:
+            <a href="/roas-calculator/" style="color: var(--teal); font-weight: 700;">ROAS</a> ·
+            <a href="/cpc-calculator/" style="color: var(--teal); font-weight: 700;">CPC</a> ·
+            <a href="/cpm-calculator/" style="color: var(--teal); font-weight: 700;">CPM</a>
+          </p>
         </div>
 
         <!-- Related articles -->
@@ -372,6 +468,9 @@ const breadcrumbSchema = {
             <a href="/marketing-roi-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📈 Marketing ROI Calculator</a>
             <a href="/conversion-rate-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">🔄 Conversion Rate Calculator</a>
             <a href="/blog/what-is-a-good-marketing-roi/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📖 What Is a Good Marketing ROI?</a>
+            <a href="/roas-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">🎯 ROAS Calculator</a>
+            <a href="/cpc-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">🖱️ CPC Calculator</a>
+            <a href="/cpm-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">👁️ CPM Calculator</a>
           </div>
         </div>
 
@@ -381,7 +480,7 @@ const breadcrumbSchema = {
           <div>
             <p style="font-weight:700; color:var(--navy); margin-bottom: 4px;">Waseem Shahzad</p>
             <p style="font-size: var(--text-sm); color: var(--text-mid); line-height:1.5;">
-              Digital marketing professional. Platform benchmarks sourced from WordStream, Meta Business Insights, LinkedIn Marketing Solutions, and Google Ads benchmark reports 2026.
+              Digital marketing professional. Named 2025 benchmarks come from WordStream and WordStream by LocaliQ; platform ranges are typical ranges compiled from public platform benchmark reports.
               <a href="/about/" style="color: var(--teal-dark);">About the author →</a>
             </p>
           </div>
@@ -395,11 +494,13 @@ const breadcrumbSchema = {
           <p class="toc-title">In this article</p>
           <nav>
             <ul class="toc-list">
+              <li><a href="#quick-reference-heading">At a glance</a></li>
               <li><a href="#metric-CPM">1. CPM</a></li>
               <li><a href="#metric-CPC">2. CPC</a></li>
               <li><a href="#metric-CTR">3. CTR</a></li>
               <li><a href="#metric-ROAS">4. ROAS</a></li>
               <li><a href="#metric-CPA">5. CPA</a></li>
+              <li><a href="#named-benchmarks-heading">2025 benchmarks</a></li>
               <li><a href="#roas-vs-roi">ROAS vs ROI</a></li>
               <li><a href="#dashboard-heading">Reading a Dashboard</a></li>
               <li><a href="#faq-section">FAQ</a></li>
