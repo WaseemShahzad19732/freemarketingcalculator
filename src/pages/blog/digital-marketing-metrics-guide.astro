@@ -461,16 +461,16 @@ const breadcrumbSchema = {
         </div>
 
         <!-- Related articles -->
-        <div style="background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-6); margin-top: var(--space-8);">
+        <div class="related-box">
           <p style="font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mid); margin-bottom: var(--space-4);">Related Calculators & Articles</p>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-3);">
-            <a href="/digital-marketing-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📊 Digital Marketing Calculator</a>
-            <a href="/marketing-roi-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📈 Marketing ROI Calculator</a>
-            <a href="/conversion-rate-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">🔄 Conversion Rate Calculator</a>
-            <a href="/blog/what-is-a-good-marketing-roi/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📖 What Is a Good Marketing ROI?</a>
-            <a href="/roas-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">🎯 ROAS Calculator</a>
-            <a href="/cpc-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">🖱️ CPC Calculator</a>
-            <a href="/cpm-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">👁️ CPM Calculator</a>
+          <div class="link-grid">
+            <a href="/digital-marketing-calculator/" class="link-tile">📊 Digital Marketing Calculator</a>
+            <a href="/marketing-roi-calculator/" class="link-tile">📈 Marketing ROI Calculator</a>
+            <a href="/conversion-rate-calculator/" class="link-tile">🔄 Conversion Rate Calculator</a>
+            <a href="/blog/what-is-a-good-marketing-roi/" class="link-tile">📖 What Is a Good Marketing ROI?</a>
+            <a href="/roas-calculator/" class="link-tile">🎯 ROAS Calculator</a>
+            <a href="/cpc-calculator/" class="link-tile">🖱️ CPC Calculator</a>
+            <a href="/cpm-calculator/" class="link-tile">👁️ CPM Calculator</a>
           </div>
         </div>
 
@@ -515,10 +515,10 @@ const breadcrumbSchema = {
 
     </div>
 
-    <div style="background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0;">
-      <p style="font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mid); margin-bottom: var(--space-3);">Related Guides &amp; Calculators</p>
+    <div class="related-box">
+      <p class="related-box__label">Related Guides &amp; Calculators</p>
       <p style="color: var(--text-mid); margin-bottom: var(--space-4);">Each metric in this guide has a calculator: the <a href="/cpv-calculator/">CPV Calculator</a> for video views, the <a href="/cac-calculator/">CAC Calculator</a> for acquisition cost, and the <a href="/inbound-marketing-calculator/">Inbound Marketing Calculator</a> to turn rates into traffic and lead targets. For impression pricing in depth, read <a href="/blog/what-is-cpm/">What Is CPM?</a></p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-3);"><a href="/cpv-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">CPV Calculator →</a><a href="/cac-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">CAC Calculator →</a><a href="/inbound-marketing-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">Inbound Marketing Calculator →</a><a href="/blog/what-is-cpm/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">What Is CPM? →</a></div>
+      <div class="link-grid"><a href="/cpv-calculator/" class="link-tile">CPV Calculator →</a><a href="/cac-calculator/" class="link-tile">CAC Calculator →</a><a href="/inbound-marketing-calculator/" class="link-tile">Inbound Marketing Calculator →</a><a href="/blog/what-is-cpm/" class="link-tile">What Is CPM? →</a></div>
     </div>
 
     <div id="faq-section" style="max-width: 720px;">

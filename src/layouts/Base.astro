@@ -36,6 +36,13 @@ const kind =
 
 const inGuides = slug === 'blog' || slug.startsWith('blog/') || slug === 'marketing-budget-benchmarks';
 
+// Visible breadcrumb mirrors the page's BreadcrumbList schema (when it has one)
+const crumbSchema: any = (schema as any[]).find((s) => s && s['@type'] === 'BreadcrumbList');
+const crumbs = (crumbSchema?.itemListElement ?? []).map((c: any) => ({
+  name: c.name as string,
+  path: (() => { try { return new URL(c.item).pathname; } catch { return '/'; } })(),
+}));
+
 const siteUrl   = 'https://freemarketingcalculator.com';
 const canonical = `${siteUrl}/${slug ? slug + '/' : ''}`;
 const ogUrl     = canonical;
@@ -222,6 +229,19 @@ const fontHref = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;60
 
     <!-- ===== MAIN CONTENT ===== -->
     <main id="main-content" data-kind={kind}>
+      {crumbs.length > 1 && (
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol class="container">
+            {crumbs.map((c, i) => (
+              <li>
+                {i < crumbs.length - 1
+                  ? <a href={c.path}>{c.name}</a>
+                  : <span aria-current="page">{c.name}</span>}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
       <slot />
     </main>
 
