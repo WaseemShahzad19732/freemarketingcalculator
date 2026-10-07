@@ -360,7 +360,7 @@ main { flex: 1; min-width: 0; }
 .field-group { display: grid; gap: var(--s-5); }
 .field { display: flex; flex-direction: column; gap: 0; min-width: 0; }
 .field label { font-size: 15px; font-weight: 600; color: var(--c-heading); margin-bottom: 8px; }
-.field .hint { font-size: 13px; color: var(--c-muted); margin: -4px 0 8px; }
+.field .hint { font-size: 13px; color: var(--c-muted); margin: 2px 0 8px; }
 
 .input-wrap { position: relative; display: flex; align-items: center; }
 .input-prefix, .input-suffix {
@@ -390,7 +390,7 @@ select {
   background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px;
 }
 
-.range-wrap { display: flex; align-items: center; gap: var(--s-3); margin-top: 10px; }
+.range-wrap { display: flex; align-items: center; gap: var(--s-3); margin-top: 4px; padding: 9px 0; }
 .range-slider {
   flex: 1; height: 6px; background: var(--c-border); border-radius: 100px; outline: none;
   -webkit-appearance: none; appearance: none; cursor: pointer; accent-color: var(--c-link);
@@ -495,6 +495,30 @@ select {
   background: #fff; border: 3px solid var(--c-panel); box-shadow: 0 0 0 2px #fff; transition: left .5s cubic-bezier(.2,.8,.2,1);
 }
 .bench-track__scale { display: flex; justify-content: space-between; font-size: 12px; color: var(--c-on-panel-muted); font-variant-numeric: tabular-nums; }
+
+/* two-column calculator on wide screens: inputs left, result right */
+.result-panel { container-type: inline-size; }
+.result-panel__primary { font-size: clamp(44px, 19cqi, 80px); }
+@media (min-width: 1024px) {
+  .calc-card__body { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--s-7); row-gap: 0; align-items: start; }
+  .calc-card__body > * { grid-column: 1; }
+  .calc-card__body > :not(.result-panel) { margin-bottom: var(--s-5); }
+  .calc-card__body > .btn-calc { margin-top: 0; }
+  /* the calculator is right below the heading on wide screens, so the jump button is redundant */
+  .btn-hero-cta[href="#calculator"] { display: none; }
+  .calc-card__body > .result-panel {
+    grid-column: 2; grid-row: 1 / span 6; align-self: start;
+    position: sticky; top: calc(var(--header-h) + 24px);
+  }
+  /* empty state before the first calculation (CSS only, no content added) */
+  .calc-card__body > .result-panel:not(.visible) {
+    display: grid; place-items: center; min-height: 320px; animation: none;
+  }
+  .calc-card__body > .result-panel:not(.visible) > * { display: none; }
+  .calc-card__body > .result-panel:not(.visible)::before {
+    content: "Your result appears here"; color: var(--c-on-panel-muted); font-size: 16px; text-align: center;
+  }
+}
 
 /* ---------- 7. CONTENT BLOCKS ---------- */
 .definition-box {
@@ -692,6 +716,29 @@ details[open] > .faq-question .faq-icon svg { transform: rotate(45deg); }
 .quickjump-pill.is-active { background: var(--c-heading); color: #fff; border-color: var(--c-heading); }
 @media (max-width: 640px) { .quickjump { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; } }
 
+/* related-links block shared by calculators and guides */
+.related-box { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--r-card); padding: var(--s-6); margin: var(--s-9) 0; }
+.related-box > p { color: var(--c-muted); margin-bottom: var(--s-4); line-height: 1.65; }
+.related-box__label { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--c-muted); margin-bottom: var(--s-3); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px; }
+.link-tile {
+  display: flex; align-items: center; min-height: 56px; padding: 12px 18px;
+  background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--r-card);
+  color: var(--c-heading); font-size: 15px; font-weight: 600; line-height: 1.35; text-decoration: none;
+  transition: border-color .15s;
+}
+.link-tile:hover { border-color: var(--c-accent); color: var(--c-heading); text-decoration: none; }
+
+/* breadcrumb (generated from the page's BreadcrumbList schema) */
+.breadcrumb { background: var(--c-bg); padding: 4px 0; }
+.breadcrumb ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: 0 8px; font-size: 14px; color: var(--c-muted); }
+.breadcrumb li { display: flex; align-items: center; gap: 8px; }
+.breadcrumb li + li::before { content: "/"; color: var(--c-faint); }
+.breadcrumb a { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; color: var(--c-muted); text-decoration: none; }
+.breadcrumb a:hover { color: var(--c-heading); text-decoration: underline; }
+.breadcrumb [aria-current="page"] { color: var(--c-heading); font-weight: 600; }
+.breadcrumb + .page-hero { padding-top: clamp(8px, 1.5vw, 20px); }
+
 /* ---------- 11. ARTICLE ---------- */
 .article-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; margin-top: var(--s-7); align-items: start; }
 @media (min-width: 1024px) {
@@ -793,3 +840,14 @@ code { background: var(--c-surface-alt); padding: 2px 6px; border-radius: 4px; f
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Inline call-to-action button used in "related" banners */
+.btn-inline {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; padding: 0 var(--s-5, 20px);
+  background: var(--c-accent); color: var(--c-on-accent);
+  font-weight: 700; font-size: var(--text-sm, 14px);
+  border-radius: var(--radius); text-decoration: none; white-space: nowrap;
+}
+.btn-inline:hover { background: var(--c-accent-hover); color: var(--c-on-accent); text-decoration: none; }
+.btn-inline:focus-visible { outline: none; box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--c-link); }

@@ -405,12 +405,12 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     <!-- TASK 23: Related guide link -->
     <div style="background: var(--teal-faint); border: 1.5px solid rgba(0,196,179,.25); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap: var(--space-3);">
       <p style="color: var(--navy); font-weight: 600; margin:0; font-size: var(--text-sm);">📖 How to Set a Marketing Budget for a Small Business →</p>
-      <a href="/blog/marketing-budget-small-business/" style="background: var(--teal); color: var(--navy); font-weight: 700; font-size: var(--text-sm); padding: var(--space-2) var(--space-5); border-radius: var(--radius); text-decoration:none; white-space:nowrap;">Read now →</a>
+      <a href="/blog/marketing-budget-small-business/" class="btn-inline">Read now →</a>
     </div>
 
     <div style="background: var(--teal-faint); border: 1.5px solid rgba(0,196,179,.25); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-6); margin: var(--space-4) 0 var(--space-6); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap: var(--space-3);">
       <p style="color: var(--navy); font-weight: 600; margin:0; font-size: var(--text-sm);">💸 Ad Spend Meaning: Definition, ROAS Formula & 2026 Benchmarks →</p>
-      <a href="/blog/what-is-ad-spend/" style="background: var(--teal); color: var(--navy); font-weight: 700; font-size: var(--text-sm); padding: var(--space-2) var(--space-5); border-radius: var(--radius); text-decoration:none; white-space:nowrap;">Read now →</a>
+      <a href="/blog/what-is-ad-spend/" class="btn-inline">Read now →</a>
     </div>
 
 
@@ -423,10 +423,10 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       </div>
     </div>
 
-    <div style="background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0;">
-      <p style="font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mid); margin-bottom: var(--space-3);">Related Guides &amp; Calculators</p>
+    <div class="related-box">
+      <p class="related-box__label">Related Guides &amp; Calculators</p>
       <p style="color: var(--text-mid); margin-bottom: var(--space-4);">For survey figures and planning ranges by industry, see <a href="/marketing-budget-benchmarks/">Marketing Budget Benchmarks</a>. The <a href="/social-media-budget-calculator/">Social Media Budget Calculator</a> splits the paid and organic social share, and the <a href="/blog/inbound-marketing-cost/">Inbound Marketing Cost Guide</a> prices inbound programs. To split the digital share across channels, use the <a href="/digital-marketing-budget-calculator/">Digital Marketing Budget Calculator</a>.</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-3);"><a href="/marketing-budget-benchmarks/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">Marketing Budget Benchmarks →</a><a href="/digital-marketing-budget-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">Digital Marketing Budget Calculator →</a><a href="/social-media-budget-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">Social Media Budget Calculator →</a><a href="/blog/inbound-marketing-cost/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">Inbound Marketing Cost Guide →</a><a href="/marketing-roi-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">Marketing ROI Calculator →</a></div>
+      <div class="link-grid"><a href="/marketing-budget-benchmarks/" class="link-tile">Marketing Budget Benchmarks →</a><a href="/digital-marketing-budget-calculator/" class="link-tile">Digital Marketing Budget Calculator →</a><a href="/social-media-budget-calculator/" class="link-tile">Social Media Budget Calculator →</a><a href="/blog/inbound-marketing-cost/" class="link-tile">Inbound Marketing Cost Guide →</a><a href="/marketing-roi-calculator/" class="link-tile">Marketing ROI Calculator →</a></div>
     </div>
 
     <FAQ items={faqItems} />
