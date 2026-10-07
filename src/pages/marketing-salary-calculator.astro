@@ -4,7 +4,7 @@ import FAQ from '../components/FAQ.astro';
 
 const slug        = 'marketing-salary-calculator';
 const title       = 'Marketing Salary Calculator — By Role, Level and Location 2026';
-const description = 'Marketing salary calculator by role, seniority, and US city. Covers marketing managers, directors, CMOs, SEO specialists and 7 more roles. 2026 data. Free.';
+const description = 'Marketing salary calculator by role, level and US city, with a marketing manager salary comparison by city and the BLS median pay. Free, no signup.';
 
 // Salary data: [entry, mid, senior, director, exec] in $K
 const salaryData: Record<string, number[]> = {
@@ -28,12 +28,14 @@ const locationMult: Record<string, number> = {
 };
 
 const faqItems = [
-  { q: 'What is the average marketing manager salary in the US?', a: 'The average marketing manager salary in the US is $72,000–$90,000 (mid-level). Entry-level marketing managers earn $55,000–$65,000, while senior marketing managers in major cities can earn $100,000–$130,000.' },
-  { q: 'How much does a CMO make?', a: 'Chief Marketing Officers earn a wide range: $150,000–$350,000+ depending on company size, industry, and location. Enterprise CMOs at large corporations average $200,000–$400,000 including bonuses and equity.' },
-  { q: 'What is the highest paying marketing job?', a: 'CMO and VP of Marketing are the highest-paid marketing roles, averaging $200,000–$300,000+. Growth Marketing Directors and Product Marketing leaders at tech companies often earn $180,000–$250,000 with equity.' },
-  { q: 'How much do digital marketing specialists earn?', a: 'Digital marketing specialists earn $45,000–$85,000 depending on specialisation and experience. Paid media managers and SEO specialists with 5+ years experience average $70,000–$100,000 in most US markets.' },
-  { q: 'How does marketing manager salary compare by city?', a: 'Marketing manager salary varies widely by city: San Francisco and New York pay 35–45% above the US national average ($96K–$117K and $89K–$109K vs. $66K–$81K nationally), while remote roles typically pay 5–10% below the national average. Austin and Miami sit closer to the national midpoint.' },
-  { q: 'Is this calculator free?', a: 'Yes — completely free, no signup, no email required.' },
+  { q: 'What is the average marketing manager salary in the US?', a: 'The U.S. Bureau of Labor Statistics reports a median annual wage of $166,790 for marketing managers in May 2025, with the lowest 10% earning under $90,260 and the highest 10% earning over $293,610. This calculator estimates a national mid-level marketing manager at about $72,000 base salary, which is lower because its tiers include entry and mid-level roles and use different data. Treat the BLS figure as the reference for the managerial occupation and the calculator as a planning estimate.' },
+  { q: 'How much does a CMO make?', a: 'This calculator estimates a CMO base salary between $150,000 for an entry-tier title and $350,000 for an executive-tier title at the national average. Total compensation for chief marketing officers usually includes bonuses and equity, which the calculator excludes. Company size and industry drive the largest differences.' },
+  { q: 'What is the highest paying marketing job?', a: 'CMO and VP of Marketing are the highest-paid roles in this calculator, with executive-tier CMO base salary estimated at $350,000 and VP of Marketing at $250,000. Marketing director and product marketing manager roles follow. Equity at technology companies can raise total compensation well above base salary.' },
+  { q: 'How much do digital marketing specialists earn?', a: 'This calculator estimates specialist base salaries from $45,000 for an entry-level email marketing specialist to $118,000 for an executive-tier SEO specialist. Mid-level SEO specialists are estimated at $63,000 and mid-level paid media managers at $68,000. Specialisation, seniority and city shift the result.' },
+  { q: 'How does marketing manager salary compare by city?', a: 'In this calculator, a mid-level marketing manager earns an estimated $104,000 in San Francisco, $97,000 in New York, $72,000 at the US national average and $68,000 fully remote. The city multipliers run from 1.45 for San Francisco to 0.95 for remote roles. The marketing manager salary comparison table on this page lists all ten markets with low, midpoint and high estimates.' },
+  { q: 'How does this calculator estimate salary?', a: 'The calculator takes a base salary for the chosen role and seniority level, multiplies it by a location factor, and then shows a low estimate at 85% and a high estimate at 118% of that midpoint. The results are base-salary estimates and exclude bonuses, equity and benefits. They are planning figures, not survey results.' },
+  { q: 'Is the BLS marketing manager median the same as this calculator?', a: 'No. The BLS median of $166,790 for marketing managers comes from the Occupational Employment and Wage Statistics programme for May 2025, while the calculator uses its own role-by-level estimates and city multipliers. The two differ in scope and method, so the BLS figure and the calculator output should not be averaged together.' },
+  { q: 'Is this calculator free?', a: 'Yes, the calculator is completely free, with no signup and no email required.' },
 ];
 
 const webAppSchema = { "@type": "WebApplication", "name": title, "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "creator": { "@id": "https://freemarketingcalculator.com/#org" }, "url": "https://freemarketingcalculator.com/marketing-salary-calculator/", "description": "Estimates marketing salary range by role, seniority level, and US location — covering managers, directors, VPs, CMOs, and channel specialists.", "featureList": ["10 marketing roles", "5 seniority levels", "10 US locations"] };
@@ -55,8 +57,9 @@ const locationJSON = JSON.stringify(locationMult);
     <div class="container">
       <p class="eyebrow">Free Marketing Tool</p>
       <h1 id="page-h1">Marketing Salary Calculator</h1>
-      <p class="citation">Estimates marketing salary range by role, seniority level, and US location — covering marketing managers, directors, VPs, CMOs, and 7 specialist roles. Based on 2026 US market data.</p>
+      <p class="citation">Estimates marketing salary range by role, seniority level and US location, with a marketing manager salary comparison across 10 US markets. The U.S. Bureau of Labor Statistics reports a $166,790 median for marketing managers (May 2025).</p>
       <div class="meta-badges">
+        <span class="badge">🔄 Updated October 2026</span>
         <span class="badge">✓ 10 roles covered</span>
         <span class="badge">✓ City-level adjustments</span>
         <span class="badge">✓ No signup</span>
@@ -129,14 +132,40 @@ const locationJSON = JSON.stringify(locationMult);
 
     <div class="definition-box">
       <div class="definition-box__label">About This Data</div>
-      <p>Salary ranges are based on 2026 US compensation data compiled from LinkedIn Salary, Glassdoor, BLS Occupational Outlook, and industry surveys. Figures reflect base salary only and exclude bonuses, equity, and benefits. Actual compensation varies by company size, industry, and individual negotiation.</p>
+      <p>The ranges in this calculator are planning estimates of base salary by role, seniority level and US city. They exclude bonuses, equity and benefits, and they are not survey results. The U.S. Bureau of Labor Statistics (BLS) publishes the official wage statistics for the managerial occupations shown below, and its figures are higher than this calculator's marketing manager estimates.</p>
     </div>
+    <div class="definition-box" style="margin-top: var(--space-4);">
+      <div class="definition-box__label">Key Takeaways</div>
+      <ul style="margin: var(--space-2) 0 0 var(--space-5); color: var(--text-mid); line-height: 1.8;">
+        <li>BLS reports a $166,790 median wage for marketing managers in May 2025.</li>
+        <li>This calculator estimates a national mid-level marketing manager at about $72,000 base salary.</li>
+        <li>San Francisco adds an estimated 45% to the national figure and New York 35%; remote roles subtract 5%.</li>
+        <li>All figures are base salary and exclude bonuses, equity and benefits.</li>
+      </ul>
+    </div>
+
+    <section class="bench-section" aria-labelledby="bls-heading" style="margin-top: var(--space-8);">
+      <h2 id="bls-heading">BLS Marketing Manager Pay — May 2025</h2>
+      <p style="color: var(--text-mid); margin: var(--space-2) 0 var(--space-4);">The U.S. Bureau of Labor Statistics reports a median annual wage of $166,790 for marketing managers and $133,660 for advertising and promotions managers in May 2025. The table shows the wage distribution and the projected growth for each occupation.</p>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead>
+            <tr><th scope="col">Occupation</th><th scope="col">Median Wage</th><th scope="col">Lowest 10%</th><th scope="col">Highest 10%</th><th scope="col">Job Growth 2025–35</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Marketing managers</strong></td><td>$166,790</td><td>Under $90,260</td><td>Over $293,610</td><td>7%</td></tr>
+            <tr style="background:var(--off-white)"><td><strong>Advertising and promotions managers</strong></td><td>$133,660</td><td>Under $63,300</td><td>Over $286,240</td><td>−4%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">Source: <a href="https://www.bls.gov/ooh/management/advertising-promotions-and-marketing-managers.htm" target="_blank" rel="noopener noreferrer nofollow">U.S. Bureau of Labor Statistics, Occupational Outlook Handbook: Advertising, Promotions, and Marketing Managers</a>. The calculator's estimates use a different scope and method, so the two should be compared as separate references.</p>
+    </section>
 
 
     <!-- TASK 8: Salary comparison table -->
     <section class="bench-section" aria-labelledby="salary-compare-heading" style="margin-top: var(--space-8);">
       <h2 id="salary-compare-heading">Marketing Salary Comparison by Role — 2026</h2>
-      <span class="bench-date">Updated July 2026</span>
+      <span class="bench-date">Updated October 2026</span>
       <div class="bench-table-wrap">
         <table class="bench-table">
           <thead>
@@ -192,73 +221,106 @@ const locationJSON = JSON.stringify(locationMult);
           </tbody>
         </table>
       </div>
-      <p class="bench-source">US national average base salary. Sources: LinkedIn Salary 2026, Glassdoor, BLS Occupational Outlook. Does not include bonuses, equity, or benefits (typically add 15–35%).</p>
+      <p class="bench-source">Calculator estimates of US national base salary by role and level; these are planning figures, not survey results. They do not include bonuses, equity or benefits. For official wage statistics see the BLS table above.</p>
     </section>
 
     <!-- Marketing Manager salary comparison by city -->
     <section class="bench-section" aria-labelledby="salary-city-compare-heading" style="margin-top: var(--space-8);">
       <h2 id="salary-city-compare-heading">Marketing Manager Salary Comparison by City — 2026</h2>
-      <span class="bench-date">Updated July 2026</span>
-      <p style="color: var(--text-mid); margin: var(--space-2) 0 var(--space-4);">A direct marketing manager salary comparison across the 10 US markets this calculator supports, using mid-level (5–8 years' experience) base pay as the benchmark.</p>
+      <span class="bench-date">Updated October 2026</span>
+      <p style="color: var(--text-mid); margin: var(--space-2) 0 var(--space-4);">A mid-level marketing manager earns an estimated $72K base salary at the US national average in this calculator, ranging from $104K in San Francisco to $68K fully remote. The table covers the 10 US markets this calculator supports and uses the mid-level (3–5 years) tier.</p>
       <div class="bench-table-wrap">
         <table class="bench-table">
           <thead>
             <tr>
               <th scope="col">City</th>
-              <th scope="col">Mid-Level Marketing Manager Salary</th>
+              <th scope="col">Low Estimate</th>
+              <th scope="col">Midpoint</th>
+              <th scope="col">High Estimate</th>
+              <th scope="col">vs National</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>San Francisco, CA</strong></td>
-              <td>$96–117K</td>
+              <td>$88K</td>
+              <td><strong>$104K</strong></td>
+              <td>$123K</td>
+              <td>+45%</td>
             </tr>
             <tr style="background:var(--off-white)">
               <td><strong>New York, NY</strong></td>
-              <td>$89–109K</td>
+              <td>$82K</td>
+              <td><strong>$97K</strong></td>
+              <td>$114K</td>
+              <td>+35%</td>
             </tr>
             <tr>
               <td><strong>Los Angeles, CA</strong></td>
-              <td>$83–101K</td>
+              <td>$76K</td>
+              <td><strong>$90K</strong></td>
+              <td>$106K</td>
+              <td>+25%</td>
             </tr>
             <tr style="background:var(--off-white)">
               <td><strong>Seattle, WA</strong></td>
-              <td>$79–97K</td>
+              <td>$73K</td>
+              <td><strong>$86K</strong></td>
+              <td>$101K</td>
+              <td>+20%</td>
             </tr>
             <tr>
               <td><strong>Boston, MA</strong></td>
-              <td>$78–95K</td>
+              <td>$72K</td>
+              <td><strong>$85K</strong></td>
+              <td>$100K</td>
+              <td>+18%</td>
             </tr>
             <tr style="background:var(--off-white)">
               <td><strong>Chicago, IL</strong></td>
-              <td>$73–89K</td>
+              <td>$67K</td>
+              <td><strong>$79K</strong></td>
+              <td>$93K</td>
+              <td>+10%</td>
             </tr>
             <tr>
               <td><strong>Austin, TX</strong></td>
-              <td>$70–85K</td>
+              <td>$65K</td>
+              <td><strong>$76K</strong></td>
+              <td>$90K</td>
+              <td>+5%</td>
             </tr>
             <tr style="background:var(--off-white)">
               <td><strong>Miami, FL</strong></td>
-              <td>$68–82K</td>
+              <td>$62K</td>
+              <td><strong>$73K</strong></td>
+              <td>$86K</td>
+              <td>+2%</td>
             </tr>
             <tr>
               <td><strong>US National Average</strong></td>
-              <td>$66–81K</td>
+              <td>$61K</td>
+              <td><strong>$72K</strong></td>
+              <td>$85K</td>
+              <td>+0%</td>
             </tr>
             <tr style="background:var(--off-white)">
               <td><strong>Fully Remote</strong></td>
-              <td>$63–77K</td>
+              <td>$58K</td>
+              <td><strong>$68K</strong></td>
+              <td>$80K</td>
+              <td>-5%</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="bench-source">Based on $72K national mid-level base and this calculator's location multipliers. Use the calculator above to get a range for your exact role, seniority, and city.</p>
+      <p class="bench-source">Calculated from the $72K national mid-level marketing manager base and the calculator's location multipliers (low = 85%, high = 118% of midpoint). Compare with the <a href="#bls-heading">BLS median</a> and use the calculator above for your exact role, seniority and city.</p>
     </section>
 
 
     <!-- TASK 23: Related guide link -->
     <div style="background: var(--teal-faint); border: 1.5px solid rgba(0,196,179,.25); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap: var(--space-3);">
-      <p style="color: var(--navy); font-weight: 600; margin:0; font-size: var(--text-sm);">📖 Marketing Salaries in 2026 — Complete guide by role and city →</p>
+      <p style="color: var(--navy); font-weight: 600; margin:0; font-size: var(--text-sm);">📖 Marketing Salaries in 2026 — read the full marketing salary guide by role and city →</p>
       <a href="/blog/marketing-salary-guide/" style="background: var(--teal); color: var(--navy); font-weight: 700; font-size: var(--text-sm); padding: var(--space-2) var(--space-5); border-radius: var(--radius); text-decoration:none; white-space:nowrap;">Read now →</a>
     </div>
 
@@ -266,9 +328,9 @@ const locationJSON = JSON.stringify(locationMult);
     <!-- TASK 25: How to use this calculator -->
     <div class="definition-box" style="margin-top: var(--space-8);">
       <div class="definition-box__label">How to Use This Marketing Salary Calculator</div>
-      <p style="white-space: pre-line; line-height: 1.9;">1. Select your marketing role from the dropdown (10 roles available from Coordinator to CMO). 2. Choose your seniority level (Entry / Mid / Senior / Director / Executive). 3. Select your US city or choose 'US National Average' or 'Fully Remote'. 4. Click Get Salary Range — your low, midpoint, and high estimates appear with the location adjustment explained.</p>
+      <p style="white-space: pre-line; line-height: 1.9;">1. Select your marketing role from the dropdown (10 roles available, from Email Marketing Specialist to CMO). 2. Choose your seniority level (Entry / Mid / Senior / Director / Executive). 3. Select your US city or choose 'US National Average' or 'Fully Remote'. 4. Click Get Salary Range — your low, midpoint, and high estimates appear with the location adjustment explained.</p>
       <div class="formula-example" style="margin-top: var(--space-3);">
-        <strong>Example:</strong> Example: Senior Digital Marketing Manager in New York City. National midpoint $85K × 1.35 NYC multiplier = $114,750 midpoint. Range: $98K–$135K.
+        <strong>Example:</strong> Senior Digital Marketing Manager in New York City. National midpoint $85K × 1.35 NYC multiplier = $114,750 midpoint. Range: $98K–$135K.
       </div>
     </div>
 
