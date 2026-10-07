@@ -1,0 +1,206 @@
+---
+import Base from '../../layouts/Base.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const slug = "blog/marketing-automation-roi";
+const title = "Marketing Automation ROI: Formula, Benchmarks and Costs (2026)";
+const description = "Marketing automation ROI formula, the Nucleus Research $5.44-per-$1 benchmark, HubSpot platform costs and four worked scenarios from 266% to negative ROI.";
+const published = 'October 8, 2026';
+const readTime = "7 min read";
+
+const faqItems = [
+  {
+    "q": "What is the ROI of marketing automation?",
+    "a": "Nucleus Research found that marketing automation returned an average of $5.44 in benefits for every $1 spent over three years, with payback in under six months. The report was published in March 2021 and reviewed 16 ROI case studies from 2016 to 2020. Individual results depend on team size, lead volume and platform cost."
+  },
+  {
+    "q": "How do you calculate marketing automation ROI?",
+    "a": "Marketing automation ROI = (annual time savings + annual revenue lift − annual platform cost) ÷ annual platform cost × 100. Time savings equal weekly hours saved × 52 × hourly staff cost. Revenue lift equals extra leads × close rate × average deal value."
+  },
+  {
+    "q": "How long does marketing automation take to pay off?",
+    "a": "Nucleus Research reported payback in under six months across its case studies. In the worked scenarios on this page, payback ranges from 1 month for a full case to 4 months for time savings alone, and never for a low-volume team on a costly tier. Payback is faster with more hours saved and higher deal values."
+  },
+  {
+    "q": "How much does marketing automation software cost?",
+    "a": "HubSpot lists Marketing Hub Professional from $800 a month with a $3,000 onboarding fee and Enterprise from $3,600 a month with a $7,000 onboarding fee. A free tier also exists. Prices change, so check the vendor page before budgeting."
+  },
+  {
+    "q": "Is marketing automation worth it for small businesses?",
+    "a": "It is worth it when the platform cost is small relative to the hours saved. A team saving 5 hours a week at $40 an hour recovers $10,400 a year, which covers a $300 monthly platform. A team saving 2 hours a week cannot cover an $800 monthly platform from labour alone."
+  },
+  {
+    "q": "What expected lead lift should I use?",
+    "a": "No single published average exists for lead lift, so use pilot results, a similar vendor case study or a conservative 0% to 15%. Run the calculation at 0% first to see the return from labour savings alone. Add lift only when there is evidence for it."
+  },
+  {
+    "q": "What costs should be included in the calculation?",
+    "a": "Include the subscription, the onboarding or implementation fee, training time and any extra content or integration work. Leaving out the onboarding fee overstates first-year ROI. A Professional HubSpot plan at $800 a month plus a $3,000 onboarding fee costs $12,600 in year one."
+  },
+  {
+    "q": "What is the difference between marketing automation ROI and marketing ROI?",
+    "a": "Marketing automation ROI measures the return on a software investment, using time saved and revenue lift. Marketing ROI measures the return on spend across channels. The automation formula is the same net-return structure, applied to the platform cost; see the ROMI formula guide for the general version."
+  }
+];
+
+const articleSchema = { "@type": "Article", "headline": title, "description": description, "datePublished": "2026-10-08", "dateModified": "2026-10-08", "author": { "@type": "Person", "name": "Waseem Shahzad", "url": "https://freemarketingcalculator.com/about/" }, "publisher": { "@id": "https://freemarketingcalculator.com/#org" }, "mainEntityOfPage": `https://freemarketingcalculator.com/${slug}/` };
+const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
+const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
+  { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://freemarketingcalculator.com/blog/" },
+  { "@type": "ListItem", "position": 3, "name": "Marketing Automation ROI", "item": `https://freemarketingcalculator.com/${slug}/` }
+]};
+---
+<Base title={title} description={description} slug={slug} schema={[articleSchema, faqSchema, breadcrumbSchema]}>
+  <section class="page-hero" aria-labelledby="art-h1">
+    <div class="container">
+      <p class="eyebrow">ROI & Performance · {readTime}</p>
+      <h1 id="art-h1">Marketing Automation ROI: Formula, Benchmarks and Costs</h1>
+      <p class="citation">Marketing automation ROI equals (annual time savings + revenue lift − platform cost) ÷ platform cost × 100. Nucleus Research found an average return of $5.44 per $1 spent over three years, with payback in under six months. Team size, lead volume and platform price decide the result.</p>
+      <div class="meta-badges"><span class="badge">📅 {published}</span><span class="badge">✓ {readTime}</span></div>
+      <a href="/marketing-automation-roi-calculator/" class="btn-hero-cta">Open the Automation ROI Calculator <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+    </div>
+  </section>
+  <div class="container">
+    <div class="article-layout">
+      <article class="article-body prose">
+
+        <div class="definition-box" style="margin-top: var(--space-8);">
+          <div class="definition-box__label">Key Takeaways</div>
+          <ul style="margin: var(--space-2) 0 0 var(--space-5); color: var(--text-mid); line-height: 1.8;">
+            <li>Marketing automation ROI = (time savings + revenue lift − platform cost) ÷ platform cost × 100.</li>
+            <li>Nucleus Research reported $5.44 of benefit per $1 spent over three years, with payback in under six months (16 case studies, 2021).</li>
+            <li>HubSpot Marketing Hub Professional starts at $800 a month plus a $3,000 onboarding fee; Enterprise starts at $3,600 a month plus $7,000.</li>
+            <li>Illustrative scenarios range from -50% to 1,203% ROI, so low lead volume and costly tiers can make automation unprofitable.</li>
+            <li>Run the <a href="/marketing-automation-roi-calculator/">marketing automation ROI calculator</a> with lead lift set to 0% first; labour savings are the most reliable return.</li>
+          </ul>
+        </div>
+
+        <h2 id="definition">What Is Marketing Automation ROI?</h2>
+        <p>Marketing automation ROI is the net financial return from automation software, measured against what the software and its setup cost. The return comes from two sources: staff time saved on manual tasks, and extra revenue from more or better-nurtured leads. Separating the two shows how much of the return is predictable and how much depends on assumptions.</p>
+        <p>Marketing automation covers email sequences, lead scoring, form and landing page workflows, CRM syncing and reporting. Because it replaces repeated manual work, the most reliable ROI source is labour. Revenue lift is real but harder to prove, so it should be entered conservatively.</p>
+
+        <h2 id="formula">Marketing Automation ROI Formula</h2>
+        <div class="formula-box">
+          <p class="formula-title">Marketing Automation ROI</p>
+          <p class="formula-text">ROI = (Annual Time Savings + Annual Revenue Lift − Annual Platform Cost) ÷ Annual Platform Cost × 100</p>
+          <div class="formula-example"><strong>Example:</strong> A small team saves 5 hours a week at $40 an hour ($10,400 a year). Extra leads add $6,480 in revenue. The platform costs $300 a month ($3,600 a year). ROI = ($10,400 + $6,480 − $3,600) ÷ $3,600 × 100 = <strong>369%</strong>.</div>
+        </div>
+        <p>Time savings equal weekly hours saved × 52 × fully loaded hourly cost. Revenue lift equals extra leads per year × close rate × average deal value. Payback in months equals annual platform cost ÷ (monthly savings + monthly revenue lift). The free <a href="/marketing-automation-roi-calculator/">marketing automation ROI calculator</a> runs all three calculations from seven inputs.</p>
+
+        <h2 id="benchmarks">What ROI Does Marketing Automation Deliver?</h2>
+        <p>Nucleus Research found that marketing automation returned an average of $5.44 in benefits for every $1 spent over three years, with payback in under six months. The study, published on March 26, 2021, reviewed 16 ROI case studies from 2016 to 2020. It is the most-cited independent figure, but it is dated and based on a small sample of vendor-published cases.</p>
+        <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
+          <table class="bench-table">
+            <thead><tr><th scope="col">Source</th><th scope="col">Finding</th><th scope="col">Basis</th></tr></thead>
+            <tbody>
+              <tr><td><a href="https://nucleusresearch.com/research/single/marketing-automation-returns-5-44-for-every-dollar-spent/" target="_blank" rel="noopener noreferrer nofollow">Nucleus Research (Research V61, 2021)</a></td><td>$5.44 benefit per $1 spent over three years; payback under six months</td><td>16 ROI case studies, 2016–2020</td></tr>
+              <tr style="background:var(--off-white)"><td><a href="https://www.chiefmarketer.com/gartner-cmo-spend-survey-budgets-reflect-increase-in-consumption-based-martech-paid-media-spend/" target="_blank" rel="noopener noreferrer nofollow">Gartner CMO Spend Survey 2026</a> (via Chief Marketer)</td><td>Martech averaged 19.4% of marketing budgets, down from 26.6% in 2021; labour averaged 24.5%, up from 21.9%</td><td>401 CMOs, reported June 24, 2026</td></tr>
+              </tbody>
+          </table>
+        </div>
+        <p>Nucleus lists higher marketer productivity, better campaign efficiency, cost savings from simpler infrastructure and improved prospect engagement as the most-realised benefits. Gartner's 2026 data shows the pressure from the other side: martech's share of budget has fallen as labour's share has risen, so tools are increasingly expected to prove their savings.</p>
+
+        <h2 id="costs">How Much Does Marketing Automation Cost?</h2>
+        <p>Marketing automation platform pricing ranges from free tiers to several thousand dollars a month, and onboarding fees can add thousands more in year one. HubSpot's published Marketing Hub pricing shows how steep the tiers are: Professional starts at $800 a month and Enterprise at $3,600 a month, each with a required onboarding fee.</p>
+        <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
+          <table class="bench-table">
+            <thead><tr><th scope="col">HubSpot Marketing Hub tier</th><th scope="col">Starting price</th><th scope="col">Marketing contacts included</th><th scope="col">Onboarding fee</th></tr></thead>
+            <tbody>
+              <tr><td>Free</td><td>$0 per month</td><td>Not stated</td><td>None</td></tr>
+              <tr style="background:var(--off-white)"><td>Professional</td><td>From $800 per month</td><td>2,000</td><td>$3,000 one-time</td></tr>
+              <tr><td>Enterprise</td><td>From $3,600 per month</td><td>10,000</td><td>$7,000 one-time</td></tr>
+              </tbody>
+          </table>
+        </div>
+        <p class="bench-source">Source: <a href="https://www.hubspot.com/pricing/marketing" target="_blank" rel="noopener noreferrer nofollow">HubSpot Marketing Hub pricing</a>, checked October 2026. Starter-tier pricing is per seat and varies by billing option. Prices change, so confirm on the vendor page before budgeting.</p>
+        <p>The annual platform cost in the ROI formula should include the onboarding fee in year one. A Professional plan at $800 a month plus a $3,000 onboarding fee costs $12,600 in the first year.</p>
+
+        <h2 id="scenarios">Marketing Automation ROI Examples</h2>
+        <p>The same platform can produce a 1,203% ROI or a negative ROI depending on hours saved and lead volume, which is why scenarios are worth running before buying. The table uses the formulas above and illustrative inputs, not survey data.</p>
+        <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
+          <table class="bench-table">
+            <thead><tr><th scope="col">Scenario</th><th scope="col">Inputs</th><th scope="col">Annual Savings</th><th scope="col">Revenue Lift</th><th scope="col">Platform Cost</th><th scope="col">ROI</th><th scope="col">Payback</th></tr></thead>
+            <tbody>
+              <tr><td>A. Full case</td><td>15 hrs/wk at $45, $800/mo, 200 leads, 30% lift, 5% close, $2,500 deal</td><td>$35,100</td><td>$90,000</td><td>$9,600</td><td><strong>1,203%</strong></td><td>1 month</td></tr>
+              <tr style="background:var(--off-white)"><td>B. Time savings only</td><td>Same as A with 0% lead lift</td><td>$35,100</td><td>$0</td><td>$9,600</td><td><strong>266%</strong></td><td>4 months</td></tr>
+              <tr><td>C. Small team</td><td>5 hrs/wk at $40, $300/mo, 80 leads, 15% lift, 3% close, $1,500 deal</td><td>$10,400</td><td>$6,480</td><td>$3,600</td><td><strong>369%</strong></td><td>3 months</td></tr>
+              <tr style="background:var(--off-white)"><td>D. Low volume, costly platform</td><td>2 hrs/wk at $35, $800/mo, 50 leads, 10% lift, 2% close, $1,000 deal</td><td>$3,640</td><td>$1,200</td><td>$9,600</td><td><strong>-50%</strong></td><td>No payback</td></tr>
+              </tbody>
+          </table>
+        </div>
+        <p>Scenario D shows when automation does not pay: a team that saves two hours a week cannot cover an $800 monthly platform from labour savings alone, and 50 monthly leads produce too little extra revenue to close the gap.</p>
+
+        <h2 id="how-to">How to Calculate Marketing Automation ROI</h2>
+        <p>Calculating marketing automation ROI takes four steps and about ten minutes with real numbers from the team and the CRM. Use conservative inputs first, then test a higher case.</p>
+        <ol class="numbered-steps">
+          <li><strong>Measure the manual hours.</strong> List the recurring tasks the platform will take over, such as list segmentation, follow-up emails and reporting, and total the weekly hours.</li>
+          <li><strong>Value the hours.</strong> Multiply by the fully loaded hourly cost, which is typically salary plus benefits and overhead, and by 52 weeks.</li>
+          <li><strong>Estimate the lead lift.</strong> Use pilot results or a vendor case study from a business with similar lead volume. Start at 0% to 15% when there is no evidence.</li>
+          <li><strong>Add the real costs.</strong> Include the subscription, onboarding fee and training time, then apply the formula and check the payback period.</li>
+        </ol>
+
+        <h2 id="when-not">When Marketing Automation Is Not Worth It</h2>
+        <p>Marketing automation is usually not worth the cost when lead volume is low, the team spends little time on manual tasks, or the platform tier is larger than the workflows require. In those cases a lower-cost email platform with basic automation recovers most of the labour savings at a fraction of the price.</p>
+        <p>The warning signs are a negative ROI in the conservative scenario, a payback period longer than 12 months, and a lift assumption that carries most of the return. Re-run the calculation with the lift set to zero: if the result is still positive, the case rests on labour savings, which are the most reliable part.</p>
+
+        <div style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: var(--radius-lg); padding: var(--space-8); margin: var(--space-8) 0; text-align: center; color: white;">
+          <p style="font-size: var(--text-xl); font-weight: 800; margin-bottom: var(--space-2);">Calculate your automation ROI</p>
+          <p style="color: rgba(255,255,255,.75); margin-bottom: var(--space-6);">Enter hours saved, platform cost and lead lift to get ROI and payback in months.</p>
+          <a href="/marketing-automation-roi-calculator/" style="display:inline-block; background:var(--teal); color:var(--navy); font-weight:800; padding:var(--space-3) var(--space-8); border-radius:var(--radius); text-decoration:none; font-size:var(--text-lg);">Use the Free Calculator →</a>
+        </div>
+
+        <div style="background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-6); margin-top: var(--space-8);">
+          <p style="font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mid); margin-bottom: var(--space-4);">Related Tools & Articles</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-3);">
+            <a href="/marketing-automation-roi-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">⚙️ Marketing Automation ROI Calculator</a>
+            <a href="/blog/romi-calculator-formula/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📐 ROMI Formula Guide</a>
+            <a href="/blog/what-is-a-good-marketing-roi/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">📖 What Is a Good Marketing ROI?</a>
+            <a href="/email-marketing-roi-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">✉️ Email Marketing ROI Calculator</a>
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:flex-start; gap: var(--space-4); padding: var(--space-6); background: var(--teal-faint); border-radius: var(--radius-lg); margin-top: var(--space-8); border: 1px solid rgba(0,196,179,.2);">
+          <div style="width:44px; height:44px; background: var(--teal); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:800; color:var(--navy);">W</div>
+          <div><p style="font-weight:700; color:var(--navy); margin-bottom: 4px;">Waseem Shahzad</p><p style="font-size: var(--text-sm); color: var(--text-mid);">Named sources: Nucleus Research (Research V61, 2021), Gartner CMO Spend Survey 2026 (via Chief Marketer) and HubSpot Marketing Hub pricing (checked October 2026). Scenario inputs are illustrative. <a href="/about/" style="color: var(--teal-dark);">About →</a></p></div>
+        </div>
+      </article>
+      <aside class="article-sidebar">
+        <div class="toc-box"><p class="toc-title">In this article</p><nav><ul class="toc-list">
+          <li><a href="#definition">What Is It?</a></li>
+          <li><a href="#formula">The Formula</a></li>
+          <li><a href="#benchmarks">Benchmarks</a></li>
+          <li><a href="#costs">Platform Costs</a></li>
+          <li><a href="#scenarios">Worked Scenarios</a></li>
+          <li><a href="#how-to">How to Calculate</a></li>
+          <li><a href="#when-not">When It Does Not Pay</a></li>
+          <li><a href="#faq-section">FAQ</a></li>
+        </ul></nav></div>
+        <div class="toc-calc-cta"><p>Run your numbers</p><a href="/marketing-automation-roi-calculator/">Automation ROI calculator →</a></div>
+      </aside>
+    </div>
+    <div id="faq-section" style="max-width: 720px;"><FAQ items={faqItems} title="Marketing Automation ROI — Questions Answered" /></div>
+    <div style="margin: var(--space-12) 0 var(--space-8);"><a href="/blog/" style="color: var(--teal-dark); font-weight: 600; text-decoration: none;">← Back to all articles</a></div>
+  </div>
+</Base>
+<style>
+  .numbered-steps { counter-reset: step; list-style: none; padding: 0; margin: var(--space-4) 0; display: flex; flex-direction: column; gap: var(--space-4); }
+  .numbered-steps li { position: relative; padding-left: 44px; color: var(--text-mid); line-height: 1.8; }
+  .numbered-steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0; width: 30px; height: 30px; background: var(--teal); color: var(--navy); font-weight: 800; font-size: var(--text-sm); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .article-body ul { color: var(--text-mid); line-height: 1.8; margin: 0 0 var(--space-4) var(--space-5); }
+  .article-layout { display: grid; grid-template-columns: 1fr 260px; gap: var(--space-12); align-items: start; margin-top: var(--space-8); }
+  .article-body { min-width: 0; }
+  .article-body h2 { font-size: var(--text-2xl); font-weight: 800; letter-spacing: -0.02em; color: var(--navy); margin: var(--space-8) 0 var(--space-4); line-height: 1.25; }
+  .article-body p { color: var(--text-mid); line-height: 1.8; margin-bottom: var(--space-4); }
+  .article-body strong { color: var(--text-main); }
+  .article-sidebar { position: sticky; top: 90px; display: flex; flex-direction: column; gap: var(--space-4); }
+  .toc-box { background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5); }
+  .toc-title { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-light); margin-bottom: var(--space-3); }
+  .toc-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+  .toc-list a { font-size: var(--text-sm); color: var(--text-mid); text-decoration: none; font-weight: 500; padding: 2px 0 2px var(--space-3); border-left: 2px solid var(--border); display: block; }
+  .toc-list a:hover { color: var(--teal-dark); border-left-color: var(--teal); }
+  .toc-calc-cta { background: var(--navy); border-radius: var(--radius-lg); padding: var(--space-5); text-align: center; }
+  .toc-calc-cta p { color: rgba(255,255,255,.7); font-size: var(--text-sm); margin-bottom: var(--space-3); font-weight: 600; }
+  .toc-calc-cta a { display: block; background: var(--teal); color: var(--navy); font-weight: 700; font-size: var(--text-sm); padding: var(--space-2) var(--space-4); border-radius: var(--radius); text-decoration: none; }
+  @media (max-width: 768px) { .article-layout { grid-template-columns: 1fr; } .article-sidebar { display: none; } }
+</style>
