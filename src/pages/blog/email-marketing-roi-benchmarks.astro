@@ -4,23 +4,14 @@ import FAQ from '../../components/FAQ.astro';
 
 const slug      = 'blog/email-marketing-roi-benchmarks';
 const title     = 'Email Marketing ROI: Is $36 for Every $1 Still True in 2026?';
-const description = 'Email marketing ROI averages $36–$42 per $1 spent. Is this benchmark still accurate? 2026 breakdown by industry, list size, and campaign type.';
+const description = 'Email marketing ROI is commonly quoted at $36–$42 per $1 (3,600–4,200%). See the named sources, Mailchimp benchmarks and how to calculate your own ROI.';
 const published = 'July 7, 2026';
+const updated   = 'October 8, 2026';
+const updatedISO = '2026-10-08';
 const readTime  = '7 min read';
 
-const industryROI = [
-  { industry: 'Retail / eCommerce',     roi: '$45:$1', openRate: '18%', ctr: '2.7%', note: 'Promotional and cart abandonment emails drive highest ROI' },
-  { industry: 'B2B / Professional Svcs',roi: '$38:$1', openRate: '22%', ctr: '3.2%', note: 'Nurture sequences and case studies outperform newsletters' },
-  { industry: 'SaaS / Technology',      roi: '$36:$1', openRate: '20%', ctr: '2.8%', note: 'Onboarding and feature adoption emails show highest LTV impact' },
-  { industry: 'Financial Services',     roi: '$40:$1', openRate: '24%', ctr: '3.4%', note: 'Regulatory constraints limit promotions; advisory content works well' },
-  { industry: 'Healthcare',             roi: '$28:$1', openRate: '21%', ctr: '2.5%', note: 'HIPAA compliance restricts personalisation' },
-  { industry: 'Nonprofit',              roi: '$42:$1', openRate: '28%', ctr: '4.1%', note: 'Donation requests have high engagement among existing supporters' },
-  { industry: 'Education',              roi: '$35:$1', openRate: '23%', ctr: '3.0%', note: 'Enrolment campaigns peak seasonally' },
-  { industry: 'Hospitality / Travel',   roi: '$48:$1', openRate: '20%', ctr: '2.4%', note: 'Time-sensitive offers drive conversion; booking confirmations anchor relationships' },
-];
-
 const emailTypes = [
-  { type: 'Welcome / Onboarding Sequence', avgOpen: '50–60%', avgCTR: '14–18%', roi: 'Highest (3–5× list average)' },
+  { type: 'Welcome / Onboarding Sequence', avgOpen: '50–60%', avgCTR: '14–18%', roi: 'Highest of the triggered types' },
   { type: 'Abandoned Cart',               avgOpen: '40–50%', avgCTR: '8–12%',  roi: 'Very High — recovers 5–10% of abandoned carts' },
   { type: 'Post-Purchase / Thank You',    avgOpen: '40–55%', avgCTR: '8–10%',  roi: 'High — cross-sell and review requests' },
   { type: 'Re-Engagement / Win-Back',     avgOpen: '12–25%', avgCTR: '3–6%',   roi: 'Moderate — depends on list quality' },
@@ -30,17 +21,19 @@ const emailTypes = [
 ];
 
 const faqItems = [
-  { q: 'What is the average email marketing ROI?', a: 'The most commonly cited figure is $36–$42 return for every $1 spent on email marketing. The Litmus 2023 State of Email report put it at $36:$1; some industry surveys report higher. The figure includes list management, platform costs, and creative — not just platform fees.' },
-  { q: 'Is the $36:$1 email ROI benchmark accurate?', a: 'It\'s a reasonable median but highly variable. Hospitality and retail companies can achieve $45–$48:$1 with well-timed promotional emails. B2B companies with long sales cycles may see lower direct-attribution ROI because email influence often doesn\'t appear in last-click reports. The benchmark is useful for budget justification, not campaign-level measurement.' },
-  { q: 'What is a good email open rate in 2026?', a: 'Average email open rates are 18–28% across industries. B2B averages 22–25%; retail 18–22%; nonprofits 26–30%. Note: Apple Mail Privacy Protection (MPP) has inflated open rates since 2021 — if your open rate jumped 20%+ overnight in late 2021, some of those "opens" are bot-triggered. Click rate (2–4%) is a more reliable engagement signal.' },
-  { q: 'How do I calculate email marketing ROI?', a: 'Email ROI = (Revenue from email − Email marketing cost) ÷ Email marketing cost × 100. Include all costs: platform subscription, design time, copywriting, and list management. Revenue should be attributed to email using UTM parameters tracked in GA4. Use our free Email Marketing ROI Calculator for an instant calculation.' },
-  { q: 'Why is my email ROI lower than the $36:$1 average?', a: 'Common causes: (1) Measuring only direct-click revenue, missing assisted conversions. (2) Old or unengaged list — deliverability suffers when >25% of your list hasn\'t opened in 6+ months. (3) No segmentation — a single broadcast to the entire list underperforms segmented sends by 2–3×. (4) Weak subject lines — 47% of recipients open based on subject line alone.' },
-  { q: 'What email metrics should I track?', a: 'Delivery rate (>95% is healthy), open rate (benchmark vs. your industry), click rate (2–4% average), click-to-open rate (CTOR: 20–30% is strong), conversion rate (track with UTMs), revenue per email sent, and unsubscribe rate (<0.5% per send is healthy).' },
+  { q: 'What is the average email marketing ROI?', a: 'Email marketing ROI is most commonly quoted at $36–$42 for every $1 spent, a 3,600–4,200% return. Primary sources checked for this article report $38 per $1 (Litmus, 2018) and £42 per £1 (DMA Marketer Email Tracker, 2019). Litmus reported in its 2026 findings that the top 8% of programmes reach 45:1 or higher.' },
+  { q: 'Is the $36:$1 email ROI benchmark accurate?', a: 'The $36–$42 range is consistent with the primary sources Litmus and the DMA have published, but those are self-reported survey results from marketers who measure ROI, not audited averages. Results vary with attribution method, cost definition and list quality. Use the benchmark for budget justification and calculate campaign-level ROI from your own tracked revenue and costs.' },
+  { q: 'What is a good email open rate?', a: 'Mailchimp reports an average open rate of 35.63% and a click rate of 2.62% across all users, with industry averages from 29.81% (ecommerce) to 40.55% (government). Apple Mail Privacy Protection, introduced in September 2021, pre-loads emails and inflates open rates. Click rate and click-to-open rate are more reliable engagement signals than open rate.' },
+  { q: 'How do I calculate email marketing ROI?', a: 'Email ROI = (Revenue from email − Email marketing cost) ÷ Email marketing cost × 100. Include every cost: platform subscription, design time, copywriting and list management. Attribute revenue to email using UTM parameters tracked in GA4, or enter the numbers into the free Email Marketing ROI Calculator for an instant result.' },
+  { q: 'Why is my email ROI lower than the $36:$1 average?', a: 'Four causes are common: measuring only direct-click revenue and missing assisted conversions, sending to an unengaged list that hurts deliverability, sending one broadcast to the whole list instead of segments, and weak subject lines. Counting only the platform fee understates cost in some studies, so confirm which costs a benchmark includes before comparing your result with it.' },
+  { q: 'What email metrics should I track?', a: 'Track delivery rate, click rate, click-to-open rate, conversion rate, revenue per email sent and unsubscribe rate. Mailchimp reports an average click rate of 2.62% and an unsubscribe rate of 0.22% across all users, which gives a baseline for comparison. Open rate matters less since Apple Mail Privacy Protection began inflating it in 2021.' },
+  { q: 'What is the difference between the DMA and Litmus email ROI figures?', a: 'The DMA Marketer Email Tracker reports ROI in pounds, with the 2019 edition at just over £42 for every £1 spent among UK marketers. Litmus reports in dollars from a global survey of email professionals, with 38:1 in 2018. Currency, sample, year and cost definition all differ, so the numbers are comparable only as rough indicators.' },
+  { q: 'Does email marketing have a higher ROI than other channels?', a: 'Email is widely reported as one of the highest-ROI channels. First Page Sage reports 261% for B2B email and 298% for B2C email using a revenue-based method over multi-year campaigns, which is far lower than the survey-based 3,600–4,200% figure. The gap comes from different methods: survey figures reflect self-reported programme returns, while First Page Sage measures revenue against full programme cost.' },
 ];
 
 const articleSchema = {
   "@type": "Article", "headline": title, "description": description,
-  "datePublished": "2026-07-07", "dateModified": "2026-07-07",
+  "datePublished": "2026-07-07", "dateModified": updatedISO,
   "author": { "@type": "Person", "name": "Waseem Shahzad", "url": "https://freemarketingcalculator.com/about/" },
   "publisher": { "@id": "https://freemarketingcalculator.com/#org" },
   "mainEntityOfPage": `https://freemarketingcalculator.com/${slug}/`,
@@ -58,14 +51,11 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
     <div class="container">
       <p class="eyebrow">Email Marketing · {readTime}</p>
       <h1 id="art-h1">Email Marketing ROI: Is $36 for Every $1 Still True in 2026?</h1>
-      <p class="citation">
-        Email marketing's $36:$1 ROI is the most quoted stat in marketing. Here's where it comes from,
-        how it varies by industry and email type, and what you actually need to measure to get there.
-      </p>
+      <p class="citation">Email marketing ROI is commonly quoted at $36–$42 for every $1 spent (3,600–4,200%). Litmus reported 38:1 in 2018 and the DMA reported £42 per £1 in 2019. This article lists the named sources, Mailchimp benchmarks and how to calculate your own return.</p>
       <div class="meta-badges">
         <span class="badge">📅 {published}</span>
+        <span class="badge">🔄 Updated {updated}</span>
         <span class="badge">✓ {readTime}</span>
-        <span class="badge">✓ 2026 benchmarks</span>
       </div>
       <a href="/email-marketing-roi-calculator/" class="btn-hero-cta">Calculate Your Email ROI <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
     </div>
@@ -76,14 +66,23 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
       <article class="article-body prose">
 
         <div class="definition-box" style="margin-top: var(--space-8);">
-          <div class="definition-box__label">The Benchmark — 2026</div>
+          <div class="definition-box__label">Definition</div>
           <p>
-            Email marketing averages <strong>$36–$42 return for every $1 spent</strong> — a
-            3,600–4,200% ROI. This is the highest ROI of any marketing channel, driven by
-            near-zero marginal cost (sending to 10,000 subscribers costs roughly the same as
-            sending to 1,000) and the fact that email reaches people who have already opted in
-            to hear from you.
+            <strong>Email marketing ROI</strong> is the profit earned from email divided by the cost of
+            running it. It is commonly quoted at <strong>$36–$42 for every $1 spent</strong>, a
+            3,600–4,200% return, because sending to 10,000 subscribers costs roughly the same
+            as sending to 1,000 and every recipient has opted in.
           </p>
+        </div>
+        <div class="definition-box" style="margin-top: var(--space-4);">
+          <div class="definition-box__label">Key Takeaways</div>
+          <ul style="margin: var(--space-2) 0 0 var(--space-5); color: var(--text-mid); line-height: 1.8;">
+            <li>Email ROI is commonly quoted at $36–$42 per $1; Litmus reported 38:1 in 2018 and the DMA £42 per £1 in 2019.</li>
+            <li>Mailchimp's December 2023 data shows a 35.63% average open rate and a 2.62% average click rate.</li>
+            <li>First Page Sage's revenue-based method gives a much lower 261% for B2B email and 298% for B2C.</li>
+            <li>Include platform, creative, copy and staff time in costs, or the calculated ROI is inflated.</li>
+            <li>Use click rate rather than open rate, since Apple Mail Privacy Protection inflates opens.</li>
+          </ul>
         </div>
 
         
@@ -93,55 +92,62 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
           enter list size, open rate, click rate, and platform cost to get your full ROMI.
         </p>
 
-        <h2>Where Does the $36:$1 Number Come From?</h2>
+        <h2 id="source-of-36">Where Does the $36:$1 Email ROI Number Come From?</h2>
         <p>
-          The $36:$1 figure comes primarily from the Litmus State of Email report, which surveys
-          thousands of email marketing professionals annually. The 2023 edition reported $36 return
-          per $1 spent; earlier editions reported as high as $42. The DMA (Data & Marketing
-          Association) has separately reported figures ranging from $35 to $45 depending on
-          methodology and sample composition.
+          The $36–$42 per $1 range is a widely repeated summary of survey-based figures, and the
+          primary sources checked for this article report $38 per $1 (Litmus, 2018) and £42 per £1
+          (DMA, 2019). No edition of the Litmus report that states exactly $36 was located, so the
+          benchmark is attributed below only to the figures that could be verified.
         </p>
+        <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
+          <table class="bench-table">
+            <thead><tr><th scope="col">Source</th><th scope="col">Year</th><th scope="col">Reported Figure</th><th scope="col">Notes</th></tr></thead>
+            <tbody>
+              <tr><td><a href="https://www.litmus.com/press/litmus-research-finds-email-marketing-roi-is-38-to-1" target="_blank" rel="noopener noreferrer nofollow">Litmus press release</a></td><td>2018</td><td>$38 per $1 (38:1)</td><td>Survey of email marketers</td></tr>
+              <tr style="background:var(--off-white)"><td><a href="https://dma.org.uk/article/marketer-email-tracker-2019" target="_blank" rel="noopener noreferrer nofollow">DMA Marketer Email Tracker</a></td><td>2019</td><td>Just over £42 per £1</td><td>UK marketers; pounds, not dollars</td></tr>
+              <tr><td><a href="https://www.litmus.com/state-of-email-reports" target="_blank" rel="noopener noreferrer nofollow">Litmus State of Email reports</a></td><td>2026 findings</td><td>Top 8% of programmes at 45:1 or higher</td><td>Advanced AI adopters 75% more likely to exceed 45:1</td></tr>
+              <tr style="background:var(--off-white)"><td><a href="https://firstpagesage.com/seo-blog/marketing-roi-by-channel/" target="_blank" rel="noopener noreferrer nofollow">First Page Sage</a></td><td>Ongoing</td><td>261% (B2B), 298% (B2C)</td><td>Revenue-based method, multi-year campaigns</td></tr>
+            </tbody>
+          </table>
+        </div>
         <p>
-          The variance between sources reflects genuine differences in how ROI is calculated.
-          Some studies include only platform costs in the denominator; others include creative
-          and strategy costs. Some measure only direct-click revenue; others include multi-touch
-          attribution. The honest answer is that a well-run email programme can achieve these
-          numbers, and many poorly-run programmes fall well short.
+          The variance between sources reflects differences in method. Some studies count only platform
+          costs in the denominator while others include creative and strategy; some measure direct-click
+          revenue while others use multi-touch attribution. Survey respondents are marketers who measure
+          ROI, which skews results upward compared with programmes that do not.
         </p>
 
-        <h2>Email Marketing ROI by Industry — 2026</h2>
-        <span class="bench-date">Updated July 2026</span>
+        <h2 id="by-industry">Email Marketing Benchmarks by Industry</h2>
+        <p>Mailchimp's average open rate is 35.63% and its average click rate is 2.62% across all users, with industry averages ranging from 29.81% to 40.55% for opens. Mailchimp published no per-industry ROI figures, so the table shows engagement benchmarks only.</p>
+        <span class="bench-date">Mailchimp data as of December 2023</span>
         <div class="bench-table-wrap" style="margin-top: var(--space-4);">
           <table class="bench-table">
             <thead>
               <tr>
                 <th scope="col">Industry</th>
-                <th scope="col">Avg ROI</th>
-                <th scope="col">Open Rate</th>
-                <th scope="col">CTR</th>
-                <th scope="col">Key Driver</th>
+                <th scope="col">Avg Open Rate</th>
+                <th scope="col">Avg Click Rate</th>
+                <th scope="col">Unsubscribe Rate</th>
               </tr>
             </thead>
             <tbody>
-              {industryROI.map((row, i) => (
-                <tr style={i % 2 !== 0 ? 'background: var(--off-white)' : ''}>
-                  <td>{row.industry}</td>
-                  <td><strong>{row.roi}</strong></td>
-                  <td>{row.openRate}</td>
-                  <td>{row.ctr}</td>
-                  <td style="font-size: var(--text-sm); color: var(--text-mid);">{row.note}</td>
-                </tr>
-              ))}
+              <tr><td>All users</td><td><strong>35.63%</strong></td><td>2.62%</td><td>0.22%</td></tr>
+              <tr style="background: var(--off-white)"><td>Government</td><td>40.55%</td><td>4.58%</td><td>n/a</td></tr>
+              <tr><td>Non-profits</td><td>40.04%</td><td>3.27%</td><td>0.18%</td></tr>
+              <tr style="background: var(--off-white)"><td>Education + training</td><td>35.64%</td><td>3.02%</td><td>0.18%</td></tr>
+              <tr><td>Business + finance</td><td>31.35%</td><td>2.78%</td><td>0.15%</td></tr>
+              <tr style="background: var(--off-white)"><td>Ecommerce</td><td>29.81%</td><td>1.74%</td><td>0.19%</td></tr>
+              <tr><td>Vitamin supplements</td><td>27.34%</td><td>1.19%</td><td>n/a</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="bench-source">Sources: Litmus State of Email 2023, Mailchimp Email Benchmarks 2026, Campaign Monitor Email Benchmarks 2026. ROI figures represent industry medians for programmes with 12+ months of consistent sending history.</p>
+        <p class="bench-source">Source: <a href="https://mailchimp.com/resources/email-marketing-benchmarks/" target="_blank" rel="noopener noreferrer nofollow">Mailchimp Email Marketing Benchmarks</a>, campaigns sent to at least 1,000 subscribers, data last updated December 2023. Mailchimp notes that Apple's privacy changes may affect open-rate accuracy.</p>
 
-        <h2>Email ROI by Campaign Type</h2>
+        <h2 id="by-campaign-type">Email ROI by Campaign Type</h2>
         <p>
-          Not all emails are equal. Transactional and triggered emails dramatically outperform
-          batch-and-blast newsletters — yet many companies invest most of their email effort
-          in the lower-performing category.
+          Triggered emails such as welcome, abandoned-cart and transactional messages generally earn higher
+          engagement than batch newsletters because they respond to an action the recipient just took.
+          The ranges below are illustrative planning ranges, not survey results.
         </p>
         <div class="bench-table-wrap" style="margin-top: var(--space-4);">
           <table class="bench-table">
@@ -165,12 +171,12 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
             </tbody>
           </table>
         </div>
-        <p class="bench-source">Sources: Klaviyo Benchmark Report 2026, Mailchimp Email Benchmarks, Campaign Monitor 2026.</p>
+        <p class="bench-source">Illustrative planning ranges for triggered versus batch email, not survey results. For measured benchmarks see the Mailchimp table above and the <a href="https://www.klaviyo.com/products/email-marketing/benchmarks" target="_blank" rel="noopener noreferrer nofollow">Klaviyo benchmarks page</a>.</p>
 
-        <h2>Why Email Has the Highest ROI of Any Channel</h2>
+        <h2 id="why-high-roi">Why Email Reports a Higher ROI Than Paid Channels</h2>
         <p>
-          Three structural advantages give email its extraordinary ROI ceiling compared to
-          paid channels:
+          Email reports a high ROI because it has near-zero marginal cost per recipient, an audience the
+          sender owns and an opt-in intent signal. Three structural advantages explain the gap with paid channels:
         </p>
         <p>
           <strong>Zero incremental cost per recipient.</strong> Once your email platform and
@@ -190,15 +196,14 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
           you're interrupting people who didn't ask for your message.
         </p>
 
-        <h2>The Apple Mail Privacy Effect on Open Rates</h2>
+        <h2 id="apple-mpp">Apple Mail Privacy Protection and Open Rates</h2>
         <p>
-          In September 2021, Apple introduced Mail Privacy Protection (MPP), which pre-loads
+          Apple Mail Privacy Protection (MPP) makes open rates unreliable because it pre-loads email content automatically. Apple introduced MPP in September 2021, and it pre-loads
           email content for all Apple Mail users — triggering an "open" in your ESP's tracking
           even if the person never actually opened the email.
         </p>
         <p>
-          If your email list is more than 40% Apple Mail users (common for B2B and US consumer
-          brands), your reported open rate may be inflated by 15–25 percentage points.
+          The larger the share of Apple Mail users on a list, the more inflated the reported open rate.
           This doesn't affect ROI calculations if you're tracking revenue via UTM parameters —
           but it makes open rate an unreliable engagement signal for list hygiene decisions.
         </p>
@@ -208,13 +213,13 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
           open rate jumps, the opens are almost certainly bot-triggered.
         </p>
 
-        <h2>How to Improve Your Email Marketing ROI</h2>
+        <h2 id="improve">How to Improve Your Email Marketing ROI</h2>
         <p>
-          If your email ROI is below $20:$1, these four levers move the needle fastest:
+          Four levers raise email ROI most reliably: segmentation, automated trigger sequences, list hygiene and subject line testing.
         </p>
         <p>
-          <strong>List segmentation</strong> is the single highest-leverage activity. Segmented
-          campaigns generate 760% more revenue than broadcast emails (Campaign Monitor, 2026).
+          <strong>List segmentation</strong> is the single highest-leverage activity. Campaign Monitor
+          has reported that segmented campaigns generate up to 760% more revenue than broadcast emails (an older, widely cited figure).
           At minimum, segment by: purchase history, engagement level (active vs. lapsed),
           and acquisition source.
         </p>
@@ -231,19 +236,19 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
         </p>
         <p>
           <strong>Subject line testing</strong> has the highest ROI of any creative optimisation.
-          47% of recipients decide to open based solely on the subject line (Convince & Convert).
-          A single subject line A/B test on your existing list requires no additional spend and
-          can improve open rates by 20–30%.
+          A widely cited Convince & Convert statistic says 47% of recipients decide to open based on the subject line.
+          A subject line A/B test on an existing list requires no additional spend, though with Apple MPP
+          inflating opens, judge winners by clicks.
         </p>
 
 
         <!-- TASK 14: Email ROI by list size -->
         <section style="margin-top: var(--space-10);" aria-labelledby="roi-list-size">
-          <h2 id="roi-list-size">Email Marketing ROI by List Size — 2026</h2>
+          <h2 id="roi-list-size">Email Marketing ROI by List Size — Planning Ranges</h2>
           <p>
-            The $36:$1 average applies to mature email programmes with established lists.
-            Realistic ROI varies significantly based on list size, because small lists
-            have higher per-subscriber costs and lower segmentation options.
+            Small lists usually earn a lower ROI than the $36–$42 headline because fixed creative and
+            platform costs are spread over fewer subscribers and segmentation options are limited. The ranges
+            below are illustrative planning ranges, not survey results.
           </p>
           <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
             <table class="bench-table">
@@ -264,26 +269,27 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
               </tbody>
             </table>
           </div>
-          <p class="bench-source">Compiled from Klaviyo Benchmark Report 2026, Mailchimp ROI data, and Campaign Monitor industry averages. ROI figures represent achievable results with consistent sending, basic segmentation, and clean list hygiene.</p>
+          <p class="bench-source">Illustrative planning ranges for programmes with consistent sending, basic segmentation and clean list hygiene; they are not drawn from a published survey. Platform costs are typical list-price ranges and vary by provider.</p>
         </section>
 
         <!-- TASK 15: What does $36:$1 include? -->
         <section style="margin-top: var(--space-10);" aria-labelledby="cost-breakdown">
-          <h2 id="cost-breakdown">What Costs Does the $36:$1 Email ROI Benchmark Include?</h2>
+          <h2 id="cost-breakdown">What Costs Should an Email ROI Calculation Include?</h2>
           <p>
-            The $36:$1 figure from Litmus includes all costs in the denominator — not just the
-            platform subscription fee. Understanding what's counted matters when comparing your own ROI.
+            Benchmark ROI figures are only comparable when the cost definition matches, and a complete
+            email ROI includes every cost in the denominator, not just the platform subscription fee.
+            The table shows the costs a complete calculation counts.
           </p>
           <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
             <table class="bench-table">
-              <thead><tr><th scope="col">Cost Type</th><th scope="col">Included in $36:$1?</th><th scope="col">Typical Monthly Cost</th></tr></thead>
+              <thead><tr><th scope="col">Cost Type</th><th scope="col">Include in ROI?</th><th scope="col">Typical Monthly Cost</th></tr></thead>
               <tbody>
                 <tr><td>Email platform subscription</td><td>✅ Yes</td><td>$15–$500/mo depending on list size</td></tr>
                 <tr style="background:var(--off-white)"><td>Copywriting / content creation</td><td>✅ Yes</td><td>$200–$2,000/mo (in-house or agency)</td></tr>
                 <tr><td>Design / creative</td><td>✅ Yes</td><td>$100–$500/mo</td></tr>
                 <tr style="background:var(--off-white)"><td>List management / hygiene</td><td>✅ Yes</td><td>$0–$150/mo (tools)</td></tr>
-                <tr><td>Strategy and management time</td><td>✅ Yes (in survey responses)</td><td>3–8 hours/month at staff rate</td></tr>
-                <tr style="background:var(--off-white)"><td>Email automation setup</td><td>Partially</td><td>One-time cost amortised over 12 months</td></tr>
+                <tr><td>Strategy and management time</td><td>✅ Yes</td><td>3–8 hours/month at staff rate</td></tr>
+                <tr style="background:var(--off-white)"><td>Email automation setup</td><td>Amortise over 12 months</td><td>One-time cost</td></tr>
               </tbody>
             </table>
           </div>
@@ -318,7 +324,7 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
           <div style="width:44px; height:44px; background: var(--teal); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:800; color:var(--navy); font-size: var(--text-lg);">W</div>
           <div>
             <p style="font-weight:700; color:var(--navy); margin-bottom: 4px;">Waseem Shahzad</p>
-            <p style="font-size: var(--text-sm); color: var(--text-mid); line-height:1.5;">Benchmarks from Litmus State of Email 2023, Mailchimp Email Benchmarks 2026, Campaign Monitor 2026, Klaviyo Benchmark Report 2026, and DMA Marketer Email Tracker 2024. <a href="/about/" style="color: var(--teal-dark);">About →</a></p>
+            <p style="font-size: var(--text-sm); color: var(--text-mid); line-height:1.5;">Named sources: Litmus (2018 press release and State of Email reports), DMA Marketer Email Tracker 2019, Mailchimp Email Marketing Benchmarks (December 2023) and First Page Sage. Planning ranges are labelled as such. <a href="/about/" style="color: var(--teal-dark);">About →</a></p>
           </div>
         </div>
 
@@ -328,7 +334,14 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
         <div class="toc-box">
           <p class="toc-title">In this article</p>
           <nav><ul class="toc-list">
-            <li><a href="#art-h1">The $36:$1 Benchmark</a></li>
+            <li><a href="#source-of-36">Where $36:$1 Comes From</a></li>
+            <li><a href="#by-industry">Benchmarks by Industry</a></li>
+            <li><a href="#by-campaign-type">By Campaign Type</a></li>
+            <li><a href="#why-high-roi">Why Email ROI Is High</a></li>
+            <li><a href="#apple-mpp">Apple Mail Privacy</a></li>
+            <li><a href="#improve">Improve Email ROI</a></li>
+            <li><a href="#roi-list-size">ROI by List Size</a></li>
+            <li><a href="#cost-breakdown">What Costs to Include</a></li>
             <li><a href="#faq-section">FAQ</a></li>
           </ul></nav>
         </div>
