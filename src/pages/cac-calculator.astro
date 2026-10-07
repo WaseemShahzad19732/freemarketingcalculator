@@ -4,7 +4,7 @@ import FAQ from '../components/FAQ.astro';
 
 const slug        = 'cac-calculator';
 const title       = 'CAC Calculator — Free Customer Acquisition Cost Tool (2026)';
-const description = 'Free CAC calculator: divide sales and marketing spend by new customers, add an optional payback period, and compare with sourced 2026 SaaS CAC benchmarks.';
+const description = 'Free CAC calculator: divide sales and marketing spend by new customers, add an optional payback period, and compare with planning ranges by industry.';
 
 const faqItems = [
   {
@@ -25,7 +25,7 @@ const faqItems = [
   },
   {
     q: 'What is a good CAC payback period?',
-    a: 'SaaS Hero\'s 2026 compilation of third-party benchmarks, calculated at an 80% gross margin baseline, lists healthy payback of 3-9 months for self-serve products, 6-12 months for SMB sales-assisted, 9-18 months for mid-market and 12-24 months for enterprise sales. These are indicative ranges for B2B SaaS. A payback beyond the range for your sales motion signals that acquisition spend is outrunning customer gross profit.'
+    a: 'A good CAC payback period is one that sits well inside the time a customer stays, so that gross profit from the customer exceeds acquisition cost several times over. Published SaaS payback benchmarks differ by source and by sales motion, with longer paybacks accepted for mid-market and enterprise deals than for self-serve products. This site does not quote a single benchmark because the available figures are not consistently sourced; use the payback input in the calculator and compare it with your own customer lifetime.'
   },
   {
     q: 'What is CAC Payback Period?',
@@ -90,11 +90,11 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       <p class="eyebrow">Free Marketing Tool</p>
       <h1 id="page-h1">CAC Calculator — Customer Acquisition Cost</h1>
       <p class="citation">
-        Calculate your Customer Acquisition Cost (CAC) from sales and marketing spend and new customers, add an optional payback period, and compare with sourced 2026 SaaS benchmarks.
+        Calculate your Customer Acquisition Cost (CAC) from sales and marketing spend and new customers, add an optional payback period, and compare with planning ranges by industry.
       </p>
       <div class="meta-badges">
         <span class="badge">✓ CAC + payback period</span>
-        <span class="badge">✓ Sourced benchmarks</span>
+        <span class="badge">✓ Planning ranges</span>
         <span class="badge">✓ No signup</span>
       </div>
       <a href="#calculator" class="btn-hero-cta">Start Calculating <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
@@ -236,24 +236,6 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
         </table>
       </div>
       <p class="bench-source">Planning ranges, not survey results. Actual CAC varies with price point, sales motion and channel mix, so replace these with your own figures from the calculator above.</p>
-    </section>
-
-    <section class="bench-section" aria-labelledby="saas-cac-heading">
-      <h2 id="saas-cac-heading">B2B SaaS CAC and Payback by Sales Motion</h2>
-      <p style="color: var(--text-mid); margin: var(--space-2) 0 var(--space-4);">Median fully loaded CAC in B2B SaaS rises from about $702 for self-serve products to about $11,400 for enterprise field sales, according to a 2026 compilation by SaaS Hero.</p>
-      <div class="bench-table-wrap">
-        <table class="bench-table">
-          <caption class="sr-only">Median B2B SaaS customer acquisition cost and healthy payback period by sales motion</caption>
-          <thead><tr><th scope="col">Sales motion</th><th scope="col">Median CAC</th><th scope="col">Healthy payback</th></tr></thead>
-          <tbody>
-            <tr><td>Self-serve / PLG (ACV under $5K)</td><td><strong>$702</strong></td><td>3-9 months</td></tr>
-            <tr style="background:var(--off-white)"><td>SMB sales-assisted ($5K-$20K ACV)</td><td><strong>$1,200-$2,000</strong></td><td>6-12 months</td></tr>
-            <tr><td>Mid-market inside sales ($20K-$100K ACV)</td><td><strong>$2,000-$5,000</strong></td><td>9-18 months</td></tr>
-            <tr style="background:var(--off-white)"><td>Enterprise field sales (ACV over $100K)</td><td><strong>$11,400</strong></td><td>12-24 months</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="bench-source">Source: <a href="https://www.saashero.net/strategy/stripe-cac-benchmarks-b2b-saas/" target="_blank" rel="noopener noreferrer nofollow">SaaS Hero, B2B SaaS CAC benchmarks</a> (updated July 20, 2026), which compiles third-party sources; payback ranges assume an 80% gross margin. The figures are indicative and were not checked against the original reports.</p>
     </section>
 
     <section class="bench-section" aria-labelledby="cac-example-heading">
