@@ -1,0 +1,297 @@
+---
+import Base from '../layouts/Base.astro';
+import FAQ from '../components/FAQ.astro';
+
+const slug        = 'digital-marketing-budget-calculator';
+const title       = 'Digital Marketing Budget Calculator: Channel Split (2026)';
+const description = 'Free digital marketing budget calculator: enter your marketing budget, digital share and goal to get a monthly split across 6 channels, with Gartner benchmarks.';
+
+const faqItems = [
+  { q: "What is a digital marketing budget?", a: "A digital marketing budget is the part of the total marketing budget spent on online channels such as paid search, social ads, display, SEO and content, email and analytics tools. The Gartner 2025 CMO Spend Survey of 402 CMOs found digital channels take 61.1% of total marketing spend. A company with a $120,000 marketing budget would therefore plan about $73,320 a year, or $6,110 a month, for digital." },
+  { q: "How do I calculate an online marketing budget?", a: "Multiply the total marketing budget by the digital share to get the digital budget, then multiply that by each channel's percentage. For example, $120,000 x 61.1% = $73,320 a year, and 25% of the monthly $6,110 on paid search is $1,528. This calculator runs both steps and adjusts the channel split for business model and goal." },
+  { q: "How should a digital marketing budget be split across channels?", a: "The planning split depends on the business model. A B2B company at the lead generation baseline puts 30% into SEO and content, 25% into paid search, 15% each into social ads and email, 10% into tools and 5% into display. B2C brands shift more of the budget to social ads, ecommerce to paid search, and local service businesses to paid search and local SEO. These are planning splits, not survey results." },
+  { q: "What share of the budget do paid channels take?", a: "Gartner 2025 survey data show paid online channels account for 69% of digital spend, led by paid search at 13.9%, digital display at 12.5% and social advertising at 12.2% of digital spend. Gartner 2026 data show paid media averaging 31.4% of total marketing budgets. The calculator's planning splits put 45% to 65% of digital spend into paid search, social and display, depending on business model." },
+  { q: "How much should a small business spend on digital marketing?", a: "A common starting point is the 7-8% of gross revenue that the U.S. Small Business Administration suggests for total marketing, with roughly 61% of that going to digital channels. A business with $500,000 in revenue at 8% has a $40,000 marketing budget, and about $24,440 of that for digital. Below roughly $1,500 a month, concentrating on two or three channels usually works better than spreading thinly." },
+  { q: "What is the difference between this and the Marketing Budget Calculator?", a: "The Marketing Budget Calculator recommends a total marketing budget from annual revenue and industry. This calculator starts from a total budget you already have, applies a digital share, and splits the result across six digital channels by business model and goal. Use the two together: set the total first, then allocate it." },
+  { q: "Is this digital marketing budget calculator free?", a: "Yes. The calculator is completely free, with no signup and no email required." },
+];
+
+const webAppSchema = {
+  "@type": "WebApplication", "name": "Digital Marketing Budget Calculator",
+  "applicationCategory": "BusinessApplication", "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "creator": { "@id": "https://freemarketingcalculator.com/#org" },
+  "url": "https://freemarketingcalculator.com/digital-marketing-budget-calculator/",
+  "description": "Splits a marketing budget into a digital budget and a monthly allocation across paid search, social ads, display and video, SEO and content, email, and tools by business model and goal.",
+  "featureList": ["Digital share of marketing budget", "Monthly channel allocation", "B2B, B2C, ecommerce and local service presets", "Goal-based adjustment"]
+};
+const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
+const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
+  { "@type": "ListItem", "position": 2, "name": "Digital Marketing Budget Calculator", "item": "https://freemarketingcalculator.com/digital-marketing-budget-calculator/" }
+] };
+const howToSchema = { "@type": "HowTo", "name": "How to use the Digital Marketing Budget Calculator", "description": description, "step": [
+  { "@type": "HowToStep", "position": 1, "text": "Enter your annual marketing budget." },
+  { "@type": "HowToStep", "position": 2, "text": "Set the share of that budget that goes to digital channels. The default of 61.1% is the Gartner 2025 average." },
+  { "@type": "HowToStep", "position": 3, "text": "Choose your business model and primary goal." },
+  { "@type": "HowToStep", "position": 4, "text": "Click Calculate to see the digital budget and the monthly dollar amount for each of six channels." }
+] };
+---
+
+<Base title={title} description={description} slug={slug} schema={[webAppSchema, howToSchema, faqSchema, breadcrumbSchema]}>
+  <section class="page-hero" aria-labelledby="page-h1">
+    <div class="container">
+      <p class="eyebrow">Free Marketing Tool</p>
+      <h1 id="page-h1">Digital Marketing Budget Calculator</h1>
+      <p class="citation">A digital marketing budget is the part of the marketing budget spent on online channels, and digital channels take 61.1% of total marketing spend on average (Gartner 2025 CMO Spend Survey). This calculator turns a total budget into a digital budget and splits it across paid search, social ads, display and video, SEO and content, email, and tools.</p>
+      <div class="meta-badges">
+        <span class="badge">✓ 6 channels</span>
+        <span class="badge">✓ 4 business models</span>
+        <span class="badge">✓ Gartner benchmarks</span>
+        <span class="badge">✓ No signup</span>
+      </div>
+      <a href="#calculator" class="btn-hero-cta">Start Calculating <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="calc-card" id="calculator">
+      <div class="calc-card__header">
+        <div class="calc-card__header-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+        </div>
+        <div><div class="calc-card__title">Digital Marketing Budget Calculator</div><div class="calc-card__subtitle">Total budget in, monthly channel split out</div></div>
+      </div>
+      <div class="calc-card__body">
+        <div class="field-group">
+          <div class="field"><label for="db-total">Annual Marketing Budget ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="db-total" class="has-prefix" value="120000" min="0"/></div></div>
+          <div class="field"><label for="db-share">Digital Share of Budget (%)</label><div class="input-wrap"><input type="number" id="db-share" class="has-suffix" value="61.1" min="0" max="100" step="0.1"/><span class="input-suffix">%</span></div><p class="hint">61.1% is the Gartner 2025 average</p></div>
+          <div class="field"><label for="db-model">Business Model</label>
+            <select id="db-model">
+              <option value="b2b">B2B / SaaS / professional services</option>
+              <option value="b2c">B2C brand</option>
+              <option value="ecom">Ecommerce</option>
+              <option value="local">Local services</option>
+            </select>
+          </div>
+          <div class="field"><label for="db-goal">Primary Goal</label>
+            <select id="db-goal">
+              <option value="leads">Lead generation (baseline)</option>
+              <option value="awareness">Brand awareness</option>
+              <option value="sales">Direct sales</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-calc" id="db-calc-btn" type="button">Calculate Channel Split</button>
+
+        <div class="result-panel" id="db-result" aria-live="polite">
+          <div class="result-panel__label">Monthly Digital Budget</div>
+          <div class="result-panel__primary" id="db-monthly">$0</div>
+          <div class="result-panel__grid">
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="db-annual">$0</span><span class="result-panel__stat-label">Annual digital budget</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="db-nondigital">$0</span><span class="result-panel__stat-label">Non-digital (annual)</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="db-top">—</span><span class="result-panel__stat-label">Largest channel</span></div>
+          </div>
+          <div class="bench-table-wrap" style="margin-top: var(--space-4);">
+            <table class="bench-table">
+              <caption class="sr-only">Monthly digital marketing budget by channel</caption>
+              <thead><tr><th scope="col">Channel</th><th scope="col">Share</th><th scope="col">Per month</th><th scope="col">Per year</th></tr></thead>
+              <tbody id="db-rows"></tbody>
+            </table>
+          </div>
+          <div class="result-verdict" id="db-verdict"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="definition-box" style="margin-top: var(--space-6);">
+      <div class="definition-box__label">Key Takeaways</div>
+      <ul>
+        <li>Digital channels take 61.1% of total marketing spend on average (Gartner 2025 CMO Spend Survey, 402 CMOs).</li>
+        <li>Digital budget = total marketing budget × digital share. Channel budget = digital budget × channel share.</li>
+        <li>Paid online channels make up 69% of digital spend, with paid search at 13.9%, display at 12.5% and social advertising at 12.2% (Gartner 2025).</li>
+        <li>The channel splits in this calculator are planning splits by business model and goal, not survey results.</li>
+        <li>Under about $1,500 a month, two or three channels usually outperform six thinly funded ones.</li>
+      </ul>
+    </div>
+
+    <div class="formula-box">
+      <p class="formula-title">Digital Marketing Budget Formula</p>
+      <p class="formula-text">Digital Budget = Total Marketing Budget × Digital Share %<br/>Channel Budget = Digital Budget × Channel Share %</p>
+      <div class="formula-example">
+        <strong>Example:</strong> $120,000 × 61.1% = $73,320 a year, or $6,110 a month. A 25% paid search share is $1,528 a month.
+      </div>
+    </div>
+
+    <section class="bench-section" aria-labelledby="split-heading">
+      <h2 id="split-heading">Digital Marketing Budget Split by Business Model (Planning Splits)</h2>
+      <span class="bench-date">Updated October 2026</span>
+      <p style="color: var(--text-mid); margin: var(--space-2) 0 var(--space-4);">At the lead generation baseline, a B2B company puts the largest share into SEO and content (30%), while ecommerce puts the largest share into paid search (30%) and B2C brands into social ads (30%). Local service businesses weight paid search (35%) and local SEO (25%).</p>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <caption class="sr-only">Planning split of digital marketing budget by channel and business model</caption>
+          <thead><tr><th scope="col">Channel</th><th scope="col">B2B</th><th scope="col">B2C</th><th scope="col">Ecommerce</th><th scope="col">Local services</th></tr></thead>
+          <tbody>
+            <tr><td>Paid search</td><td>25%</td><td>20%</td><td>30%</td><td>35%</td></tr>
+            <tr style="background:var(--off-white)"><td>Social ads</td><td>15%</td><td>30%</td><td>25%</td><td>15%</td></tr>
+            <tr><td>Display and video</td><td>5%</td><td>10%</td><td>10%</td><td>5%</td></tr>
+            <tr style="background:var(--off-white)"><td>SEO and content</td><td>30%</td><td>15%</td><td>10%</td><td>25%</td></tr>
+            <tr><td>Email and automation</td><td>15%</td><td>15%</td><td>15%</td><td>10%</td></tr>
+            <tr style="background:var(--off-white)"><td>Analytics, CRO and tools</td><td>10%</td><td>10%</td><td>10%</td><td>10%</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>100%</strong></td><td><strong>100%</strong></td><td><strong>100%</strong></td><td><strong>100%</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">Planning splits used by the calculator, not figures from a published survey. Move budget toward the channels that bring in customers at the lowest cost in your own analytics.</p>
+    </section>
+
+    <section class="bench-section" aria-labelledby="goal-heading">
+      <h2 id="goal-heading">How the Goal Changes the Split</h2>
+      <p style="color: var(--text-mid); margin: var(--space-2) 0 var(--space-4);">A brand awareness goal moves 10 percentage points toward social ads and display, while a direct sales goal moves 10 points toward paid search and email. Lead generation uses the baseline split with no adjustment.</p>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead><tr><th scope="col">Goal</th><th scope="col">Added to</th><th scope="col">Taken from</th></tr></thead>
+          <tbody>
+            <tr><td>Lead generation (baseline)</td><td>No change</td><td>No change</td></tr>
+            <tr style="background:var(--off-white)"><td>Brand awareness</td><td>Social ads +5, display and video +5</td><td>Paid search −5, email −5</td></tr>
+            <tr><td>Direct sales</td><td>Paid search +5, email +5</td><td>Social ads −5, display and video −5</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="bench-section" aria-labelledby="gartner-heading">
+      <h2 id="gartner-heading">Digital Marketing Spend Benchmarks (Gartner)</h2>
+      <p style="color: var(--text-mid); margin: var(--space-2) 0 var(--space-4);">Digital channels take 61.1% of total marketing spend, and paid online channels take 69% of digital spend, according to the <a href="https://www.businesswire.com/news/home/20250602746568/en/Gartner-Survey-Finds-Digital-Channels-Account-for-61.1-of-Total-Marketing-Spend" target="_blank" rel="noopener noreferrer nofollow">Gartner 2025 CMO Spend Survey</a> (402 CMOs, fielded February to March 2025).</p>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <caption class="sr-only">Gartner CMO Spend Survey digital marketing benchmarks</caption>
+          <thead><tr><th scope="col">Measure</th><th scope="col">Value</th><th scope="col">Source</th></tr></thead>
+          <tbody>
+            <tr><td>Digital channels, share of total marketing spend</td><td><strong>61.1%</strong></td><td>Gartner 2025</td></tr>
+            <tr style="background:var(--off-white)"><td>Paid online channels, share of digital spend</td><td>69%</td><td>Gartner 2025</td></tr>
+            <tr><td>Paid search, share of digital spend</td><td>13.9%</td><td>Gartner 2025</td></tr>
+            <tr style="background:var(--off-white)"><td>Digital display, share of digital spend</td><td>12.5%</td><td>Gartner 2025</td></tr>
+            <tr><td>Social advertising, share of digital spend</td><td>12.2%</td><td>Gartner 2025</td></tr>
+            <tr style="background:var(--off-white)"><td>Paid media, share of total marketing budget</td><td>31.4%</td><td>Gartner 2026</td></tr>
+            <tr><td>Marketing technology, share of total marketing budget</td><td>19.4%</td><td>Gartner 2026</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">Gartner 2026 figures are from the 401-CMO survey reported by <a href="https://www.chiefmarketer.com/gartner-cmo-spend-survey-budgets-reflect-increase-in-consumption-based-martech-paid-media-spend/" target="_blank" rel="noopener noreferrer nofollow">Chief Marketer</a> on June 24, 2026. Survey averages cover all sectors and company sizes, so treat them as reference points.</p>
+    </section>
+
+    <section class="bench-section" aria-labelledby="example-heading">
+      <h2 id="example-heading">Worked Example: $120,000 B2B Lead Generation Budget</h2>
+      <p style="color: var(--text-mid); margin: var(--space-2) 0 var(--space-4);">A B2B company with a $120,000 marketing budget and the 61.1% Gartner digital share has a $73,320 annual digital budget, or $6,110 a month. At the lead generation baseline, SEO and content receive the largest share at $1,833 a month.</p>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead><tr><th scope="col">Channel</th><th scope="col">Share</th><th scope="col">Per month</th><th scope="col">Per year</th></tr></thead>
+          <tbody>
+            <tr><td>SEO and content</td><td>30%</td><td><strong>$1,833</strong></td><td>$21,996</td></tr>
+            <tr style="background:var(--off-white)"><td>Paid search</td><td>25%</td><td><strong>$1,528</strong></td><td>$18,330</td></tr>
+            <tr><td>Social ads</td><td>15%</td><td><strong>$917</strong></td><td>$10,998</td></tr>
+            <tr style="background:var(--off-white)"><td>Email and automation</td><td>15%</td><td><strong>$917</strong></td><td>$10,998</td></tr>
+            <tr><td>Analytics, CRO and tools</td><td>10%</td><td><strong>$611</strong></td><td>$7,332</td></tr>
+            <tr style="background:var(--off-white)"><td>Display and video</td><td>5%</td><td><strong>$306</strong></td><td>$3,666</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">Monthly amounts are rounded to the nearest dollar, so they can differ from the $6,110 total by a few dollars. The remaining $46,680 a year is the non-digital budget for events, print, partnerships and similar spend.</p>
+    </section>
+
+    <section class="prose content-section">
+      <h2>How to Set an Online Marketing Budget</h2>
+      <p>An online marketing budget starts with the total marketing budget, then applies a digital share and a channel split. The <a href="/marketing-budget-calculator/">Marketing Budget Calculator</a> recommends a total from annual revenue and industry, and the <a href="/marketing-budget-benchmarks/">budget benchmarks</a> list the survey averages behind those percentages.</p>
+      <p>Once the digital budget is set, fund the channels that match the goal. Paid search captures existing demand, SEO and content build demand over several months, email converts existing leads, and social ads and display create awareness. The <a href="/social-media-budget-calculator/">Social Media Budget Calculator</a> converts the social share into impressions and clicks, and the <a href="/cpm-calculator/">CPM Calculator</a> does the same for display.</p>
+      <h2>Track Return by Channel</h2>
+      <p>Each channel budget needs a return target. Use the <a href="/roas-calculator/">ROAS Calculator</a> for paid media, the <a href="/email-marketing-roi-calculator/">Email Marketing ROI Calculator</a> for email, and the <a href="/marketing-roi-calculator/">Marketing ROI Calculator</a> for the whole program. The <a href="/blog/what-is-a-good-marketing-roi/">guide to a good marketing ROI</a> lists benchmarks by channel.</p>
+    </section>
+
+    <div class="definition-box" style="margin-top: var(--space-8);">
+      <div class="definition-box__label">How to Use This Digital Marketing Budget Calculator</div>
+      <p style="white-space: pre-line; line-height: 1.9;">1. Enter your annual marketing budget.
+2. Set the digital share, or keep the 61.1% Gartner average.
+3. Choose your business model and primary goal.
+4. Click Calculate to see the monthly and annual amount for each channel.</p>
+    </div>
+
+    <div style="background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0;">
+      <p style="font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mid); margin-bottom: var(--space-3);">Related Guides &amp; Calculators</p>
+      <p style="color: var(--text-mid); margin-bottom: var(--space-4);">Set the total first with the <a href="/marketing-budget-calculator/">Marketing Budget Calculator</a>, then check the paid share with the <a href="/blog/what-is-ad-spend/">ad spend guide</a>.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-3);">
+        <a href="/marketing-budget-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">Marketing Budget Calculator →</a>
+        <a href="/marketing-budget-benchmarks/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">Marketing Budget Benchmarks →</a>
+        <a href="/social-media-budget-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">Social Media Budget Calculator →</a>
+        <a href="/blog/what-is-ad-spend/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">What Is Ad Spend? →</a>
+      </div>
+    </div>
+
+    <FAQ items={faqItems} title="Digital Marketing Budget Calculator — FAQ" />
+  </div>
+</Base>
+
+<script>
+(function(){
+  'use strict';
+  var btn = document.getElementById('db-calc-btn');
+  var result = document.getElementById('db-result');
+  if (!btn || !result) return;
+
+  var CHANNELS = ['Paid search', 'Social ads', 'Display and video', 'SEO and content', 'Email and automation', 'Analytics, CRO and tools'];
+  var SPLITS = {
+    b2b:   [25, 15, 5, 30, 15, 10],
+    b2c:   [20, 30, 10, 15, 15, 10],
+    ecom:  [30, 25, 10, 10, 15, 10],
+    local: [35, 15, 5, 25, 10, 10]
+  };
+  var GOAL_ADJ = {
+    leads:     [0, 0, 0, 0, 0, 0],
+    awareness: [-5, 5, 5, 0, -5, 0],
+    sales:     [5, -5, -5, 0, 5, 0]
+  };
+
+  function usd(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+
+  function calculate(scroll) {
+    var total = parseFloat(document.getElementById('db-total').value) || 0;
+    var share = parseFloat(document.getElementById('db-share').value);
+    if (isNaN(share)) share = 61.1;
+    share = Math.min(Math.max(share, 0), 100);
+    var model = document.getElementById('db-model').value;
+    var goal  = document.getElementById('db-goal').value;
+    if (!total) return;
+
+    var annual  = total * (share / 100);
+    var monthly = annual / 12;
+    var pct = SPLITS[model].map(function (v, i) { return v + GOAL_ADJ[goal][i]; });
+
+    var rows = '';
+    var topIdx = 0;
+    pct.forEach(function (p, i) {
+      if (p > pct[topIdx]) topIdx = i;
+      rows += '<tr><td>' + CHANNELS[i] + '</td><td>' + p + '%</td><td><strong>' + usd(monthly * p / 100) + '</strong></td><td>' + usd(annual * p / 100) + '</td></tr>';
+    });
+
+    document.getElementById('db-rows').innerHTML = rows;
+    document.getElementById('db-monthly').textContent = usd(monthly);
+    document.getElementById('db-annual').textContent = usd(annual);
+    document.getElementById('db-nondigital').textContent = usd(total - annual);
+    document.getElementById('db-top').textContent = CHANNELS[topIdx] + ' (' + pct[topIdx] + '%)';
+
+    var verdict = '📊 ' + usd(annual) + ' a year (' + share + '% of ' + usd(total) + ') is ' + usd(monthly) + ' a month for digital.';
+    if (monthly < 1500) verdict += ' Under $1,500 a month, concentrate on the two or three largest channels instead of funding all six.';
+    document.getElementById('db-verdict').textContent = verdict;
+
+    result.classList.add('visible');
+    if (scroll) result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  btn.addEventListener('click', function () { calculate(true); });
+  ['db-total', 'db-share', 'db-model', 'db-goal'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', function () { calculate(false); });
+    document.getElementById(id).addEventListener('change', function () { calculate(false); });
+  });
+  calculate(false);
+})();
+</script>
