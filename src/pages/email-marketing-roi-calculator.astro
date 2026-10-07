@@ -15,11 +15,13 @@ const platforms = [
 ];
 
 const faqItems = [
-  { q: 'What is a good email marketing ROI?', a: 'The industry average is $36–$42 return for every $1 spent — a 3600–4200% ROI. Top performers achieve 6000%+. Even at the low end, email marketing outperforms most other channels.' },
-  { q: 'How do I calculate email marketing ROI?', a: 'Email ROI = (Revenue from emails − Email marketing cost) ÷ Email marketing cost × 100. Factor in platform cost, creative cost, and staff time for an accurate figure.' },
-  { q: 'What is a good email open rate in 2026?', a: 'Average open rates are 20–25% across industries. B2B averages 22%, retail 18%, nonprofits 28%. With Apple Mail Privacy Protection, opens are inflated — click rates (2–4%) are a more reliable engagement metric.' },
-  { q: 'How do I improve email marketing ROI?', a: 'Segment your list by behaviour and purchase history, personalise subject lines, clean inactive subscribers quarterly, A/B test send times, and automate triggered sequences (welcome, abandoned cart, re-engagement).' },
-  { q: 'Is this calculator free?', a: 'Yes — completely free, no signup, no email required.' },
+  { q: 'What is a good email marketing ROI?', a: 'Email marketing ROI is widely quoted at $36–$42 for every $1 spent, a 3,600–4,200% return. Primary sources checked include Litmus (38:1 in 2018) and the DMA (£42 per £1 in 2019). These are survey-based figures from marketers who measure ROI, so use them as a reference rather than a target.' },
+  { q: 'How do I calculate email marketing ROI?', a: 'Email ROI = (Revenue from emails − Email marketing cost) ÷ Email marketing cost × 100. Count platform cost, creative, copywriting and staff time in the cost. Attribute revenue with UTM parameters so the revenue figure comes from tracked email clicks.' },
+  { q: 'What is a good email open rate?', a: 'Mailchimp reports an average open rate of 35.63% and a click rate of 2.62% across all users, as of December 2023. Industry averages for opens range from 29.81% for ecommerce to 40.55% for government. Apple Mail Privacy Protection inflates opens, so click rate is a more reliable engagement metric.' },
+  { q: 'How do I improve email marketing ROI?', a: 'Segment the list by behaviour and purchase history, clean inactive subscribers regularly, and automate triggered sequences such as welcome, abandoned cart and re-engagement emails. Test subject lines and send times on a portion of the list first. Judge tests by clicks and revenue rather than opens.' },
+  { q: 'Why is my email ROI so high or so low?', a: 'A very high ROI usually means only the platform fee was counted as cost. A low ROI usually means a small or unengaged list, weak offers or revenue that is not attributed to email. The worked examples below show the same campaign at 1,550% on platform cost alone and 27% on fully loaded cost.' },
+  { q: 'What do I enter for click rate in this calculator?', a: 'The calculator multiplies open rate by click rate, so click rate should be the share of openers who click (click-to-open rate). Mailchimp\'s all-user averages of 35.63% opens and 2.62% clicks per delivered email imply a click-to-open rate of about 7.4%. Using clicks per delivered email in this field understates revenue.' },
+  { q: 'Is this calculator free?', a: 'Yes. The calculator is completely free, with no signup and no email required.' },
 ];
 
 const webAppSchema = { "@type": "WebApplication", "name": title, "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "creator": { "@id": "https://freemarketingcalculator.com/#org" }, "url": "https://freemarketingcalculator.com/email-marketing-roi-calculator/", "description": "Computes email marketing ROMI from list size, send frequency, open rate, click rate, conversion rate, and monthly platform cost with 2026 benchmarks.", "featureList": ["Email ROMI calculation", "Platform cost comparison", "2026 benchmarks"] };
@@ -38,7 +40,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     <div class="container">
       <p class="eyebrow">Free Marketing Tool</p>
       <h1 id="page-h1">Email Marketing ROI Calculator</h1>
-      <p class="citation">Computes email marketing ROMI from list size, send frequency, open rate, click rate, conversion rate, and monthly platform cost — with 2026 industry benchmarks and platform cost comparison.</p>
+      <p class="citation">Email marketing ROI equals (revenue − cost) ÷ cost × 100. This calculator computes it from list size, send frequency, open rate, click rate, conversion rate and monthly platform cost, with benchmarks and a platform cost comparison.</p>
       <div class="meta-badges">
         <span class="badge">✓ Full ROMI calculation</span>
         <span class="badge">✓ Platform cost included</span>
@@ -61,7 +63,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
           <div class="field"><label for="em-listsize">Email List Size</label><input type="number" id="em-listsize" placeholder="e.g. 5000" min="0"/></div>
           <div class="field"><label for="em-sends">Sends per Month</label><input type="number" id="em-sends" placeholder="e.g. 4" min="1"/></div>
           <div class="field"><label for="em-openrate">Open Rate (%)</label><div class="input-wrap"><input type="number" id="em-openrate" class="has-suffix" placeholder="e.g. 22" min="0" max="100" step="0.1"/><span class="input-suffix">%</span></div></div>
-          <div class="field"><label for="em-ctr">Click Rate (%)</label><div class="input-wrap"><input type="number" id="em-ctr" class="has-suffix" placeholder="e.g. 2.5" min="0" max="100" step="0.1"/><span class="input-suffix">%</span></div></div>
+          <div class="field"><label for="em-ctr">Click Rate (% of opens)</label><div class="input-wrap"><input type="number" id="em-ctr" class="has-suffix" placeholder="e.g. 2.5" min="0" max="100" step="0.1"/><span class="input-suffix">%</span></div><p class="hint">Clicks ÷ opens (click-to-open rate)</p></div>
           <div class="field"><label for="em-cvr">Conversion Rate of Clicks (%)</label><div class="input-wrap"><input type="number" id="em-cvr" class="has-suffix" placeholder="e.g. 5" min="0" max="100" step="0.1"/><span class="input-suffix">%</span></div></div>
           <div class="field"><label for="em-aov">Average Order Value ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="em-aov" class="has-prefix" placeholder="e.g. 150" min="0"/></div></div>
           <div class="field"><label for="em-cost">Monthly Platform Cost ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="em-cost" class="has-prefix" placeholder="e.g. 50" min="0"/></div></div>
@@ -84,12 +86,12 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       <div class="definition-box__label">Formula</div>
       <p><strong>Email ROMI = (Monthly Revenue − Platform Cost) ÷ Platform Cost × 100</strong><br/>
       Monthly Revenue = List Size × Sends × Open Rate × Click Rate × Conversion Rate × AOV<br/>
-      Industry benchmark: $36 return per $1 spent (3,600% ROI)</p>
+      Widely quoted benchmark: $36–$42 return per $1 spent (Litmus reported 38:1 in 2018)</p>
     </div>
 
     <section class="bench-section">
       <h2>Email Platform Cost Comparison — 2026</h2>
-      <span class="bench-date">Updated July 2026</span>
+      <span class="bench-date">Updated October 2026</span>
       <div class="bench-table-wrap">
         <table class="bench-table">
           <thead><tr><th>Platform</th><th>~1K subscribers</th><th>~5K subscribers</th><th>~10K subscribers</th></tr></thead>
@@ -118,9 +120,61 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       </div>
     </div>
 
+
+    <section class="prose content-section" aria-labelledby="em-how-heading" style="margin-top: var(--space-8);">
+      <h2 id="em-how-heading">How to Calculate Email Marketing ROI</h2>
+      <p>Email marketing ROI is the revenue earned from email minus the cost of running it, divided by that cost. The result depends heavily on which costs are counted, so the worked examples below show the same campaign measured two ways.</p>
+      <ol class="em-steps">
+        <li><strong>Estimate monthly conversions.</strong> List size × sends per month × open rate × click rate (as a share of opens) × conversion rate of clicks.</li>
+        <li><strong>Convert to revenue.</strong> Multiply conversions by the average order value.</li>
+        <li><strong>Total the cost.</strong> Platform fee, plus creative, copywriting and staff time if a fully loaded ROI is needed.</li>
+        <li><strong>Apply the formula.</strong> ROI = (revenue − cost) ÷ cost × 100.</li>
+      </ol>
+    </section>
+
+    <section class="bench-section" aria-labelledby="em-examples-heading">
+      <h2 id="em-examples-heading">Email Marketing ROI: Worked Examples</h2>
+      <span class="bench-date">Calculated October 2026</span>
+      <p style="color: var(--text-mid); margin: var(--space-2) 0 var(--space-4);">The same 5,000-subscriber campaign returns 1,550% when only the platform fee counts as cost and 27% when creative and staff time are included. The table uses the calculator's own formula.</p>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead><tr><th scope="col">Example</th><th scope="col">Inputs</th><th scope="col">Conversions / mo</th><th scope="col">Monthly Revenue</th><th scope="col">Cost</th><th scope="col">ROI</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1. Platform cost only</strong></td><td>5,000 subscribers, 4 sends, 22% open, 2.5% click, 5% conversion, $150 AOV</td><td>5.5</td><td>$825</td><td>$50</td><td><strong>1,550%</strong></td></tr>
+            <tr style="background:var(--off-white)"><td><strong>2. Larger list</strong></td><td>20,000 subscribers, 4 sends, 25% open, 3% click, 4% conversion, $80 AOV</td><td>24</td><td>$1,920</td><td>$150</td><td><strong>1,180%</strong></td></tr>
+            <tr><td><strong>3. Fully loaded cost</strong></td><td>Example 1 with $50 platform + $200 creative + $400 staff time</td><td>5.5</td><td>$825</td><td>$650</td><td><strong>27%</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">Inputs are illustrative, not survey data. Example 3 shows why published benchmark ROIs depend on what the cost figure includes.</p>
+    </section>
+
+    <section class="bench-section" aria-labelledby="em-bench-heading">
+      <h2 id="em-bench-heading">Email Marketing Benchmarks From Named Sources</h2>
+      <p style="color: var(--text-mid); margin: var(--space-2) 0 var(--space-4);">Mailchimp's all-user averages are a 35.63% open rate, a 2.62% click rate and a 0.22% unsubscribe rate, and published ROI figures run from $38 per $1 (Litmus) to £42 per £1 (DMA). Use these to sanity-check the inputs above.</p>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead><tr><th scope="col">Metric</th><th scope="col">Benchmark</th><th scope="col">Source</th></tr></thead>
+          <tbody>
+            <tr><td>Average open rate</td><td><strong>35.63%</strong></td><td><a href="https://mailchimp.com/resources/email-marketing-benchmarks/" target="_blank" rel="noopener noreferrer nofollow">Mailchimp, Dec 2023</a></td></tr>
+            <tr style="background:var(--off-white)"><td>Average click rate</td><td><strong>2.62%</strong></td><td>Mailchimp, Dec 2023</td></tr>
+            <tr><td>Average unsubscribe rate</td><td>0.22%</td><td>Mailchimp, Dec 2023</td></tr>
+            <tr style="background:var(--off-white)"><td>Email ROI (survey)</td><td>38:1</td><td><a href="https://www.litmus.com/press/litmus-research-finds-email-marketing-roi-is-38-to-1" target="_blank" rel="noopener noreferrer nofollow">Litmus, 2018</a></td></tr>
+            <tr><td>Email ROI (UK survey)</td><td>Just over £42 per £1</td><td><a href="https://dma.org.uk/article/marketer-email-tracker-2019" target="_blank" rel="noopener noreferrer nofollow">DMA, 2019</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">Mailchimp's click rate is clicks per delivered email, while this calculator asks for clicks as a share of opens. Full source comparison: <a href="/blog/email-marketing-roi-benchmarks/">Email Marketing ROI Benchmarks</a>.</p>
+    </section>
+
     <FAQ items={faqItems} />
   </div>
 </Base>
+<style>
+  .em-steps { counter-reset: step; list-style: none; padding: 0; margin: var(--space-4) 0; display: flex; flex-direction: column; gap: var(--space-4); }
+  .em-steps li { position: relative; padding-left: 44px; color: var(--text-mid); line-height: 1.8; }
+  .em-steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0; width: 30px; height: 30px; background: var(--teal); color: var(--navy); font-weight: 800; font-size: var(--text-sm); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+</style>
 
 <script>
 (function(){

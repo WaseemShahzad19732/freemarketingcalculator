@@ -6,7 +6,7 @@ const slug        = 'marketing-budget-calculator';
 const title       = 'Marketing Budget Calculator — Free Online Tool (2026)';
 const description = 'Free marketing budget calculator — enter your revenue and industry to get an instant budget recommendation with 9-sector benchmarks and channel allocation breakdown.';
 
-// ── Industry benchmarks (source: Gartner, Deloitte, CMO Survey public data) ──
+// ── Industry planning benchmarks used by the calculator (planning ranges, not survey results) ──
 const industries = [
   { name: 'SaaS / Software',        pct: 15, range: '12–18%', notes: 'High for growth-stage' },
   { name: 'Consumer Goods',         pct: 14, range: '10–18%', notes: 'Brand-heavy spending' },
@@ -22,23 +22,35 @@ const industries = [
 const faqItems = [
   {
     q: 'What percentage of revenue should go to marketing?',
-    a: 'Most companies allocate <strong>6–12% of revenue</strong> to marketing. B2B companies typically spend 5–9%, while SaaS and consumer brands spend 10–18%. Early-stage businesses focused on aggressive growth often spend 15–25%.'
+    a: 'The 2026 Gartner CMO Spend Survey of 401 CMOs found marketing budgets average <strong>7.8% of company revenue</strong>. The CMO Survey (Spring 2026) reports 7.0% for B2B product firms, 7.2% for B2C services, 10.1% for B2B services and 12.0% for B2C product firms. Early-stage businesses in aggressive growth mode often spend more than these averages.'
   },
   {
     q: 'How do I calculate my marketing budget?',
-    a: 'Multiply your projected annual revenue by your industry\'s benchmark percentage. For example: $2,000,000 × 8% = $160,000 annual marketing budget. Adjust up if you are in growth mode; adjust down if maintaining market share.'
+    a: 'Multiply projected annual revenue by the benchmark percentage for your industry. A B2B services company with $2,000,000 in revenue and a 7% benchmark gets $2,000,000 × 7% = $140,000 a year, or about $11,667 a month. Multiply by 1.25 for a growth year or 1.6 for an aggressive year, as the calculator does.'
   },
   {
     q: 'What is a realistic marketing budget for a small business?',
-    a: 'Small businesses (under $5M revenue) typically spend <strong>7–10% of revenue</strong> on marketing. If revenue is under $1M, expect to invest a higher percentage — sometimes 15–20% — to build brand awareness and acquire initial customers.'
+    a: 'The U.S. Small Business Administration recommends spending <strong>7–8% of gross revenue</strong> on marketing for businesses under $5 million in revenue. Businesses under $1 million often spend a higher share, because acquiring first customers costs more per dollar of revenue. Enter your revenue in the calculator above to turn the percentage into a monthly figure.'
   },
   {
     q: 'How much do B2B companies spend on marketing?',
-    a: 'B2B companies spend an average of <strong>5–9% of revenue</strong> on marketing, according to the Gartner CMO Survey. Companies with smaller deal sizes and higher customer counts spend closer to 9%; enterprise B2B with long sales cycles spend 5–7%.'
+    a: 'The CMO Survey (Spring 2026) reports B2B product firms spending 7.0% of revenue and B2B services firms spending 10.1%, as summarised by MarketScale. The calculator uses 7% as its B2B services planning benchmark and 8% for the “Other” option. Companies with many small deals tend to spend toward the top of the range, and enterprise sellers with long sales cycles toward the bottom.'
+  },
+  {
+    q: 'How much should a manufacturing company spend on marketing?',
+    a: 'This calculator uses a planning benchmark of <strong>4% of revenue for manufacturing</strong>, with a typical range of 2–6%. The CMO Survey reports 7.0% for B2B product firms generally, so manufacturers selling directly to buyers may plan higher. A $25 million manufacturer at 4% would budget $1,000,000 a year, or about $83,333 a month.'
+  },
+  {
+    q: 'What percentage of revenue do consumer goods companies spend on marketing?',
+    a: 'This calculator uses a planning benchmark of <strong>14% of revenue for consumer goods</strong>, with a typical range of 10–18%. The CMO Survey reports 12.0% for B2C product firms. An $8 million consumer goods brand at 14% would budget $1,120,000 a year, rising to $1,400,000 in a growth year with the 1.25 multiplier.'
   },
   {
     q: 'How should I split my marketing budget across channels?',
-    a: 'A common allocation for a growing B2B company: 35–40% paid advertising, 20–25% content and SEO, 15% events, 10–15% tools and technology, 10% brand and creative. Adjust based on your customer acquisition channels.'
+    a: 'A common allocation for a growing B2B company is 35–40% paid advertising, 20–25% content and SEO, 15% events, 10–15% tools and technology, and 10% brand and creative. These are planning splits, not survey results, so adjust them to the channels that bring in customers. Gartner’s 2026 survey found paid media at 31.4% of marketing budgets on average.'
+  },
+  {
+    q: 'Is the marketing budget calculator free?',
+    a: 'Yes. The calculator is free, needs no signup or email, and includes a free Google Sheets template. Results use the industry planning benchmarks in the table on this page.'
   }
 ];
 
@@ -111,7 +123,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       <div class="meta-badges">
         <span class="badge">✓ Free forever</span>
         <span class="badge">✓ No email required</span>
-        <span class="badge">✓ Updated July 2026</span>
+        <span class="badge">✓ Updated October 2026</span>
       </div>
       <a href="#calculator" class="btn-hero-cta">Start Calculating <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
     </div>
@@ -172,7 +184,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
               ))}
               <option value="8">Other — using B2B average (8%)</option>
             </select>
-            <p class="hint" id="industry-hint">Benchmark percentages from Gartner CMO Survey &amp; Deloitte</p>
+            <p class="hint" id="industry-hint">Planning benchmarks; sources and survey averages are listed below</p>
           </div>
 
           <div class="field">
@@ -255,8 +267,8 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       </p>
       <div class="formula-example">
         <strong>Example:</strong> A B2B services company with $2,000,000 annual revenue
-        using the 8% benchmark → $2,000,000 × 8% = <strong>$160,000 annual marketing budget</strong>
-        ($13,333/month).
+        using the 7% benchmark → $2,000,000 × 7% = <strong>$140,000 annual marketing budget</strong>
+        ($11,667/month).
       </div>
     </div>
 
@@ -266,12 +278,12 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       This table is missing from every current top-10 competitor result.
     -->
     <section class="bench-section" aria-labelledby="bench-heading">
-      <h2 id="bench-heading">Marketing Budget by Industry — 2026 Benchmarks</h2>
-      <span class="bench-date">Updated July 2026</span>
+      <h2 id="bench-heading">Marketing Budget by Industry — 2026 Planning Benchmarks</h2>
+      <span class="bench-date">Updated October 2026</span>
 
       <div class="bench-table-wrap">
         <table class="bench-table">
-          <caption class="sr-only">Recommended marketing budget as a percentage of revenue, by industry, 2026</caption>
+          <caption class="sr-only">Planning benchmarks for marketing budget as a percentage of revenue, by industry, 2026</caption>
           <thead>
             <tr>
               <th scope="col">Industry</th>
@@ -293,9 +305,32 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
         </table>
       </div>
       <p class="bench-source">
-        Sources: Gartner CMO Survey 2025, Deloitte CMO Survey 2025, HubSpot State of Marketing 2026.
-        Ranges reflect median; actual spend varies by company size and competitive landscape.
+        The percentages in this table are the calculator's planning benchmarks; they are not taken from a single
+        published survey. Compare them with the survey averages in the next section, and note that actual spend
+        varies by company size, growth stage and competitive landscape.
       </p>
+    </section>
+
+    <section class="bench-section" aria-labelledby="survey-heading">
+      <h2 id="survey-heading">Published Survey Averages for Marketing Budget</h2>
+      <p style="color: var(--text-mid); margin: var(--space-2) 0 var(--space-4);">Marketing budgets average 7.8% of company revenue in the 2026 Gartner CMO Spend Survey, and the Spring 2026 CMO Survey reports 7.0% to 12.0% depending on business model. Use these as reference points when checking the planning benchmarks above.</p>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead>
+            <tr><th scope="col">Source</th><th scope="col">Segment</th><th scope="col">Marketing Budget (% of Revenue)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><a href="https://www.chiefmarketer.com/gartner-cmo-spend-survey-budgets-reflect-increase-in-consumption-based-martech-paid-media-spend/" target="_blank" rel="noopener noreferrer nofollow">Gartner CMO Spend Survey 2026</a></td><td>All respondents (401 CMOs)</td><td><strong>7.8%</strong></td></tr>
+            <tr style="background:var(--off-white)"><td><a href="https://www.gartner.com/en/newsroom/press-releases/2025-05-12-gartner-2025-cmo-spend-survey-reveals-marketing-budgets-have-flatlined-at-seven-percent-of-overall-company-revenue" target="_blank" rel="noopener noreferrer nofollow">Gartner CMO Spend Survey 2025</a></td><td>All respondents (402 CMOs)</td><td>7.7%</td></tr>
+            <tr><td rowspan="4"><a href="https://www.marketscale.com/industries/marketing-tech/b2b-marketing-budgets-are-rising-in-2026-but-benchmarks-vary-by-business-model" target="_blank" rel="noopener noreferrer nofollow">The CMO Survey, Spring 2026</a> (as reported by MarketScale)</td><td>B2C product</td><td>12.0%</td></tr>
+            <tr style="background:var(--off-white)"><td>B2B services</td><td>10.1%</td></tr>
+            <tr><td>B2C services</td><td>7.2%</td></tr>
+            <tr style="background:var(--off-white)"><td>B2B product</td><td>7.0%</td></tr>
+            <tr><td>U.S. Small Business Administration</td><td>Businesses under $5M revenue</td><td>7–8% of gross revenue (guidance)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">Gartner figures are survey averages across industries; the CMO Survey figures were checked through a secondary report, not the original release. Neither source publishes the individual industry rows in the planning table above.</p>
     </section>
 
     <!-- ═══ AD UNIT 2 ═══ — Mid content, between table and FAQ -->
@@ -304,28 +339,52 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     <section class="prose content-section" aria-label="Industry-specific marketing budget guidance">
       <h2>How Much Should B2B Companies Spend on Marketing?</h2>
       <p>
-        B2B companies typically spend <strong>5–9% of revenue</strong> on marketing,
-        with the average sitting at 7% according to the Gartner CMO Survey 2025.
-        Companies with a higher volume of smaller deals (SMB-focused B2B) spend toward
-        the 9% end; enterprise B2B businesses with long sales cycles and relationship-driven
-        sales spend 5–6%.
+        B2B product firms spend 7.0% of revenue on marketing and B2B services firms spend 10.1%,
+        according to the Spring 2026 CMO Survey as reported by MarketScale. This calculator's
+        B2B services planning benchmark is 7% with a 5–9% range, and its generic “Other” option uses 8%.
+        Companies with a high volume of smaller deals tend to sit toward the top of the range,
+        while enterprise sellers with long sales cycles sit toward the bottom.
       </p>
 
-      <h2>Marketing Budget for Manufacturing Companies</h2>
+      <h2 id="manufacturing-budget">Marketing Budget for Manufacturing Companies</h2>
       <p>
-        Manufacturing companies invest <strong>2–6% of revenue</strong> in marketing —
-        the lowest benchmark across industries. This reflects the relationship-driven,
-        specification-led nature of industrial sales where trade shows, technical content,
-        and distributor relationships carry more weight than advertising spend.
-        Industrial and engineering firms sit at the lower end of this range (1–4%).
+        This calculator plans manufacturing marketing at <strong>4% of revenue</strong>, with a typical
+        range of 2–6%. Manufacturers sell on specifications, trade shows, technical content and
+        distributor relationships, which usually need less advertising spend than consumer brands.
+        The CMO Survey's 7.0% for B2B product firms is a higher reference point for manufacturers that sell directly to buyers.
       </p>
+      <div class="formula-box">
+        <p class="formula-title">Manufacturing worked example</p>
+        <div class="formula-example"><strong>Example:</strong> A manufacturer with $25,000,000 in revenue at the 4% benchmark budgets $25,000,000 × 4% = <strong>$1,000,000 a year</strong> ($83,333 a month). The 2–6% range runs from $500,000 to $1,500,000.</div>
+      </div>
+
+      <h2 id="industrial-budget">Marketing Budget for Industrial and Engineering Firms</h2>
+      <p>
+        Industrial and engineering firms are planned at <strong>3% of revenue</strong>, with a range of 1–5%.
+        Sales in this segment are relationship-driven, so budgets concentrate on trade shows, catalogues,
+        technical documentation and a small amount of search advertising.
+      </p>
+      <div class="formula-box">
+        <p class="formula-title">Industrial worked example</p>
+        <div class="formula-example"><strong>Example:</strong> An engineering firm with $10,000,000 in revenue at the 3% benchmark budgets $10,000,000 × 3% = <strong>$300,000 a year</strong> ($25,000 a month). The 1–5% range runs from $100,000 to $500,000.</div>
+      </div>
+
+      <h2 id="consumer-goods-budget">Marketing Budget for Consumer Goods Brands</h2>
+      <p>
+        Consumer goods brands are planned at <strong>14% of revenue</strong>, with a range of 10–18%, because
+        brand building and retail promotion drive most of the spend. The CMO Survey's 12.0% for B2C product firms
+        is a published reference point inside that range.
+      </p>
+      <div class="formula-box">
+        <p class="formula-title">Consumer goods worked example</p>
+        <div class="formula-example"><strong>Example:</strong> A consumer brand with $8,000,000 in revenue at the 14% benchmark budgets $8,000,000 × 14% = <strong>$1,120,000 a year</strong>. In a growth year the 1.25 multiplier lifts that to <strong>$1,400,000</strong>.</div>
+      </div>
 
       <h2>SaaS and Software Marketing Budget</h2>
       <p>
-        SaaS companies at growth stage invest <strong>12–18% of revenue</strong> — and
-        some early-stage SaaS companies go higher still, treating marketing as a growth
-        investment rather than an operational cost. At scale, mature SaaS businesses
-        normalise toward 10–12% as customer acquisition costs decrease with brand strength.
+        This calculator plans SaaS at <strong>15% of revenue</strong>, with a range of 12–18%, and growth-stage
+        companies often go higher because marketing is treated as a growth investment. Mature SaaS businesses
+        usually move toward the lower end as customer acquisition cost falls with brand strength.
       </p>
 
       <h2>How to Split Your Marketing Budget</h2>
@@ -336,7 +395,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
         <strong>15% events and sponsorships</strong>,
         <strong>10–15% tools and marketing technology</strong>,
         and <strong>10% brand and creative production</strong>.
-        Adjust based on your primary customer acquisition channel.
+        These are planning splits rather than survey results, so adjust them to your primary customer acquisition channel.
       </p>
     </section>
 
@@ -357,7 +416,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     <!-- TASK 25: How to use this calculator -->
     <div class="definition-box" style="margin-top: var(--space-8);">
       <div class="definition-box__label">How to Use This Marketing Budget Calculator</div>
-      <p style="white-space: pre-line; line-height: 1.9;">1. Enter your annual revenue (or projected revenue for early-stage businesses). 2. Select your industry from the dropdown — benchmarks are pre-loaded from Gartner and Deloitte. 3. Choose your growth stage: Maintain, Grow (+25%), or Aggressive (+60%). 4. Click Calculate — your annual, monthly, and weekly budget appear with a suggested channel allocation.</p>
+      <p style="white-space: pre-line; line-height: 1.9;">1. Enter your annual revenue (or projected revenue for early-stage businesses). 2. Select your industry from the dropdown — planning benchmarks are pre-loaded. 3. Choose your growth stage: Maintain, Grow (+25%), or Aggressive (+60%). 4. Click Calculate — your annual, monthly, and weekly budget appear with a suggested channel allocation.</p>
       <div class="formula-example" style="margin-top: var(--space-3);">
         <strong>Example:</strong> Example: A B2B services company with $2M revenue selects 'B2B Services' (7% benchmark) and 'Grow' stage. Recommended budget = $2M × 7% × 1.25 = $175,000/year ($14,583/month).
       </div>
