@@ -35,7 +35,7 @@
 
   <!-- Features row -->
   <rect x="80" y="460" width="200" height="44" rx="22" fill="rgba(224,160,43,0.15)" stroke="#E0A02B" stroke-width="1.5"/>
-  <text x="180" y="487" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#E0A02B" text-anchor="middle">✓ 15 free tools</text>
+  <text x="180" y="487" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#E0A02B" text-anchor="middle">✓ 16 free tools</text>
 
   <rect x="300" y="460" width="220" height="44" rx="22" fill="rgba(224,160,43,0.15)" stroke="#E0A02B" stroke-width="1.5"/>
   <text x="410" y="487" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#E0A02B" text-anchor="middle">✓ No signup required</text>

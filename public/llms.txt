@@ -14,6 +14,8 @@
 
 - [Email Marketing ROI Calculator](https://freemarketingcalculator.com/email-marketing-roi-calculator/): Computes email marketing ROMI from list size, send frequency, open rate, click rate, conversion rate, and monthly platform cost — with platform cost comparison table.
 
+- [Digital Marketing Budget Calculator](https://freemarketingcalculator.com/digital-marketing-budget-calculator/): Splits a marketing budget into a digital budget (Gartner 2025 average 61.1%) and a monthly allocation across paid search, social ads, display and video, SEO and content, email, and tools by business model and goal.
+
 - [Social Media Budget Calculator](https://freemarketingcalculator.com/social-media-budget-calculator/): Recommends paid and organic social media marketing budget by platform (Facebook, Instagram, TikTok, LinkedIn, Pinterest) and campaign goal, with CPM benchmarks.
 
 - [Digital Marketing Calculator](https://freemarketingcalculator.com/digital-marketing-calculator/): Computes CPM, CPC, CTR, ROAS, and CPA simultaneously from a single set of digital campaign inputs — the only multi-metric marketing calculator.
