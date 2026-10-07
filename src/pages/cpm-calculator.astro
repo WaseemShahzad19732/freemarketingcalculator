@@ -3,8 +3,8 @@ import Base from '../layouts/Base.astro';
 import FAQ from '../components/FAQ.astro';
 
 const slug        = 'cpm-calculator';
-const title       = 'CPM Calculator — Free Cost Per Mille Tool (2026)';
-const description = 'Free CPM calculator — calculate cost per thousand impressions, total ad spend, or total impressions from any two inputs. With 2026 CPM benchmarks by platform.';
+const title       = 'CPM Calculator: Free Cost Per Mille & Cost Per Thousand Tool';
+const description = 'Free CPM calculator (cost per mille, or cost per thousand impressions): find CPM, total ad spend or impressions from any two inputs, with platform ranges.';
 
 const platformBenchmarks = [
   { platform: 'Google Display Network', cpm: '$2–$5',   best: 'Brand awareness, retargeting' },
@@ -25,7 +25,8 @@ const faqItems = [
   { q: 'What is a good CPM?', a: 'A good CPM depends heavily on the platform and audience. Google Display averages $2–$5 CPM, Facebook $7–$11, LinkedIn $30–$45. Lower CPM is better for pure reach, but a high CPM on a targeted platform (like LinkedIn for B2B) often delivers better ROI than cheap display inventory.' },
   { q: 'What is the difference between CPM and CPC?', a: 'CPM (Cost Per Mille) is charged per 1,000 impressions regardless of clicks. CPC (Cost Per Click) is charged only when someone clicks. CPM campaigns optimise for reach and awareness; CPC campaigns optimise for traffic and conversions. Social platforms let you choose between both bidding models.' },
   { q: 'How many impressions does my budget get?', a: 'Impressions = (Ad Spend ÷ CPM) × 1,000. Example: $1,000 budget at $8.50 CPM → ($1,000 ÷ $8.50) × 1,000 = 117,647 impressions. Use the calculator above and select "Impressions from budget" mode.' },
-  { q: 'What is CPM vs eCPM?', a: 'CPM is the rate you pay upfront. eCPM (effective CPM) is the actual rate calculated after a campaign runs — useful for comparing campaigns with different buying models. eCPM = (Total Revenue ÷ Total Impressions) × 1,000. Publishers use eCPM to measure ad revenue efficiency.' },
+  { q: 'Is cost per mille the same as cost per thousand?', a: 'Yes. Cost per mille and cost per thousand impressions describe the same metric, and both are abbreviated CPM. The M comes from the Latin and Roman-numeral word for one thousand. A $9 CPM means $9 buys 1,000 impressions, which is $0.009 per impression.' },
+  { q: 'What is the difference between CPM and eCPM?', a: 'CPM is the price an advertiser pays per 1,000 impressions. eCPM is the effective rate worked out after a campaign runs, using eCPM = (total revenue or cost ÷ total impressions) × 1,000. A publisher that earns $450 from 90,000 impressions has an eCPM of $5.00. The full explanation is in the What Is CPM guide at freemarketingcalculator.com/blog/what-is-cpm/.' },
   { q: 'Is this CPM calculator free?', a: 'Yes — completely free, no signup, no email required.' },
 ];
 
@@ -58,10 +59,10 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     <div class="container">
       <p class="eyebrow">Free Marketing Tool</p>
       <h1 id="page-h1">CPM Calculator</h1>
-      <p class="citation">Calculate Cost Per Mille (CPM), total ad spend, or total impressions from any two inputs. Three calculation modes with 2026 platform benchmarks for Facebook, Google, LinkedIn, TikTok, and 6 more.</p>
+      <p class="citation">CPM (cost per mille, also called cost per thousand impressions) is the price of 1,000 ad impressions. Calculate CPM, total ad spend or total impressions from any two inputs, with indicative platform ranges for Facebook, Google, LinkedIn, TikTok and 6 more. <a href="/blog/what-is-cpm/" style="color: var(--teal); text-decoration: underline;">Read the full CPM guide</a>.</p>
       <div class="meta-badges">
         <span class="badge">✓ 3 calculation modes</span>
-        <span class="badge">✓ 10 platform benchmarks</span>
+        <span class="badge">✓ 10 platform ranges</span>
         <span class="badge">✓ No signup</span>
       </div>
       <a href="#calculator" class="btn-hero-cta">Start Calculating <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
@@ -73,7 +74,8 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     <!-- Quick Answer for AI Overview -->
     <div class="definition-box" style="margin-top: var(--space-8);">
       <div class="definition-box__label">CPM Formula</div>
-      <p><strong>CPM = (Total Ad Spend ÷ Impressions) × 1,000</strong></p>
+      <p>CPM stands for <strong>cost per mille</strong> (Latin <em>mille</em> means thousand), so it is the same figure as <strong>cost per thousand impressions</strong>. <a href="/blog/what-is-cpm/">What Is CPM? The full guide</a> covers the definition, eCPM and platform ranges.</p>
+      <p style="margin-top: var(--space-2);"><strong>CPM = (Total Ad Spend ÷ Impressions) × 1,000</strong></p>
       <p style="margin-top: var(--space-2);">Example: $500 spend, 100,000 impressions → CPM = ($500 ÷ 100,000) × 1,000 = <strong>$5.00 CPM</strong></p>
       <p style="margin-top: var(--space-2);">Reverse: <strong>Impressions = (Spend ÷ CPM) × 1,000</strong> &nbsp;|&nbsp; <strong>Spend = (CPM × Impressions) ÷ 1,000</strong></p>
     </div>
@@ -172,15 +174,15 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
 
     <!-- Platform benchmarks -->
     <section class="bench-section" aria-labelledby="cpm-bench-heading">
-      <h2 id="cpm-bench-heading">CPM Benchmarks by Platform — 2026</h2>
-      <span class="bench-date">Updated July 2026</span>
+      <h2 id="cpm-bench-heading">CPM by Platform: Cost per Thousand Impressions, Indicative 2026 Ranges</h2>
+      <span class="bench-date">Updated October 2026</span>
       <div class="bench-table-wrap">
         <table class="bench-table">
-          <caption class="sr-only">Average CPM by advertising platform, 2026</caption>
+          <caption class="sr-only">Indicative CPM ranges by advertising platform, 2026</caption>
           <thead>
             <tr>
               <th scope="col">Platform</th>
-              <th scope="col">Average CPM</th>
+              <th scope="col">Indicative CPM</th>
               <th scope="col">Best For</th>
             </tr>
           </thead>
@@ -195,7 +197,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
           </tbody>
         </table>
       </div>
-      <p class="bench-source">Sources: WordStream Social Media Benchmarks 2026, Meta Business Insights, LinkedIn Marketing Solutions, Google Ads Benchmarks 2026, Revealbot CPM data. Averages vary significantly by industry, creative quality, audience size, and bidding strategy.</p>
+      <p class="bench-source">Indicative planning ranges, not figures from a single published survey. Platform CPMs change with auction demand, season, audience size, creative quality and bidding strategy, so check the CPM reported in your own ad account before budgeting. For the budget side, see the <a href="/blog/what-is-ad-spend/">ad spend guide</a>.</p>
     </section>
 
     <!-- CPM vs CPC vs CPV comparison -->
