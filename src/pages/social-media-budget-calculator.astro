@@ -16,8 +16,9 @@ const platforms = [
 ];
 
 const faqItems = [
-  { q: 'How much should I spend on social media marketing?', a: 'Most companies allocate 12–20% of their total marketing budget to social media. For a $100,000 marketing budget, expect $12,000–$20,000 for social. Early-stage brands building awareness spend toward the top of this range.' },
-  { q: 'What is CPM in social media?', a: 'CPM (Cost Per Mille) is the cost to show your ad 1,000 times. Facebook averages $8–$10 CPM, LinkedIn $30–$40 CPM, TikTok $9–$11 CPM. Higher CPM channels like LinkedIn often yield better quality leads for B2B.' },
+  { q: 'How much should I spend on social media marketing?', a: 'The Gartner 2025 CMO Spend Survey of 402 CMOs found digital channels take 61.1% of total marketing spend and social advertising takes 12.2% of digital spend. That works out to about 7.5% of the total marketing budget, or roughly $7,450 of a $100,000 budget. Treat that as a reference point, not a target, and raise it if social channels bring in customers at a lower cost than other channels.' },
+  { q: 'What is CPM in social media?', a: 'CPM (Cost Per Mille) is the cost to show your ad 1,000 times. This calculator uses planning CPMs of $8.50 for Facebook and Instagram, $35 for LinkedIn and $9.50 for TikTok, which are indicative values rather than survey averages. Check the CPM in your own ad account, because it changes with audience, season and creative.' },
+  { q: 'How does the calculator estimate clicks and reach?', a: 'Impressions equal budget divided by CPM times 1,000. Unique reach divides impressions by an assumed frequency of 2.5. Clicks apply a goal-based click-through rate of 0.8% for awareness, 1.8% for traffic, 1.2% for leads and 1.5% for conversions, the same on every platform. Replace these with the click-through rates reported in your own account when you have them.' },
   { q: 'How do I calculate how many impressions my budget will get?', a: 'Impressions = (Budget ÷ CPM) × 1,000. A $1,000 budget on Facebook ($9 CPM) gets approximately 111,000 impressions.' },
   { q: 'Which social media platform has the best ROI?', a: 'For B2C and eCommerce, Facebook and Instagram typically deliver the strongest ROI. For B2B, LinkedIn generates higher-quality leads despite its higher CPM. TikTok offers strong reach for younger demographics at lower cost.' },
   { q: 'Is this calculator free?', a: 'Yes — completely free, no signup, no email required.' },
@@ -62,12 +63,12 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
           <div class="field"><label for="sm-budget">Monthly Ad Budget ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="sm-budget" class="has-prefix" placeholder="e.g. 2000" min="0"/></div></div>
           <div class="field"><label for="sm-platform">Primary Platform</label>
             <select id="sm-platform">
-              <option value="8.5">Facebook / Instagram (avg CPM $8.50)</option>
-              <option value="35">LinkedIn (avg CPM $35.00)</option>
-              <option value="9.5">TikTok (avg CPM $9.50)</option>
-              <option value="6">Twitter / X (avg CPM $6.00)</option>
-              <option value="5">Pinterest (avg CPM $5.00)</option>
-              <option value="10">YouTube (avg CPM $10.00)</option>
+              <option value="8.5">Facebook / Instagram (planning CPM $8.50)</option>
+              <option value="35">LinkedIn (planning CPM $35.00)</option>
+              <option value="9.5">TikTok (planning CPM $9.50)</option>
+              <option value="6">Twitter / X (planning CPM $6.00)</option>
+              <option value="5">Pinterest (planning CPM $5.00)</option>
+              <option value="10">YouTube (planning CPM $10.00)</option>
             </select>
           </div>
           <div class="field"><label for="sm-goal">Campaign Goal</label>
@@ -101,19 +102,55 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     </div>
 
     <section class="bench-section">
-      <h2>Social Media CPM Benchmarks — 2026</h2>
-      <span class="bench-date">Updated July 2026</span>
+      <h2>Social Media CPM and CPC: 2026 Planning Values</h2>
+      <span class="bench-date">Updated October 2026</span>
       <div class="bench-table-wrap">
         <table class="bench-table">
-          <thead><tr><th>Platform</th><th>Avg CPM</th><th>Avg CPC</th><th>Best For</th></tr></thead>
+          <thead><tr><th>Platform</th><th>Planning CPM</th><th>Planning CPC</th><th>Best For</th></tr></thead>
           <tbody>
             {platforms.map(p => (<tr><td>{p.name}</td><td>${p.cpm.toFixed(2)}</td><td>${p.cpc.toFixed(2)}</td><td>{p.best}</td></tr>))}
           </tbody>
         </table>
       </div>
-      <p class="bench-source">Sources: WordStream Social Media Benchmarks 2026, Revealbot, HubSpot State of Marketing 2026. Averages vary by industry, audience and ad quality.</p>
+      <p class="bench-source">Planning values used by the calculator, not figures from a single published survey. CPM and CPC vary by industry, audience, season and ad quality, so use the rates in your own ad account when you have them. For the CPM formula, see <a href="/blog/what-is-cpm/">What Is CPM?</a></p>
     </section>
 
+
+    <section class="bench-section" aria-labelledby="social-share-heading">
+      <h2 id="social-share-heading">How Much of the Marketing Budget Goes to Social Advertising?</h2>
+      <p style="color: var(--text-mid); margin: var(--space-2) 0 var(--space-4);">Social advertising takes 12.2% of digital marketing spend, and digital channels take 61.1% of total marketing spend, according to the <a href="https://www.businesswire.com/news/home/20250602746568/en/Gartner-Survey-Finds-Digital-Channels-Account-for-61.1-of-Total-Marketing-Spend" target="_blank" rel="noopener noreferrer nofollow">Gartner 2025 CMO Spend Survey</a> (402 CMOs, fielded February to March 2025).</p>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead><tr><th scope="col">Measure</th><th scope="col">Share</th><th scope="col">On a $100,000 marketing budget</th></tr></thead>
+          <tbody>
+            <tr><td>Digital channels (share of total marketing spend)</td><td><strong>61.1%</strong></td><td>$61,100</td></tr>
+            <tr style="background:var(--off-white)"><td>Social advertising (share of digital spend)</td><td><strong>12.2%</strong></td><td>$7,454</td></tr>
+            <tr><td>Paid search (share of digital spend)</td><td>13.9%</td><td>$8,493</td></tr>
+            <tr style="background:var(--off-white)"><td>Digital display (share of digital spend)</td><td>12.5%</td><td>$7,638</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">Dollar amounts are calculated from the published shares; social advertising is about 7.5% of total marketing spend (61.1% × 12.2%). To set the total first, see the <a href="/marketing-budget-calculator/">Marketing Budget Calculator</a> and the <a href="/marketing-budget-benchmarks/">budget benchmarks</a>.</p>
+    </section>
+
+    <section class="bench-section" aria-labelledby="social-example-heading">
+      <h2 id="social-example-heading">Social Budget Worked Example: $3,000 on Facebook vs LinkedIn</h2>
+      <p style="color: var(--text-mid); margin: var(--space-2) 0 var(--space-4);">A $3,000 lead generation budget buys about 352,941 impressions on Facebook at an $8.50 CPM but only about 85,714 on LinkedIn at a $35 CPM, which is 4.1 times fewer. The comparison below uses the calculator's lead generation click-through rate of 1.2% on both platforms.</p>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead><tr><th scope="col">Step</th><th scope="col">Facebook / Instagram</th><th scope="col">LinkedIn</th></tr></thead>
+          <tbody>
+            <tr><td>Budget</td><td>$3,000</td><td>$3,000</td></tr>
+            <tr style="background:var(--off-white)"><td>Planning CPM</td><td>$8.50</td><td>$35.00</td></tr>
+            <tr><td>Impressions ($3,000 ÷ CPM × 1,000)</td><td><strong>352,941</strong></td><td><strong>85,714</strong></td></tr>
+            <tr style="background:var(--off-white)"><td>Estimated unique reach (÷ 2.5 frequency)</td><td>141,176</td><td>34,286</td></tr>
+            <tr><td>Clicks at 1.2% CTR</td><td><strong>4,235</strong></td><td><strong>1,029</strong></td></tr>
+            <tr style="background:var(--off-white)"><td>Cost per click ($3,000 ÷ clicks)</td><td>$0.71</td><td>$2.92</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">The calculator applies the same click-through rate to every platform, so the table shows reach and cost per click, not lead quality. B2B audiences on LinkedIn are priced at a premium for job-title targeting; compare cost per qualified lead with the <a href="/cac-calculator/">CAC Calculator</a> before shifting budget.</p>
+    </section>
 
     <!-- TASK 25: How to use this calculator -->
     <div class="definition-box" style="margin-top: var(--space-8);">
