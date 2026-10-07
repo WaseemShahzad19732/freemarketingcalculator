@@ -38,8 +38,8 @@ const channelData = [
 
 const faqItems = [
   { q: 'What percentage of revenue should a company spend on marketing?', a: 'Marketing budgets average 7.8% of company revenue in the 2026 Gartner CMO Spend Survey of 401 CMOs, up from 7.7% in 2025. The Spring 2026 CMO Survey reports a range of 7.0% to 12.0% depending on business model. Early-stage companies in growth mode often plan above these averages, while mature companies with strong retention plan near or below them.' },
-  { q: 'How much do B2B companies spend on marketing?', a: 'The Spring 2026 CMO Survey, as reported by MarketScale, found B2B services firms spending 10.1% of revenue and B2B product firms spending 7.0%. The U.S. Small Business Administration suggests 7–8% of gross revenue for businesses under $5 million. Companies with many small deals tend to spend toward the top of the B2B range, and enterprise sellers with long sales cycles toward the bottom.' },
-  { q: 'How much do B2C companies spend on marketing?', a: 'The Spring 2026 CMO Survey, as reported by MarketScale, found B2C product firms spending 12.0% of revenue and B2C services firms spending 7.2%. Consumer product brands spend more because they compete for attention across paid media, retail promotion and brand advertising. The planning benchmark on this page for consumer goods is 14%, with a typical range of 10–18%.' },
+  { q: 'How much do B2B companies spend on marketing?', a: 'The Spring 2026 CMO Survey found B2B services firms spending 10.1% of revenue and B2B product firms spending 7.0%. The U.S. Small Business Administration suggests 7–8% of gross revenue for businesses under $5 million. Companies with many small deals tend to spend toward the top of the B2B range, and enterprise sellers with long sales cycles toward the bottom.' },
+  { q: 'How much do B2C companies spend on marketing?', a: 'The Spring 2026 CMO Survey found B2C product firms spending 12.0% of revenue and B2C services firms spending 7.2%. Consumer product brands spend more because they compete for attention across paid media, retail promotion and brand advertising. The planning benchmark on this page for consumer goods is 14%, with a typical range of 10–18%.' },
   { q: 'What is the average marketing budget for a small business?', a: 'The U.S. Small Business Administration recommends spending 7–8% of gross revenue on marketing for businesses with under $5 million in revenue and an established product. New businesses and those in competitive markets often plan higher to build initial customer acquisition. A business with $2 million in revenue at 8% would budget $160,000 a year.' },
   { q: 'How is a marketing budget divided across channels?', a: 'The 2026 Gartner CMO Spend Survey found paid media averages 31.4% of marketing budgets, labour 24.5% and marketing technology 19.4%. The channel table on this page shows planning splits for B2B and B2C companies, not survey results. Adjust the splits to the channels that bring in customers at the lowest cost.' },
   { q: 'How do I calculate my marketing budget?', a: 'Multiply projected annual revenue by a benchmark percentage, then adjust for growth goals. A $2 million business at 8% budgets $160,000 a year, or about $13,333 a month. The free Marketing Budget Calculator at freemarketingcalculator.com/marketing-budget-calculator/ applies an industry percentage, a growth multiplier and a suggested channel allocation.' },
@@ -120,18 +120,19 @@ const breadcrumbSchema = {
             <tr><th scope="col">Source</th><th scope="col">Segment</th><th scope="col">Marketing Budget (% of Revenue)</th></tr>
           </thead>
           <tbody>
-            <tr><td><a href="https://www.chiefmarketer.com/gartner-cmo-spend-survey-budgets-reflect-increase-in-consumption-based-martech-paid-media-spend/" target="_blank" rel="noopener noreferrer nofollow">Gartner CMO Spend Survey 2026</a></td><td>All respondents (401 CMOs)</td><td><strong>7.8%</strong></td></tr>
+            <tr><td><a href="https://www.gartner.com/en/newsroom/press-releases/2026-05-11-gartner-2026-cmo-spend-survey-finds-cmos-allocate-15-point-3-percent-of-marketing-budgets-to-ai-but-only-30-percent-are-ready-to-scale-ai-capabilities" target="_blank" rel="noopener noreferrer nofollow">Gartner CMO Spend Survey 2026</a></td><td>All respondents (401 CMOs)</td><td><strong>7.8%</strong></td></tr>
             <tr style="background:var(--off-white)"><td><a href="https://www.gartner.com/en/newsroom/press-releases/2025-05-12-gartner-2025-cmo-spend-survey-reveals-marketing-budgets-have-flatlined-at-seven-percent-of-overall-company-revenue" target="_blank" rel="noopener noreferrer nofollow">Gartner CMO Spend Survey 2025</a></td><td>All respondents (402 CMOs)</td><td>7.7%</td></tr>
-            <tr><td rowspan="4"><a href="https://www.marketscale.com/industries/marketing-tech/b2b-marketing-budgets-are-rising-in-2026-but-benchmarks-vary-by-business-model" target="_blank" rel="noopener noreferrer nofollow">The CMO Survey, Spring 2026</a> (as reported by MarketScale)</td><td>B2C product</td><td>12.0%</td></tr>
-            <tr style="background:var(--off-white)"><td>B2B services</td><td>10.1%</td></tr>
-            <tr><td>B2C services</td><td>7.2%</td></tr>
-            <tr style="background:var(--off-white)"><td>B2B product</td><td>7.0%</td></tr>
-            <tr><td>U.S. Small Business Administration</td><td>Businesses under $5M revenue</td><td>7–8% of gross revenue (guidance)</td></tr>
+            <tr><td rowspan="5"><a href="https://cmosurvey.org/wp-content/uploads/2026/04/The_CMO_Survey-Highlights_and_Insights_Report-2026.pdf" target="_blank" rel="noopener noreferrer nofollow">The CMO Survey, Spring 2026</a> (Highlights and Insights Report, slide 53; 308 respondents)</td><td>All respondents</td><td>9.0%</td></tr>
+            <tr style="background:var(--off-white)"><td>B2C product</td><td>12.0%</td></tr>
+            <tr><td>B2B services</td><td>10.1%</td></tr>
+            <tr style="background:var(--off-white)"><td>B2C services</td><td>7.2%</td></tr>
+            <tr><td>B2B product</td><td>7.0%</td></tr>
+            <tr style="background:var(--off-white)"><td>U.S. Small Business Administration</td><td>Businesses under $5M revenue</td><td>7–8% of gross revenue (guidance)</td></tr>
           </tbody>
         </table>
       </div>
       <p class="bench-source">
-        Gartner figures are survey averages across industries. The CMO Survey figures were checked through a secondary report (MarketScale), not the original release. Neither source publishes the individual industry rows in the planning table below.
+        Gartner figures are survey averages across industries. The CMO Survey figures come from its Spring 2026 Highlights and Insights Report (308 respondents, fielded January 7–29, 2026); its 9.0% overall average is higher than Gartner's 7.8% because the surveys sample different respondents. Neither source publishes the individual industry rows in the planning table below.
       </p>
     </section>
 

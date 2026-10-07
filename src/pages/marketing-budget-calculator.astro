@@ -34,7 +34,7 @@ const faqItems = [
   },
   {
     q: 'How much do B2B companies spend on marketing?',
-    a: 'The CMO Survey (Spring 2026) reports B2B product firms spending 7.0% of revenue and B2B services firms spending 10.1%, as summarised by MarketScale. The calculator uses 7% as its B2B services planning benchmark and 8% for the “Other” option. Companies with many small deals tend to spend toward the top of the range, and enterprise sellers with long sales cycles toward the bottom.'
+    a: 'The CMO Survey (Spring 2026) reports B2B product firms spending 7.0% of revenue and B2B services firms spending 10.1%, according to the Highlights and Insights Report. The calculator uses 7% as its B2B services planning benchmark and 8% for the “Other” option. Companies with many small deals tend to spend toward the top of the range, and enterprise sellers with long sales cycles toward the bottom.'
   },
   {
     q: 'How much should a manufacturing company spend on marketing?',
@@ -320,17 +320,18 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
             <tr><th scope="col">Source</th><th scope="col">Segment</th><th scope="col">Marketing Budget (% of Revenue)</th></tr>
           </thead>
           <tbody>
-            <tr><td><a href="https://www.chiefmarketer.com/gartner-cmo-spend-survey-budgets-reflect-increase-in-consumption-based-martech-paid-media-spend/" target="_blank" rel="noopener noreferrer nofollow">Gartner CMO Spend Survey 2026</a></td><td>All respondents (401 CMOs)</td><td><strong>7.8%</strong></td></tr>
+            <tr><td><a href="https://www.gartner.com/en/newsroom/press-releases/2026-05-11-gartner-2026-cmo-spend-survey-finds-cmos-allocate-15-point-3-percent-of-marketing-budgets-to-ai-but-only-30-percent-are-ready-to-scale-ai-capabilities" target="_blank" rel="noopener noreferrer nofollow">Gartner CMO Spend Survey 2026</a></td><td>All respondents (401 CMOs)</td><td><strong>7.8%</strong></td></tr>
             <tr style="background:var(--off-white)"><td><a href="https://www.gartner.com/en/newsroom/press-releases/2025-05-12-gartner-2025-cmo-spend-survey-reveals-marketing-budgets-have-flatlined-at-seven-percent-of-overall-company-revenue" target="_blank" rel="noopener noreferrer nofollow">Gartner CMO Spend Survey 2025</a></td><td>All respondents (402 CMOs)</td><td>7.7%</td></tr>
-            <tr><td rowspan="4"><a href="https://www.marketscale.com/industries/marketing-tech/b2b-marketing-budgets-are-rising-in-2026-but-benchmarks-vary-by-business-model" target="_blank" rel="noopener noreferrer nofollow">The CMO Survey, Spring 2026</a> (as reported by MarketScale)</td><td>B2C product</td><td>12.0%</td></tr>
-            <tr style="background:var(--off-white)"><td>B2B services</td><td>10.1%</td></tr>
-            <tr><td>B2C services</td><td>7.2%</td></tr>
-            <tr style="background:var(--off-white)"><td>B2B product</td><td>7.0%</td></tr>
-            <tr><td>U.S. Small Business Administration</td><td>Businesses under $5M revenue</td><td>7–8% of gross revenue (guidance)</td></tr>
+            <tr><td rowspan="5"><a href="https://cmosurvey.org/wp-content/uploads/2026/04/The_CMO_Survey-Highlights_and_Insights_Report-2026.pdf" target="_blank" rel="noopener noreferrer nofollow">The CMO Survey, Spring 2026</a> (Highlights and Insights Report, slide 53; 308 respondents)</td><td>All respondents</td><td>9.0%</td></tr>
+            <tr style="background:var(--off-white)"><td>B2C product</td><td>12.0%</td></tr>
+            <tr><td>B2B services</td><td>10.1%</td></tr>
+            <tr style="background:var(--off-white)"><td>B2C services</td><td>7.2%</td></tr>
+            <tr><td>B2B product</td><td>7.0%</td></tr>
+            <tr style="background:var(--off-white)"><td>U.S. Small Business Administration</td><td>Businesses under $5M revenue</td><td>7–8% of gross revenue (guidance)</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="bench-source">Gartner figures are survey averages across industries; the CMO Survey figures were checked through a secondary report, not the original release. Neither source publishes the individual industry rows in the planning table above.</p>
+      <p class="bench-source">Gartner figures are survey averages across industries; the CMO Survey figures come from its Spring 2026 Highlights and Insights Report (308 respondents, fielded January 7–29, 2026). The CMO Survey's 9.0% overall average is higher than Gartner's 7.8% because the two surveys sample different respondents. Neither source publishes the individual industry rows in the planning table above.</p>
     </section>
 
     <!-- ═══ AD UNIT 2 ═══ — Mid content, between table and FAQ -->
@@ -340,7 +341,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       <h2>How Much Should B2B Companies Spend on Marketing?</h2>
       <p>
         B2B product firms spend 7.0% of revenue on marketing and B2B services firms spend 10.1%,
-        according to the Spring 2026 CMO Survey as reported by MarketScale. This calculator's
+        according to the Spring 2026 CMO Survey. This calculator's
         B2B services planning benchmark is 7% with a 5–9% range, and its generic “Other” option uses 8%.
         Companies with a high volume of smaller deals tend to sit toward the top of the range,
         while enterprise sellers with long sales cycles sit toward the bottom.
