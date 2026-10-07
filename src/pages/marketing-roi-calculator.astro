@@ -17,7 +17,7 @@ const faqItems = [
   },
   {
     q: 'Is a 2% ROI good for marketing?',
-    a: 'No. A 2% marketing ROI means you earned $0.02 for every dollar spent — you are operating at a significant loss. A healthy marketing ROI starts at <strong>100%</strong> (doubling your spend), with direct-response channels targeting 200–400%. Email marketing typically achieves 4200%+; paid search targets 200%+.'
+    a: 'No. A 2% marketing ROI means you earned $0.02 for every dollar spent — you are operating at a significant loss. A healthy marketing ROI starts at <strong>100%</strong> (doubling your spend), with direct-response channels targeting 200–400%. Email is widely quoted at 3,600–4,200% (Litmus reported 38:1 in 2018), and paid search planning targets start near 200%.'
   },
   {
     q: 'What does 22% ROI mean?',
@@ -25,7 +25,11 @@ const faqItems = [
   },
   {
     q: 'What is a good marketing ROI?',
-    a: 'A commonly cited benchmark is <strong>5:1 (500%)</strong> — earning $5 for every $1 spent. 10:1 (1000%) is considered excellent. Anything below 2:1 (200%) is typically not worth the investment once overhead costs are factored in. Benchmarks vary significantly by channel: email often achieves 4200%+, while paid social averages 100–200%.'
+    a: 'A commonly cited benchmark is <strong>5:1 (500%)</strong> — earning $5 for every $1 spent. 10:1 (1000%) is considered excellent. Anything below 2:1 (200%) is typically not worth the investment once overhead costs are factored in. Benchmarks vary significantly by channel: First Page Sage reports 748% for B2B SEO and 36% for B2B paid search.'
+  },
+  {
+    q: 'What is the difference between ROMI and ROAS?',
+    a: 'ROAS divides revenue by ad spend, so $20,000 of revenue from $5,000 of ad spend is a 4:1 ROAS. ROMI subtracts cost before dividing and can include every marketing cost, so the same campaign has a 300% ROMI on ad spend alone. Learn the derivation in the <a href="/blog/romi-calculator-formula/">ROMI formula guide</a>.'
   }
 ];
 
@@ -279,7 +283,8 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       </p>
       <div class="formula-example">
         <strong>Example:</strong> Campaign generated $50,000 revenue, cost $10,000.
-        ($50,000 − $10,000) ÷ $10,000 × 100 = <strong>400% ROMI</strong>
+        ($50,000 − $10,000) ÷ $10,000 × 100 = <strong>400% ROMI</strong>.
+        Step-by-step method: <a href="/blog/romi-calculator-formula/">ROMI formula guide</a>.
       </div>
     </div>
 
@@ -305,7 +310,8 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
         <strong>ROMI</strong> is the standard metric for measuring how much revenue a marketing campaign
         generates relative to its cost. Unlike general ROI, ROMI isolates marketing spend specifically.
         A good ROMI benchmark is <strong>5:1 (500%)</strong> — earning $5 for every $1 spent.
-        Email marketing typically achieves 3,600–4,200% ROMI; paid search averages 200–400% ROMI.
+        Channel results differ widely; see the benchmark table below and the
+        <a href="/blog/romi-calculator-formula/">ROMI formula guide</a> for the derivation and worked examples.
       </p>
       <p style="margin-top:var(--space-3);">
         <strong>ROMI Formula:</strong> (Revenue − Marketing Cost) ÷ Marketing Cost × 100<br/>
@@ -325,8 +331,8 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     </div>
 
     <section class="bench-section" aria-labelledby="roi-bench-heading">
-      <h2 id="roi-bench-heading">Marketing ROI by Channel — 2026 Benchmarks</h2>
-      <span class="bench-date">Updated July 2026</span>
+      <h2 id="roi-bench-heading">Marketing ROI by Channel — 2026 Planning Ranges</h2>
+      <span class="bench-date">Updated October 2026</span>
 
       <div class="bench-table-wrap">
         <table class="bench-table">
@@ -356,8 +362,9 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
         </table>
       </div>
       <p class="bench-source">
-        Sources: Litmus Email ROI Report, Demand Gen Report, WordStream Google Ads benchmarks,
-        Salesforce State of Marketing 2026. ROI figures are industry medians; individual results vary.
+        Illustrative planning ranges, not survey results; these are the values the channel presets use. For named
+        studies see the <a href="/blog/what-is-a-good-marketing-roi/">good marketing ROI guide</a>
+        (First Page Sage, Litmus). Individual results vary.
       </p>
     </section>
 

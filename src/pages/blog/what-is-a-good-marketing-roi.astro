@@ -4,13 +4,14 @@ import FAQ from '../../components/FAQ.astro';
 
 const slug        = 'blog/what-is-a-good-marketing-roi';
 const title       = 'What Is a Good Marketing ROI? Benchmarks by Channel (2026)';
-const description = 'A good marketing ROI is 5:1 (500%). Channel benchmarks: email 4,200%, SEO 275%, paid search 200%. Includes industry benchmarks and the two ROI formulas explained.';
+const description = 'A good marketing ROI is commonly 5:1 (500%). See channel ROI from named studies, industry planning targets and both ROI formulas explained.';
 const published   = 'July 7, 2026';
-const updated     = 'July 7, 2026';
+const updated     = 'October 8, 2026';
+const updatedISO  = '2026-10-08';
 const readTime    = '6 min read';
 
 const channelBenchmarks = [
-  { channel: 'Email Marketing',       avg: '4,200%', range: '2,000–8,000%', note: '$36 return per $1 spent (industry average)' },
+  { channel: 'Email Marketing',       avg: '3,600–4,200%', range: '2,000–8,000%', note: 'Widely quoted as $36–$42 per $1; Litmus reported 38:1 in 2018' },
   { channel: 'SEO / Organic Search',  avg: '275%',   range: '100–600%',     note: 'Compounds over 12+ months; slow to start' },
   { channel: 'Content Marketing',     avg: '300%',   range: '150–500%',     note: 'Long-term asset; ROI improves with age' },
   { channel: 'Paid Search (SEM)',     avg: '200%',   range: '100–400%',     note: 'Depends heavily on CPC and conversion rate' },
@@ -35,7 +36,11 @@ const industryBenchmarks = [
 const faqItems = [
   {
     q: 'What is a good marketing ROI?',
-    a: 'A good marketing ROI is 5:1 — earning $5 in revenue for every $1 spent on marketing (500%). This is the most widely cited benchmark. 10:1 (1,000%) is considered excellent. Anything below 2:1 (200%) is generally not sustainable once overhead costs are factored in.',
+    a: 'A good marketing ROI is 5:1 — earning $5 in revenue for every $1 spent on marketing (500%). This is the most widely cited rule of thumb, not a published standard. 10:1 (1,000%) is considered excellent. Anything below 2:1 (200%) is generally not sustainable once overhead costs are factored in.',
+  },
+  {
+    q: 'What is a good marketing ROI percentage?',
+    a: 'A good marketing ROI percentage is 500%, which equals a 5:1 return. Percentages above 300% are generally strong, and anything below 100% means the campaign returned less than it cost. Direct-response channels usually target 200–400%, while brand awareness campaigns can run lower. The percentage also depends on whether ROI is measured on revenue or on gross profit, so state the method with the number.',
   },
   {
     q: 'Is a 2% ROI good for marketing?',
@@ -47,11 +52,15 @@ const faqItems = [
   },
   {
     q: 'What is a 1000% return on $1,000?',
-    a: 'A 1,000% ROI on a $1,000 investment means you gained $10,000 in revenue, for a total return of $11,000. The formula: ROI % = (Net Profit ÷ Investment) × 100. $10,000 ÷ $1,000 × 100 = 1,000%. In marketing, this is achievable — email marketing regularly exceeds it.',
+    a: 'A 1,000% ROI on a $1,000 investment means you gained $10,000, for a total return of $11,000. The formula: ROI % = (Net Profit ÷ Investment) × 100, so $10,000 ÷ $1,000 × 100 = 1,000%. In marketing, this is achievable: Litmus reported a 38:1 return on email marketing (3,800%) in 2018.',
   },
   {
     q: 'What is the average marketing ROI across all channels?',
-    a: 'The average marketing ROI across all channels is approximately 200–300% (earning $3–$4 per $1 spent), when blended across paid, organic, and email. However, this average is heavily influenced by channel mix — companies with strong email programs significantly outperform those relying primarily on paid social.',
+    a: 'No single average exists because studies define and attribute ROI differently. First Page Sage\'s client data for 2020 to 2025 reports 748% for B2B SEO and 261% for B2B email, against 36% for B2B paid search. Litmus reported a 38:1 return for email in 2018. Channel mix drives blended ROI, so compare your result with the same channel and the same measurement method.',
+  },
+  {
+    q: 'What is the average marketing ROI by industry?',
+    a: 'No published study reports average marketing ROI by industry on a common definition, so industry figures are planning targets rather than averages. The targets in this guide run from 150–250% for nonprofits to 400–600% for e-commerce. Define ROI on gross profit and compare against your own history before adopting an industry target.',
   },
   {
     q: 'How do I calculate marketing ROI?',
@@ -64,7 +73,7 @@ const articleSchema = {
   "headline": title,
   "description": description,
   "datePublished": "2026-07-07",
-  "dateModified": updated,
+  "dateModified": updatedISO,
   "author": {
     "@type": "Person",
     "name": "Waseem Shahzad",
@@ -102,12 +111,13 @@ const breadcrumbSchema = {
       <p class="eyebrow">ROI & Performance · {readTime}</p>
       <h1 id="article-h1">What Is a Good Marketing ROI?</h1>
       <p class="citation">
-        A good marketing ROI is <strong style="color:var(--teal)">5:1 (500%)</strong> — earning $5 for every $1 spent.
-        But what counts as "good" varies significantly by channel, industry, and how you measure it.
-        Here are the 2026 benchmarks.
+        A good marketing ROI is <strong style="color:var(--teal)">5:1 (500%)</strong> — earning $5 for every $1 spent,
+        the rule of thumb most marketers cite. What counts as "good" varies by channel, industry and how ROI is measured.
+        Named-study benchmarks are below.
       </p>
       <div class="meta-badges">
         <span class="badge">📅 {published}</span>
+        <span class="badge">🔄 Updated {updated}</span>
         <span class="badge">✓ {readTime}</span>
         <span class="badge">✓ Sources cited</span>
       </div>
@@ -126,11 +136,23 @@ const breadcrumbSchema = {
           <div class="definition-box__label">Quick Answer</div>
           <p>
             A good marketing ROI is <strong>5:1 (500%)</strong> — earning $5 in revenue for every $1
-            spent on marketing. This is the most widely cited benchmark. A 10:1 ratio (1,000%) is
-            considered excellent. Anything below 2:1 (200%) is generally not sustainable when overhead
-            costs are included. Benchmarks vary significantly by channel: email averages 4,200%,
-            SEO 275%, paid search 200%.
+            spent on marketing. This is a widely cited rule of thumb, not a published standard. A 10:1 ratio
+            (1,000%) is considered excellent, and anything below 2:1 (200%) is generally not sustainable once
+            overhead costs are included. Reported channel ROI varies widely by study: Litmus reported a 38:1
+            return on email in 2018, while First Page Sage's 2020 to 2025 client data shows 748% for B2B SEO
+            and 36% for B2B paid search.
           </p>
+        </div>
+
+        <div class="definition-box" style="margin-top: var(--space-4);">
+          <div class="definition-box__label">Key Takeaways</div>
+          <ul style="margin: var(--space-2) 0 0 var(--space-5); color: var(--text-mid); line-height: 1.8;">
+            <li>A good marketing ROI is 500% (5:1); above 300% is strong and below 100% loses money.</li>
+            <li>At 5:1, a business with a gross margin above 20% earns back its marketing spend from gross profit alone.</li>
+            <li>Channel ROI differs sharply: First Page Sage reports 748% for B2B SEO and 36% for B2B paid search.</li>
+            <li>Litmus reported a 38:1 email return in 2018 from about 400 marketers.</li>
+            <li>Measure ROI on gross profit, not revenue, when comparing channels or industries.</li>
+          </ul>
         </div>
 
         
@@ -142,15 +164,13 @@ const breadcrumbSchema = {
 
         <h2>The Standard Benchmark: 5:1 ROI</h2>
         <p>
-          The 5:1 ratio is the most commonly referenced benchmark in marketing — it means you earn
-          $5 in revenue for every $1 invested. At this level, you have recovered your spend, covered
-          typical overhead costs, and generated a meaningful profit on top.
+          The 5:1 ratio is the most commonly referenced benchmark in marketing: $5 in revenue for every $1 invested.
+          It is not a law or a published standard.
         </p>
         <p>
-          Where does this number come from? It isn't a law or a published standard — it emerged
-          as a rule of thumb because most businesses running efficiently across multiple channels
-          land somewhere between 400% and 600% blended ROI when properly attributed. The 5:1 ratio
-          sits at the midpoint and has stuck.
+          It became a rule of thumb because the arithmetic works for most businesses. At 5:1, a business with a gross
+          margin above 20% earns back its marketing spend from gross profit alone (5 × 20% = 1), and higher margins leave
+          a profit on top.
         </p>
 
         <!-- ROI RANGES TABLE — plain HTML for AIO extraction -->
@@ -201,9 +221,9 @@ const breadcrumbSchema = {
         <h2>Why "Good" Depends on the Channel</h2>
         <p>
           The 5:1 benchmark is a useful starting point, but treating it as universal is a mistake.
-          Email marketing routinely returns 4,200% ROI while display advertising often struggles
-          to hit 100% — both in the same company, in the same quarter. What's "good" depends
-          entirely on which channel you're measuring.
+          Reported ROI differs sharply by channel: First Page Sage's 2020 to 2025 client data shows 748% for
+          B2B SEO against 36% for B2B paid search, and Litmus reported a 38:1 return on email in 2018.
+          What's "good" depends entirely on which channel you're measuring.
         </p>
         <p>
           The reason for this spread is fundamental economics. Email has near-zero marginal cost
@@ -214,8 +234,8 @@ const breadcrumbSchema = {
 
         <!-- CHANNEL BENCHMARK TABLE -->
         <section class="bench-section" aria-labelledby="channel-bench-heading">
-          <h2 id="channel-bench-heading">Marketing ROI Benchmarks by Channel — 2026</h2>
-          <span class="bench-date">Updated July 2026</span>
+          <h2 id="channel-bench-heading">Marketing ROI Planning Ranges by Channel — 2026</h2>
+          <span class="bench-date">Updated October 2026</span>
           <div class="bench-table-wrap">
             <table class="bench-table">
               <caption class="sr-only">Average marketing ROI by channel, 2026</caption>
@@ -240,16 +260,54 @@ const breadcrumbSchema = {
             </table>
           </div>
           <p class="bench-source">
-            Sources: Litmus Email ROI Report 2026, WordStream Paid Search Benchmarks,
-            HubSpot State of Marketing 2026, Salesforce State of Marketing 2026,
-            Content Marketing Institute 2026 Report.
+            These ranges are illustrative planning targets for comparison, not survey results.
+            Figures from named studies, with their methods, follow in the next section.
+          </p>
+        </section>
+
+        <!-- NAMED STUDIES -->
+        <section class="bench-section" aria-labelledby="named-studies-heading" style="margin-top: var(--space-10);">
+          <h2 id="named-studies-heading">Marketing ROI by Channel From Named Studies</h2>
+          <span class="bench-date">Data: Q1 2020 to Q4 2025</span>
+          <p>
+            First Page Sage's client data for 2020 to 2025 reports a 748% average ROI for B2B SEO, 261% for B2B email
+            and 36% for B2B paid search, and Litmus reported a 38:1 email return in 2018. Studies differ in
+            definitions, samples and attribution, so compare channels within one study rather than across studies.
+          </p>
+          <div class="bench-table-wrap">
+            <table class="bench-table">
+              <caption class="sr-only">Marketing ROI by channel, B2B and B2C, First Page Sage 2020 to 2025</caption>
+              <thead>
+                <tr><th scope="col">Channel</th><th scope="col">B2B ROI</th><th scope="col">B2C ROI</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>SEO</td><td><strong>748%</strong></td><td>721%</td></tr>
+                <tr style="background: var(--off-white)"><td>Webinars</td><td><strong>430%</strong></td><td>113%</td></tr>
+                <tr><td>Email marketing</td><td><strong>261%</strong></td><td>298%</td></tr>
+                <tr style="background: var(--off-white)"><td>LinkedIn (paid)</td><td><strong>229%</strong></td><td>57%</td></tr>
+                <tr><td>Influencer marketing</td><td><strong>206%</strong></td><td>689%</td></tr>
+                <tr style="background: var(--off-white)"><td>Facebook ads</td><td><strong>87%</strong></td><td>443%</td></tr>
+                <tr><td>Online PR</td><td><strong>62%</strong></td><td>156%</td></tr>
+                <tr style="background: var(--off-white)"><td>SEM / PPC</td><td><strong>36%</strong></td><td>24%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="bench-source">
+            Method: <a href="https://firstpagesage.com/seo-blog/marketing-roi-by-channel/" rel="noopener">First Page Sage, Marketing ROI by Channel</a>
+            draws on client campaigns in more than 25 B2B and B2C industries (average campaign length 2.7 years),
+            includes a channel only when at least 8 clients supplied data, and credits 60% of each conversion to the
+            first-touch channel with the rest split evenly across other channels. Its worked example divides revenue by
+            spend, so the percentages appear to be gross revenue-to-spend ratios rather than the net ROI formula used
+            in this guide. Email: <a href="https://www.litmus.com/press/litmus-research-finds-email-marketing-roi-is-38-to-1" rel="noopener">Litmus, press release of October 11, 2018</a>,
+            based on data from nearly 400 marketers worldwide. Both are agency or vendor data, not audited market-wide averages.
           </p>
         </section>
 
         <h2>The Problem with Comparing Channels Directly</h2>
         <p>
-          The table above can be misleading if read naively. Email's 4,200% ROI looks astonishing
-          compared to paid search's 200% — but they aren't competing for the same job.
+          Channel ROI figures are not directly comparable because each channel does a different job.
+          Email's 3,600–4,200% ROI in the planning table looks astonishing next to paid search's 200%,
+          but the two are not competing for the same customers.
         </p>
         <p>
           Email nurtures existing relationships. Paid search acquires brand-new customers at the
@@ -265,7 +323,11 @@ const breadcrumbSchema = {
         <!-- INDUSTRY BENCHMARKS TABLE -->
         <section class="bench-section" aria-labelledby="industry-bench-heading">
           <h2 id="industry-bench-heading">What Is a Good Marketing ROI by Industry?</h2>
-          <span class="bench-date">Updated July 2026</span>
+          <span class="bench-date">Updated October 2026</span>
+          <p>
+            No published study reports average marketing ROI by industry on a common definition, so the table
+            gives planning targets rather than averages.
+          </p>
           <div class="bench-table-wrap">
             <table class="bench-table">
               <caption class="sr-only">Good marketing ROI targets by industry, 2026</caption>
@@ -288,9 +350,8 @@ const breadcrumbSchema = {
             </table>
           </div>
           <p class="bench-source">
-            Sources: Gartner CMO Survey 2025, HubSpot State of Marketing 2026,
-            Wordstream Industry Benchmarks 2026. Ranges represent achievable targets
-            for mid-market companies with 12+ months of marketing programme history.
+            Illustrative planning targets for mid-market companies with 12+ months of marketing programme history.
+            They are not survey results; check them against your own historical ROI.
           </p>
         </section>
 
@@ -427,9 +488,7 @@ const breadcrumbSchema = {
           <div>
             <p style="font-weight:700; color:var(--navy); margin-bottom: 4px;">Waseem Shahzad</p>
             <p style="font-size: var(--text-sm); color: var(--text-mid); line-height:1.5;">
-              Digital marketing professional. Benchmarks in this article are sourced from
-              Litmus, WordStream, HubSpot, Salesforce, and Content Marketing Institute —
-              all linked in the sources section below each table.
+              Digital marketing professional. Named studies are linked in the section above; the planning ranges in the other tables are illustrative targets, not survey results.
               <a href="/about/" style="color: var(--teal-dark);">About the author →</a>
             </p>
           </div>
@@ -445,6 +504,7 @@ const breadcrumbSchema = {
             <ul class="toc-list">
               <li><a href="#article-h1">What Is a Good ROI?</a></li>
               <li><a href="#channel-bench-heading">ROI by Channel</a></li>
+              <li><a href="#named-studies-heading">Named Studies</a></li>
               <li><a href="#industry-bench-heading">ROI by Industry</a></li>
               <li><a href="#faq-section">FAQ</a></li>
             </ul>
