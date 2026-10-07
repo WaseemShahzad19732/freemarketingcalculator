@@ -37,10 +37,10 @@ const categories = [
         metric: '$390 avg CAC (B2B SMB)', badge: 'new' },
       { href: '/email-marketing-roi-calculator/', name: 'Email Marketing ROI', icon: 'mail',
         desc: 'Email ROMI from list size, open rate, click rate, and platform cost.',
-        metric: '4,200% avg ROI', badge: '' },
+        metric: '$36–$42 per $1 (quoted)', badge: '' },
       { href: '/marketing-automation-roi-calculator/', name: 'Marketing Automation ROI', icon: 'zap',
         desc: 'Time savings, lead lift %, and platform cost. Built for B2B.',
-        metric: '451% more qualified leads', badge: '' },
+        metric: '544% 3-year ROI (Nucleus)', badge: '' },
       { href: '/conversion-rate-calculator/', name: 'Conversion Rate Calculator', icon: 'refresh',
         desc: 'CVR, reverse-computed traffic needed for a revenue goal, by channel.',
         metric: '3.5% avg CVR (organic)', badge: '' },
@@ -52,8 +52,8 @@ const categories = [
     subtitle: '3 calculators — plan spend before you commit it',
     tools: [
       { href: '/marketing-budget-calculator/', name: 'Marketing Budget Calculator', icon: 'pieChart',
-        desc: 'Recommends budget from annual revenue and industry, 9-sector benchmarks.',
-        metric: '6–12% of revenue', badge: '' },
+        desc: 'Recommends budget from annual revenue and industry, with 9-sector planning benchmarks.',
+        metric: '7.8% of revenue (Gartner)', badge: '' },
       { href: '/social-media-budget-calculator/', name: 'Social Media Budget Calculator', icon: 'share',
         desc: 'Paid and organic social budget by platform and campaign goal.',
         metric: '$8.50 avg CPM (FB/IG)', badge: '' },
@@ -91,12 +91,23 @@ const categories = [
     tools: [
       { href: '/marketing-salary-calculator/', name: 'Marketing Salary Calculator', icon: 'brief',
         desc: 'Salary range by role, seniority, and US location.',
-        metric: '$72K–$90K avg mgr', badge: '' },
+        metric: '$72K mid-level estimate', badge: '' },
       { href: '/marketing-agency-valuation-calculator/', name: 'Agency Valuation Calculator', icon: 'building',
-        desc: 'Market value from revenue multiples, EBITDA, and retention rate.',
-        metric: '4–6× EBITDA', badge: '' },
+        desc: 'Market value from revenue multiples, EBITDA and retention rate, using 2026 valuation bands.',
+        metric: '3–7× EBITDA', badge: '' },
     ],
   },
+];
+
+const guides = [
+  { href: '/marketing-budget-benchmarks/', name: 'Marketing Budget Benchmarks', desc: 'Budget as a percentage of revenue: Gartner 7.8% average, B2B vs B2C survey figures and industry planning ranges.' },
+  { href: '/blog/what-is-a-good-marketing-roi/', name: 'What Is a Good Marketing ROI?', desc: 'ROI benchmarks by channel and the 5:1 rule of thumb, with sources.' },
+  { href: '/blog/romi-calculator-formula/', name: 'ROMI Formula', desc: 'How to calculate return on marketing investment, with worked examples.' },
+  { href: '/blog/digital-marketing-metrics-guide/', name: 'Digital Marketing Metrics Guide', desc: 'CPM, CPC, CTR, ROAS and CPA defined, with formulas and 2026 spend context.' },
+  { href: '/blog/marketing-automation-roi/', name: 'Marketing Automation ROI', desc: 'Formula, four ROI scenarios and platform costs for marketing automation.' },
+  { href: '/blog/inbound-marketing-cost/', name: 'Inbound Marketing Cost', desc: '2026 pricing by model and channel, with three sample budgets.' },
+  { href: '/blog/marketing-agency-valuation-multiples/', name: 'Agency Valuation Multiples', desc: 'EBITDA and revenue multiples by agency size, with adjustments for retainers and client concentration.' },
+  { href: '/blog/email-marketing-roi-benchmarks/', name: 'Email Marketing ROI Benchmarks', desc: 'Where the $36–$42 per $1 figure comes from and current Mailchimp averages.' },
 ];
 
 const websiteSchema = {
@@ -115,10 +126,11 @@ const websiteSchema = {
         <p class="eyebrow">Free Marketing Tools — 2026</p>
         <h1 id="home-h1">Marketing Calculators</h1>
         <p class="citation">15 free marketing calculators for ROI, ROAS, CAC, budget planning, conversion rates, email performance, salary benchmarks, <a href="/blog/digital-marketing-metrics-guide/" style="color: var(--teal); text-decoration: underline;">CPM, CPC</a>, and more. Instant results. No signup. No email gate.</p>
+        <p class="citation" style="margin-top: var(--space-3);">The calculators cover five jobs: measuring return (ROI, CAC, email, automation, conversion rate), planning spend (budget, social media, inbound), pricing ads (ROAS, CPM, CPC, CPV, digital metrics), checking pay, and valuing an agency. Each page lists its formula, a worked example and sourced benchmarks.</p>
         <div class="meta-badges" style="margin-bottom: var(--space-6);">
           <span class="badge">✓ 15 calculators</span>
           <span class="badge">✓ Free forever</span>
-          <span class="badge">✓ Updated July 2026</span>
+          <span class="badge">✓ Updated October 2026</span>
         </div>
         <nav class="quickjump" aria-label="Jump to category">
           {categories.map((cat, i) => (
@@ -197,6 +209,21 @@ const websiteSchema = {
         </div>
       </div>
     ))}
+    <section class="container" style="padding-top: var(--space-10); padding-bottom: var(--space-12);" aria-labelledby="guides-h2">
+      <h2 id="guides-h2" class="home-section-heading">Guides &amp; Benchmarks</h2>
+      <p class="cat-subtitle">Formulas, sourced benchmarks and worked examples behind the calculators</p>
+      <ul class="tool-grid" style="list-style:none; padding:0; margin:0;">
+        {guides.map(g => (
+          <li>
+            <a href={g.href} class="tool-card">
+              <div class="tool-card__name">{g.name}</div>
+              <p class="tool-card__desc">{g.desc}</p>
+              <span class="tool-card__cta">Read guide →</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
   </main>
 </Base>
 
