@@ -3,35 +3,40 @@ import Base from '../../layouts/Base.astro';
 import FAQ from '../../components/FAQ.astro';
 
 const slug = 'blog/romi-calculator-formula';
-const title = 'ROMI Calculator: Formula, Examples and Free Tool (2026)';
-const description = 'ROMI (Return on Marketing Investment) formula explained with worked examples, benchmarks by channel, and a link to a free ROMI calculator. Updated 2026.';
+const title = 'ROMI Formula: How to Calculate It, With Examples (2026)';
+const description = 'ROMI formula: (revenue − marketing cost) ÷ marketing cost × 100. Two methods, worked examples, ROMI vs ROI vs ROAS, and benchmarks from named studies.';
 const published = 'July 14, 2026';
-const readTime = '5 min read';
+const updated = 'October 8, 2026';
+const updatedISO = '2026-10-08';
+const readTime = '6 min read';
 
 const faqItems = [
-  { q: 'What is ROMI?', a: 'ROMI (Return on Marketing Investment) measures how much revenue a marketing campaign generates relative to its cost. Formula: ROMI = (Revenue − Marketing Cost) ÷ Marketing Cost × 100. A 400% ROMI means you earned $4 for every $1 spent on marketing.' },
-  { q: 'What is the difference between ROI and ROMI?', a: 'ROI (Return on Investment) measures return across all business investments. ROMI isolates marketing spend specifically. ROMI = (Revenue from marketing − Marketing cost) ÷ Marketing cost × 100. They use the same formula but ROMI\'s denominator includes only marketing-related costs.' },
-  { q: 'What is a good ROMI?', a: 'A good ROMI is 500% (5:1) — earning $5 for every $1 of marketing spend. Email marketing typically achieves 3,600–4,200% ROMI. Paid search averages 200–400% ROMI. Anything below 100% means you\'re spending more than you\'re earning and should be reviewed immediately.' },
-  { q: 'What is the ROMI formula?', a: 'Basic ROMI = (Revenue − Marketing Cost) ÷ Marketing Cost × 100. Gross-profit ROMI = ((Revenue × Gross Margin %) − Marketing Cost) ÷ Marketing Cost × 100. The gross-profit variant is more accurate for product businesses because it accounts for the cost of goods before calculating profit.' },
-  { q: 'Is this ROMI calculator free?', a: 'Yes. Use our free ROMI Calculator at freemarketingcalculator.com/marketing-roi-calculator/ — no signup, no email required. Supports basic ROMI and the advanced gross-profit variant with COGS.' },
+  { q: 'What is ROMI?', a: 'ROMI (Return on Marketing Investment) measures the profit or revenue a marketing activity returns relative to its cost. The basic formula is ROMI = (Revenue − Marketing Cost) ÷ Marketing Cost × 100. A 400% ROMI means the activity returned $4 of net revenue for every $1 spent.' },
+  { q: 'What is the ROMI formula?', a: 'Basic ROMI = (Revenue − Marketing Cost) ÷ Marketing Cost × 100. Gross-profit ROMI = ((Revenue × Gross Margin %) − Marketing Cost) ÷ Marketing Cost × 100. The gross-profit version is more accurate for product businesses because it removes the cost of goods before measuring return.' },
+  { q: 'What is the difference between ROI and ROMI?', a: 'ROI measures the return on any investment, while ROMI limits the cost side to marketing spend. Both use the same structure: gain minus cost, divided by cost. A campaign can show a strong ROMI while overall business ROI is lower because other costs are excluded from the ROMI calculation.' },
+  { q: 'What is the difference between ROMI and ROAS?', a: 'ROAS divides revenue by ad spend only, so $20,000 of revenue from $5,000 of ad spend is a 4:1 ROAS. ROMI subtracts the cost before dividing and can include all marketing costs, so the same campaign has a 300% ROMI on ad spend alone. ROAS suits campaign tuning and ROMI suits profitability reporting.' },
+  { q: 'What is a good ROMI?', a: 'A 5:1 ratio (500%) is the commonly cited benchmark for a good marketing return. Named studies show wide differences by channel: First Page Sage reports 748% for B2B SEO and 36% for B2B paid search, and Litmus reported 38:1 for email in 2018. A ROMI below 0% means the activity lost money.' },
+  { q: 'Can ROMI be negative?', a: 'Yes. ROMI is negative whenever revenue, or gross profit in the gross-profit version, is lower than marketing cost. A business with $100,000 of revenue at a 30% gross margin that spends $40,000 on marketing has a gross-profit ROMI of −25%, even though basic ROMI shows 150%.' },
+  { q: 'How do I calculate ROMI in a spreadsheet?', a: 'Enter revenue in cell B1 and marketing cost in cell B2, then use =(B1-B2)/B2 and format the cell as a percentage. For gross-profit ROMI, enter gross margin as a decimal in B3 and use =(B1*B3-B2)/B2. Both formulas return a decimal that the percentage format displays as ROMI.' },
+  { q: 'Is there a free ROMI calculator?', a: 'Yes. The free ROMI calculator at freemarketingcalculator.com/marketing-roi-calculator/ needs no signup and supports both the basic and gross-profit formulas. It also includes channel presets and a shareable link for each calculation.' },
 ];
 
-const articleSchema = { "@type": "Article", "headline": title, "description": description, "datePublished": "2026-07-14", "dateModified": "2026-07-14", "author": { "@type": "Person", "name": "Waseem Shahzad", "url": "https://freemarketingcalculator.com/about/" }, "publisher": { "@id": "https://freemarketingcalculator.com/#org" }, "mainEntityOfPage": `https://freemarketingcalculator.com/${slug}/` };
+const articleSchema = { "@type": "Article", "headline": title, "description": description, "datePublished": "2026-07-14", "dateModified": updatedISO, "author": { "@type": "Person", "name": "Waseem Shahzad", "url": "https://freemarketingcalculator.com/about/" }, "publisher": { "@id": "https://freemarketingcalculator.com/#org" }, "mainEntityOfPage": `https://freemarketingcalculator.com/${slug}/` };
 const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
 const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
   { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
   { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://freemarketingcalculator.com/blog/" },
-  { "@type": "ListItem", "position": 3, "name": "ROMI Calculator Formula", "item": `https://freemarketingcalculator.com/${slug}/` }
+  { "@type": "ListItem", "position": 3, "name": "ROMI Formula", "item": `https://freemarketingcalculator.com/${slug}/` }
 ]};
 ---
 <Base title={title} description={description} slug={slug} schema={[articleSchema, faqSchema, breadcrumbSchema]}>
   <section class="page-hero" aria-labelledby="art-h1">
     <div class="container">
       <p class="eyebrow">ROI & Performance · {readTime}</p>
-      <h1 id="art-h1">ROMI Calculator — Formula, Examples and Free Tool</h1>
-      <p class="citation">ROMI (Return on Marketing Investment) explained: the formula, two calculation methods, worked examples, benchmarks by channel, and a free ROMI calculator.</p>
-      <div class="meta-badges"><span class="badge">📅 {published}</span><span class="badge">✓ {readTime}</span></div>
-      <a href="/marketing-roi-calculator/" class="btn-hero-cta">Try the ROMI Calculator <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      <h1 id="art-h1">ROMI Formula: How to Calculate Return on Marketing Investment</h1>
+      <p class="citation">ROMI (Return on Marketing Investment) equals (revenue − marketing cost) ÷ marketing cost × 100. A campaign earning $50,000 from $10,000 of spend has a 400% ROMI. Product businesses should use the gross-profit version, which applies gross margin to revenue first.</p>
+      <div class="meta-badges"><span class="badge">📅 {published}</span><span class="badge">🔄 Updated {updated}</span><span class="badge">✓ {readTime}</span></div>
+      <a href="/marketing-roi-calculator/" class="btn-hero-cta">Open the ROMI Calculator <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
     </div>
   </section>
   <div class="container">
@@ -39,57 +44,117 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
       <article class="article-body prose">
 
         <div class="definition-box" style="margin-top: var(--space-8);">
-          <div class="definition-box__label">Quick Answer — ROMI Formula</div>
-          <p><strong>ROMI = (Revenue − Marketing Cost) ÷ Marketing Cost × 100</strong></p>
-          <p style="margin-top: var(--space-2);">A good ROMI is 500% (5:1). Email marketing averages 3,600–4,200% ROMI. Paid search averages 200–400% ROMI.</p>
+          <div class="definition-box__label">Key Takeaways</div>
+          <ul style="margin: var(--space-2) 0 0 var(--space-5); color: var(--text-mid); line-height: 1.8;">
+            <li>Basic ROMI = (Revenue − Marketing Cost) ÷ Marketing Cost × 100.</li>
+            <li>Gross-profit ROMI replaces revenue with revenue × gross margin and is the safer measure for product businesses.</li>
+            <li>ROAS divides revenue by ad spend; ROMI subtracts cost first and can include every marketing cost.</li>
+            <li>First Page Sage reports 748% ROI for B2B SEO and 36% for B2B paid search, so channel matters more than a single benchmark.</li>
+            <li>The <a href="/marketing-roi-calculator/">ROMI calculator</a> runs both formulas without manual arithmetic.</li>
+          </ul>
         </div>
 
-        <p style="margin-top: var(--space-6);">Use our <a href="/marketing-roi-calculator/" style="color:var(--teal-dark); font-weight:700;">free ROMI Calculator</a> to compute your return on marketing investment instantly — supports basic ROMI and gross-profit ROMI with COGS.</p>
+        <h2 id="what-is-romi">What Is ROMI?</h2>
+        <p>ROMI is the return a business earns on its marketing spend, expressed as a percentage of that spend. It isolates marketing cost in the denominator, which separates it from general ROI. Some teams define the numerator as incremental revenue and others as incremental gross profit; this guide shows both so the result matches the definition finance uses.</p>
 
-        <h2>The Two ROMI Formulas</h2>
+        <h2 id="formulas">The Two ROMI Formulas</h2>
+        <p>Basic ROMI measures net revenue against cost, and gross-profit ROMI measures net gross profit against cost. The second formula is the recommended one for any business that sells products, because revenue overstates the money left after cost of goods.</p>
         <div class="formula-box">
           <p class="formula-title">Formula 1 — Basic ROMI</p>
           <p class="formula-text">ROMI = (Revenue − Marketing Cost) ÷ Marketing Cost × 100</p>
-          <div class="formula-example"><strong>Example:</strong> Campaign revenue $50,000, marketing cost $10,000 → ROMI = ($50,000 − $10,000) ÷ $10,000 × 100 = <strong>400% ROMI</strong></div>
+          <div class="formula-example"><strong>Example:</strong> Campaign revenue $50,000, marketing cost $10,000 → ($50,000 − $10,000) ÷ $10,000 × 100 = <strong>400% ROMI</strong></div>
         </div>
         <div class="formula-box" style="margin-top: var(--space-4);">
-          <p class="formula-title">Formula 2 — Gross-Profit ROMI (recommended for product businesses)</p>
+          <p class="formula-title">Formula 2 — Gross-Profit ROMI</p>
           <p class="formula-text">ROMI = ((Revenue × Gross Margin %) − Marketing Cost) ÷ Marketing Cost × 100</p>
-          <div class="formula-example"><strong>Example:</strong> $200,000 revenue, 60% gross margin, $50,000 marketing spend → (($200,000 × 60%) − $50,000) ÷ $50,000 = ($120,000 − $50,000) ÷ $50,000 = <strong>140% gross-profit ROMI</strong></div>
+          <div class="formula-example"><strong>Example:</strong> $200,000 revenue, 60% gross margin, $50,000 marketing spend → (($200,000 × 60%) − $50,000) ÷ $50,000 × 100 = <strong>140% ROMI</strong></div>
         </div>
 
-        <h2>ROMI Benchmarks by Channel</h2>
+        <h2 id="how-to">How to Calculate ROMI in 4 Steps</h2>
+        <p>Calculating ROMI takes four inputs: the revenue attributed to marketing, the full marketing cost, the gross margin and the time period. Use the same period for revenue and cost so the ratio is not distorted.</p>
+        <ol class="numbered-steps">
+          <li><strong>Total the marketing cost.</strong> Add ad spend, agency fees, creative production, software and the share of staff time spent on the campaign.</li>
+          <li><strong>Attribute revenue.</strong> Use tracked revenue from UTM-tagged links or a defined attribution model, and keep the model constant between periods.</li>
+          <li><strong>Choose the formula.</strong> Use basic ROMI for a quick view and gross-profit ROMI when the business has material cost of goods.</li>
+          <li><strong>Divide and convert.</strong> Subtract cost from the numerator, divide by cost, and multiply by 100 to get a percentage.</li>
+        </ol>
+        <p>The <a href="/marketing-roi-calculator/">ROMI calculator</a> performs steps 3 and 4 and returns net profit, the revenue ratio and return per $1 spent.</p>
+
+        <h2 id="examples">ROMI Worked Examples</h2>
+        <p>The same revenue can produce a strong or a negative ROMI depending on gross margin, which is why the gross-profit formula matters. The table compares three scenarios.</p>
         <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
           <table class="bench-table">
-            <thead><tr><th>Channel</th><th>Average ROMI</th><th>Notes</th></tr></thead>
+            <thead><tr><th>Scenario</th><th>Revenue</th><th>Gross Margin</th><th>Marketing Cost</th><th>Basic ROMI</th><th>Gross-Profit ROMI</th></tr></thead>
             <tbody>
-              <tr><td>Email Marketing</td><td><strong>3,600–4,200%</strong></td><td>$36–$42 return per $1 (Litmus 2026)</td></tr>
-              <tr style="background:var(--off-white)"><td>SEO / Organic Search</td><td><strong>275%</strong></td><td>Compounds over 12+ months</td></tr>
-              <tr><td>Content Marketing</td><td><strong>300%</strong></td><td>Long-term asset; improves with age</td></tr>
-              <tr style="background:var(--off-white)"><td>Paid Search (SEM)</td><td><strong>200%</strong></td><td>Faster results; higher cost</td></tr>
-              <tr><td>Paid Social Media</td><td><strong>120%</strong></td><td>Higher for B2C; lower for B2B</td></tr>
+              <tr><td>Paid campaign</td><td>$50,000</td><td>100%</td><td>$10,000</td><td><strong>400%</strong></td><td>400%</td></tr>
+              <tr style="background:var(--off-white)"><td>Product launch</td><td>$200,000</td><td>60%</td><td>$50,000</td><td>300%</td><td><strong>140%</strong></td></tr>
+              <tr><td>Low-margin retail</td><td>$100,000</td><td>30%</td><td>$40,000</td><td>150%</td><td><strong>−25%</strong></td></tr>
             </tbody>
           </table>
         </div>
+        <p>The low-margin retail row shows the risk: basic ROMI reports 150% while the campaign loses $10,000 once cost of goods is counted ($100,000 × 30% = $30,000 gross profit against $40,000 spend).</p>
 
-        <h2>ROMI vs ROI — What's the Difference?</h2>
-        <p><strong>ROMI</strong> isolates marketing spend specifically. The denominator includes only marketing costs: ad spend, agency fees, creative, and tools. <strong>ROI</strong> typically refers to total business investment. You can have a 400% ROMI from a campaign and a much lower overall business ROI if other costs are high.</p>
-        <p>Use ROMI to evaluate marketing channels and campaigns. Use ROI to evaluate the overall profitability of the business.</p>
+        <h2 id="romi-vs-roi-roas">ROMI vs ROI vs ROAS</h2>
+        <p>ROMI, ROI and ROAS all compare a return with a cost, but each uses a different cost base and a different numerator. Choosing the wrong one makes a campaign look better or worse than it is.</p>
+        <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
+          <table class="bench-table">
+            <thead><tr><th>Metric</th><th>Formula</th><th>Cost Included</th><th>Best Use</th></tr></thead>
+            <tbody>
+              <tr><td><strong>ROMI</strong></td><td>(Revenue − Marketing Cost) ÷ Marketing Cost</td><td>All marketing cost</td><td>Marketing profitability</td></tr>
+              <tr style="background:var(--off-white)"><td><strong>ROI</strong></td><td>(Gain − Investment Cost) ÷ Investment Cost</td><td>Total investment</td><td>Business-level returns</td></tr>
+              <tr><td><strong>ROAS</strong></td><td>Revenue ÷ Ad Spend</td><td>Media cost only</td><td>Campaign optimisation</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>A campaign with $20,000 revenue from $5,000 of ad spend has a 4:1 ROAS and a 300% ROMI on ad spend alone. The break-even ROAS depends on margin, which the <a href="/roas-calculator/">ROAS calculator</a> works out.</p>
+
+        <h2 id="good-romi">What Is a Good ROMI?</h2>
+        <p>A 5:1 ratio (500%) is the commonly cited benchmark for a good ROMI, but named studies show the channel matters more than the headline number. The figures below come from published sources, and the full channel breakdown is in the <a href="/blog/what-is-a-good-marketing-roi/">good marketing ROI guide</a>.</p>
+        <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
+          <table class="bench-table">
+            <thead><tr><th>Channel</th><th>Reported ROI</th><th>Source</th></tr></thead>
+            <tbody>
+              <tr><td>SEO (B2B / B2C)</td><td>748% / 721%</td><td><a href="https://firstpagesage.com/seo-blog/marketing-roi-by-channel/" target="_blank" rel="noopener noreferrer nofollow">First Page Sage</a></td></tr>
+              <tr style="background:var(--off-white)"><td>Email (B2B / B2C)</td><td>261% / 298%</td><td>First Page Sage</td></tr>
+              <tr><td>SEM / PPC (B2B / B2C)</td><td>36% / 24%</td><td>First Page Sage</td></tr>
+              <tr style="background:var(--off-white)"><td>Email (survey-based)</td><td>38:1 (3,800%)</td><td><a href="https://www.litmus.com/press/litmus-research-finds-email-marketing-roi-is-38-to-1" target="_blank" rel="noopener noreferrer nofollow">Litmus, 2018</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>First Page Sage measures revenue against full programme cost over multi-year campaigns, while the Litmus figure is a survey of email marketers, so the two methods are not directly comparable. Any ROMI below 0% means the activity lost money.</p>
+
+        <h2 id="mistakes">Common ROMI Calculation Mistakes</h2>
+        <p>Four errors account for most misleading ROMI figures: counting revenue instead of profit, leaving costs out, mixing time periods and changing attribution models between periods.</p>
+        <ul>
+          <li><strong>Revenue instead of profit.</strong> Basic ROMI overstates return for low-margin products, as the retail example shows.</li>
+          <li><strong>Partial costs.</strong> Counting only ad spend while excluding agency fees, creative and tools inflates ROMI.</li>
+          <li><strong>Mismatched periods.</strong> Revenue that arrives months after spend must be matched to the spend that produced it.</li>
+          <li><strong>Shifting attribution.</strong> Comparing a last-click month with a multi-touch month produces a false trend.</li>
+        </ul>
 
         <div style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: var(--radius-lg); padding: var(--space-8); margin: var(--space-8) 0; text-align: center; color: white;">
-          <p style="font-size: var(--text-xl); font-weight: 800; margin-bottom: var(--space-2);">Free ROMI Calculator</p>
-          <p style="color: rgba(255,255,255,.75); margin-bottom: var(--space-6);">Enter campaign revenue and cost. Supports basic ROMI and gross-profit ROMI with COGS. Channel presets included.</p>
-          <a href="/marketing-roi-calculator/" style="display:inline-block; background:var(--teal); color:var(--navy); font-weight:800; padding:var(--space-3) var(--space-8); border-radius:var(--radius); text-decoration:none; font-size:var(--text-lg);">Use the Free ROMI Calculator →</a>
+          <p style="font-size: var(--text-xl); font-weight: 800; margin-bottom: var(--space-2);">Calculate ROMI in seconds</p>
+          <p style="color: rgba(255,255,255,.75); margin-bottom: var(--space-6);">Enter revenue and cost; switch to Advanced mode for the gross-profit formula.</p>
+          <a href="/marketing-roi-calculator/" style="display:inline-block; background:var(--teal); color:var(--navy); font-weight:800; padding:var(--space-3) var(--space-8); border-radius:var(--radius); text-decoration:none; font-size:var(--text-lg);">Use the ROMI Calculator →</a>
         </div>
 
         <div style="display:flex; align-items:flex-start; gap: var(--space-4); padding: var(--space-6); background: var(--teal-faint); border-radius: var(--radius-lg); margin-top: var(--space-8); border: 1px solid rgba(0,196,179,.2);">
           <div style="width:44px; height:44px; background: var(--teal); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:800; color:var(--navy);">W</div>
-          <div><p style="font-weight:700; color:var(--navy); margin-bottom: 4px;">Waseem Shahzad</p><p style="font-size: var(--text-sm); color: var(--text-mid);">ROMI benchmarks from Litmus State of Email 2026, WordStream, and HubSpot State of Marketing 2026. <a href="/about/" style="color: var(--teal-dark);">About →</a></p></div>
+          <div><p style="font-weight:700; color:var(--navy); margin-bottom: 4px;">Waseem Shahzad</p><p style="font-size: var(--text-sm); color: var(--text-mid);">Named sources: First Page Sage (marketing ROI by channel) and Litmus (2018 email ROI press release). <a href="/about/" style="color: var(--teal-dark);">About →</a></p></div>
         </div>
       </article>
       <aside class="article-sidebar">
-        <div class="toc-box"><p class="toc-title">In this article</p><nav><ul class="toc-list"><li><a href="#art-h1">ROMI Formula</a></li><li><a href="#faq-section">FAQ</a></li></ul></nav></div>
-        <div class="toc-calc-cta"><p>Calculate ROMI free</p><a href="/marketing-roi-calculator/">ROMI Calculator →</a></div>
+        <div class="toc-box"><p class="toc-title">In this article</p><nav><ul class="toc-list">
+          <li><a href="#what-is-romi">What Is ROMI?</a></li>
+          <li><a href="#formulas">The Two ROMI Formulas</a></li>
+          <li><a href="#how-to">How to Calculate ROMI</a></li>
+          <li><a href="#examples">Worked Examples</a></li>
+          <li><a href="#romi-vs-roi-roas">ROMI vs ROI vs ROAS</a></li>
+          <li><a href="#good-romi">What Is a Good ROMI?</a></li>
+          <li><a href="#mistakes">Common Mistakes</a></li>
+          <li><a href="#faq-section">FAQ</a></li>
+        </ul></nav></div>
+        <div class="toc-calc-cta"><p>Skip the arithmetic</p><a href="/marketing-roi-calculator/">ROMI calculator →</a></div>
       </aside>
     </div>
     <div id="faq-section" style="max-width: 720px;"><FAQ items={faqItems} title="ROMI — Questions Answered" /></div>
@@ -97,6 +162,10 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
   </div>
 </Base>
 <style>
+  .numbered-steps { counter-reset: step; list-style: none; padding: 0; margin: var(--space-4) 0; display: flex; flex-direction: column; gap: var(--space-4); }
+  .numbered-steps li { position: relative; padding-left: 44px; color: var(--text-mid); line-height: 1.8; }
+  .numbered-steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0; width: 30px; height: 30px; background: var(--teal); color: var(--navy); font-weight: 800; font-size: var(--text-sm); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .article-body ul { color: var(--text-mid); line-height: 1.8; margin: 0 0 var(--space-4) var(--space-5); }
   .article-layout { display: grid; grid-template-columns: 1fr 260px; gap: var(--space-12); align-items: start; margin-top: var(--space-8); }
   .article-body { min-width: 0; }
   .article-body h2 { font-size: var(--text-2xl); font-weight: 800; letter-spacing: -0.02em; color: var(--navy); margin: var(--space-8) 0 var(--space-4); line-height: 1.25; }
