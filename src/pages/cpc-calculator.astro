@@ -167,6 +167,12 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       </div>
     </div>
 
+    <div style="background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0;">
+      <p style="font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mid); margin-bottom: var(--space-3);">Related Guides &amp; Calculators</p>
+      <p style="color: var(--text-mid); margin-bottom: var(--space-4);">Cost per click depends on CPM and click-through rate: CPC = CPM ÷ (CTR % × 10). The <a href="/blog/what-is-cpm/">What Is CPM?</a> guide shows the worked example, and the <a href="/blog/digital-marketing-metrics-guide/">Digital Marketing Metrics Guide</a> covers CPC next to CPA and ROAS.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-3);"><a href="/blog/what-is-cpm/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">What Is CPM? →</a><a href="/blog/digital-marketing-metrics-guide/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">Digital Marketing Metrics Guide →</a><a href="/blog/what-is-ad-spend/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">What Is Ad Spend? →</a><a href="/roas-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">ROAS Calculator →</a></div>
+    </div>
+
     <FAQ items={faqItems} title="CPC Calculator — FAQ" />
   </div>
 </Base>

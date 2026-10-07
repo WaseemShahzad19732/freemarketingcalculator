@@ -98,6 +98,12 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       </div>
     </div>
 
+    <div style="background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0;">
+      <p style="font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mid); margin-bottom: var(--space-3);">Related Guides &amp; Calculators</p>
+      <p style="color: var(--text-mid); margin-bottom: var(--space-4);">The five metrics here have dedicated tools: the <a href="/cpm-calculator/">CPM Calculator</a>, <a href="/cpc-calculator/">CPC Calculator</a>, <a href="/cpv-calculator/">CPV Calculator</a> and <a href="/roas-calculator/">ROAS Calculator</a>. The <a href="/blog/what-is-cpm/">What Is CPM?</a> guide explains cost per mille in depth.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-3);"><a href="/cpm-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">CPM Calculator →</a><a href="/cpc-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">CPC Calculator →</a><a href="/cpv-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">CPV Calculator →</a><a href="/blog/what-is-cpm/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">What Is CPM? →</a></div>
+    </div>
+
     <FAQ items={faqItems} />
   </div>
 </Base>

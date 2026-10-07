@@ -219,6 +219,12 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       </div>
     </section>
 
+    <div style="background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0;">
+      <p style="font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mid); margin-bottom: var(--space-3);">Related Guides &amp; Calculators</p>
+      <p style="color: var(--text-mid); margin-bottom: var(--space-4);">ROAS measures revenue per ad dollar, while ROMI and ROI include costs beyond ad spend. The <a href="/blog/romi-calculator-formula/">ROMI Formula Guide</a> explains the difference, <a href="/blog/what-is-ad-spend/">What Is Ad Spend?</a> defines what counts as ad spend, and the <a href="/marketing-roi-calculator/">Marketing ROI Calculator</a> adds cost of goods sold.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-3);"><a href="/blog/what-is-ad-spend/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">What Is Ad Spend? →</a><a href="/blog/romi-calculator-formula/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">ROMI Formula Guide →</a><a href="/marketing-roi-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">Marketing ROI Calculator →</a><a href="/digital-marketing-calculator/" style="display:block; padding: var(--space-3) var(--space-4); background: white; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--navy); font-weight: 600; font-size: var(--text-sm);">Digital Marketing Calculator →</a></div>
+    </div>
+
     <FAQ items={faqItems} />
   </div>
 </Base>
