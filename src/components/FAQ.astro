@@ -16,18 +16,17 @@ interface Props {
 
 const { items, title = 'Frequently Asked Questions' } = Astro.props;
 
-const ChevronIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-  aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>`;
+const PlusIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+  stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>`;
 ---
 
 <section class="faq-section" aria-label="Frequently asked questions">
   <h2>{title}</h2>
-  {items.map((item) => (
-    <details class="faq-item">
+  {items.map((item, i) => (
+    <details class="faq-item" open={i === 0}>
       <summary class="faq-question">
         <span>{item.q}</span>
-        <Fragment set:html={ChevronIcon} />
+        <span class="faq-icon"><Fragment set:html={PlusIcon} /></span>
       </summary>
       <div class="faq-answer">
         <p set:html={item.a} />
