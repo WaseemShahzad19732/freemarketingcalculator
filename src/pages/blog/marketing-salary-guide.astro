@@ -3,49 +3,51 @@ import Base from '../../layouts/Base.astro';
 import FAQ from '../../components/FAQ.astro';
 
 const slug      = 'blog/marketing-salary-guide';
-const title     = 'Marketing Salaries in 2026 — Complete Guide by Role and City';
-const description = 'Marketing salaries in 2026 by role, seniority, and US city. Managers, directors, CMOs, SEO specialists, paid media. LinkedIn Salary + Glassdoor data.';
+const title     = 'Marketing Salary Guide 2026: BLS Pay, Roles and Cities';
+const description = 'Marketing salary guide for 2026: BLS median pay for marketing managers ($166,790), plus planning estimates by role, seniority and US city.';
 const published = 'July 7, 2026';
-const readTime  = '6 min read';
+const readTime  = '7 min read';
+const updatedLabel = 'October 2026';
 
 const salaries = [
   { role: 'Marketing Coordinator',        entry: '$42–52K',  mid: '$52–65K',  senior: '$65–80K',   director: '—',        note: 'Entry point for most marketing careers' },
   { role: 'Marketing Manager',            entry: '$55–68K',  mid: '$68–88K',  senior: '$88–110K',  director: '$110–135K', note: 'Most common marketing hire; broad generalist role' },
   { role: 'Digital Marketing Manager',    entry: '$52–65K',  mid: '$65–85K',  senior: '$85–108K',  director: '$105–128K', note: 'Focus on paid, SEO, content, and analytics' },
   { role: 'Content Marketer / Strategist',entry: '$45–58K',  mid: '$58–75K',  senior: '$75–95K',   director: '$95–118K',  note: 'Salary scales significantly with SEO expertise' },
-  { role: 'SEO Specialist',               entry: '$48–60K',  mid: '$60–80K',  senior: '$80–102K',  director: '$100–120K', note: 'Technical SEO commands 15–20% premium' },
+  { role: 'SEO Specialist',               entry: '$48–60K',  mid: '$60–80K',  senior: '$80–102K',  director: '$100–120K', note: 'Technical SEO skills raise pay' },
   { role: 'Paid Media Manager (PPC/SEM)', entry: '$52–65K',  mid: '$65–88K',  senior: '$88–112K',  director: '$108–132K', note: 'In-demand; Google / Meta certifications add premium' },
   { role: 'Email Marketing Specialist',   entry: '$45–56K',  mid: '$56–72K',  senior: '$72–92K',   director: '$90–110K',  note: 'Klaviyo/Salesforce MC expertise commands premium' },
   { role: 'Product Marketing Manager',    entry: '$65–80K',  mid: '$80–105K', senior: '$105–132K', director: '$130–158K', note: 'Tech-sector premium; GTM and positioning focus' },
   { role: 'Marketing Director',           entry: '—',        mid: '$90–115K', senior: '$115–145K', director: '$145–190K', note: 'Manages teams; P&L ownership at senior level' },
-  { role: 'VP of Marketing',             entry: '—',        mid: '$120–150K',senior: '$150–185K', director: '$185–255K', note: 'Typically requires 10+ years; board-level reporting' },
-  { role: 'Chief Marketing Officer (CMO)',entry: '—',        mid: '$150–200K',senior: '$200–275K', director: '$275–400K+',note: 'Total comp including equity can 2–3× base at growth cos' },
+  { role: 'VP of Marketing',             entry: '—',        mid: '$120–150K',senior: '$150–185K', director: '$185–255K', note: 'Senior leadership role; reports to the CEO or board' },
+  { role: 'Chief Marketing Officer (CMO)',entry: '—',        mid: '$150–200K',senior: '$200–275K', director: '$275–400K+',note: 'Total pay often adds bonus and equity' },
 ];
 
 const cityMultipliers = [
-  { city: 'San Francisco / Bay Area', mult: '+45%', example: 'Marketing Manager mid: $99K' },
-  { city: 'New York City, NY',        mult: '+35%', example: 'Marketing Manager mid: $92K' },
-  { city: 'Seattle, WA',             mult: '+20%', example: 'Marketing Manager mid: $82K' },
-  { city: 'Boston, MA',              mult: '+18%', example: 'Marketing Manager mid: $80K' },
-  { city: 'Los Angeles, CA',         mult: '+25%', example: 'Marketing Manager mid: $85K' },
-  { city: 'Chicago, IL',             mult: '+10%', example: 'Marketing Manager mid: $75K' },
-  { city: 'Austin, TX',              mult: '+5%',  example: 'Marketing Manager mid: $71K' },
-  { city: 'Miami, FL',               mult: '+2%',  example: 'Marketing Manager mid: $69K' },
-  { city: 'US National Average',     mult: 'baseline', example: 'Marketing Manager mid: $68K' },
-  { city: 'Fully Remote',            mult: '−5%',  example: 'Marketing Manager mid: $65K' },
+  { city: 'San Francisco / Bay Area', mult: '+45%', example: 'Marketing Manager mid: $104K' },
+  { city: 'New York City, NY',        mult: '+35%', example: 'Marketing Manager mid: $97K' },
+  { city: 'Los Angeles, CA',         mult: '+25%', example: 'Marketing Manager mid: $90K' },
+  { city: 'Seattle, WA',             mult: '+20%', example: 'Marketing Manager mid: $86K' },
+  { city: 'Boston, MA',              mult: '+18%', example: 'Marketing Manager mid: $85K' },
+  { city: 'Chicago, IL',             mult: '+10%', example: 'Marketing Manager mid: $79K' },
+  { city: 'Austin, TX',              mult: '+5%',  example: 'Marketing Manager mid: $76K' },
+  { city: 'Miami, FL',               mult: '+2%',  example: 'Marketing Manager mid: $73K' },
+  { city: 'US National Average',     mult: 'baseline', example: 'Marketing Manager mid: $72K' },
+  { city: 'Fully Remote',            mult: '−5%',  example: 'Marketing Manager mid: $68K' },
 ];
 
 const faqItems = [
-  { q: 'What is the average marketing manager salary in the US?', a: 'The average marketing manager salary is $68,000–$88,000 for mid-level roles (3–8 years experience). Entry-level marketing managers earn $55,000–$68,000; senior marketing managers in major US cities can earn $100,000–$130,000. Total compensation including bonuses averages 10–15% above base.' },
-  { q: 'How much does a CMO make?', a: 'Chief Marketing Officers earn $150,000–$400,000+ in base salary, depending on company size and industry. Enterprise CMOs at Fortune 500 companies average $250,000–$400,000 base plus significant equity and bonus. Startup CMOs often take lower base in exchange for equity — $120,000–$200,000 base with meaningful ownership stake.' },
-  { q: 'What is the highest paying marketing job?', a: 'Chief Marketing Officer (CMO) has the highest base salary, followed by VP of Marketing and Marketing Director. At technology companies, Product Marketing roles command significant premiums — product marketing managers at senior levels regularly earn $130,000–$160,000 base. Paid media managers at performance agencies also command above-average compensation for their ROI-trackable impact.' },
-  { q: 'How do marketing salaries compare between in-house and agency?', a: 'In-house marketing roles typically pay 10–20% more than agency roles at the same level. Agencies offer faster career progression and broader experience; in-house roles offer better stability, benefits, and total compensation. The gap widens at senior levels — in-house directors and VPs significantly outpace agency counterparts.' },
-  { q: 'What certifications increase marketing salary?', a: 'Highest-value certifications: Google Ads certified (paid media +10–15%), HubSpot Marketing certified (inbound/CRM +8–12%), Meta Blueprint certified (social media +8–10%), Google Analytics certified (analytics roles +5–8%), Salesforce Marketing Cloud (email/CRM specialists +15–20%). Technical certifications for marketing automation consistently command the highest premium.' },
+  { q: "What is the average marketing manager salary in the US?", a: "The U.S. Bureau of Labor Statistics reports a median annual wage of $166,790 for marketing managers in May 2025, with the lowest 10% earning under $90,260 and the highest 10% earning over $293,610. The planning estimates in this guide put a national mid-level marketing manager at about $72,000 base salary, which is lower because they include entry and mid-level titles and use different data. Use the BLS figure as the reference for the managerial occupation." },
+  { q: "Why are the BLS figures higher than the salary ranges in this guide?", a: "The BLS median covers the marketing manager occupation as a whole, which is a management-level group that skews toward experienced staff and larger employers. The ranges in this guide are planning estimates by role and seniority level that include entry and mid-level titles. The two measure different groups, so they should be read as separate references and not averaged." },
+  { q: "How much does a CMO make?", a: "The planning estimates in this guide put CMO base salary between $150,000 at the entry tier and $350,000 at the executive tier, before bonus and equity. Total pay for chief marketing officers usually includes bonuses and, at some companies, equity, so base salary understates it. Company size and industry change the range substantially." },
+  { q: "What is the highest paying marketing job?", a: "In the planning estimates, CMO is the highest-paid marketing role, followed by VP of Marketing and Marketing Director. Among specialist roles, product marketing manager has the highest estimates at every level. These are base salary estimates and exclude bonuses and equity." },
+  { q: "How much does location change marketing salary?", a: "In the location multipliers used here, San Francisco pays 45% above the national baseline, New York 35%, Los Angeles 25% and Seattle 20%, while fully remote roles are set 5% below. A mid-level marketing manager at a $72,000 national base therefore maps to about $104,000 in San Francisco and $68,000 for a remote role. The multipliers are planning assumptions, not survey results." },
+  { q: "Is marketing manager a growing occupation?", a: "The U.S. Bureau of Labor Statistics projects 7% employment growth for marketing managers from 2025 to 2035, while advertising and promotions managers are projected to decline 4%. The BLS median wage for advertising and promotions managers was $133,660 in May 2025. Growth differs by occupation, so the title of the role matters." },
 ];
 
 const articleSchema = {
   "@type": "Article", "headline": title, "description": description,
-  "datePublished": "2026-07-07", "dateModified": "2026-07-07",
+  "datePublished": "2026-07-07", "dateModified": "2026-10-08",
   "author": { "@type": "Person", "name": "Waseem Shahzad", "url": "https://freemarketingcalculator.com/about/" },
   "publisher": { "@id": "https://freemarketingcalculator.com/#org" },
   "mainEntityOfPage": `https://freemarketingcalculator.com/${slug}/`,
@@ -62,14 +64,13 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
   <section class="page-hero" aria-labelledby="art-h1">
     <div class="container">
       <p class="eyebrow">Career & Salary · {readTime}</p>
-      <h1 id="art-h1">Marketing Salaries in 2026 — Complete Guide by Role and City</h1>
+      <h1 id="art-h1">Marketing Salary Guide 2026: BLS Pay, Roles and Cities</h1>
       <p class="citation">
-        Average salaries for 11 marketing roles across 5 seniority levels and 10 US cities.
-        Data compiled from LinkedIn Salary, Glassdoor, BLS Occupational Outlook,
-        and industry compensation surveys — updated July 2026.
+        The U.S. Bureau of Labor Statistics reports a $166,790 median wage for marketing managers (May 2025). This guide adds planning estimates of base salary for 11 marketing roles across 5 seniority levels and 10 US cities, and explains how the two differ.
       </p>
       <div class="meta-badges">
         <span class="badge">📅 {published}</span>
+        <span class="badge">🔄 Updated {updatedLabel}</span>
         <span class="badge">✓ {readTime}</span>
         <span class="badge">✓ 11 roles covered</span>
       </div>
@@ -84,16 +85,29 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
         <div class="definition-box" style="margin-top: var(--space-8);">
           <div class="definition-box__label">Key Numbers — 2026</div>
           <p>
-            <strong>Marketing Manager (mid-level):</strong> $68,000–$88,000 US national average.<br/>
-            <strong>Marketing Director:</strong> $115,000–$165,000.<br/>
-            <strong>CMO:</strong> $150,000–$400,000+ depending on company size.<br/>
-            San Francisco pays +45% above the national average; remote roles pay roughly 5% below.
+            <strong>Marketing managers (BLS median, May 2025):</strong> $166,790; the lowest 10% earn under $90,260 and the highest 10% over $293,610.<br/>
+            <strong>Advertising and promotions managers (BLS median):</strong> $133,660.<br/>
+            <strong>Mid-level marketing manager (planning estimate):</strong> about $72,000 base at the national baseline.<br/>
+            San Francisco is 45% above the planning baseline; remote roles are set 5% below.
           </p>
         </div>
 
-        <h2>Marketing Salaries by Role and Seniority — 2026</h2>
-        <span class="bench-date">Updated July 2026</span>
-        <p style="margin-top: var(--space-3);">Base salary only. Does not include bonuses, equity, or benefits (which typically add 15–35% to total compensation).</p>
+        <h2 id="s-bls">BLS Marketing Manager Pay — May 2025</h2>
+        <p>Marketing managers earned a median of $166,790 a year in May 2025, and advertising and promotions managers earned $133,660, according to the <a href="https://www.bls.gov/ooh/management/advertising-promotions-and-marketing-managers.htm" target="_blank" rel="noopener noreferrer nofollow">U.S. Bureau of Labor Statistics</a>. Employment of marketing managers is projected to grow 7% from 2025 to 2035, while advertising and promotions managers are projected to decline 4%.</p>
+        <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
+          <table class="bench-table">
+            <thead><tr><th scope="col">Occupation</th><th scope="col">Median wage</th><th scope="col">Lowest 10%</th><th scope="col">Highest 10%</th><th scope="col">Growth 2025–35</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Marketing managers</strong></td><td>$166,790</td><td>Under $90,260</td><td>Over $293,610</td><td>7%</td></tr>
+              <tr style="background:var(--off-white)"><td><strong>Advertising and promotions managers</strong></td><td>$133,660</td><td>Under $63,300</td><td>Over $286,240</td><td>−4%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="bench-source">Source: U.S. Bureau of Labor Statistics, Occupational Outlook Handbook. The BLS figures cover managerial occupations; the role table below covers a wider range of titles and seniority levels.</p>
+
+        <h2 id="s-roles">Marketing Salary by Role and Seniority: 2026 Planning Estimates</h2>
+        <span class="bench-date">Updated October 2026</span>
+        <p style="margin-top: var(--space-3);">Base salary only, from the same planning estimates used by the <a href="/marketing-salary-calculator/">Marketing Salary Calculator</a>. They exclude bonuses, equity and benefits, and they are not survey results.</p>
 
         <div class="bench-table-wrap" style="margin: var(--space-4) 0; overflow-x: auto;">
           <table class="bench-table">
@@ -119,17 +133,17 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
             </tbody>
           </table>
         </div>
-        <p class="bench-source">Sources: LinkedIn Salary 2026, Glassdoor Compensation Data 2026, BLS Occupational Outlook Handbook (11-2021: Marketing Managers), Robert Half Marketing Salary Guide 2026. Figures represent US national median base salary ranges. Actual compensation varies by company size, industry, and location.</p>
+        <p class="bench-source">Planning estimates of US national base salary, not figures from LinkedIn, Glassdoor or a named compensation survey. For official wage statistics, see the BLS table above. Actual pay varies by company size, industry and location.</p>
 
-        <h2>Marketing Salary by US City — Location Multipliers</h2>
-        <p>Location is one of the biggest drivers of marketing compensation. San Francisco and New York pay dramatically above national average; remote roles typically pay slightly below.</p>
+        <h2 id="s-city">Marketing Salary by US City: Location Multipliers</h2>
+        <p>The calculator's location multipliers raise a mid-level marketing manager's $72,000 national base to about $104,000 in San Francisco and $97,000 in New York, and lower it to about $68,000 for fully remote roles. The multipliers are planning assumptions applied to every role in the table above.</p>
 
         <div class="bench-table-wrap" style="margin: var(--space-4) 0;">
           <table class="bench-table">
             <thead>
               <tr>
                 <th scope="col">Location</th>
-                <th scope="col">vs. National Average</th>
+                <th scope="col">vs. National Baseline</th>
                 <th scope="col">Example (Marketing Mgr mid-level)</th>
               </tr>
             </thead>
@@ -144,16 +158,15 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
             </tbody>
           </table>
         </div>
-        <p class="bench-source">Location adjustments are approximate. Remote-work salary norms are still evolving — some companies pay national average regardless of location; others apply geographic bands.</p>
+        <p class="bench-source">Mid-level amounts equal $72K × the multiplier, rounded to the nearest $1K. Location adjustments are approximate. Some employers pay one national rate for remote roles and others apply geographic bands.</p>
 
-        <h2>What Drives Marketing Salary Growth</h2>
-        <p><strong>Specialisation in high-demand skills.</strong> Marketing is bifurcating into generalists and specialists. Specialists in paid media, marketing automation, and technical SEO consistently command 15–25% premiums over generalists at the same seniority level. The highest-paid specialist roles in 2026 are those that can demonstrate quantifiable revenue impact.</p>
-        <p><strong>Revenue attribution.</strong> Marketers who can connect their work to revenue — not just leads and impressions — negotiate from a position of strength. If you can show that your campaigns drove $2.4M in pipeline last quarter, you have a number to anchor a compensation conversation on. Marketers without attribution data have a harder time justifying above-average salaries.</p>
-        <p><strong>Company stage and industry.</strong> A marketing director at a VC-backed SaaS startup may earn 20–30% less in base salary than their Fortune 500 counterpart — but with equity and performance bonuses, total compensation can significantly exceed it. Healthcare and financial services typically pay above-average for compliance with marketing regulations.</p>
+        <h2 id="s-growth">What Drives Marketing Salary Growth</h2>
+        <p><strong>Specialisation in high-demand skills.</strong> Roles in paid media, marketing automation and technical SEO are priced above generalist roles in the planning table at the same seniority, for example a mid-level paid media manager at $65–88K against a mid-level content marketer at $58–75K. Skills that tie directly to revenue tend to be paid most.</p>
+        <p><strong>Revenue attribution.</strong> Marketers who can connect their work to revenue, not only to leads and impressions, have a number to anchor a compensation conversation on. A statement such as "campaigns I ran produced $2.4M in pipeline last quarter" is stronger than a general request for a raise.</p>
+        <p><strong>Company stage and industry.</strong> Base salary and total pay move differently across company types. Startups often pay lower base salary with equity, while large companies pay higher base salary and bonus. Compare total compensation, not base alone.</p>
 
-        <h2>Should You Negotiate Your Marketing Salary?</h2>
-        <p>Yes — and it's more accepted than most people expect. According to LinkedIn's 2025 Salary Insights, 73% of hiring managers expect negotiation and report that it does not negatively affect their impression of a candidate.</p>
-        <p>The most effective approach: research the market rate using multiple sources (LinkedIn Salary, Glassdoor, Levels.fyi for tech roles), anchor to the high end of the range, and justify the anchor with specific achievements — not cost-of-living arguments. A marketerto who can say "my campaigns generated $1.8M in attributed pipeline last year and I'm targeting the 75th percentile for this role" will consistently out-negotiate one who says "I feel I deserve more."</p>
+        <h2 id="s-negotiate">How to Negotiate a Marketing Salary</h2>
+        <p>Negotiate with evidence: research the range from several sources, such as the BLS wage data above, employer job postings and salary-transparency listings, anchor near the top of the range, and justify the figure with specific results. Cost-of-living arguments are weaker than attributed results. Use the <a href="/marketing-salary-calculator/">Marketing Salary Calculator</a> to check a role, level and city before the conversation.</p>
 
         <!-- CTA -->
         <div style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: var(--radius-lg); padding: var(--space-8); margin: var(--space-8) 0; text-align: center; color: white;">
@@ -176,7 +189,7 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
           <div style="width:44px; height:44px; background: var(--teal); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:800; color:var(--navy); font-size: var(--text-lg);">W</div>
           <div>
             <p style="font-weight:700; color:var(--navy); margin-bottom: 4px;">Waseem Shahzad</p>
-            <p style="font-size: var(--text-sm); color: var(--text-mid); line-height:1.5;">Salary data from LinkedIn Salary 2026, Glassdoor Compensation Data 2026, BLS Occupational Outlook Handbook, and Robert Half Marketing Salary Guide 2026. All figures represent US national medians; individual compensation varies. <a href="/about/" style="color: var(--teal-dark);">About →</a></p>
+            <p style="font-size: var(--text-sm); color: var(--text-mid); line-height:1.5;">Official wage figures from the U.S. Bureau of Labor Statistics (May 2025); role and city figures are planning estimates from this site's salary calculator. Individual compensation varies. <a href="/about/" style="color: var(--teal-dark);">About →</a></p>
           </div>
         </div>
 
@@ -186,7 +199,12 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
         <div class="toc-box">
           <p class="toc-title">In this article</p>
           <nav><ul class="toc-list">
-            <li><a href="#art-h1">Key Numbers 2026</a></li>
+            <li><a href="#art-h1">Key numbers 2026</a></li>
+            <li><a href="#s-bls">BLS marketing manager pay</a></li>
+            <li><a href="#s-roles">Salary by role</a></li>
+            <li><a href="#s-city">Salary by city</a></li>
+            <li><a href="#s-growth">What drives growth</a></li>
+            <li><a href="#s-negotiate">Negotiating</a></li>
             <li><a href="#faq-section">FAQ</a></li>
           </ul></nav>
         </div>
