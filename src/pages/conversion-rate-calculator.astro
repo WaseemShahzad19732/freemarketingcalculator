@@ -18,9 +18,11 @@ const benchmarks = [
 
 const faqItems = [
   { q: 'How do you calculate conversion rate?', a: 'Conversion Rate = (Conversions ÷ Total Visitors) × 100. For example, 50 conversions from 2,000 visitors = 50 ÷ 2,000 × 100 = 2.5% conversion rate.' },
-  { q: 'What is a good marketing conversion rate?', a: 'A good conversion rate is typically 2–5% for most marketing channels. Email marketing averages 4%, paid search 3%, social media 1–2%. Top performers achieve 10%+ by optimising landing pages and targeting.' },
+  { q: 'What is a good marketing conversion rate?', a: 'Unbounce 2024 Conversion Benchmark Report, based on more than 41,000 landing pages, reports a median landing page conversion rate of 6.6% across industries, with industry medians from 3.8% for SaaS to 8.4% for education. Whole-site rates are usually lower because most visitors never reach a conversion page. As a planning range, 2-5% is common for most marketing channels.' },
   { q: 'How much traffic do I need to hit my revenue goal?', a: 'Use the reverse calculator: divide your target conversions by your conversion rate. If you need 100 sales and convert at 2%, you need 5,000 visitors (100 ÷ 0.02).' },
   { q: 'What affects conversion rate most?', a: 'Landing page clarity, page load speed, offer relevance, trust signals (reviews, security badges), and mobile optimisation. A/B testing headlines and CTAs typically yields the fastest wins.' },
+  { q: 'What conversion rate do landing pages get by industry?', a: 'Unbounce 2024 Conversion Benchmark Report lists median landing page conversion rates of 4.2% for ecommerce, 3.8% for SaaS, 6.1% for professional services, 8.3% for financial services and 8.4% for education. The all-industry median is 6.6%. A top-quartile page starts around 11.4% and can reach 40.8% depending on industry.' },
+  { q: 'How much is a one-point increase in conversion rate worth?', a: 'Raising conversion from 2.5% to 3.5% on 5,000 monthly visitors adds 50 conversions. At a $500 order value, that is $25,000 of extra monthly revenue from the same traffic. A half-point lift from 2.5% to 3.0% adds 25 conversions, or $12,500 a month.' },
   { q: 'Is this calculator free?', a: 'Yes — completely free, no signup, no email required.' },
 ];
 
@@ -48,7 +50,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     <div class="container">
       <p class="eyebrow">Free Marketing Tool</p>
       <h1 id="page-h1">Conversion Rate Calculator</h1>
-      <p class="citation">Calculates marketing conversion rate from visits and conversions, reverse-computes the traffic needed to hit a revenue goal, and benchmarks your rate against 2026 industry averages by channel.</p>
+      <p class="citation">Calculates marketing conversion rate from visits and conversions, reverse-computes the traffic needed to hit a revenue goal, and compares your rate with planning ranges by channel and with Unbounce landing page medians.</p>
       <div class="meta-badges">
         <span class="badge">✓ 3 calculation modes</span>
         <span class="badge">✓ Channel benchmarks</span>
@@ -115,19 +117,56 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     </div>
 
     <section class="bench-section">
-      <h2>Conversion Rate Benchmarks by Channel — 2026</h2>
-      <span class="bench-date">Updated July 2026</span>
+      <h2>Conversion Rate by Channel: 2026 Planning Ranges</h2>
+      <span class="bench-date">Updated October 2026</span>
       <div class="bench-table-wrap">
         <table class="bench-table">
-          <thead><tr><th>Channel</th><th>Average CVR</th><th>Typical Range</th></tr></thead>
+          <thead><tr><th>Channel</th><th>Planning CVR</th><th>Typical Range</th></tr></thead>
           <tbody>
             {benchmarks.map(r => (<tr><td>{r.channel}</td><td><strong>{r.cvr}</strong></td><td>{r.range}</td></tr>))}
           </tbody>
         </table>
       </div>
-      <p class="bench-source">Sources: WordStream, HubSpot, Unbounce Conversion Benchmark Report 2026.</p>
+      <p class="bench-source">Planning ranges, not figures from a single published survey. Conversion rates vary with offer, price, audience and page quality, so replace these with your own analytics data when you have it. Surveyed landing page medians are in the next table.</p>
     </section>
 
+
+    <section class="bench-section" aria-labelledby="unb-heading">
+      <h2 id="unb-heading">Landing Page Conversion Rate by Industry (Unbounce 2024)</h2>
+      <p style="color: var(--text-mid); margin: var(--space-2) 0 var(--space-4);">The median landing page converts 6.6% of visitors across industries, according to the <a href="https://unbounce.com/landing-pages/whats-a-good-conversion-rate" target="_blank" rel="noopener noreferrer nofollow">Unbounce 2024 Conversion Benchmark Report</a> (41,000+ landing pages, 57 million+ conversions).</p>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead><tr><th>Industry</th><th>Median CVR</th><th>Top-quartile floor</th></tr></thead>
+          <tbody>
+            <tr><td>Ecommerce</td><td><strong>4.2%</strong></td><td>11.4% or higher</td></tr>
+            <tr style="background:var(--off-white)"><td>SaaS</td><td><strong>3.8%</strong></td><td>11.6% or higher</td></tr>
+            <tr><td>Professional services</td><td><strong>6.1%</strong></td><td>14.1% or higher</td></tr>
+            <tr style="background:var(--off-white)"><td>Financial services</td><td><strong>8.3%</strong></td><td>26.1% or higher</td></tr>
+            <tr><td>Travel and hospitality</td><td><strong>4.8%</strong></td><td>15.6% or higher</td></tr>
+            <tr style="background:var(--off-white)"><td>Legal</td><td><strong>6.3%</strong></td><td>13.1% or higher</td></tr>
+            <tr><td>Education</td><td><strong>8.4%</strong></td><td>20% or higher</td></tr>
+            <tr style="background:var(--off-white)"><td>Entertainment</td><td><strong>12.3%</strong></td><td>40.8% or higher</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">These are landing page medians, which sit above whole-site conversion rates because every visitor to a landing page was sent there to convert. Source figures were read from Unbounce's published summary, not the full report.</p>
+    </section>
+
+    <section class="bench-section" aria-labelledby="cvr-example-heading">
+      <h2 id="cvr-example-heading">Conversion Rate Worked Examples: All Three Modes</h2>
+      <p style="color: var(--text-mid); margin: var(--space-2) 0 var(--space-4);">Each mode of the calculator solves one side of the same equation, conversions = visitors × conversion rate. The three examples below use the same 2.5% to 3.0% range.</p>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead><tr><th>Mode</th><th>Inputs</th><th>Calculation</th><th>Result</th></tr></thead>
+          <tbody>
+            <tr><td>CVR from visits</td><td>12,000 visitors, 300 conversions</td><td>300 ÷ 12,000 × 100</td><td><strong>2.5%</strong></td></tr>
+            <tr style="background:var(--off-white)"><td>Reverse: traffic needed</td><td>100 sales, 2.5% CVR</td><td>100 ÷ 0.025</td><td><strong>4,000 visitors</strong></td></tr>
+            <tr><td>Revenue from CVR</td><td>5,000 visitors, 3% CVR, $500 order value</td><td>5,000 × 0.03 × $500</td><td><strong>$75,000</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">A half-point lift from 2.5% to 3.0% on 5,000 visitors adds 25 conversions, or $12,500 at $500 per order. Work backwards from a revenue goal with the <a href="/inbound-marketing-calculator/">Inbound Marketing Calculator</a>, and price each new customer with the <a href="/cac-calculator/">CAC Calculator</a>.</p>
+    </section>
 
     <!-- TASK 25: How to use this calculator -->
     <div class="definition-box" style="margin-top: var(--space-8);">

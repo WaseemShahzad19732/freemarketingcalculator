@@ -8,8 +8,9 @@ const description = 'Calculate how much traffic, leads, and MQLs your inbound ma
 
 const faqItems = [
   { q: 'How do I calculate inbound marketing goals?', a: 'Work backwards from revenue: divide revenue goal by average deal size to get customers needed. Divide customers by close rate to get SQLs. Divide SQLs by MQL-to-SQL rate to get MQLs. Divide MQLs by lead-to-MQL rate to get leads. Divide leads by CVR to get traffic.' },
-  { q: 'What is a good inbound lead conversion rate?', a: 'Industry averages: Visitor-to-lead 2–3%, Lead-to-MQL 30–40%, MQL-to-SQL 20–30%, SQL-to-customer 20–30%. B2B SaaS companies typically achieve 2–4% visitor-to-lead, while professional services average 3–5%.' },
-  { q: 'How long does inbound marketing take to produce leads?', a: 'SEO-based inbound typically takes 6–12 months to generate significant traffic. Content marketing shows results in 3–6 months. Once ranking, inbound leads compound — year 2 often 3–5× year 1 volume with the same investment.' },
+  { q: 'What is a good inbound lead conversion rate?', a: 'The calculator defaults are planning ranges: visitor-to-lead 2-3%, lead-to-MQL 30-40%, MQL-to-SQL 20-30% and SQL-to-customer 20-30%. Unbounce 2024 Conversion Benchmark Report, covering 41,000+ landing pages, found median landing page conversion of 3.8% for SaaS and 6.1% for professional services. Whole-site visitor-to-lead rates are usually lower than landing page rates because most visitors never reach a conversion page.' },
+  { q: 'How long does inbound marketing take to produce leads?', a: 'SEO-based inbound commonly takes 6-12 months to build meaningful traffic, and content marketing often shows early results in 3-6 months. Timelines depend on competition, publishing volume and domain authority. Because inbound content keeps working after it is published, the same investment can produce more leads in later months, but the size of that effect varies by business.' },
+  { q: 'How much does it cost to generate the traffic this calculator shows?', a: 'Inbound programs typically cost $5,000-$20,000 per month when run by an agency, according to Protocol 80, with freelancer and in-house models priced differently. The Inbound Marketing Cost guide at freemarketingcalculator.com/blog/inbound-marketing-cost/ breaks down pricing by model and channel, with three sample budgets. Compare the traffic target with that cost to estimate cost per lead.' },
   { q: 'What is MQL vs SQL in inbound marketing?', a: 'MQL (Marketing Qualified Lead) meets criteria suggesting sales readiness (job title, company size, behaviour score). SQL (Sales Qualified Lead) has been reviewed by sales and accepted as a genuine opportunity. Both should be defined clearly in your CRM.' },
   { q: 'Is this calculator free?', a: 'Yes — completely free, no signup, no email required.' },
 ];
@@ -51,10 +52,10 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
         <div class="field-group">
           <div class="field"><label for="ib-revenue">Monthly Revenue Goal ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="ib-revenue" class="has-prefix" placeholder="e.g. 50000" min="0"/></div></div>
           <div class="field"><label for="ib-deal">Average Deal / Contract Value ($)</label><div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="ib-deal" class="has-prefix" placeholder="e.g. 5000" min="0"/></div></div>
-          <div class="field"><label for="ib-close">SQL → Customer Close Rate (%)</label><div class="input-wrap"><input type="number" id="ib-close" class="has-suffix" placeholder="e.g. 25" min="0" max="100"/><span class="input-suffix">%</span></div><p class="hint">Industry avg: 20–30% for B2B</p></div>
-          <div class="field"><label for="ib-mql-sql">MQL → SQL Rate (%)</label><div class="input-wrap"><input type="number" id="ib-mql-sql" class="has-suffix" placeholder="e.g. 25" min="0" max="100"/><span class="input-suffix">%</span></div><p class="hint">Industry avg: 20–30%</p></div>
-          <div class="field"><label for="ib-lead-mql">Lead → MQL Rate (%)</label><div class="input-wrap"><input type="number" id="ib-lead-mql" class="has-suffix" placeholder="e.g. 35" min="0" max="100"/><span class="input-suffix">%</span></div><p class="hint">Industry avg: 30–40%</p></div>
-          <div class="field"><label for="ib-visit-lead">Visitor → Lead CVR (%)</label><div class="input-wrap"><input type="number" id="ib-visit-lead" class="has-suffix" placeholder="e.g. 2.5" min="0" max="100" step="0.1"/><span class="input-suffix">%</span></div><p class="hint">Industry avg: 2–3% for organic traffic</p></div>
+          <div class="field"><label for="ib-close">SQL → Customer Close Rate (%)</label><div class="input-wrap"><input type="number" id="ib-close" class="has-suffix" placeholder="e.g. 25" min="0" max="100"/><span class="input-suffix">%</span></div><p class="hint">Planning range: 20–30% for B2B</p></div>
+          <div class="field"><label for="ib-mql-sql">MQL → SQL Rate (%)</label><div class="input-wrap"><input type="number" id="ib-mql-sql" class="has-suffix" placeholder="e.g. 25" min="0" max="100"/><span class="input-suffix">%</span></div><p class="hint">Planning range: 20–30%</p></div>
+          <div class="field"><label for="ib-lead-mql">Lead → MQL Rate (%)</label><div class="input-wrap"><input type="number" id="ib-lead-mql" class="has-suffix" placeholder="e.g. 35" min="0" max="100"/><span class="input-suffix">%</span></div><p class="hint">Planning range: 30–40%</p></div>
+          <div class="field"><label for="ib-visit-lead">Visitor → Lead CVR (%)</label><div class="input-wrap"><input type="number" id="ib-visit-lead" class="has-suffix" placeholder="e.g. 2.5" min="0" max="100" step="0.1"/><span class="input-suffix">%</span></div><p class="hint">Planning range: 2–3% for organic traffic</p></div>
         </div>
         <button class="btn-calc" id="ib-calc-btn" type="button">Calculate My Inbound Targets</button>
         <div class="result-panel" id="ib-result" aria-live="polite">
@@ -82,12 +83,30 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     </div>
 
 
+    <section class="bench-section" aria-labelledby="ib-example-heading">
+      <h2 id="ib-example-heading">Inbound Funnel Worked Example: From $50,000 to 18,286 Visitors</h2>
+      <p style="color: var(--text-mid); margin: var(--space-2) 0 var(--space-4);">A $50,000 monthly revenue goal with a $5,000 deal value needs 10 customers, which at the default funnel rates means about 18,286 visitors a month. The calculator rounds each stage up to a whole number.</p>
+      <div class="bench-table-wrap">
+        <table class="bench-table">
+          <thead><tr><th scope="col">Stage</th><th scope="col">Calculation</th><th scope="col">Needed per month</th></tr></thead>
+          <tbody>
+            <tr><td>Customers</td><td>$50,000 ÷ $5,000</td><td><strong>10</strong></td></tr>
+            <tr style="background:var(--off-white)"><td>SQLs</td><td>10 ÷ 25% close rate</td><td><strong>40</strong></td></tr>
+            <tr><td>MQLs</td><td>40 ÷ 25% MQL-to-SQL</td><td><strong>160</strong></td></tr>
+            <tr style="background:var(--off-white)"><td>Leads</td><td>160 ÷ 35% lead-to-MQL</td><td><strong>458</strong></td></tr>
+            <tr><td>Visitors</td><td>457.1 ÷ 2.5% visitor-to-lead</td><td><strong>18,286</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="bench-source">Raising visitor-to-lead conversion from 2.5% to 3.5% cuts the traffic needed from 18,286 to 13,062 visitors a month, a 29% reduction, without changing any other stage. Test your own rates with the <a href="/conversion-rate-calculator/">Conversion Rate Calculator</a>, then price the result with the <a href="/blog/inbound-marketing-cost/">Inbound Marketing Cost guide</a>.</p>
+    </section>
+
     <!-- TASK 25: How to use this calculator -->
     <div class="definition-box" style="margin-top: var(--space-8);">
       <div class="definition-box__label">How to Use This Inbound Marketing Calculator</div>
       <p style="white-space: pre-line; line-height: 1.9;">1. Enter your monthly revenue goal. 2. Enter your average deal or contract value. 3. Fill in your funnel conversion rates: SQL-to-customer close rate, MQL-to-SQL rate, lead-to-MQL rate, and visitor-to-lead CVR. 4. Click Calculate — you get the exact monthly traffic, leads, MQLs, and SQLs needed to hit your goal.</p>
       <div class="formula-example" style="margin-top: var(--space-3);">
-        <strong>Example:</strong> Example: $50,000/month revenue goal, $5,000 deal value. Customers needed = 10. At 25% close rate = 40 SQLs. At 25% MQL→SQL = 160 MQLs. At 35% lead→MQL = 457 leads. At 2.5% visitor→lead = 18,286 visitors/month needed.
+        <strong>Example:</strong> Example: $50,000/month revenue goal, $5,000 deal value. Customers needed = 10. At 25% close rate = 40 SQLs. At 25% MQL→SQL = 160 MQLs. At 35% lead→MQL = 458 leads. At 2.5% visitor→lead = 18,286 visitors/month needed.
       </div>
     </div>
 
