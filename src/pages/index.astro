@@ -1,117 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
+import { categories, guides, toolIcons, catIcons, calculatorCount } from '../data/calculators.js';
 
 const slug        = '';
 const title       = 'Free Marketing Calculators: ROI, Budget & Salary (2026)';
 const description = 'Free marketing calculators for ROI, budget planning, conversion rate, email ROI, salary benchmarks, and campaign metrics. Instant results, no signup required.';
 
-const icons = {
-  trend:    '<polyline points="3 17 9 11 13 15 21 7"></polyline><polyline points="14 7 21 7 21 14"></polyline>',
-  userPlus: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="16" y1="11" x2="22" y2="11"></line>',
-  mail:     '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22 6 12 13 2 6"></polyline>',
-  zap:      '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>',
-  refresh:  '<polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>',
-  pieChart: '<path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path>',
-  share:    '<circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>',
-  funnel:   '<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>',
-  target:   '<circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle>',
-  layers:   '<polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline>',
-  eye:      '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>',
-  cursor:   '<path d="M4 4l7 17 2-7 7-2z"></path>',
-  playCirc: '<circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon>',
-  brief:    '<rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>',
-  building: '<line x1="3" y1="22" x2="21" y2="22"></line><line x1="6" y1="18" x2="6" y2="11"></line><line x1="10" y1="18" x2="10" y2="11"></line><line x1="14" y1="18" x2="14" y2="11"></line><line x1="18" y1="18" x2="18" y2="11"></line><polygon points="12 2 20 7 4 7 12 2"></polygon>',
-};
-
-const categories = [
-  {
-    id: 'roi', num: '01', tint: 'amber',
-    title: 'ROI & Performance Calculators',
-    subtitle: '5 calculators — measure what your marketing actually returns',
-    tools: [
-      { href: '/marketing-roi-calculator/', name: 'Marketing ROI Calculator', icon: 'trend',
-        desc: 'Computes ROMI and gross-profit ROI with COGS. Channel presets included.',
-        metric: '500% (5:1) target ROI', badge: 'popular' },
-      { href: '/cac-calculator/', name: 'CAC Calculator', icon: 'userPlus',
-        desc: 'Customer acquisition cost from spend and new customers, plus payback period.',
-        metric: '$390 planning CAC (B2B SMB)', badge: 'new' },
-      { href: '/email-marketing-roi-calculator/', name: 'Email Marketing ROI', icon: 'mail',
-        desc: 'Email ROMI from list size, open rate, click rate, and platform cost.',
-        metric: '$36–$42 per $1 (quoted)', badge: '' },
-      { href: '/marketing-automation-roi-calculator/', name: 'Marketing Automation ROI', icon: 'zap',
-        desc: 'Time savings, lead lift %, and platform cost. Built for B2B.',
-        metric: '544% 3-year ROI (Nucleus)', badge: '' },
-      { href: '/conversion-rate-calculator/', name: 'Conversion Rate Calculator', icon: 'refresh',
-        desc: 'CVR, reverse-computed traffic needed for a revenue goal, by channel.',
-        metric: '3.5% avg CVR (organic)', badge: '' },
-    ],
-  },
-  {
-    id: 'budget', num: '02', tint: 'indigo',
-    title: 'Budget & Planning Calculators',
-    subtitle: '4 calculators — plan spend before you commit it',
-    tools: [
-      { href: '/marketing-budget-calculator/', name: 'Marketing Budget Calculator', icon: 'pieChart',
-        desc: 'Recommends budget from annual revenue and industry, with 9-sector planning benchmarks.',
-        metric: '7.8% of revenue (Gartner)', badge: '' },
-      { href: '/digital-marketing-budget-calculator/', name: 'Digital Marketing Budget Calculator', icon: 'layers',
-        desc: 'Splits a marketing budget into a digital budget and a monthly allocation across six channels.',
-        metric: '61.1% digital share (Gartner)', badge: 'new' },
-      { href: '/social-media-budget-calculator/', name: 'Social Media Budget Calculator', icon: 'share',
-        desc: 'Paid and organic social budget by platform and campaign goal.',
-        metric: '$8.50 avg CPM (FB/IG)', badge: '' },
-      { href: '/inbound-marketing-calculator/', name: 'Inbound Marketing Calculator', icon: 'funnel',
-        desc: 'Reverse-funnel: enter a revenue goal, get traffic, MQL, and lead targets.',
-        metric: '2–4% visitor-to-lead', badge: '' },
-    ],
-  },
-  {
-    id: 'ads', num: '03', tint: 'amber',
-    title: 'Advertising Metric Calculators',
-    subtitle: '5 calculators — the numbers behind every ad platform',
-    tools: [
-      { href: '/roas-calculator/', name: 'ROAS Calculator', icon: 'target',
-        desc: 'Return on ad spend as % and multiplier, Target ROAS mode.',
-        metric: '400% (4x) target ROAS', badge: 'new' },
-      { href: '/digital-marketing-calculator/', name: 'Digital Marketing Calculator', icon: 'layers',
-        desc: 'CPM, CPC, CTR, ROAS, and CPA from a single set of campaign inputs.',
-        metric: '5 metrics, 1 input set', badge: '' },
-      { href: '/cpm-calculator/', name: 'CPM Calculator', icon: 'eye',
-        desc: 'Cost per thousand impressions, total spend, or total impressions.',
-        metric: '$7–$11 CPM (FB/IG)', badge: '' },
-      { href: '/cpc-calculator/', name: 'CPC Calculator', icon: 'cursor',
-        desc: 'Cost per click, total spend from clicks, or expected clicks from budget.',
-        metric: '$1.16–$5.88 CPC', badge: '' },
-      { href: '/cpv-calculator/', name: 'CPV Calculator', icon: 'playCirc',
-        desc: 'Cost per view for YouTube, TikTok, and LinkedIn video campaigns.',
-        metric: '$0.03–$0.10 CPV (YouTube)', badge: '' },
-    ],
-  },
-  {
-    id: 'career', num: '04', tint: 'indigo',
-    title: 'Career & Business Calculators',
-    subtitle: '2 calculators — know your number before you negotiate',
-    tools: [
-      { href: '/marketing-salary-calculator/', name: 'Marketing Salary Calculator', icon: 'brief',
-        desc: 'Salary range by role, seniority, and US location.',
-        metric: '$72K mid-level estimate', badge: '' },
-      { href: '/marketing-agency-valuation-calculator/', name: 'Agency Valuation Calculator', icon: 'building',
-        desc: 'Market value from revenue multiples, EBITDA and retention rate, using 2026 valuation bands.',
-        metric: '3–7× EBITDA', badge: '' },
-    ],
-  },
-];
-
-const guides = [
-  { href: '/marketing-budget-benchmarks/', name: 'Marketing Budget Benchmarks', desc: 'Budget as a percentage of revenue: Gartner 7.8% average, B2B vs B2C survey figures and industry planning ranges.' },
-  { href: '/blog/what-is-a-good-marketing-roi/', name: 'What Is a Good Marketing ROI?', desc: 'ROI benchmarks by channel and the 5:1 rule of thumb, with sources.' },
-  { href: '/blog/romi-calculator-formula/', name: 'ROMI Formula', desc: 'How to calculate return on marketing investment, with worked examples.' },
-  { href: '/blog/digital-marketing-metrics-guide/', name: 'Digital Marketing Metrics Guide', desc: 'CPM, CPC, CTR, ROAS and CPA defined, with formulas and 2026 spend context.' },
-  { href: '/blog/marketing-automation-roi/', name: 'Marketing Automation ROI', desc: 'Formula, four ROI scenarios and platform costs for marketing automation.' },
-  { href: '/blog/inbound-marketing-cost/', name: 'Inbound Marketing Cost', desc: '2026 pricing by model and channel, with three sample budgets.' },
-  { href: '/blog/marketing-agency-valuation-multiples/', name: 'Agency Valuation Multiples', desc: 'EBITDA and revenue multiples by agency size, with adjustments for retainers and client concentration.' },
-  { href: '/blog/email-marketing-roi-benchmarks/', name: 'Email Marketing ROI Benchmarks', desc: 'Where the $36–$42 per $1 figure comes from and current Mailchimp averages.' },
-];
+const iconTrend = toolIcons.trend;
 
 const websiteSchema = {
   "@type": "WebPage",
@@ -123,121 +18,117 @@ const websiteSchema = {
 ---
 
 <Base title={title} description={description} slug={slug} schema={[websiteSchema]}>
-  <section class="page-hero" style="padding-bottom: var(--space-10);" aria-labelledby="home-h1">
+  <section class="page-hero home-hero" aria-labelledby="home-h1">
     <div class="container home-hero-grid">
       <div>
         <p class="eyebrow">Free Marketing Tools — 2026</p>
         <h1 id="home-h1">Marketing Calculators</h1>
-        <p class="citation">16 free marketing calculators for ROI, ROAS, CAC, budget planning, conversion rates, email performance, salary benchmarks, <a href="/blog/digital-marketing-metrics-guide/" style="color: var(--teal); text-decoration: underline;">CPM, CPC</a>, and more. Instant results. No signup. No email gate.</p>
-        <p class="citation" style="margin-top: var(--space-3);">The calculators cover five jobs: measuring return (ROI, CAC, email, automation, conversion rate), planning spend (budget, digital channel split, social media, inbound), pricing ads (ROAS, CPM, CPC, CPV, digital metrics), checking pay, and valuing an agency. Each page lists its formula, a worked example and sourced benchmarks.</p>
-        <div class="meta-badges" style="margin-bottom: var(--space-6);">
-          <span class="badge">✓ 16 calculators</span>
-          <span class="badge">✓ Free forever</span>
-          <span class="badge">✓ Updated October 2026</span>
+        <p class="citation">{calculatorCount} free marketing calculators for ROI, ROAS, CAC, budget planning, conversion rates, email performance, salary benchmarks, <a href="/blog/digital-marketing-metrics-guide/">CPM, CPC</a>, and more. Instant results. No signup. No email gate.</p>
+        <p class="citation">The calculators cover five jobs: measuring return (ROI, CAC, email, automation, conversion rate), planning spend (budget, digital channel split, social media, inbound), pricing ads (ROAS, CPM, CPC, CPV, digital metrics), checking pay, and valuing an agency. Each page lists its formula, a worked example and sourced benchmarks.</p>
+        <div class="hero-actions">
+          <a href="#calculators" class="btn-hero-cta">Browse calculators <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          <a href="#guides" class="btn-secondary">Read the guides</a>
         </div>
-        <nav class="quickjump" aria-label="Jump to category">
-          {categories.map((cat, i) => (
-            <a href={`#cat-${cat.id}`} class={`quickjump-pill${i === 0 ? ' is-active' : ''}`} data-jump={cat.id}>
-              {cat.num} · {cat.title.replace(' Calculators', '')}
-            </a>
-          ))}
-        </nav>
+        <ul class="trust-row">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{calculatorCount} calculators</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Free forever</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Updated October 2026</li>
+        </ul>
       </div>
 
       <!-- Live working mini ROI calculator -->
       <div class="live-calc-card">
         <div class="live-calc-card__header">
-          <div class="tool-card__icon-box" style="width:34px;height:34px;">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" set:html={icons.trend}></svg>
-          </div>
+          <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={iconTrend}></svg></span>
           <div>
-            <div style="font-size:14px;font-weight:700;color:var(--navy);">Marketing ROI Calculator</div>
-            <div style="font-size:11px;color:var(--text-mid);">Live preview — type your own numbers</div>
+            <div class="live-calc-card__title">Marketing ROI Calculator</div>
+            <div class="live-calc-card__sub">Live preview — type your own numbers</div>
           </div>
         </div>
         <div class="live-calc-card__body">
-          <div class="hero-calc-inputs" style="gap:var(--space-3);">
-            <div>
-              <label for="hero-spend" style="font-size:12px;font-weight:600;color:var(--text-main);display:block;margin-bottom:6px;">Ad spend ($)</label>
-              <input type="number" id="hero-spend" value="12000" style="width:100%;height:40px;border:1.5px solid var(--border);border-radius:var(--radius);padding:0 var(--space-3);font-size:14px;font-weight:600;color:var(--navy);background:var(--white);font-family:var(--font-display);" />
+          <div class="hero-calc-inputs">
+            <div class="field">
+              <label for="hero-spend">Ad spend ($)</label>
+              <input type="number" id="hero-spend" inputmode="decimal" value="12000" />
             </div>
-            <div>
-              <label for="hero-revenue" style="font-size:12px;font-weight:600;color:var(--text-main);display:block;margin-bottom:6px;">Revenue ($)</label>
-              <input type="number" id="hero-revenue" value="37000" style="width:100%;height:40px;border:1.5px solid var(--border);border-radius:var(--radius);padding:0 var(--space-3);font-size:14px;font-weight:600;color:var(--navy);background:var(--white);font-family:var(--font-display);" />
+            <div class="field">
+              <label for="hero-revenue">Revenue ($)</label>
+              <input type="number" id="hero-revenue" inputmode="decimal" value="37000" />
             </div>
           </div>
-          <div class="live-calc-card__result">
-            <div style="font-size:10px;font-weight:600;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Return on investment</div>
+          <div class="live-calc-card__result" aria-live="polite">
+            <div class="live-calc-card__result-label">Return on investment</div>
             <div class="live-calc-card__result-value" id="hero-roi">208%</div>
-            <div style="display:flex;gap:var(--space-6);margin-top:var(--space-4);padding-top:var(--space-4);border-top:1px solid rgba(255,255,255,.15);">
-              <div><div style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--white);" id="hero-profit">$25,000</div><div style="font-size:10px;color:rgba(255,255,255,.55);">Net profit</div></div>
-              <div><div style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--white);" id="hero-multiple">3.1x</div><div style="font-size:10px;color:rgba(255,255,255,.55);">Return multiple</div></div>
+            <div class="live-calc-card__stats">
+              <div><div class="live-calc-card__stat-value" id="hero-profit">$25,000</div><div class="live-calc-card__stat-label">Net profit</div></div>
+              <div><div class="live-calc-card__stat-value" id="hero-multiple">3.1x</div><div class="live-calc-card__stat-label">Return multiple</div></div>
             </div>
           </div>
-          <a href="/marketing-roi-calculator/" class="btn-calc" style="text-align:center;display:block;text-decoration:none;">Open full calculator →</a>
+          <a href="/marketing-roi-calculator/" class="btn-calc">Open full calculator →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <main>
-    {categories.map((cat, i) => (
-      <div class={`cat-spine${i % 2 === 1 ? ' cat-spine--tint' : ''}`} id={`cat-${cat.id}`} data-section={cat.id} style="scroll-margin-top: 90px;">
-        <div class="cat-spine__gutter">
-          <div class={`cat-spine__number${cat.tint === 'indigo' ? ' cat-spine__number--indigo' : ''}`}>{cat.num}</div>
-          {i < categories.length - 1 && <div class="cat-spine__line"></div>}
-        </div>
-        <div class="cat-spine__content container" style="max-width: none;">
-          <h2 class="home-section-heading" style="border-bottom:none;margin-bottom:4px;padding-bottom:0;">{cat.title}</h2>
-          <p class="cat-subtitle">{cat.subtitle}</p>
-          <ul class="tool-grid" style="list-style:none; padding:0; margin:0;">
-            {cat.tools.map(tool => (
-              <li>
-                <a href={tool.href} class={`tool-card${tool.badge === 'popular' ? ' tool-card--popular' : ''}`}>
-                  <div class="tool-card__icon-row">
-                    <div class={`tool-card__icon-box${cat.tint === 'indigo' ? ' tool-card__icon-box--indigo' : ''}`}>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" set:html={icons[tool.icon]}></svg>
-                    </div>
-                    {tool.badge === 'popular' && <span class="tool-card__badge tool-card__badge--popular">Most popular</span>}
-                    {tool.badge === 'new' && <span class="tool-card__badge tool-card__badge--new">New</span>}
-                  </div>
-                  <div class="tool-card__name">{tool.name}</div>
-                  <p class="tool-card__desc">{tool.desc}</p>
-                  <span class="tool-card__metric">{tool.metric}</span>
-                  <span class="tool-card__cta">Calculate →</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    ))}
-    <section class="container" style="padding-top: var(--space-10); padding-bottom: var(--space-12);" aria-labelledby="guides-h2">
-      <h2 id="guides-h2" class="home-section-heading">Guides &amp; Benchmarks</h2>
-      <p class="cat-subtitle">Formulas, sourced benchmarks and worked examples behind the calculators</p>
-      <ul class="tool-grid" style="list-style:none; padding:0; margin:0;">
-        {guides.map(g => (
-          <li>
-            <a href={g.href} class="tool-card">
-              <div class="tool-card__name">{g.name}</div>
-              <p class="tool-card__desc">{g.desc}</p>
-              <span class="tool-card__cta">Read guide →</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </section>
-  </main>
-</Base>
+  <div class="home-section container" id="calculators">
+    <nav class="quickjump" aria-label="Jump to category">
+      {categories.map(cat => (
+        <a href={`#cat-${cat.id}`} class="quickjump-pill">{cat.navName}</a>
+      ))}
+    </nav>
 
-<style>
-  .home-section-heading {
-    font-size: var(--text-xl);
-    font-weight: 800;
-    color: var(--navy);
-    letter-spacing: -0.02em;
-  }
-</style>
+    {categories.map(cat => (
+      <section class="cat-block" id={`cat-${cat.id}`} aria-labelledby={`cat-${cat.id}-h`}>
+        <div class="mega__head">
+          <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={catIcons[cat.icon]}></path></svg></span>
+          <h2 id={`cat-${cat.id}-h`} class="cat-title">{cat.title}</h2>
+        </div>
+        <p class="cat-subtitle">{cat.subtitle}</p>
+        <ul class="tool-grid">
+          {cat.tools.map(tool => (
+            <li>
+              <a href={tool.href} class={`tool-card${tool.badge === 'popular' ? ' tool-card--popular' : ''}`}>
+                <div class="tool-card__icon-row">
+                  <div class="tool-card__icon-box">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={toolIcons[tool.icon]}></svg>
+                  </div>
+                  {tool.badge === 'popular' && <span class="tool-card__badge tool-card__badge--popular">Most popular</span>}
+                  {tool.badge === 'new' && <span class="tool-card__badge tool-card__badge--new">New</span>}
+                </div>
+                <div class="tool-card__name">{tool.name}</div>
+                <p class="tool-card__desc">{tool.desc}</p>
+                <span class="tool-card__metric">{tool.metric}</span>
+                <span class="tool-card__cta">Calculate →</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+
+  <section class="home-section container" id="guides" aria-labelledby="guides-h2">
+    <div class="section-head">
+      <div>
+        <h2 id="guides-h2">Guides &amp; Benchmarks</h2>
+        <p>Formulas, sourced benchmarks and worked examples behind the calculators</p>
+      </div>
+      <a href="/blog/">All guides →</a>
+    </div>
+    <ul class="tool-grid">
+      {guides.map(g => (
+        <li>
+          <a href={g.href} class="tool-card">
+            <span class="tool-card__tag">{g.tag}</span>
+            <div class="tool-card__name">{g.name}</div>
+            <p class="tool-card__desc">{g.desc}</p>
+            <span class="tool-card__cta">Read guide →</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>
 
 <script>
 (function () {
@@ -268,35 +159,6 @@ const websiteSchema = {
     spendEl.addEventListener('input', calc);
     revEl.addEventListener('input', calc);
     calc();
-  }
-
-  var pills = Array.prototype.slice.call(document.querySelectorAll('.quickjump-pill'));
-  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
-
-  pills.forEach(function (pill) {
-    pill.addEventListener('click', function (e) {
-      e.preventDefault();
-      var id = pill.getAttribute('data-jump');
-      var target = document.getElementById('cat-' + id);
-      if (target) {
-        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 90, behavior: 'smooth' });
-      }
-    });
-  });
-
-  if ('IntersectionObserver' in window && sections.length) {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var id = entry.target.getAttribute('data-section');
-          pills.forEach(function (pill) {
-            pill.classList.toggle('is-active', pill.getAttribute('data-jump') === id);
-          });
-        }
-      });
-    }, { rootMargin: '-100px 0px -70% 0px', threshold: 0 });
-
-    sections.forEach(function (section) { observer.observe(section); });
   }
 })();
 </script>
