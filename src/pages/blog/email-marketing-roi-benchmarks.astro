@@ -4,7 +4,7 @@ import FAQ from '../../components/FAQ.astro';
 
 const slug      = 'blog/email-marketing-roi-benchmarks';
 const title     = 'Email Marketing ROI: Is $36 for Every $1 Still True in 2026?';
-const description = 'Email marketing ROI is commonly quoted at $36–$42 per $1 (3,600–4,200%). See the named sources, Mailchimp benchmarks and how to calculate your own ROI.';
+const description = 'Email marketing ROI is commonly quoted at $36–$42 per $1 (a revenue-to-cost ratio). See the named sources, Mailchimp benchmarks and how to calculate your own ROI.';
 const published = 'July 7, 2026';
 const updated   = 'October 8, 2026';
 const updatedISO = '2026-10-08';
@@ -21,14 +21,14 @@ const emailTypes = [
 ];
 
 const faqItems = [
-  { q: 'What is the average email marketing ROI?', a: 'Email marketing ROI is most commonly quoted at $36–$42 for every $1 spent, a 3,600–4,200% return. Primary sources checked for this article report $38 per $1 (Litmus, 2018) and £42 per £1 (DMA Marketer Email Tracker, 2019). Litmus reported in its 2026 findings that the top 8% of programmes reach 45:1 or higher.' },
+  { q: 'What is the average email marketing ROI?', a: 'Email marketing ROI is most commonly quoted at $36–$42 for every $1 spent, a revenue-to-cost ratio. Primary sources checked for this article report $38 per $1 (Litmus, 2018) and £42 per £1 (DMA Marketer Email Tracker, 2019). Litmus reported in its 2026 findings that the top 8% of programmes reach 45:1 or higher.' },
   { q: 'Is the $36:$1 email ROI benchmark accurate?', a: 'The $36–$42 range is consistent with the primary sources Litmus and the DMA have published, but those are self-reported survey results from marketers who measure ROI, not audited averages. Results vary with attribution method, cost definition and list quality. Use the benchmark for budget justification and calculate campaign-level ROI from your own tracked revenue and costs.' },
   { q: 'What is a good email open rate?', a: 'Mailchimp reports an average open rate of 35.63% and a click rate of 2.62% across all users, with industry averages from 29.81% (ecommerce) to 40.55% (government). Apple Mail Privacy Protection, introduced in September 2021, pre-loads emails and inflates open rates. Click rate and click-to-open rate are more reliable engagement signals than open rate.' },
   { q: 'How do I calculate email marketing ROI?', a: 'Email ROI = (Revenue from email − Email marketing cost) ÷ Email marketing cost × 100. Include every cost: platform subscription, design time, copywriting and list management. Attribute revenue to email using UTM parameters tracked in GA4, or enter the numbers into the free Email Marketing ROI Calculator for an instant result.' },
   { q: 'Why is my email ROI lower than the $36:$1 average?', a: 'Four causes are common: measuring only direct-click revenue and missing assisted conversions, sending to an unengaged list that hurts deliverability, sending one broadcast to the whole list instead of segments, and weak subject lines. Counting only the platform fee understates cost in some studies, so confirm which costs a benchmark includes before comparing your result with it.' },
   { q: 'What email metrics should I track?', a: 'Track delivery rate, click rate, click-to-open rate, conversion rate, revenue per email sent and unsubscribe rate. Mailchimp reports an average click rate of 2.62% and an unsubscribe rate of 0.22% across all users, which gives a baseline for comparison. Open rate matters less since Apple Mail Privacy Protection began inflating it in 2021.' },
   { q: 'What is the difference between the DMA and Litmus email ROI figures?', a: 'The DMA Marketer Email Tracker reports ROI in pounds, with the 2019 edition at just over £42 for every £1 spent among UK marketers. Litmus reports in dollars from a global survey of email professionals, with 38:1 in 2018. Currency, sample, year and cost definition all differ, so the numbers are comparable only as rough indicators.' },
-  { q: 'Does email marketing have a higher ROI than other channels?', a: 'Email is widely reported as one of the highest-ROI channels. First Page Sage reports 261% for B2B email and 298% for B2C email using a revenue-based method over multi-year campaigns, which is far lower than the survey-based 3,600–4,200% figure. The gap comes from different methods: survey figures reflect self-reported programme returns, while First Page Sage measures revenue against full programme cost.' },
+  { q: 'Does email marketing have a higher ROI than other channels?', a: 'Email is widely reported as one of the highest-ROI channels. First Page Sage reports 261% for B2B email and 298% for B2C email using a revenue-based method over multi-year campaigns, which is far lower than the survey-based revenue-return ratios. The gap comes from different methods: survey figures reflect self-reported programme returns, while First Page Sage measures revenue against full programme cost.' },
 ];
 
 const articleSchema = {
@@ -51,7 +51,7 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
     <div class="container">
       <p class="eyebrow">Email Marketing · {readTime}</p>
       <h1 id="art-h1">Email Marketing ROI: Is $36 for Every $1 Still True in 2026?</h1>
-      <p class="citation">Email marketing ROI is commonly quoted at $36–$42 for every $1 spent (3,600–4,200%). Litmus reported 38:1 in 2018 and the DMA reported £42 per £1 in 2019. This article lists the named sources, Mailchimp benchmarks and how to calculate your own return.</p>
+      <p class="citation">Email marketing ROI is commonly quoted at $36–$42 for every $1 spent (a revenue-to-cost ratio). Litmus reported 38:1 in 2018 and the DMA reported £42 per £1 in 2019. This article lists the named sources, Mailchimp benchmarks and how to calculate your own return.</p>
       <div class="meta-badges">
         <span class="badge">📅 {published}</span>
         <span class="badge">🔄 Updated {updated}</span>
@@ -70,7 +70,7 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
           <p>
             <strong>Email marketing ROI</strong> is the profit earned from email divided by the cost of
             running it. It is commonly quoted at <strong>$36–$42 for every $1 spent</strong>, a
-            3,600–4,200% return, because sending to 10,000 subscribers costs roughly the same
+            revenue-to-cost ratio, because sending to 10,000 subscribers costs roughly the same
             as sending to 1,000 and every recipient has opted in.
           </p>
         </div>
@@ -92,6 +92,7 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
           enter list size, open rate, click rate, and platform cost to get your full ROMI.
         </p>
 
+        <p><strong>Ratio versus ROI:</strong> If $36–$42 means revenue per $1 of cost, basic ROI after subtracting that cost is 3,500–4,100%. A source may define “return” differently, so retain its published ratio and check its cost definition before comparing it with this calculator.</p>
         <h2 id="source-of-36">Where Does the $36:$1 Email ROI Number Come From?</h2>
         <p>
           The $36–$42 per $1 range is a widely repeated summary of survey-based figures, and the
