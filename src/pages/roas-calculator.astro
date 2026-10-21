@@ -17,7 +17,7 @@ const faqItems = [
   },
   {
     q: 'What is the difference between ROAS and ROI?',
-    a: '<strong>ROAS</strong> measures revenue per dollar of direct ad spend (Revenue ÷ Ad Spend). <strong>ROI</strong> accounts for total costs including agency fees, software, COGS, and overhead ((Net Profit ÷ Total Investment) × 100).'
+    a: '<strong>ROAS</strong> measures revenue per dollar of direct ad spend (Revenue ÷ Ad Spend). <strong>ROI</strong> accounts for total costs including agency fees, software, COGS, and overhead ((Revenue − Total costs) ÷ Total costs × 100).'
   },
   {
     q: 'How do you calculate Target ROAS?',
@@ -142,7 +142,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
           <div class="result-panel__grid">
             <div class="result-panel__stat">
               <span class="result-panel__stat-value" id="roas-net-profit">$15,000</span>
-              <span class="result-panel__stat-label">Net Ad Revenue</span>
+              <span class="result-panel__stat-label">Revenue less ad spend</span>
             </div>
             <div class="result-panel__stat">
               <span class="result-panel__stat-value" id="roas-multiplier">4.0x</span>
@@ -230,6 +230,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
 </Base>
 
 <script type="module">
+import { validateCalculator } from '../scripts/calc-validation.js';
 import { setupSliderSync, copyShareableURL, parseURLParams, printReport } from '../scripts/calc-utils.js';
 
 (function() {
@@ -254,6 +255,7 @@ import { setupSliderSync, copyShareableURL, parseURLParams, printReport } from '
   setupSliderSync('ad-revenue', 'ad-revenue-slider', calculate);
 
   function calculate() {
+    if (!validateCalculator(calcBtn)) return;
     const spend = parseFloat(spendInput.value) || 0;
     const rev   = parseFloat(revInput.value) || 0;
     if (spend <= 0) return;
