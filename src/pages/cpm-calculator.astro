@@ -260,6 +260,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
 </Base>
 
 <script>
+import { validateCalculator } from '../scripts/calc-validation.js';
 (function(){
   'use strict';
   const modes = ['cpm','spend','imps'];
@@ -303,38 +304,39 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
   }
 
   calcBtn.addEventListener('click', () => {
+    if (!validateCalculator(calcBtn)) return;
     if (mode === 'cpm') {
       const spend = parseFloat(document.getElementById('cpm-spend').value) || 0;
       const imps  = parseFloat(document.getElementById('cpm-imps').value) || 0;
-      if (!spend || !imps) return;
+      
       const cpm = (spend / imps) * 1000;
       rlabel.textContent = 'CPM (Cost Per 1,000 Impressions)';
       primary.textContent = '$' + cpm.toFixed(2);
       s1.textContent = '$' + spend.toLocaleString(); l1.textContent = 'Ad spend';
       s2.textContent = fmtNum(imps); l2.textContent = 'Impressions';
-      s3.textContent = '$' + (spend / imps).toFixed(4); l3.textContent = 'Cost per impression';
+      s3.textContent = '$' + (imps > 0 ? spend / imps : cpm / 1000).toFixed(4); l3.textContent = 'Cost per impression';
       verdict.textContent = getCPMVerdict(cpm);
     } else if (mode === 'spend') {
       const cpm  = parseFloat(document.getElementById('sp-cpm').value) || 0;
       const imps = parseFloat(document.getElementById('sp-imps').value) || 0;
-      if (!cpm || !imps) return;
+      
       const spend = (cpm * imps) / 1000;
       rlabel.textContent = 'Total Ad Spend Required';
       primary.textContent = '$' + spend.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
       s1.textContent = '$' + cpm.toFixed(2); l1.textContent = 'CPM rate';
       s2.textContent = fmtNum(imps); l2.textContent = 'Impressions';
-      s3.textContent = '$' + (spend / imps).toFixed(4); l3.textContent = 'Cost per impression';
+      s3.textContent = '$' + (imps > 0 ? spend / imps : cpm / 1000).toFixed(4); l3.textContent = 'Cost per impression';
       verdict.textContent = '💰 To reach ' + fmtNum(imps) + ' impressions at $' + cpm + ' CPM you need $' + spend.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
     } else {
       const spend = parseFloat(document.getElementById('im-spend').value) || 0;
       const cpm   = parseFloat(document.getElementById('im-cpm').value) || 0;
-      if (!spend || !cpm) return;
+      
       const imps = (spend / cpm) * 1000;
       rlabel.textContent = 'Estimated Impressions';
       primary.textContent = fmtNum(imps);
       s1.textContent = '$' + spend.toLocaleString(); l1.textContent = 'Ad spend';
       s2.textContent = '$' + cpm.toFixed(2); l2.textContent = 'CPM rate';
-      s3.textContent = '$' + (spend / imps).toFixed(4); l3.textContent = 'Cost per impression';
+      s3.textContent = '$' + (imps > 0 ? spend / imps : cpm / 1000).toFixed(4); l3.textContent = 'Cost per impression';
       verdict.textContent = '📊 $' + spend.toLocaleString() + ' at $' + cpm + ' CPM = ' + fmtNum(imps) + ' impressions';
     }
     result.classList.add('visible');
