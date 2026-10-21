@@ -41,7 +41,7 @@ export const categories = [
     tools: [
       { href: '/marketing-roi-calculator/', name: 'Marketing ROI Calculator', short: 'ROI', navDesc: 'Return on any campaign', icon: 'trend',
         desc: 'Computes ROMI and gross-profit ROI with COGS. Channel presets included.',
-        metric: '500% (5:1) target ROI', badge: 'popular' },
+        metric: '400% ROI = 5:1 revenue return', badge: 'popular' },
       { href: '/cac-calculator/', name: 'CAC Calculator', short: 'CAC', navDesc: 'Cost to win a customer', icon: 'userPlus',
         desc: 'Customer acquisition cost from spend and new customers, plus payback period.',
         metric: '$390 planning CAC (B2B SMB)', badge: 'new' },
