@@ -142,6 +142,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
 </Base>
 
 <script>
+import { validateCalculator } from '../scripts/calc-validation.js';
 (function(){
   'use strict';
   const btn = document.getElementById('ag-calc-btn');
@@ -164,11 +165,11 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
   }
 
   btn.addEventListener('click', () => {
+    if (!validateCalculator(btn)) return;
     const rev       = parseFloat((document.getElementById('ag-revenue') as HTMLInputElement).value) || 0;
     const margin    = parseFloat((document.getElementById('ag-ebitda') as HTMLInputElement).value) / 100 || 0;
-    const retention = parseFloat((document.getElementById('ag-retention') as HTMLInputElement).value) || 80;
+    const retention = parseFloat((document.getElementById('ag-retention') as HTMLInputElement).value);
     const type      = (document.getElementById('ag-type') as HTMLSelectElement).value;
-    if (!rev) return;
     const ebitda = rev * margin;
     const [revLo, revHi, ebitdaLo, ebitdaHi] = typeMultiples[type] || [0.4, 1.0, 3, 7];
 
