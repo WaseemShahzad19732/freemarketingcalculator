@@ -20,6 +20,19 @@ const salaryData: Record<string, number[]> = {
   'email-marketing-specialist':[45, 58, 74, 90, 108],
 };
 
+const salaryRoles = [
+  ['marketing-manager', 'Marketing Manager'],
+  ['digital-marketing-manager', 'Digital Marketing Manager'],
+  ['seo-specialist', 'SEO Specialist'],
+  ['paid-media-manager', 'Paid Media Manager'],
+  ['content-marketer', 'Content Marketer'],
+  ['email-marketing-specialist', 'Email Marketing Specialist'],
+  ['product-marketing-manager', 'Product Marketing Manager'],
+  ['marketing-director', 'Marketing Director'],
+  ['vp-marketing', 'VP of Marketing'],
+  ['cmo', 'CMO']
+];
+
 // Location multipliers
 const locationMult: Record<string, number> = {
   'national': 1.0, 'new-york': 1.35, 'san-francisco': 1.45,
@@ -174,50 +187,17 @@ const locationJSON = JSON.stringify(locationMult);
               <th scope="col">Entry Level</th>
               <th scope="col">Mid-Level</th>
               <th scope="col">Senior</th>
-              <th scope="col">Director+</th>
+              <th scope="col">Director</th>
+              <th scope="col">Executive</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><strong>Marketing Manager</strong></td>
-              <td>$55–68K</td><td>$68–88K</td><td>$88–110K</td><td>$110–135K</td>
-            </tr>
-            <tr style="background:var(--off-white)">
-              <td><strong>Digital Marketing Manager</strong></td>
-              <td>$52–65K</td><td>$65–85K</td><td>$85–108K</td><td>$105–128K</td>
-            </tr>
-            <tr>
-              <td><strong>SEO Specialist</strong></td>
-              <td>$48–60K</td><td>$60–80K</td><td>$80–102K</td><td>$100–120K</td>
-            </tr>
-            <tr style="background:var(--off-white)">
-              <td><strong>Paid Media Manager</strong></td>
-              <td>$52–65K</td><td>$65–88K</td><td>$88–112K</td><td>$108–132K</td>
-            </tr>
-            <tr>
-              <td><strong>Content Marketer</strong></td>
-              <td>$45–58K</td><td>$58–75K</td><td>$75–95K</td><td>$95–118K</td>
-            </tr>
-            <tr style="background:var(--off-white)">
-              <td><strong>Email Marketing Specialist</strong></td>
-              <td>$45–56K</td><td>$56–72K</td><td>$72–92K</td><td>$90–110K</td>
-            </tr>
-            <tr>
-              <td><strong>Product Marketing Manager</strong></td>
-              <td>$65–80K</td><td>$80–105K</td><td>$105–132K</td><td>$130–158K</td>
-            </tr>
-            <tr style="background:var(--off-white)">
-              <td><strong>Marketing Director</strong></td>
-              <td>—</td><td>$90–115K</td><td>$115–145K</td><td>$145–190K</td>
-            </tr>
-            <tr>
-              <td><strong>VP of Marketing</strong></td>
-              <td>—</td><td>$120–150K</td><td>$150–185K</td><td>$185–255K</td>
-            </tr>
-            <tr style="background:var(--off-white)">
-              <td><strong>CMO</strong></td>
-              <td>—</td><td>$150–200K</td><td>$200–275K</td><td>$275–400K+</td>
-            </tr>
+            {salaryRoles.map(([key, name]) => (
+              <tr>
+                <td><strong>{name}</strong></td>
+                {salaryData[key].map(mid => <td>${Math.round(mid * 0.85)}–{Math.round(mid * 1.18)}K</td>)}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
