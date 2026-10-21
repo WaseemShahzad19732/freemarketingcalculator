@@ -172,16 +172,18 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
 </Base>
 
 <script>
+import { validateCalculator } from '../scripts/calc-validation.js';
 (function(){
   'use strict';
   const btn = document.getElementById('sm-calc-btn');
   const result = document.getElementById('sm-result');
   if (!btn) return;
   btn.addEventListener('click', () => {
+    if (!validateCalculator(btn)) return;
     const budget   = parseFloat(document.getElementById('sm-budget').value) || 0;
     const cpm      = parseFloat(document.getElementById('sm-platform').value) || 8.5;
     const goal     = document.getElementById('sm-goal').value;
-    if (!budget) return;
+    
     const impressions = (budget / cpm) * 1000;
     const freq        = 2.5;
     const reach       = Math.round(impressions / freq);
