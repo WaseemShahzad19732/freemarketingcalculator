@@ -268,6 +268,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
 </Base>
 
 <script type="module">
+import { validateCalculator } from '../scripts/calc-validation.js';
 import { setupSliderSync, copyShareableURL, parseURLParams, printReport } from '../scripts/calc-utils.js';
 
 (function() {
@@ -293,6 +294,7 @@ import { setupSliderSync, copyShareableURL, parseURLParams, printReport } from '
   setupSliderSync('cac-customers', 'cac-customers-slider', calculate);
 
   function calculate() {
+    if (!validateCalculator(calcBtn)) return;
     const spend     = parseFloat(spendInput.value) || 0;
     const customers = parseFloat(customersInput.value) || 0;
     if (customers <= 0) return;
