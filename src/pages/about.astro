@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { categories } from '../data/calculators.js';
 
 const slug        = 'about';
 const title       = 'About FreemarketingCalculator.com — Free Marketing Tools';
@@ -65,18 +66,9 @@ const schema = {
 
       <h2>Calculators Available</h2>
       <ul style="margin: var(--space-4) 0; padding-left: var(--space-6); color: var(--text-mid); line-height: 2;">
-        <li><a href="/marketing-roi-calculator/">Marketing ROI Calculator</a> — Basic ROMI and gross-profit ROI with COGS</li>
-        <li><a href="/marketing-budget-calculator/">Marketing Budget Calculator</a> — Revenue-based budgets with 9 industry benchmarks</li>
-        <li><a href="/conversion-rate-calculator/">Conversion Rate Calculator</a> — CVR, reverse-funnel, and revenue estimation</li>
-        <li><a href="/email-marketing-roi-calculator/">Email Marketing ROI Calculator</a> — Full ROMI from list size to platform cost</li>
-        <li><a href="/social-media-budget-calculator/">Social Media Budget Calculator</a> — Reach and impressions by platform</li>
-        <li><a href="/digital-marketing-calculator/">Digital Marketing Calculator</a> — CPM, CPC, CTR, ROAS, and CPA</li>
-        <li><a href="/roas-calculator/">ROAS Calculator</a> — Return on ad spend with platform benchmarks</li>
-        <li><a href="/cac-calculator/">CAC Calculator</a> — Customer acquisition cost with payback period</li>
-        <li><a href="/marketing-salary-calculator/">Marketing Salary Calculator</a> — Role, seniority, and US location</li>
-        <li><a href="/marketing-agency-valuation-calculator/">Agency Valuation Calculator</a> — Revenue and EBITDA methods</li>
-        <li><a href="/marketing-automation-roi-calculator/">Marketing Automation ROI Calculator</a> — Time savings and lead lift</li>
-        <li><a href="/inbound-marketing-calculator/">Inbound Marketing Calculator</a> — Full reverse-funnel from revenue goal</li>
+        {categories.flatMap(category => category.tools).map(tool => (
+          <li><a href={tool.href}>{tool.name}</a> — {tool.desc}</li>
+        ))}
       </ul>
 
       <h2>Contact</h2>
