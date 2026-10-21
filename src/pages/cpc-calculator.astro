@@ -178,6 +178,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
 </Base>
 
 <script>
+import { validateCalculator } from '../scripts/calc-validation.js';
 (function(){
   'use strict';
   const modeBtns = { cpc: document.getElementById('cpc-mode-cpc'), spend: document.getElementById('cpc-mode-spend'), clicks: document.getElementById('cpc-mode-clicks') };
@@ -199,13 +200,14 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
 
   function getVerdict(cpc) {
     if (cpc < 0.5)  return '📡 Very low CPC — likely display or Pinterest; check conversion quality';
-    if (cpc < 1.5)  return '✅ Below Facebook average ($0.80–$1.50) — good value';
-    if (cpc < 3)    return '✅ Within Google Search average range ($2.50–$4.50)';
-    if (cpc < 5)    return '🟡 Above average — ensure conversion rate justifies cost';
+    if (cpc < 2.5)  return 'Below the $2.50–$4.50 Google Search planning range; check conversion quality';
+    if (cpc <= 4.5) return 'Within the $2.50–$4.50 Google Search planning range; profitability depends on conversions and margin';
+    if (cpc < 5)    return 'Above the $2.50–$4.50 planning range; compare customer value and acquisition cost';
     return '⚠️ High CPC — typical of legal, financial, B2B SaaS; verify campaign ROI';
   }
 
   btn.addEventListener('click', () => {
+    if (!validateCalculator(btn)) return;
     const p = document.getElementById('cpc-primary');
     const rl = document.getElementById('cpc-result-label');
     const s1 = document.getElementById('cpc-s1'), l1 = document.getElementById('cpc-l1');
@@ -216,7 +218,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     if (mode === 'cpc') {
       const spend = parseFloat(document.getElementById('cpc-spend').value) || 0;
       const clicks = parseFloat(document.getElementById('cpc-clicks').value) || 0;
-      if (!spend || !clicks) return;
+      
       const cpc = spend / clicks;
       rl.textContent = 'Cost Per Click (CPC)';
       p.textContent = '$' + cpc.toFixed(2);
@@ -227,7 +229,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     } else if (mode === 'spend') {
       const rate = parseFloat(document.getElementById('cpc-rate').value) || 0;
       const clicks = parseFloat(document.getElementById('cpc-clicks-b').value) || 0;
-      if (!rate || !clicks) return;
+      
       const spend = rate * clicks;
       rl.textContent = 'Total Spend Required';
       p.textContent = '$' + spend.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
@@ -238,7 +240,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     } else {
       const spend = parseFloat(document.getElementById('cpc-spend-c').value) || 0;
       const rate = parseFloat(document.getElementById('cpc-rate-c').value) || 0;
-      if (!spend || !rate) return;
+      
       const clicks = Math.floor(spend / rate);
       rl.textContent = 'Expected Clicks';
       p.textContent = clicks.toLocaleString();
