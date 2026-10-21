@@ -47,6 +47,7 @@ export function validateCalculator(button) {
     const label = field.labels?.[0]?.textContent?.trim() || 'This field';
     if (blank || !Number.isFinite(value)) reason = 'enter a number';
     else if (Math.abs(value) > Number.MAX_SAFE_INTEGER) reason = 'enter a smaller number';
+    else if (value !== 0 && Math.abs(value) < 1e-12) reason = 'enter zero or a value of at least 0.000000000001';
     else if (positive.has(field.id) && value <= 0) reason = 'enter a value greater than zero; this value is a divisor';
     else if (field.min !== '' && value < Number(field.min)) reason = 'enter at least ' + field.min;
     else if (field.max !== '' && value > Number(field.max)) reason = 'enter no more than ' + field.max;
