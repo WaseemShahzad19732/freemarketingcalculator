@@ -4,7 +4,7 @@ import FAQ from '../components/FAQ.astro';
 
 const slug        = 'roas-calculator';
 const title       = 'ROAS Calculator — Free Return on Ad Spend Tool (2026)';
-const description = 'Calculate your Return on Ad Spend (ROAS) instantly with 2026 ad platform benchmarks. Free ROAS calculator with Target ROAS mode and ROI converter.';
+const description = 'Calculate ROAS as a multiplier and percentage. Compare revenue return with contribution-margin break-even examples. Free, with no signup.';
 
 const faqItems = [
   {
@@ -13,7 +13,7 @@ const faqItems = [
   },
   {
     q: 'What is a good ROAS?',
-    a: 'A <strong>4:1 (400%) ROAS</strong> is considered a healthy benchmark for most eCommerce and paid media campaigns. High-margin digital products can operate profitably at 2:1 (200%), while low-margin retail businesses may require 6:1 (600%) to break even after COGS and fulfillment costs.'
+    a: 'A good ROAS depends on contribution margin, attribution and payback period. A 25% contribution margin before ads requires 4x ROAS to cover advertising; a 20% margin requires 5x. Fixed costs and excluded variable costs can raise the requirement.'
   },
   {
     q: 'What is the difference between ROAS and ROI?',
@@ -21,18 +21,11 @@ const faqItems = [
   },
   {
     q: 'How do you calculate Target ROAS?',
-    a: '<strong>Target ROAS = 1 ÷ Gross Margin %</strong>. If your gross profit margin is 25%, your break-even Target ROAS is 1 ÷ 0.25 = 400% (4.0x). Any campaign above 4.0x generates net profit.'
+    a: '<strong>Target ROAS = 1 ÷ Gross Margin %</strong>. If your gross profit margin is 25%, your break-even Target ROAS is 1 ÷ 0.25 = 400% (4.0x). Above 4.0x, contribution after advertising is positive only for the costs included in that margin; uncounted overhead can still eliminate profit.'
   }
 ];
 
-const platformBenchmarks = [
-  { platform: 'Google Search Ads', typical: '400%', range: '250–700%', bar: 65 },
-  { platform: 'Google Shopping Ads', typical: '450%', range: '300–800%', bar: 72 },
-  { platform: 'Meta Ads (Facebook/IG)', typical: '280%', range: '150–500%', bar: 45 },
-  { platform: 'TikTok Ads', typical: '220%', range: '100–400%', bar: 35 },
-  { platform: 'Amazon Sponsored Products', typical: '550%', range: '350–900%', bar: 85 },
-  { platform: 'LinkedIn Ads (B2B)', typical: '200%', range: '100–350%', bar: 30 }
-];
+
 
 const webAppSchema = {
   "@type": "WebApplication",
@@ -44,8 +37,8 @@ const webAppSchema = {
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "creator": { "@id": "https://freemarketingcalculator.com/#org" },
   "url": "https://freemarketingcalculator.com/roas-calculator/",
-  "description": "Free Return on Ad Spend (ROAS) calculator with platform benchmarks, Target ROAS mode, and break-even analysis.",
-  "featureList": ["ROAS multiplier formula", "Target ROAS calculation", "Platform benchmarks", "Free, no signup"]
+  "description": "Free return on ad spend calculator with multiplier, percentage and contribution-margin break-even examples.",
+  "featureList": ["ROAS multiplier formula", "Break-even ROAS examples", "Contribution-margin comparison", "Free, no signup"]
 };
 
 const faqSchema = {
@@ -82,7 +75,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       <p class="eyebrow">Free Advertising Tool</p>
       <h1 id="page-h1">ROAS Calculator — Return on Ad Spend</h1>
       <p class="citation">
-        Calculate your Return on Ad Spend (ROAS) multiplier and percentage instantly, with 2026 ad platform benchmarks for Google, Meta, TikTok, and Amazon Ads.
+        Calculate return on ad spend as a multiplier and percentage. Use the margin examples below to understand the revenue return needed to cover advertising.
       </p>
       <div class="meta-badges">
         <span class="badge">✓ Multiplier & % modes</span>
@@ -188,36 +181,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       </div>
     </div>
 
-    <section class="bench-section">
-      <h2>ROAS Benchmarks by Platform — 2026</h2>
-      <span class="bench-date">Updated July 2026</span>
-      <div class="bench-table-wrap">
-        <table class="bench-table">
-          <thead>
-            <tr>
-              <th>Ad Platform</th>
-              <th>Typical ROAS</th>
-              <th>Range</th>
-              <th>Visual Benchmark</th>
-            </tr>
-          </thead>
-          <tbody>
-            {platformBenchmarks.map(row => (
-              <tr>
-                <td>{row.platform}</td>
-                <td><strong>{row.typical}</strong></td>
-                <td>{row.range}</td>
-                <td>
-                  <div class="bench-bar">
-                    <div class="bench-bar__fill" style={`width: ${row.bar}%`}></div>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
+    <section class="bench-section" aria-labelledby="roas-margin"><h2 id="roas-margin">Break-Even ROAS by Contribution Margin</h2><p>Break-even ROAS = 1 ÷ contribution margin before advertising, written as a decimal. These arithmetic scenarios cover only the costs included in the margin. They are not ad-platform or industry averages.</p><div class="bench-table-wrap"><table class="bench-table"><thead><tr><th scope="col">Contribution margin before ads</th><th scope="col">Break-even revenue return</th></tr></thead><tbody><tr><td>20%</td><td>5x / 500%</td></tr><tr><td>25%</td><td>4x / 400%</td></tr><tr><td>40%</td><td>2.5x / 250%</td></tr><tr><td>60%</td><td>1.67x / about 167%</td></tr></tbody></table></div><p>At 4x ROAS, $1,000 ad spend generates $4,000 revenue. A 25% contribution margin leaves $1,000 before ads, exactly covering the spend. A 20% margin leaves only $800, a $200 shortfall before fixed overhead. Use contribution after product, payment and fulfilment costs; gross margin that excludes these costs can overstate the affordable ad spend.</p></section>
 
     <div class="related-box">
       <p class="related-box__label">Related Guides &amp; Calculators</p>
@@ -269,10 +233,7 @@ import { setupSliderSync, copyShareableURL, parseURLParams, printReport } from '
     multEl.textContent      = `${mult}x`;
     perDollarEl.textContent  = `$${mult}`;
 
-    if (roasPct < 100)      verdictEl.textContent = '🔴 Operating at a loss — ad spend exceeds revenue';
-    else if (roasPct < 250) verdictEl.textContent = '🟡 Low margin — review product margins and COGS';
-    else if (roasPct < 400) verdictEl.textContent = '🟢 Solid — within target performance range';
-    else                    verdictEl.textContent = '🚀 Strong — above industry benchmark';
+    verdictEl.textContent = roasPct < 100 ? 'Ad spend exceeds attributed revenue, before other costs.' : 'Revenue return alone does not establish profit. Compare with contribution margin and fully loaded costs.';
 
     if (spendBar && profitBar) {
       const total = Math.max(rev, spend + 1);

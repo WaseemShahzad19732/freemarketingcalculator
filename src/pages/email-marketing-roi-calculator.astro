@@ -6,13 +6,7 @@ const slug        = 'email-marketing-roi-calculator';
 const title       = 'Email Marketing ROI Calculator — Free Tool 2026';
 const description = 'Calculate email marketing ROI from list size, open rate, click rate, conversion rate, and platform cost. Includes 2026 benchmarks. Free, no signup.';
 
-const platforms = [
-  { name: 'Mailchimp',      cost1k: 11, cost5k: 50,  cost10k: 75 },
-  { name: 'Klaviyo',        cost1k: 20, cost5k: 60,  cost10k: 100 },
-  { name: 'ActiveCampaign', cost1k: 15, cost5k: 49,  cost10k: 79 },
-  { name: 'Brevo',          cost1k: 9,  cost5k: 25,  cost10k: 65 },
-  { name: 'Constant Contact', cost1k: 12, cost5k: 45, cost10k: 80 },
-];
+
 
 const faqItems = [
   { q: 'What is a good email marketing ROI?', a: 'Email marketing ROI is widely quoted at $36–$42 for every $1 spent, a revenue-to-cost ratio; if those figures mean revenue, basic ROI would be 3,500–4,100% after subtracting cost. Primary sources checked include Litmus (38:1 in 2018) and the DMA (£42 per £1 in 2019). These are survey-based figures from marketers who measure ROI, so use them as a reference rather than a target.' },
@@ -24,7 +18,7 @@ const faqItems = [
   { q: 'Is this calculator free?', a: 'Yes. The calculator is completely free, with no signup and no email required.' },
 ];
 
-const webAppSchema = { "@type": "WebApplication", "name": title, "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "creator": { "@id": "https://freemarketingcalculator.com/#org" }, "url": "https://freemarketingcalculator.com/email-marketing-roi-calculator/", "description": "Computes email marketing ROMI from list size, send frequency, open rate, click rate, conversion rate, and monthly platform cost with 2026 benchmarks.", "featureList": ["Email ROMI calculation", "Platform cost comparison", "2026 benchmarks"] };
+const webAppSchema = { "@type": "WebApplication", "name": title, "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "creator": { "@id": "https://freemarketingcalculator.com/#org" }, "url": "https://freemarketingcalculator.com/email-marketing-roi-calculator/", "description": "Computes email marketing ROMI from list size, send frequency, open rate, click rate, conversion rate, and monthly platform cost with 2026 benchmarks.", "featureList": ["Email ROMI calculation", "Cost-input checklist", "2026 benchmarks"] };
 const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
 const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" }, { "@type": "ListItem", "position": 2, "name": "Email Marketing ROI Calculator", "item": "https://freemarketingcalculator.com/email-marketing-roi-calculator/" }] };
 const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "description": description, "step": [
@@ -40,7 +34,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     <div class="container">
       <p class="eyebrow">Free Marketing Tool</p>
       <h1 id="page-h1">Email Marketing ROI Calculator</h1>
-      <p class="citation">Email marketing ROI equals (revenue − cost) ÷ cost × 100. This calculator computes it from list size, send frequency, open rate, click rate, conversion rate and monthly platform cost, with benchmarks and a platform cost comparison.</p>
+      <p class="citation">Email marketing ROI equals (revenue − cost) ÷ cost × 100. This calculator computes it from list size, send frequency, open rate, click rate, conversion rate and monthly platform cost, with benchmarks and a cost-input checklist.</p>
       <div class="meta-badges">
         <span class="badge">✓ Full ROMI calculation</span>
         <span class="badge">✓ Platform cost included</span>
@@ -89,19 +83,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       Widely quoted benchmark: $36–$42 return per $1 spent (Litmus reported 38:1 in 2018)</p>
     </div>
 
-    <section class="bench-section">
-      <h2>Email Platform Cost Comparison — 2026</h2>
-      <span class="bench-date">Updated October 2026</span>
-      <div class="bench-table-wrap">
-        <table class="bench-table">
-          <thead><tr><th>Platform</th><th>~1K subscribers</th><th>~5K subscribers</th><th>~10K subscribers</th></tr></thead>
-          <tbody>
-            {platforms.map(p => (<tr><td>{p.name}</td><td>${p.cost1k}/mo</td><td>${p.cost5k}/mo</td><td>${p.cost10k}/mo</td></tr>))}
-          </tbody>
-        </table>
-      </div>
-      <p class="bench-source">Approximate pricing based on standard plans. Prices change — verify on each platform's site.</p>
-    </section>
+    <section class="bench-section" aria-labelledby="email-cost"><h2 id="email-cost">Use Your Actual Email Platform Cost</h2><p>Record the plan, billable contact count, monthly send allowance, currency, billing term, overage fees and promotion end date. Enter the monthly equivalent of the price you will actually pay; include staff and creative costs when you want a fuller return calculation.</p><p>For a provider quote, use the <a href="https://mailchimp.com/pricing/marketing/">official Mailchimp pricing selector</a>. A starting price at one contact allowance is not a verified quote for a 5,000- or 10,000-contact list. The worked examples below use hypothetical costs, not vendor prices.</p></section>
 
 
     <!-- TASK 23: Related guide link -->

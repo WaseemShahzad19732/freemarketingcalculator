@@ -1,0 +1,12 @@
+type,name,value,unit,formula_or_scope
+input,ad_spend,5000,USD,Illustrative teaching example
+input,impressions,500000,impressions,Same campaign and dates
+input,clicks,4500,clicks,Same campaign and dates
+input,conversions,90,defined conversions,Not necessarily new customers
+input,attributed_revenue,22000,USD,Same attribution window
+result,CPM,10,USD per 1000 impressions,spend / impressions * 1000
+result,CPC,1.111111,USD per click,spend / clicks
+result,CTR,0.9,percent,clicks / impressions * 100
+result,CPA,55.555556,USD per conversion,spend / conversions
+result,ROAS,4.4,multiplier,attributed revenue / spend
+metadata,reviewed,2026-10-22,date,Original arithmetic; not empirical benchmark data

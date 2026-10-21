@@ -83,6 +83,7 @@ export function copyShareableURL(paramsObj) {
   window.history.replaceState({}, '', url.toString());
 
   navigator.clipboard.writeText(url.toString()).then(() => {
+    document.dispatchEvent(new Event('calculator-share'));
     showToast('🔗 Calculation link copied to clipboard!');
   }).catch(() => {
     showToast('🔗 Link updated in browser address bar!');
@@ -107,5 +108,6 @@ export function parseURLParams(inputMap) {
 
 /** Print calculator report page */
 export function printReport() {
+  document.dispatchEvent(new Event('calculator-print'));
   window.print();
 }
