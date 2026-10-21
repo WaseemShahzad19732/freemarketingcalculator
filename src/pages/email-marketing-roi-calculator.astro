@@ -207,7 +207,7 @@ import { validateCalculator } from '../scripts/calc-validation.js';
     document.getElementById('em-revenue').textContent    = fmt(revenue);
     document.getElementById('em-conversions').textContent = convs.toLocaleString('en-US', { maximumFractionDigits: 2 });
     document.getElementById('em-per-sub').textContent    = list > 0 ? '$' + perSub.toFixed(2) : 'N/A';
-    document.getElementById('em-verdict').textContent    = roi < 0 ? 'Revenue is below the costs entered. Review attribution and fully loaded costs.' : 'Positive return on the costs entered. Product costs and overhead may reduce profit.';
+    document.getElementById('em-verdict').textContent    = roi < 0 ? 'Revenue is below the costs entered. Review attribution and fully loaded costs.' : roi === 0 ? 'Break-even on the costs entered.' : 'Positive return on the costs entered. Product costs and overhead may reduce profit.';
     result.classList.add('visible');
     result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   });
