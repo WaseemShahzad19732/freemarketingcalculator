@@ -19,14 +19,15 @@ document.addEventListener('click', e => {
   const card = button?.closest('.calc-card');
   if (card) {
     start(card);
-    // Calculator handlers are synchronous. Read their rendered outcome once.
-    queueMicrotask(() => {
+    // A browser may flush microtasks between capture and target listeners.
+    // Use the next task so the calculator's click handler has rendered first.
+    setTimeout(() => {
       if (card.querySelector('[data-calc-error]')?.textContent.trim()) {
         track('calculator_validation_error');
       } else if (card.querySelector('.result-panel.visible')) {
         track('calculator_complete');
       }
-    });
+    }, 0);
   }
   const link = e.target.closest?.('main a[href]');
   if (link) {
