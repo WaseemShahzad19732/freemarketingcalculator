@@ -109,29 +109,30 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
 </Base>
 
 <script>
+import { validateCalculator } from '../scripts/calc-validation.js';
 (function(){
   'use strict';
   const btn = document.getElementById('dm-calc-btn');
   const result = document.getElementById('dm-result');
   if (!btn) return;
   btn.addEventListener('click', () => {
+    if (!validateCalculator(btn)) return;
     const spend  = parseFloat(document.getElementById('dm-spend').value) || 0;
     const imps   = parseFloat(document.getElementById('dm-impressions').value) || 0;
     const clicks = parseFloat(document.getElementById('dm-clicks').value) || 0;
     const convs  = parseFloat(document.getElementById('dm-conversions').value) || 0;
     const rev    = parseFloat(document.getElementById('dm-revenue').value) || 0;
-    if (!spend) return;
-    const cpm  = imps  > 0 ? (spend / imps) * 1000 : 0;
-    const cpc  = clicks > 0 ? spend / clicks : 0;
-    const ctr  = imps  > 0 ? (clicks / imps) * 100 : 0;
-    const cpa  = convs > 0 ? spend / convs : 0;
-    const roas = spend > 0 ? rev / spend : 0;
-    document.getElementById('dm-roas').textContent    = roas.toFixed(2) + '×';
-    document.getElementById('dm-cpm').textContent     = '$' + cpm.toFixed(2);
-    document.getElementById('dm-cpc').textContent     = '$' + cpc.toFixed(2);
-    document.getElementById('dm-ctr').textContent     = ctr.toFixed(2) + '%';
-    document.getElementById('dm-cpa').textContent     = '$' + cpa.toFixed(2);
-    const roasVerdict = roas >= 4 ? '✅ ROAS ≥ 4× — profitable for most business models' : roas >= 2 ? '🟡 ROAS 2–4× — marginal; review costs and targeting' : '⚠️ ROAS < 2× — campaign likely unprofitable; pause and optimise';
+    const cpm  = imps > 0 && document.getElementById('dm-spend').value !== '' ? (spend / imps) * 1000 : null;
+    const cpc  = clicks > 0 && document.getElementById('dm-spend').value !== '' ? spend / clicks : null;
+    const ctr  = imps > 0 && document.getElementById('dm-clicks').value !== '' ? (clicks / imps) * 100 : null;
+    const cpa  = convs > 0 && document.getElementById('dm-spend').value !== '' ? spend / convs : null;
+    const roas = spend > 0 && document.getElementById('dm-revenue').value !== '' ? rev / spend : null;
+    document.getElementById('dm-roas').textContent    = roas === null ? 'N/A' : roas.toFixed(2) + '×';
+    document.getElementById('dm-cpm').textContent     = cpm === null ? 'N/A' : '$' + cpm.toFixed(2);
+    document.getElementById('dm-cpc').textContent     = cpc === null ? 'N/A' : '$' + cpc.toFixed(2);
+    document.getElementById('dm-ctr').textContent     = ctr === null ? 'N/A' : ctr.toFixed(2) + '%';
+    document.getElementById('dm-cpa').textContent     = cpa === null ? 'N/A' : '$' + cpa.toFixed(2);
+    const roasVerdict = roas === null ? 'N/A means a required input is missing or a divisor is zero.' : 'Revenue per $1 of ad spend: $' + roas.toFixed(2) + '. Profitability depends on gross margin, other costs and attribution.';
     document.getElementById('dm-verdict').textContent = roasVerdict;
     result.classList.add('visible');
     result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
