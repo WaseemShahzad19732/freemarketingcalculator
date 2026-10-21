@@ -470,6 +470,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
   All DOM references checked before use.
 -->
 <script>
+import { validateCalculator } from '../scripts/calc-validation.js';
 (function () {
   'use strict';
 
@@ -513,10 +514,11 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
   }
 
   function calculate() {
+    if (!validateCalculator(calcBtn)) return;
     const revenue = parseFloat(revenueInput.value);
     const basePct = parseFloat(industrySelect.value);
 
-    if (!revenue || revenue <= 0 || !basePct) {
+    if (revenue < 0 || !basePct) {
       revenueInput.style.borderColor = !revenue ? 'var(--error)' : '';
       industrySelect.style.borderColor = !basePct ? 'var(--error)' : '';
       return;
