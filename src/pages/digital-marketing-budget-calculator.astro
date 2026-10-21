@@ -232,6 +232,7 @@ const howToSchema = { "@type": "HowTo", "name": "How to use the Digital Marketin
 </Base>
 
 <script>
+import { validateCalculator } from '../scripts/calc-validation.js';
 (function(){
   'use strict';
   var btn = document.getElementById('db-calc-btn');
@@ -254,13 +255,12 @@ const howToSchema = { "@type": "HowTo", "name": "How to use the Digital Marketin
   function usd(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
 
   function calculate(scroll) {
+    if (!validateCalculator(btn)) return;
     var total = parseFloat(document.getElementById('db-total').value) || 0;
     var share = parseFloat(document.getElementById('db-share').value);
-    if (isNaN(share)) share = 61.1;
-    share = Math.min(Math.max(share, 0), 100);
     var model = document.getElementById('db-model').value;
     var goal  = document.getElementById('db-goal').value;
-    if (!total) return;
+    
 
     var annual  = total * (share / 100);
     var monthly = annual / 12;
