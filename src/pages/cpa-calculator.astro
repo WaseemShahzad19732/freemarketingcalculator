@@ -1,0 +1,40 @@
+---
+import CalculatorPage from '../components/CalculatorPage.astro';
+import CampaignCalculator from '../components/CampaignCalculator.astro';
+const faqs = [
+  { q: 'What is the CPA formula?', a: 'CPA equals the matching campaign cost divided by the number of defined conversions. For example, $5,000 divided by 90 conversions is about $55.56 per conversion. State whether those conversions are purchases, signups or another action.' },
+  { q: 'Is CPA the same as customer acquisition cost?', a: 'Only when the conversion represents a new customer and the included cost scope matches. CAC normally uses sales and marketing costs divided by new customers; an advertising CPA can count leads, returning-customer orders or other actions.' },
+  { q: 'Can I calculate a budget from target CPA?', a: 'Yes. Multiply target CPA by the target number of conversions. A $40 CPA and 200 conversions imply an $8,000 budget if that average cost is maintained. This is a model, not a guarantee or a recommended bid.' },
+  { q: 'What if I have no conversions?', a: 'Cost per conversion is undefined when the conversion count is zero, even if spend is also zero. The calculator reports an error instead of inventing a finite CPA. Zero cost with a positive conversion count gives a zero CPA.' },
+  { q: 'Can recorded conversions be fractional?', a: 'Yes. Attribution systems can distribute conversion credit across interactions. The CPA mode accepts a positive fractional attributed conversion count without rounding it. Use the matching cost and attribution scope; target counts in planning mode are whole outcomes.' },
+  { q: 'What is a good CPA?', a: 'Judge it against contribution per counted action, lead-to-customer rate where relevant, repeat-purchase assumptions and other acquisition costs. A conversion is not automatically a customer, and a universal industry CPA does not establish profitability.' },
+];
+---
+<CalculatorPage slug="cpa-calculator" title="CPA Calculator: Cost Per Acquisition or Action" description="Calculate cost per acquisition or action, budget for a conversion target, or conversions within a budget. Includes CPA versus CAC, formulas and worked examples." name="CPA Calculator" intro="Calculate the cost of a defined conversion, or model the budget and outcome count at an assumed CPA. Keep actions, customers and cost scope distinct." badges={['3 calculation modes', 'CPA versus CAC explained', 'No signup']} faqs={faqs} features={['CPA from campaign cost and conversions', 'Budget for a target conversion count', 'Modeled conversions within a budget', 'Fractional attributed conversions supported']}>
+  <CampaignCalculator kind="cpa" />
+  <section class="bench-section" aria-labelledby="cpa-formula">
+    <h2 id="cpa-formula">Cost Per Acquisition / Action Formula</h2>
+    <div class="definition-box"><p><strong>CPA = matching campaign cost ÷ defined conversions</strong></p><p>$5,000 ÷ 90 conversions = <strong>$55.56 per conversion</strong>, rounded to cents.</p></div>
+    <p>Choose the action before comparing costs: a purchase, signup, app install or trial are different outcomes. Use the same attribution window, reporting period and campaign scope for cost and conversions. If you combine actions, explain which ones the reported average includes.</p>
+    <div class="bench-table-wrap"><table class="bench-table"><thead><tr><th scope="col">Mode</th><th scope="col">Formula</th><th scope="col">Example</th></tr></thead><tbody>
+      <tr><td>CPA</td><td>Cost ÷ conversions</td><td>$5,000 ÷ 90 ≈ $55.56</td></tr>
+      <tr><td>Budget</td><td>Target CPA × target conversions</td><td>$40 × 200 = $8,000</td></tr>
+      <tr><td>Conversion estimate</td><td>Budget ÷ assumed CPA</td><td>$5,000 ÷ $40 = 125</td></tr>
+    </tbody></table></div>
+    <p>The budget mode assumes the average CPA stays constant. It does not reproduce an ad platform's bidding algorithm. The within-budget mode rounds a fractional modeled count down to whole outcomes; the observed-CPA mode preserves fractional attribution credit.</p>
+  </section>
+  <section class="bench-section" aria-labelledby="cpa-cac-cpl">
+    <h2 id="cpa-cac-cpl">CPA, CAC and CPL Answer Different Questions</h2>
+    <p>The campaign above records 90 actions. Suppose only 30 are first-time customers, and matched total sales and marketing costs are $6,200 after including other acquisition work. CAC is then $6,200 ÷ 30 ≈ $206.67. That is a different denominator and cost basis from the $55.56 advertising CPA.</p>
+    <p>Use the <a href="/cac-calculator/">CAC calculator</a> for new-customer economics. Use the <a href="/cost-per-lead-calculator/">cost-per-lead calculator</a> when the counted event is a lead, and the <a href="/conversion-rate-calculator/">conversion rate calculator</a> to explain the rate between funnel stages.</p>
+    <h3>Which Costs Should Be Included?</h3>
+    <p>For an ad-platform comparison, keep the platform's media-cost scope. For a fully loaded campaign comparison, include the relevant creative, agency and tool costs once. Label the result so an ad-only CPA is not compared directly with a fully loaded one.</p>
+  </section>
+  <section class="bench-section" aria-labelledby="cpa-target">
+    <h2 id="cpa-target">Set a CPA Ceiling From Your Own Economics</h2>
+    <p>If each counted action is a new purchase with $40 of contribution before advertising, a $40 ad CPA uses all of that contribution. It leaves nothing for uncounted fixed costs or profit. If the action is a lead, contribution per customer must first be adjusted by the measured lead-to-customer rate.</p>
+    <p>A higher order value or lifetime value does not justify an acquisition cost by itself: specify the contribution, repeat-purchase evidence and payback period. The <a href="/break-even-roas-calculator/">break-even ROAS calculator</a> connects revenue returns with declared variable costs.</p>
+    <p class="bench-source">Definition: <a href="https://support.google.com/google-ads/answer/6396841?hl=en" target="_blank" rel="noopener noreferrer">Google Ads average CPA</a>. Examples are original arithmetic, not industry benchmarks; reviewed October 22, 2026.</p>
+  </section>
+  <div class="related-box"><p class="related-box__label">Related Calculations</p><div class="link-grid"><a class="link-tile" href="/cac-calculator/">Customer Acquisition Cost →</a><a class="link-tile" href="/cost-per-lead-calculator/">Cost Per Lead →</a><a class="link-tile" href="/digital-marketing-calculator/">All Five Campaign Metrics →</a><a class="link-tile" href="/blog/digital-marketing-metrics-guide/">Marketing Metrics Guide →</a></div></div>
+</CalculatorPage>

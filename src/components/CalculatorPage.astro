@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import FAQ from './FAQ.astro';
+const { slug, title, description, name, intro, badges, faqs, features } = Astro.props;
+const url = `https://freemarketingcalculator.com/${slug}/`;
+const schema = [
+  { '@type': 'WebApplication', name, url, description, applicationCategory: 'BusinessApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, creator: { '@id': 'https://freemarketingcalculator.com/#org' }, featureList: features },
+  { '@type': 'FAQPage', mainEntity: faqs.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://freemarketingcalculator.com/' },
+    { '@type': 'ListItem', position: 2, name, item: url },
+  ] },
+];
+---
+<Base title={title} description={description} slug={slug} schema={schema}>
+  <section class="page-hero" aria-labelledby="page-h1">
+    <div class="container">
+      <p class="eyebrow">Free Marketing Tool</p>
+      <h1 id="page-h1">{name}</h1>
+      <p class="citation">{intro}</p>
+      <div class="meta-badges">{badges.map(badge => <span class="badge">✓ {badge}</span>)}</div>
+      <a href="#calculator" class="btn-hero-cta">Start Calculating ↓</a>
+    </div>
+  </section>
+  <div class="container">
+    <slot />
+    <FAQ items={faqs} title={`${name} — FAQ`} />
+  </div>
+</Base>

@@ -223,6 +223,7 @@ main { flex: 1; min-width: 0; }
 /* mega menu (details/summary: works without JavaScript) */
 .mega__panel {
   position: absolute; top: 100%; left: 0; right: 0;
+  max-height: calc(100dvh - var(--header-h) - 12px); overflow-y: auto;
   background: var(--c-surface); border-bottom: 1px solid var(--c-border); box-shadow: var(--sh-lg);
 }
 .site-header:has(.mega[open])::after {

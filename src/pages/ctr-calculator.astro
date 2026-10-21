@@ -1,0 +1,40 @@
+---
+import CalculatorPage from '../components/CalculatorPage.astro';
+import CampaignCalculator from '../components/CampaignCalculator.astro';
+const faqs = [
+  { q: 'How do I calculate CTR?', a: 'Divide clicks by impressions for the same campaign and period, then multiply by 100. For example, 4,500 clicks from 500,000 impressions gives a 0.9% click-through rate.' },
+  { q: 'Can I calculate clicks or impressions from CTR?', a: 'Yes. Expected clicks equal impressions multiplied by CTR divided by 100. Impressions for a click target equal target clicks divided by the decimal CTR. The impressions mode rounds up; both are planning estimates at a constant assumed rate.' },
+  { q: 'What is a good click-through rate?', a: 'There is no universal threshold. Compare the same channel, network, format, audience and click definition, then consider conversion rate and cost. A higher CTR alone does not prove more sales or profit.' },
+  { q: 'What happens if impressions or CTR are zero?', a: 'Zero clicks with positive impressions gives 0% CTR. With zero impressions, observed CTR is undefined. You cannot infer the impressions needed for a positive click target from a 0% CTR.' },
+  { q: 'Is email CTR the same as click-to-open rate?', a: 'No. Email CTR normally divides unique clicks by delivered emails; click-to-open rate divides unique clicks by unique opens. The ad CTR formula uses impressions. Keep the denominator explicit when comparing a benchmark or campaign.' },
+  { q: 'Can CTR be more than 100%?', a: 'The arithmetic can exceed 100% if the reported clicks exceed the reported impressions. Google documents that this can happen with repeated clicks, cached results or different reporting update times. Check the source counts and definitions rather than capping the result.' },
+];
+---
+<CalculatorPage slug="ctr-calculator" title="CTR Calculator: Free Click-Through Rate Tool" description="Calculate CTR from clicks and impressions, or estimate clicks and impressions from a target rate. See reverse formulas, examples and email denominator differences." name="CTR Calculator" intro="Find click-through rate from clicks and impressions, or work backward from an assumed CTR. Keep the campaign, reporting period and click definition consistent." badges={['3 calculation modes', 'Reverse formulas', 'No signup']} faqs={faqs} features={['CTR from clicks and impressions', 'Expected clicks from impressions and CTR', 'Impressions for a click target']}>
+  <CampaignCalculator kind="ctr" />
+  <section class="bench-section" aria-labelledby="ctr-formula">
+    <h2 id="ctr-formula">Click-Through Rate Formula</h2>
+    <div class="definition-box"><p><strong>CTR (%) = clicks ÷ impressions × 100</strong></p><p>With 4,500 clicks and 500,000 impressions: 4,500 ÷ 500,000 × 100 = <strong>0.9% CTR</strong>.</p></div>
+    <p>An impression records an ad or listing being shown; a click records an interaction with it. Match the source, reporting dates and counting method. The <a href="/blog/digital-marketing-metrics-guide/#campaign-reference">worked campaign in our metrics guide</a> uses these same inputs alongside CPM, CPC, CPA and ROAS.</p>
+    <div class="bench-table-wrap"><table class="bench-table"><thead><tr><th scope="col">Find</th><th scope="col">Formula</th><th scope="col">Illustrative result</th></tr></thead><tbody>
+      <tr><td>CTR</td><td>Clicks ÷ impressions × 100</td><td>4,500 ÷ 500,000 × 100 = 0.9%</td></tr>
+      <tr><td>Expected clicks</td><td>Impressions × (CTR % ÷ 100)</td><td>10,000 × 0.025 = 250</td></tr>
+      <tr><td>Impressions for a target</td><td>Target clicks ÷ (CTR % ÷ 100)</td><td>200 ÷ 0.025 = 8,000</td></tr>
+    </tbody></table></div>
+    <p>Type <strong>2.5</strong> for 2.5%, rather than 0.025. Expected clicks can be fractional because they are a modeled average. The impressions mode rounds upward to a whole impression; a constant CTR assumption does not guarantee that the target number of clicks will occur.</p>
+  </section>
+  <section class="bench-section" aria-labelledby="ctr-vs-conversion">
+    <h2 id="ctr-vs-conversion">CTR Versus Conversion Rate</h2>
+    <p>CTR asks how many clicks resulted from impressions. Conversion rate asks how many of the relevant visits or interactions produced the defined action. In the example, 90 conversions from 4,500 clicks is a 2% click-to-conversion rate, alongside a 0.9% CTR. They describe different steps of the funnel.</p>
+    <p>Use the <a href="/conversion-rate-calculator/">conversion rate calculator</a> for the next step, and the <a href="/cpa-calculator/">CPA calculator</a> to price those conversions. A campaign can earn more clicks while producing less valuable business outcomes.</p>
+    <h3>How to Interpret a Good CTR</h3>
+    <p>Compare like-for-like placements and formats, then review conversion quality and cost. Search ads, display placements and organic search listings serve different situations. A broad platform average is not a target for every campaign. Use the <a href="/cpc-calculator/">CPC calculator</a> and your contribution per conversion to connect attention with economics.</p>
+  </section>
+  <section class="bench-section" aria-labelledby="ctr-email">
+    <h2 id="ctr-email">Email CTR and CTOR Use Different Denominators</h2>
+    <p>For an illustrative email with 1,000 deliveries, 60 unique opens and 12 unique clickers, email CTR is 12 ÷ 1,000 = 1.2%; click-to-open rate is 12 ÷ 60 = 20%. Neither should be compared directly with an impressions-based ad rate without explaining the denominator.</p>
+    <p>The <a href="/email-marketing-roi-calculator/">email ROI calculator</a> labels its click input as a percentage of opens. Do not put an email CTR benchmark into that field as if it were CTOR.</p>
+    <p class="bench-source">Definitions: <a href="https://support.google.com/google-ads/answer/2615875?hl=en" target="_blank" rel="noopener noreferrer">Google Ads CTR definition</a> and <a href="https://support.google.com/google-ads/answer/2375444?hl=en" target="_blank" rel="noopener noreferrer">click/impression reporting issues</a>. Worked examples are original arithmetic, reviewed October 22, 2026.</p>
+  </section>
+  <div class="related-box"><p class="related-box__label">Continue Your Campaign Analysis</p><div class="link-grid"><a class="link-tile" href="/cpc-calculator/">CPC Calculator →</a><a class="link-tile" href="/cpm-calculator/">CPM Calculator →</a><a class="link-tile" href="/digital-marketing-calculator/">All Five Campaign Metrics →</a><a class="link-tile" href="/blog/digital-marketing-metrics-guide/">Marketing Metrics Guide →</a></div></div>
+</CalculatorPage>
