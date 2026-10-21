@@ -155,6 +155,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
 </style>
 
 <script>
+import { validateCalculator } from '../scripts/calc-validation.js';
 (function(){
   'use strict';
   const btn = document.getElementById('ma-calc-btn');
@@ -162,30 +163,30 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
   if (!btn) return;
   function fmt(n: number) { return n >= 1000000 ? '$' + (n/1000000).toFixed(2) + 'M' : '$' + Math.round(n).toLocaleString(); }
   btn.addEventListener('click', () => {
+    if (!validateCalculator(btn)) return;
     const hours    = parseFloat((document.getElementById('ma-hours') as HTMLInputElement).value) || 0;
     const hourly   = parseFloat((document.getElementById('ma-hourly') as HTMLInputElement).value) || 0;
-    const platform = parseFloat((document.getElementById('ma-platform') as HTMLInputElement).value) || 1;
+    const platform = parseFloat((document.getElementById('ma-platform') as HTMLInputElement).value);
     const leads    = parseFloat((document.getElementById('ma-leads') as HTMLInputElement).value) || 0;
     const lift     = parseFloat((document.getElementById('ma-lift') as HTMLInputElement).value) / 100 || 0;
     const deal     = parseFloat((document.getElementById('ma-deal') as HTMLInputElement).value) || 0;
     const close    = parseFloat((document.getElementById('ma-close') as HTMLInputElement).value) / 100 || 0;
-    if (!hourly && !leads) return;
     const annualTimeSave   = hours * 52 * hourly;
     const additionalLeads  = leads * lift * 12;
     const revenueLift      = additionalLeads * close * deal;
     const annualPlatform   = platform * 12;
     const netBenefit       = annualTimeSave + revenueLift - annualPlatform;
     const roi              = platform > 0 ? (netBenefit / annualPlatform) * 100 : 0;
-    const breakEven        = netBenefit > 0 ? Math.ceil(annualPlatform / ((annualTimeSave + revenueLift) / 12)) : 999;
+    const breakEven        = annualTimeSave + revenueLift > 0 ? Math.ceil(annualPlatform / ((annualTimeSave + revenueLift) / 12)) : null;
     document.getElementById('ma-primary').textContent      = roi.toFixed(0) + '%';
     document.getElementById('ma-annual-save').textContent  = fmt(annualTimeSave);
     document.getElementById('ma-revenue-lift').textContent = fmt(revenueLift);
-    document.getElementById('ma-breakeven').textContent    = breakEven < 999 ? breakEven + ' months' : 'No ROI';
+    document.getElementById('ma-breakeven').textContent    = breakEven !== null ? breakEven + ' months' : 'Not reached';
     document.getElementById('ma-verdict').textContent =
-      roi > 300 ? '🚀 Excellent ROI — automation will pay for itself in under ' + breakEven + ' months' :
+      roi > 300 ? 'Estimated benefit exceeds platform cost; estimated payback is ' + breakEven + ' months' :
       roi > 100 ? '✅ Positive ROI — strong case for automation investment' :
       roi > 0   ? '🟡 Marginal ROI — consider a lower-cost platform or more aggressive workflows' :
-                  '⚠️ Negative ROI — reduce platform cost or increase hours/leads input';
+                  roi === 0 ? 'Break-even on the costs and benefits entered.' : 'Estimated benefits are below platform cost. Review assumptions and implementation costs.';
     result.classList.add('visible');
     result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   });
