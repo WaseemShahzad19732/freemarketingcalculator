@@ -1,6 +1,6 @@
 # Free Marketing Calculators — Free Marketing Calculators
 # https://freemarketingcalculator.com
-# llms.txt v1.1 — July 2026
+# llms.txt v1.2 — October 2026
 
 > Free marketing calculator tools for ROI, budget planning, salary benchmarks, conversion rates, and campaign metrics. All tools are free, require no signup, and produce instant results.
 
@@ -8,7 +8,7 @@
 
 - [Marketing ROI Calculator](https://freemarketingcalculator.com/marketing-roi-calculator/): Computes basic ROMI and gross-profit ROI with COGS, with channel presets for email, SEO, paid search, content, and social marketing — includes a 2026 benchmark table by channel.
 
-- [Marketing Budget Calculator](https://freemarketingcalculator.com/marketing-budget-calculator/): Recommends annual marketing budget from revenue and industry sector, with benchmarks across 9 industries (B2B, SaaS, retail, manufacturing, healthcare, financial services, consumer goods, nonprofit, industrial) and a free Google Sheets download.
+- [Marketing Budget Calculator](https://freemarketingcalculator.com/marketing-budget-calculator/): Recommends annual marketing budget from revenue and industry sector, with benchmarks across 9 industries (B2B, SaaS, retail, manufacturing, healthcare, financial services, consumer goods, nonprofit, industrial) and a free spreadsheet template.
 
 - [Conversion Rate Calculator](https://freemarketingcalculator.com/conversion-rate-calculator/): Calculates marketing conversion rate from visits and conversions, reverse-computes traffic needed to hit a sales goal, and benchmarks results against 2026 industry averages by channel.
 
@@ -18,7 +18,7 @@
 
 - [Social Media Budget Calculator](https://freemarketingcalculator.com/social-media-budget-calculator/): Recommends paid and organic social media marketing budget by platform (Facebook, Instagram, TikTok, LinkedIn, Pinterest) and campaign goal, with CPM benchmarks.
 
-- [Digital Marketing Calculator](https://freemarketingcalculator.com/digital-marketing-calculator/): Computes CPM, CPC, CTR, ROAS, and CPA simultaneously from a single set of digital campaign inputs — the only multi-metric marketing calculator.
+- [Digital Marketing Calculator](https://freemarketingcalculator.com/digital-marketing-calculator/): Computes CPM, CPC, CTR, ROAS, and CPA simultaneously from a single set of digital campaign inputs.
 
 - [ROAS Calculator](https://freemarketingcalculator.com/roas-calculator/): Calculates Return on Ad Spend as a percentage and multiplier from ad spend and ad revenue, with Target ROAS guidance and 2026 benchmarks by platform (Google, Meta, TikTok, Amazon, LinkedIn).
 
@@ -31,6 +31,12 @@
 - [Marketing Automation ROI Calculator](https://freemarketingcalculator.com/marketing-automation-roi-calculator/): Calculates B2B marketing automation ROI from weekly time savings, hourly cost, platform subscription cost, and expected lead volume lift percentage.
 
 - [Inbound Marketing Calculator](https://freemarketingcalculator.com/inbound-marketing-calculator/): Reverse-funnel calculator that converts a revenue goal into required monthly traffic, leads, MQLs, and SQLs using stage-by-stage conversion benchmarks.
+
+- [CPM Calculator](https://freemarketingcalculator.com/cpm-calculator/): Calculates cost per thousand impressions, total spend or impressions.
+
+- [CPC Calculator](https://freemarketingcalculator.com/cpc-calculator/): Calculates cost per click, spend or expected clicks.
+
+- [CPV Calculator](https://freemarketingcalculator.com/cpv-calculator/): Calculates cost per video view, spend or views.
 
 ## Formulas Used
 
@@ -46,7 +52,7 @@ CPA = Cost / Conversions
 
 ## About
 
-Free Marketing Calculators publishes free, no-signup marketing calculators with industry-sourced benchmarks updated quarterly. Formulas are based on standard industry definitions. Benchmarks are compiled from Gartner CMO Survey, Deloitte CMO Survey, Litmus Email ROI Report, and other publicly available sources.
+Free Marketing Calculators publishes free, no-signup marketing calculators with industry-sourced benchmarks updated quarterly. Formulas are based on standard industry definitions. Benchmarks are compiled from Gartner CMO Survey, The CMO Survey, Litmus Email ROI Report, and other publicly available sources.
 
 ## Contact
 
