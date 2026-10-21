@@ -310,10 +310,11 @@ const locationJSON = JSON.stringify(locationMult);
       <div class="definition-box__label">How to Use This Marketing Salary Calculator</div>
       <p style="white-space: pre-line; line-height: 1.9;">1. Select your marketing role from the dropdown (10 roles available, from Email Marketing Specialist to CMO). 2. Choose your seniority level (Entry / Mid / Senior / Director / Executive). 3. Select your US city or choose 'US National Average' or 'Fully Remote'. 4. Click Get Salary Range — your low, midpoint, and high estimates appear with the location adjustment explained.</p>
       <div class="formula-example" style="margin-top: var(--space-3);">
-        <strong>Example:</strong> Senior Digital Marketing Manager in New York City. National midpoint $85K × 1.35 NYC multiplier = $114,750 midpoint. Range: $98K–$135K.
+        <strong>Example:</strong> Senior Digital Marketing Manager in New York City. National midpoint $85K × 1.35 NYC multiplier = $114,750, rounded to $115K. Displayed range: $98K–$136K.
       </div>
     </div>
 
+<section class="bench-section" aria-labelledby="salary-method"><h2 id="salary-method">Salary Model: Inputs, Rounding and Limits</h2><p>The model selects a role-and-level midpoint in thousands of dollars, applies its location multiplier, and rounds that midpoint to the nearest $1,000. It then rounds 85% and 118% of the midpoint to produce the displayed low and high. These bounds are scenario bands, not measured percentiles or a confidence interval.</p><p>Example: senior Digital Marketing Manager ($85K) × New York (1.35) = $114.75K, rounded to $115K. The displayed band is $98K–$136K. The model excludes bonus, equity, benefits, company size and individual skills; location adjustments are assumptions rather than current vacancy counts.</p><p>The <a href="https://www.bls.gov/ooh/management/advertising-promotions-and-marketing-managers.htm">BLS May 2025 marketing-manager median</a> is $166,790 for a broader occupational population. It is a separate measured reference and is not used to calibrate these role-and-level estimates. Compare scope and survey date before using either number for an offer.</p></section>
     <FAQ items={faqItems} />
   </div>
 </Base>

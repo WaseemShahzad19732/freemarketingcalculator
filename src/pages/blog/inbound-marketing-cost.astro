@@ -4,7 +4,7 @@ import FAQ from '../../components/FAQ.astro';
 
 const slug = "blog/inbound-marketing-cost";
 const title = "Inbound Marketing Cost: 2026 Pricing by Model and Channel";
-const description = "How much does inbound marketing cost? Agency retainers run $5,000–$20,000 a month in the US. See costs by channel, software pricing and three sample budgets.";
+const description = "Build an inbound marketing budget with software, labour, agency fees, distribution and setup. See a transparent six-month cost example and sourced agency ranges.";
 const published = 'October 8, 2026';
 const readTime = "7 min read";
 
@@ -43,7 +43,7 @@ const faqItems = [
   }
 ];
 
-const articleSchema = { "@type": "Article", "headline": title, "description": description, "datePublished": "2026-10-08", "dateModified": "2026-10-08", "author": { "@type": "Person", "name": "Waseem Shahzad", "url": "https://freemarketingcalculator.com/about/" }, "publisher": { "@id": "https://freemarketingcalculator.com/#org" }, "mainEntityOfPage": `https://freemarketingcalculator.com/${slug}/` };
+const articleSchema = { "@type": "Article", "headline": title, "description": description, "datePublished": "2026-10-08", "dateModified": "2026-10-22", "author": { "@type": "Person", "name": "Waseem Shahzad", "url": "https://freemarketingcalculator.com/about/" }, "publisher": { "@id": "https://freemarketingcalculator.com/#org" }, "mainEntityOfPage": `https://freemarketingcalculator.com/${slug}/` };
 const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
 const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
   { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
@@ -72,7 +72,7 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
             <li>Content production is the biggest line at about $5,000 a month, followed by multimedia at about $3,000.</li>
             <li>HubSpot Marketing Hub Professional starts at $800 a month with a $3,000 onboarding fee; Enterprise starts at $3,600 with $7,000.</li>
             <li>These are agency-published prices, not a neutral survey; use them as ranges and ask for itemised quotes.</li>
-            <li>Estimate leads, customers and ROI for a given budget with the <a href="/inbound-marketing-calculator/">inbound marketing calculator</a>.</li>
+            <li>Plan visitors, leads and customers from a revenue target with the <a href="/inbound-marketing-calculator/">inbound marketing calculator</a>.</li>
           </ul>
         </div>
 
@@ -89,6 +89,16 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
           </table>
         </div>
         <p class="bench-source">Protocol 80's page carries a 2024 copyright and was first published in 2016; Axon Garside's figures are in pounds. Treat both as indicative, not fixed quotes.</p>
+
+        <section aria-labelledby="cost-model">
+          <h2 id="cost-model">Build a Fully Loaded Inbound Cost Model</h2>
+          <p><strong>Period cost = months × (software + internal labour + agency/freelancer fees + paid distribution) + one-time setup.</strong> Count a service once: do not add separate content production if it is already inside the agency retainer. Keep reporting in one currency and distinguish cash outlay from the opportunity cost of existing staff.</p>
+          <div class="bench-table-wrap"><table class="bench-table"><thead><tr><th scope="col">Illustrative line item</th><th scope="col">Monthly</th><th scope="col">Six months</th></tr></thead><tbody>
+          <tr><td>Software</td><td>$300</td><td>$1,800</td></tr><tr><td>Internal work: 40 hours × $50 fully loaded hourly cost</td><td>$2,000</td><td>$12,000</td></tr><tr><td>Agency retainer, including agreed content</td><td>$3,000</td><td>$18,000</td></tr><tr><td>Paid distribution, separately billed</td><td>$500</td><td>$3,000</td></tr><tr><td>Recurring subtotal</td><td><strong>$5,800</strong></td><td><strong>$34,800</strong></td></tr><tr><td>One-time setup</td><td>—</td><td>$2,400</td></tr><tr><td>Total period cost</td><td>—</td><td><strong>$37,200</strong></td></tr>
+          </tbody></table></div>
+          <p>At 120 qualified leads and 12 new customers in those same six months, fully loaded cost per lead is $310 and acquisition cost is $3,100. These are hypothetical inputs, not market prices or a promised outcome. Compare the $3,100 with contribution per customer over a defined payback period.</p>
+          <p>Use the <a href="/inbound-marketing-calculator/">inbound funnel calculator</a> to work backward from a revenue target to visitors, leads and customers. It is a funnel planner: it does not infer results from the line-item budget above. Use the <a href="/cac-calculator/">CAC calculator</a> to compare actual period costs and new customers.</p>
+        </section>
 
         <h2 id="components">Inbound Marketing Cost by Component</h2>
         <p>The cost of inbound marketing is the sum of its components: content, SEO, paid media, social, lead nurturing and software. Content production is the largest single line in Protocol 80's breakdown at about $5,000 a month, followed by multimedia at about $3,000.</p>
@@ -125,6 +135,7 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
         <p class="bench-source">Source: AdZooma averages as cited in <a href="https://www.axongarside.com/blog/how-much-does-inbound-marketing-cost" target="_blank" rel="noopener noreferrer nofollow">Axon Garside (March 2025)</a>. Agencies typically charge about 15% of total advertising budget as a management fee on ad spend.</p>
 
         <h2 id="software">Inbound Marketing Software Costs</h2>
+        <p class="bench-source">Pricing scope checked October 22, 2026: <a href="https://www.hubspot.com/pricing/marketing">HubSpot's official USD pricing</a> shows Professional from $800/month with annual payment, 3 core seats and 2,000 marketing contacts; Enterprise starts at $3,600/month with 5 core seats and 10,000 marketing contacts. Required onboarding is listed separately. Confirm term, contact tier, additional seats and current quote before budgeting.</p>
         <p>Inbound software adds a platform fee on top of agency or staff costs. HubSpot's published Marketing Hub pricing starts at $800 a month for Professional and $3,600 a month for Enterprise, each with a one-time onboarding fee of $3,000 and $7,000 respectively. A free tier is available for basic forms and email.</p>
         <p>Lower-cost email and CRM tools can replace a full platform for smaller programmes. The right choice depends on how many contacts and workflows the programme runs; see the <a href="/blog/marketing-automation-roi/">marketing automation ROI guide</a> for a payback check before committing to a tier.</p>
 
@@ -154,11 +165,11 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
           <li><strong>Compare cost per lead.</strong> Divide the proposed monthly budget by expected monthly leads and check it against customer lifetime value using the <a href="/cac-calculator/">CAC calculator</a>.</li>
           <li><strong>Compare with the budget norm.</strong> Check the total against the share of revenue peers spend; Gartner reports marketing budgets average 7.8% of company revenue in 2026.</li>
         </ol>
-        <p>The <a href="/inbound-marketing-calculator/">inbound marketing calculator</a> estimates leads, customers and ROI from a given monthly budget.</p>
+        <p>The <a href="/inbound-marketing-calculator/">inbound marketing calculator</a> works backward from revenue targets and funnel conversion rates to required traffic.</p>
 
         <div style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: var(--radius-lg); padding: var(--space-8); margin: var(--space-8) 0; text-align: center; color: white;">
           <p style="font-size: var(--text-xl); font-weight: 800; margin-bottom: var(--space-2);">Estimate your inbound results</p>
-          <p style="color: rgba(255,255,255,.75); margin-bottom: var(--space-6);">Enter a monthly budget and conversion assumptions to see leads, customers and ROI.</p>
+          <p style="color: rgba(255,255,255,.75); margin-bottom: var(--space-6);">Enter a revenue target, deal value and conversion assumptions to plan visitors, leads and customers.</p>
           <a href="/inbound-marketing-calculator/" style="display:inline-block; background:var(--teal); color:var(--navy); font-weight:800; padding:var(--space-3) var(--space-8); border-radius:var(--radius); text-decoration:none; font-size:var(--text-lg);">Use the Inbound Marketing Calculator →</a>
         </div>
 
@@ -174,13 +185,13 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
 
         <div style="display:flex; align-items:flex-start; gap: var(--space-4); padding: var(--space-6); background: var(--teal-faint); border-radius: var(--radius-lg); margin-top: var(--space-8); border: 1px solid rgba(0,196,179,.2);">
           <div style="width:44px; height:44px; background: var(--teal); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:800; color:var(--navy);">W</div>
-          <div><p style="font-weight:700; color:var(--navy); margin-bottom: 4px;">Waseem Shahzad</p><p style="font-size: var(--text-sm); color: var(--text-mid);">Named sources: Protocol 80 (US pricing), Axon Garside (UK pricing, March 2025, citing AdZooma), HubSpot Marketing Hub pricing (checked October 2026) and the Gartner CMO Spend Survey 2026. Agency-published prices are indicative. <a href="/about/" style="color: var(--teal-dark);">About →</a></p></div>
+          <div><p style="font-weight:700; color:var(--navy); margin-bottom: 4px;">Waseem Shahzad</p><p style="font-size: var(--text-sm); color: var(--text-mid);">Named sources: Protocol 80 (US pricing), Axon Garside (UK pricing, March 2025, citing AdZooma), HubSpot Marketing Hub pricing (verify the current quote for your contacts and billing term) and the Gartner CMO Spend Survey 2026. Agency-published prices are indicative. <a href="/about/" style="color: var(--teal-dark);">About →</a></p></div>
         </div>
       </article>
       <aside class="article-sidebar">
         <div class="toc-box"><p class="toc-title">In this article</p><nav><ul class="toc-list">
           <li><a href="#answer">Short Answer</a></li>
-          <li><a href="#components">By Component</a></li>
+          <li><a href="#cost-model">Fully Loaded Cost Model</a></li><li><a href="#components">By Component</a></li>
           <li><a href="#uk">UK Retainers</a></li>
           <li><a href="#software">Software</a></li>
           <li><a href="#budgets">Sample Budgets</a></li>

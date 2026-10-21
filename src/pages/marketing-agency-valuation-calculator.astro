@@ -20,7 +20,7 @@ const faqItems = [
   { q: 'What multiple do marketing agencies sell for?', a: 'FE International reports 2.5x to 4x EBITDA for agencies under $500,000 of EBITDA and 7x to 12x above $5 million. First Page Sage reports 4.9x for digital marketing agencies with $1M to $3M of EBITDA (Q1 2025). Retainer revenue above 60% adds 1x to 2x, and a client above 30% to 40% of revenue subtracts 1.5x to 2x.' },
   { q: 'What factors increase agency valuation?', a: 'Retainer revenue above 60%, sustained growth of 15% or more, specialisation, a strong leadership bench and low client concentration all raise the multiple. FE International puts the retainer premium at 1x to 2x. Documented processes that do not depend on the founder also help.' },
   { q: 'What is EBITDA for a marketing agency?', a: 'EBITDA (earnings before interest, taxes, depreciation and amortisation) is operating profit before non-cash expenses. For agencies, calculate: revenue − staff costs − contractor costs − software and tools − office and overhead = EBITDA. Buyers value the adjusted figure, which adds back owner pay above a market salary and one-off costs.' },
-  { q: 'Why does the calculator show such a wide range?', a: 'The range runs from the lowest result to the highest result across the revenue method and the EBITDA method. Revenue multiples are a floor or sanity check, while EBITDA multiples reflect profitability, so the two can differ widely. For agencies with positive EBITDA, treat the EBITDA method as the main estimate.' },
+  { q: 'Why does the calculator show such a wide range?', a: 'The range runs from the lowest result to the highest result across the revenue method and the EBITDA method. Revenue multiples are a cross-check, while EBITDA multiples reflect profitability, so the two can differ widely. For agencies with positive EBITDA, treat the EBITDA method as the main estimate.' },
   { q: 'How does client retention change the estimate?', a: 'The calculator applies a 10% premium to the multiples when retention is 90% or higher and a 10% discount when retention is below 70%. This is a simplified adjustment, not a published rule. Real buyers weigh retainer share, contract length and client concentration more heavily.' },
   { q: 'Is this calculator free?', a: 'Yes. The calculator is completely free, with no signup and no email required.' },
 ];
@@ -137,6 +137,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       <a href="/blog/marketing-agency-valuation-multiples/" class="btn-inline">Read now →</a>
     </div>
 
+<section class="bench-section" aria-labelledby="agency-method"><h2 id="agency-method">How the Two Valuation Methods Reconcile</h2><p>For an illustrative full-service agency with $1,000,000 trailing annual revenue, a 20% EBITDA margin and 90% client retention: EBITDA is $200,000. The revenue method uses 0.4–1.0× revenue and the EBITDA method uses 3–7× EBITDA. This calculator's simplified retention factor is 1.10 at 90% or more, 0.90 below 70%, and 1.00 otherwise.</p><div class="bench-table-wrap"><table class="bench-table"><thead><tr><th scope="col">Method</th><th scope="col">Before retention factor</th><th scope="col">After ×1.10</th></tr></thead><tbody><tr><td>Revenue range</td><td>$400,000–$1,000,000</td><td>$440,000–$1,100,000</td></tr><tr><td>EBITDA range</td><td>$600,000–$1,400,000</td><td>$660,000–$1,540,000</td></tr><tr><td>Displayed combined envelope</td><td>Lowest low to highest high</td><td>$440,000–$1,540,000</td></tr></tbody></table></div><p>The primary display is an envelope across methods, not a statistical confidence interval or an average of transactions. Revenue is a cross-check, not a guaranteed floor. The 10% retention adjustment is our planning assumption, not a measured premium. When EBITDA is zero, only the revenue cross-check is shown; that does not establish a sale price.</p><p>Size, recurring contracts, owner dependence and concentration can make a broad service-type estimate inappropriate. <a href="/blog/marketing-agency-valuation-multiples/">Compare the source bands by agency size</a>. Enterprise value also differs from seller proceeds: debt, excess cash, working capital adjustments, earnouts, fees and taxes are outside this estimate.</p></section>
     <FAQ items={faqItems} />
   </div>
 </Base>
@@ -186,9 +187,9 @@ import { validateCalculator } from '../scripts/calc-validation.js';
     document.getElementById('ag-ebitda-val').textContent = ebitda > 0 ? fmt(ebitdaVal) : 'N/A (no profit)';
     document.getElementById('ag-ebitda-amt').textContent = fmt(ebitda);
     document.getElementById('ag-verdict').textContent   =
-      retention >= 90 ? '✅ High retention (90%+) adds ~10% premium to valuation' :
-      retention < 70  ? '⚠️ Low retention (<70%) reduces valuation by ~10% — improve client stickiness first' :
-      '📊 Average retention — focus on retainer mix and EBITDA margin to maximise value';
+      retention >= 90 ? 'Model assumption: retention at 90%+ applies a 10% planning uplift. This is not a measured market premium.' :
+      retention < 70  ? 'Model assumption: retention below 70% applies a 10% planning discount. Compare actual contracts and concentration.' :
+      'No retention adjustment in this model. Review recurring contracts, concentration and adjusted EBITDA.';
 
     result.classList.add('visible');
     result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

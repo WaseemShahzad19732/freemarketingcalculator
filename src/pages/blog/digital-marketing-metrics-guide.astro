@@ -7,7 +7,7 @@ const title     = 'Digital Marketing Metrics: CPM, CPC, CTR, ROAS, CPA (2026)';
 const description = 'CPM, CPC, CTR, ROAS, CPA — every digital marketing metric explained in plain English. Formulas, 2026 benchmarks, and when to use each one.';
 const published = 'July 7, 2026';
 const readTime  = '8 min read';
-const updated   = 'October 8, 2026';
+const updated   = 'October 22, 2026';
 
 const metrics = [
   {
@@ -150,7 +150,7 @@ const articleSchema = {
   "headline": title,
   "description": description,
   "datePublished": "2026-07-07",
-  "dateModified": "2026-10-08",
+  "dateModified": "2026-10-22",
   "author": { "@type": "Person", "name": "Waseem Shahzad", "url": "https://freemarketingcalculator.com/about/" },
   "publisher": { "@id": "https://freemarketingcalculator.com/#org" },
   "mainEntityOfPage": `https://freemarketingcalculator.com/${slug}/`,
@@ -218,22 +218,12 @@ const breadcrumbSchema = {
           </ul>
         </div>
 
-        <section style="margin-top: var(--space-10);" aria-labelledby="quick-reference-heading">
-          <h2 id="quick-reference-heading">Digital Marketing Metrics at a Glance</h2>
-          <p>The table lists each metric's full form, the question it answers and the free calculator for it.</p>
-          <div class="bench-table-wrap">
-            <table class="bench-table">
-              <thead><tr><th scope="col">Metric</th><th scope="col">Full form</th><th scope="col">Question it answers</th><th scope="col">Calculate it</th></tr></thead>
-              <tbody>
-                <tr><td><strong>CPM</strong></td><td>Cost per mille (cost per 1,000 impressions)</td><td>What does reach cost?</td><td><a href="/cpm-calculator/">CPM calculator</a></td></tr>
-                <tr style="background: var(--off-white)"><td><strong>CPC</strong></td><td>Cost per click</td><td>What does one click cost?</td><td><a href="/cpc-calculator/">CPC calculator</a></td></tr>
-                <tr><td><strong>CTR</strong></td><td>Click-through rate</td><td>Is the ad relevant enough to earn clicks?</td><td><a href="/digital-marketing-calculator/">Digital marketing calculator</a></td></tr>
-                <tr style="background: var(--off-white)"><td><strong>CPA</strong></td><td>Cost per acquisition (cost per conversion)</td><td>What does one customer or conversion cost?</td><td><a href="/digital-marketing-calculator/">Digital marketing calculator</a></td></tr>
-                <tr><td><strong>ROAS</strong></td><td>Return on ad spend</td><td>How much revenue does each ad dollar earn?</td><td><a href="/roas-calculator/">ROAS calculator</a></td></tr>
-                <tr style="background: var(--off-white)"><td><strong>Conversion rate</strong></td><td>Conversions ÷ visitors × 100</td><td>What share of visitors take the target action?</td><td><a href="/conversion-rate-calculator/">Conversion rate calculator</a></td></tr>
-              </tbody>
-            </table>
-          </div>
+        <section class="bench-section" id="quick-reference-heading" aria-labelledby="campaign-reference">
+          <h2 id="campaign-reference">Five Metrics, One Campaign: Formulas and Denominators</h2>
+          <p>Illustrative inputs: $5,000 ad spend, 500,000 impressions, 4,500 clicks, 90 conversions and $22,000 attributed revenue. Keep the campaign dates, currency and attribution window the same for every row.</p>
+          <div class="bench-table-wrap"><table class="bench-table"><thead><tr><th scope="col">Metric</th><th scope="col">Formula</th><th scope="col">Denominator</th><th scope="col">Result</th></tr></thead><tbody><tr><td><a href="/cpm-calculator/">CPM</a></td><td>Spend ÷ impressions × 1,000</td><td>Impressions</td><td>$10.00</td></tr><tr><td><a href="/cpc-calculator/">CPC</a></td><td>Spend ÷ clicks</td><td>Clicks</td><td>$1.11</td></tr><tr><td><a href="/digital-marketing-calculator/">CTR</a></td><td>Clicks ÷ impressions × 100</td><td>Impressions</td><td>0.9%</td></tr><tr><td><a href="/digital-marketing-calculator/">CPA</a></td><td>Spend ÷ conversions</td><td>Defined conversions</td><td>$55.56</td></tr><tr><td><a href="/roas-calculator/">ROAS</a></td><td>Attributed revenue ÷ ad spend</td><td>Ad spend</td><td>4.4×</td></tr></tbody></table></div>
+          <p>CPA means cost per the conversion you selected. It equals customer acquisition cost only if those 90 conversions are newly acquired customers and the spend includes the acquisition costs being evaluated. CPV additionally needs a defined video-view count; see the <a href="/cpv-calculator/">CPV calculator's view comparison</a>.</p>
+          <p><a href="/marketing-metrics-worked-example.csv" download>Download the worked campaign as CSV</a>. The data is an original teaching example, not an observed client campaign or a platform benchmark. Reference this table with its <a href="#campaign-reference">permanent section link</a>.</p>
         </section>
 
         <p style="margin-top: var(--space-6);">
@@ -326,6 +316,7 @@ const breadcrumbSchema = {
           </p>
         </section>
 
+
         <!-- TASK 12: Full campaign example -->
         <section style="margin-top: var(--space-10);" aria-labelledby="example-heading">
           <h2 id="example-heading">Full Campaign Example — All 5 Metrics at Once</h2>
@@ -334,7 +325,7 @@ const breadcrumbSchema = {
             impressions, clicks, conversions and revenue.
           </p>
           <div class="formula-box">
-            <p class="formula-title">Campaign: Google Search — Q3 2026</p>
+            <p class="formula-title">Illustrative Campaign — Shared Input Set</p>
             <p class="formula-text" style="line-height:2.2;">
               Ad spend: $5,000 | Impressions: 500,000 | Clicks: 4,500 | Conversions: 90 | Revenue: $22,000
             </p>
@@ -347,10 +338,7 @@ const breadcrumbSchema = {
             </div>
           </div>
           <p>
-            Reading this campaign: the CTR of 0.9% is slightly below the Google Search average (3–6%)
-            suggesting the ad creative could be improved. However the ROAS of 4.4× is solid — the
-            campaign is profitable. The CPA of $55.56 needs to be compared against the average order
-            value or customer LTV to confirm profitability at the unit level.
+            Reading this campaign: 0.9% of impressions led to clicks, and ad-attributed revenue was 4.4 times ad spend. Profitability is still unknown. At a 25% contribution margin before ads, $22,000 revenue contributes $5,500, leaving $500 after ad spend and before fixed costs. At a 20% contribution margin it leaves a $600 shortfall. Compare CPA with contribution per acquired customer over the same payback period.
           </p>
         </section>
 

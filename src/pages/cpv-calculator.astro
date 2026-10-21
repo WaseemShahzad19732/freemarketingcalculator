@@ -4,29 +4,19 @@ import FAQ from '../components/FAQ.astro';
 
 const slug        = 'cpv-calculator';
 const title       = 'CPV Calculator — Free Cost Per View Tool (2026)';
-const description = 'Free CPV calculator — calculate cost per view, total video ad spend, or total views from any two inputs. With 2026 CPV benchmarks for YouTube, TikTok, and Instagram.';
+const description = 'Free CPV calculator — calculate cost per view, total video ad spend, or total views from any two inputs. With view definitions, formulas and a worked video campaign example.';
 
-const platformBenchmarks = [
-  { platform: 'YouTube (TrueView)',      cpv: '$0.03–$0.10', format: 'Skippable in-stream, 30s+', notes: 'Charged only when viewer watches 30s or full ad' },
-  { platform: 'YouTube (Non-skippable)', cpv: '$0.08–$0.15', format: 'Bumper/non-skippable',        notes: 'Higher CPV; guaranteed full watch' },
-  { platform: 'TikTok',                  cpv: '$0.01–$0.04', format: 'TopView, In-Feed',             notes: 'Lowest CPV; high volume' },
-  { platform: 'Instagram Reels',         cpv: '$0.02–$0.06', format: 'Reels ads',                    notes: 'Growing; strong engagement' },
-  { platform: 'Facebook Video',          cpv: '$0.01–$0.05', format: 'In-feed, Stories',             notes: 'CPV lowest of Meta placements' },
-  { platform: 'LinkedIn Video',          cpv: '$0.08–$0.25', format: 'In-feed video',                notes: 'Premium B2B audience — highest CPV' },
-  { platform: 'Twitter / X Video',       cpv: '$0.02–$0.05', format: 'Promoted video',               notes: 'Low cost; limited targeting' },
-  { platform: 'Programmatic Video',      cpv: '$0.01–$0.03', format: 'Pre-roll / mid-roll',          notes: 'Scale at lowest cost; lower quality' },
-];
+
 
 const faqItems = [
-  { q: 'What is CPV in marketing?', a: 'CPV (Cost Per View) is the amount you pay each time a viewer watches your video ad. Formula: CPV = Total Ad Spend ÷ Total Views. YouTube charges CPV when a viewer watches 30 seconds or the full ad (whichever comes first). TikTok and Facebook charge CPV when a user watches at least 2–3 seconds.' },
-  { q: 'How do you calculate CPV?', a: 'CPV = Total Ad Spend ÷ Total Views. Example: $300 spend, 10,000 views → CPV = $300 ÷ 10,000 = $0.03 per view. YouTube TrueView CPV typically ranges from $0.03 to $0.10.' },
-  { q: 'What is a good CPV on YouTube?', a: 'A good YouTube TrueView CPV is $0.03–$0.06. Industry average is $0.05–$0.10. If your CPV is above $0.12, review targeting and creative — overly broad audiences or unskippable placements inflate cost.' },
-  { q: 'What is the difference between CPV and CPM?', a: 'CPM charges per 1,000 impressions (each time the ad appears). CPV charges per view (when someone watches a minimum amount of your video). A video campaign can have both metrics — the ad might appear 100,000 times (CPM) but only be watched 30,000 times (CPV). CPV is a better metric for measuring actual video engagement.' },
-  { q: 'What counts as a "view" in video advertising?', a: 'It varies by platform. YouTube TrueView: 30 seconds watched, or full ad if shorter. Facebook/Instagram: 3 seconds. TikTok: 2 seconds. LinkedIn: 2 seconds with 50% of video visible. Twitter: 2 seconds with 50% in view. Always check platform definitions before comparing CPV across networks.' },
-  { q: 'Is this CPV calculator free?', a: 'Yes — completely free, no signup, no email required.' },
+  { q: 'How do you calculate CPV?', a: 'Divide video ad spend by views measured over the same campaign and dates. Spending $300 for 10,000 qualifying views gives $0.03 per view. Choose the view column before comparing campaigns.' },
+  { q: 'What counts as a video ad view?', a: 'The definition depends on the platform, format and metric. Google TrueView uses different thresholds for skippable in-stream, in-feed and Shorts ads. A two-second video-play metric is not interchangeable with a completed view or a billable TrueView view.' },
+  { q: 'What is a good CPV?', a: 'There is no universal cutoff. Compare the same view definition, audience, format and objective over comparable periods. Include completion, qualified traffic and conversion outcomes; a low CPV alone does not establish value.' },
+  { q: 'Can a CPM campaign have a CPV?', a: 'Yes. CPV can be calculated from spend and reported views even when the purchase is billed per thousand impressions. The calculated CPV does not change the platform billing model.' },
+  { q: 'Is this CPV calculator free?', a: 'Yes. Calculate cost per view, spend or views without signup.' },
 ];
 
-const webAppSchema = { "@type": "WebApplication", "name": "CPV Calculator", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "creator": { "@id": "https://freemarketingcalculator.com/#org" }, "url": "https://freemarketingcalculator.com/cpv-calculator/", "description": "Free CPV calculator with three modes — calculate cost per view, total spend, or total views. Includes 2026 benchmarks for YouTube, TikTok, Instagram, LinkedIn, and Facebook.", "featureList": ["CPV from spend + views", "Spend from CPV + views", "Views from spend + CPV", "Platform CPV benchmarks 2026"] };
+const webAppSchema = { "@type": "WebApplication", "name": "CPV Calculator", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "creator": { "@id": "https://freemarketingcalculator.com/#org" }, "url": "https://freemarketingcalculator.com/cpv-calculator/", "description": "Free CPV calculator with three modes — calculate cost per view, total spend, or total views. Includes view-definition guidance for YouTube, TikTok, Instagram, LinkedIn, and Facebook.", "featureList": ["CPV from spend + views", "Spend from CPV + views", "Views from spend + CPV", "Video view definitions"] };
 const faqSchema = { "@type": "FAQPage", "mainEntity": faqItems.map(i => ({ "@type": "Question", "name": i.q, "acceptedAnswer": { "@type": "Answer", "text": i.a } })) };
 const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
   { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freemarketingcalculator.com/" },
@@ -35,7 +25,7 @@ const breadcrumbSchema = { "@type": "BreadcrumbList", "itemListElement": [
 const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "description": description, "step": [
 { "@type": "HowToStep", "position": 1, "text": "Select what you want to calculate: CPV, Total Spend, or Total Views." },
 { "@type": "HowToStep", "position": 2, "text": "Enter the two values you already know." },
-{ "@type": "HowToStep", "position": 3, "text": "Click Calculate for an instant result with a benchmark comparison." }
+{ "@type": "HowToStep", "position": 3, "text": "Click Calculate, then review the formula and assumptions below." }
 ] };
 ---
 
@@ -44,10 +34,10 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     <div class="container">
       <p class="eyebrow">Free Marketing Tool</p>
       <h1 id="page-h1">CPV Calculator — Cost Per View</h1>
-      <p class="citation">Calculate Cost Per View for YouTube, TikTok, Instagram, and LinkedIn video campaigns. Three modes: CPV, total spend, or total views. With 2026 platform benchmarks.</p>
+      <p class="citation">Calculate cost per view, total spend or views for video campaigns. Compare the same watch threshold, format and reporting period, with a worked example and view-definition guide.</p>
       <div class="meta-badges">
         <span class="badge">✓ 3 calculation modes</span>
-        <span class="badge">✓ 8 platform benchmarks</span>
+        <span class="badge">✓ View definitions explained</span>
         <span class="badge">✓ No signup</span>
       </div>
       <a href="#calculator" class="btn-hero-cta">Start Calculating <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
@@ -99,7 +89,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
           <div class="result-panel__grid">
             <div class="result-panel__stat"><span class="result-panel__stat-value" id="cpv-s1">—</span><span class="result-panel__stat-label" id="cpv-l1">Ad spend</span></div>
             <div class="result-panel__stat"><span class="result-panel__stat-value" id="cpv-s2">—</span><span class="result-panel__stat-label" id="cpv-l2">Views</span></div>
-            <div class="result-panel__stat"><span class="result-panel__stat-value" id="cpv-s3">—</span><span class="result-panel__stat-label" id="cpv-l3">Benchmark</span></div>
+            <div class="result-panel__stat"><span class="result-panel__stat-value" id="cpv-s3">—</span><span class="result-panel__stat-label" id="cpv-l3">View definition</span></div>
           </div>
           <div class="result-verdict" id="cpv-verdict"></div>
         </div>
@@ -107,24 +97,16 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     </div>
 
     <section class="bench-section" aria-labelledby="cpv-bench">
-      <h2 id="cpv-bench">CPV Benchmarks by Platform — 2026</h2>
-      <span class="bench-date">Updated July 2026</span>
-      <div class="bench-table-wrap">
-        <table class="bench-table">
-          <thead><tr><th scope="col">Platform</th><th scope="col">Average CPV</th><th scope="col">Ad Format</th><th scope="col">Notes</th></tr></thead>
-          <tbody>
-            {platformBenchmarks.map((r, i) => (
-              <tr style={i % 2 !== 0 ? 'background: var(--off-white)' : ''}>
-                <td><strong>{r.platform}</strong></td>
-                <td>{r.cpv}</td>
-                <td style="font-size: var(--text-sm);">{r.format}</td>
-                <td style="font-size: var(--text-sm); color: var(--text-mid);">{r.notes}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p class="bench-source">Sources: Google Ads Benchmark Report 2026, WordStream Video Advertising Benchmarks, Meta Advertising Benchmarks, TikTok for Business data 2026. Note: "View" definitions vary by platform — see FAQ below.</p>
+      <h2 id="cpv-bench">Choose the View Definition Before Comparing CPV</h2>
+      <p>A video play, a completed view and a billable view can describe different events. Google documents these TrueView criteria for Video views campaigns:</p>
+      <div class="bench-table-wrap"><table class="bench-table">
+        <thead><tr><th scope="col">YouTube format</th><th scope="col">What qualifies for a TrueView view</th></tr></thead>
+        <tbody><tr><td>Skippable in-stream</td><td>30 seconds watched, completion of a shorter ad, or qualifying engagement.</td></tr><tr><td>In-feed</td><td>Thumbnail click, or autoplay watched for 10 seconds (or completion when shorter).</td></tr><tr><td>Shorts</td><td>10 seconds watched (or completion when shorter), or a qualifying interaction.</td></tr></tbody>
+      </table></div>
+      <p class="bench-source">Source: <a href="https://support.google.com/google-ads/answer/13982458?hl=en">Google Ads: Video views</a>, checked October 22, 2026. For Meta, TikTok, LinkedIn and other platforms, record the exact selected metric and its current definition from your export. A reported play count does not imply CPV billing.</p>
+      <h3>One Campaign, Two Different CPVs</h3>
+      <p>An illustrative $300 campaign records 30,000 short plays and 10,000 qualifying longer views. Its short-play cost is $0.010, while its longer-view cost is $0.030. Both calculations are correct; they answer different questions. This is why a $0.01 short-play campaign cannot automatically be called three times more efficient.</p>
+      <p>When comparing channels, keep the currency, dates, watch threshold and placement visible beside spend and views. Review <a href="/cpm-calculator/">CPM</a> for delivery cost and <a href="/cpc-calculator/">CPC</a> for traffic cost, then judge downstream outcomes.</p>
     </section>
 
     <div class="related-box">
@@ -168,12 +150,7 @@ import { validateCalculator } from '../scripts/calc-validation.js';
     });
   });
 
-  function getBenchmark(cpv) {
-    if (cpv <= 0.01) return 'TikTok / Programmatic range';
-    if (cpv <= 0.05) return 'YouTube TrueView average';
-    if (cpv <= 0.10) return 'Premium YouTube / Instagram';
-    return 'LinkedIn / premium video';
-  }
+  function getBenchmark(cpv) { return 'Match your report'; }
 
   btn.addEventListener('click', () => {
     if (!validateCalculator(btn)) return;
@@ -194,7 +171,7 @@ import { validateCalculator } from '../scripts/calc-validation.js';
       s1.textContent = '$' + spend.toLocaleString(); l1.textContent = 'Ad spend';
       s2.textContent = views.toLocaleString(); l2.textContent = 'Views';
       s3.textContent = getBenchmark(cpv);
-      v.textContent = cpv <= 0.05 ? '✅ Efficient CPV — within YouTube TrueView average ($0.03–$0.10)' : cpv <= 0.12 ? '🟡 Above average — check audience targeting and creative length' : '⚠️ High CPV — typical of LinkedIn or unskippable formats; verify ROI';
+      v.textContent = 'Compare like-for-like view definitions and conversion outcomes. CPV alone does not measure profitability.';
     } else if (mode === 'spend') {
       const rate = parseFloat(document.getElementById('cpv-rate').value) || 0;
       const views = parseFloat(document.getElementById('cpv-views-b').value) || 0;
