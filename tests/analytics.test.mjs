@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 
 const source = readFileSync(new URL('../src/scripts/analytics.js', import.meta.url), 'utf8');
 function harness(hostname = 'freemarketingcalculator.com') {
-  const listeners = {}, calls = [], microtasks = [];
+  const listeners = {}, calls = [], microtasks = [], tasks = [];
   const state = { error: '', visible: false };
   const card = { querySelector: selector => selector === '[data-calc-error]' ? { textContent: state.error } : state.visible ? {} : null };
   const button = { closest: () => card };
@@ -15,12 +15,14 @@ function harness(hostname = 'freemarketingcalculator.com') {
     location: { hostname, pathname: '/cpc-calculator/', search: '?spend=123456789&analytics_debug=1', href: `https://${hostname}/cpc-calculator/?spend=123456789` , origin: `https://${hostname}` },
     window: { gtag: (...args) => calls.push(args) }, URL, URLSearchParams, WeakSet,
     queueMicrotask: fn => microtasks.push(fn),
+    setTimeout: fn => tasks.push(fn),
     document: { addEventListener: (name, fn) => { listeners[name] = fn; } },
   };
   vm.runInNewContext(source, context);
   return { calls, state, card, input, listeners,
     calculate() { listeners.click({ target: { closest: selector => selector === 'button.btn-calc' ? button : null } }); },
-    flush() { while (microtasks.length) microtasks.shift()(); },
+    checkpoint() { while (microtasks.length) microtasks.shift()(); },
+    flush() { while (tasks.length) tasks.shift()(); },
   };
 }
 
@@ -29,6 +31,7 @@ test('one start per calculator, with a completion only after a valid rendered re
   h.listeners.input({ target: h.input });
   h.listeners.change({ target: h.input });
   h.calculate();
+  h.checkpoint(); // The browser may do this before target listeners run.
   assert.equal(h.calls.length, 1, 'capture listener must wait for the calculator handler');
   h.state.visible = true;
   h.flush();
@@ -38,6 +41,7 @@ test('one start per calculator, with a completion only after a valid rendered re
 test('invalid calculation is an error, never a completion, even if an old result exists', () => {
   const h = harness();
   h.calculate();
+  h.checkpoint();
   h.state.error = 'Enter a value greater than zero';
   h.state.visible = true;
   h.flush();
