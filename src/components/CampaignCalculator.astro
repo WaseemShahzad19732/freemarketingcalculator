@@ -1,0 +1,46 @@
+---
+const { kind } = Astro.props;
+const ctr = kind === 'ctr';
+const cpl = kind === 'cpl';
+const label = ctr ? 'CTR' : cpl ? 'CPL' : 'CPA';
+const unit = cpl ? 'leads' : 'conversions';
+const modes = ctr ? [
+  { id: 'rate', name: 'Click-through rate (CTR)', a: 'Clicks', b: 'Impressions', pa: 'e.g. 4500', pb: 'e.g. 500000', stepA: '1', stepB: '1', hint: 'Use clicks and impressions from the same campaign and reporting period.' },
+  { id: 'clicks', name: 'Expected clicks', a: 'Impressions', b: 'Assumed CTR (%)', pa: 'e.g. 10000', pb: 'e.g. 2.5', stepA: '1', stepB: 'any', hint: 'Enter 2.5 for a 2.5% CTR. Expected clicks may be fractional.' },
+  { id: 'impressions', name: 'Impressions needed', a: 'Target clicks', b: 'Assumed CTR (%)', pa: 'e.g. 200', pb: 'e.g. 2.5', stepA: '1', stepB: 'any', hint: 'The planning estimate rounds impressions up to a whole number; real clicks can vary.' },
+] : [
+  { id: 'cost', name: `Cost per ${cpl ? 'lead (CPL)' : 'action (CPA)'}`, a: 'Campaign cost ($)', b: cpl ? 'Recorded leads' : 'Recorded conversions', pa: 'e.g. 3600', pb: cpl ? 'e.g. 120' : 'e.g. 90', stepA: 'any', stepB: cpl ? '1' : 'any', hint: cpl ? 'Declare whether costs are ad-only or fully loaded, and whether leads are raw or qualified.' : 'Define the conversion action and use its matching campaign cost. Fractional attributed conversions are accepted.' },
+  { id: 'budget', name: `Budget for a ${cpl ? 'lead' : 'conversion'} target`, a: `Target ${label} ($)`, b: `Target ${unit}`, pa: 'e.g. 30', pb: 'e.g. 200', stepA: 'any', stepB: '1', hint: `Budget is target ${label} multiplied by the number of ${unit}; it assumes that average cost can be maintained.` },
+  { id: 'count', name: `${cpl ? 'Leads' : 'Conversions'} from budget`, a: 'Budget ($)', b: `Assumed ${label} ($)`, pa: 'e.g. 5000', pb: 'e.g. 30', stepA: 'any', stepB: 'any', hint: 'The modeled outcome count rounds down to a whole outcome to stay within the stated budget.' },
+];
+---
+<div class="calc-card campaign-tool" id="calculator">
+  <div class="calc-card__header"><div><div class="calc-card__title">{label} Calculator</div><div class="calc-card__subtitle">Choose the value you want to find</div></div></div>
+  <form class="calc-card__body" data-campaign-tool={kind} novalidate>
+    <div class="field"><label for={`${kind}-mode`}>Calculate</label><select id={`${kind}-mode`} data-mode>{modes.map(mode => <option value={mode.id}>{mode.name}</option>)}</select></div>
+    {modes.map((mode, i) => <div class="field-group" data-input-group={mode.id} hidden={i !== 0}>
+      <div class="field"><label for={`${kind}-${mode.id}-a`}>{mode.a}</label><input id={`${kind}-${mode.id}-a`} data-input="a" type="number" inputmode="decimal" min="0" step={mode.stepA} placeholder={mode.pa} aria-describedby={`${kind}-${mode.id}-hint`} /></div>
+      <div class="field"><label for={`${kind}-${mode.id}-b`}>{mode.b}</label><input id={`${kind}-${mode.id}-b`} data-input="b" type="number" inputmode="decimal" min="0" step={mode.stepB} placeholder={mode.pb} aria-describedby={`${kind}-${mode.id}-hint`} /></div>
+      <p class="hint" id={`${kind}-${mode.id}-hint`}>{mode.hint}</p>
+    </div>)}
+    <div class="calculator-actions"><button class="btn-calc" type="submit">Calculate</button><button class="btn-reset" type="reset">Reset</button></div>
+    <p class="calculator-error" data-calc-error role="alert"></p>
+    <div class="result-panel" aria-live="polite" aria-atomic="true">
+      <div class="result-panel__label" data-result-label>Result</div>
+      <div class="result-panel__primary" data-result-value></div>
+      <p data-result-formula></p>
+      <p class="result-note" data-result-note></p>
+    </div>
+    <noscript><p>Enable JavaScript to use this calculator. The formulas and examples below remain available.</p></noscript>
+  </form>
+</div>
+<style>
+  .field-group[hidden] { display: none; }
+  .calculator-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .calculator-actions .btn-calc { flex: 1; margin: 0; }
+  .btn-reset { min-height: 48px; padding: 10px 18px; border: 1px solid var(--c-border); border-radius: 8px; background: var(--c-surface); color: var(--c-heading); cursor: pointer; }
+  .calculator-error { color: #9c2020; font-size: 15px; margin: 0; }
+  .calculator-error:empty { display: none; }
+  .result-note { margin-top: 16px; font-size: 14px; color: var(--c-on-panel-muted); }
+</style>
+<script>import '../scripts/campaign-calculators.js';</script>

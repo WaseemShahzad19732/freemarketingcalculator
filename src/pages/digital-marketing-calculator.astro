@@ -8,9 +8,9 @@ const description = 'Digital marketing calculator: compute CPM, CPC, CTR, ROAS, 
 
 const faqItems = [
   { q: 'What is CPM in digital marketing?', a: 'CPM (Cost Per Mille) is the cost to show your ad 1,000 times. Formula: CPM = (Ad Spend ÷ Impressions) × 1,000. Average CPM varies: Google Display ~$2, Facebook ~$8, LinkedIn ~$35.' },
-  { q: 'What is a good ROAS?', a: 'A ROAS of 4:1 ($4 revenue per $1 spent) is a common break-even benchmark. Most eCommerce businesses target 4–8× ROAS. High-margin products can be profitable at 3×; low-margin at 6×+.' },
-  { q: 'What is CPA in marketing?', a: 'CPA (Cost Per Acquisition) is how much you spend to acquire one customer. Formula: CPA = Total Ad Spend ÷ Number of Conversions. Compare against your average order value to determine profitability.' },
-  { q: 'What is CTR and what is a good click-through rate?', a: 'CTR (Click-Through Rate) = Clicks ÷ Impressions × 100. Average CTRs: Google Search 3–5%, Google Display 0.1%, Facebook 0.9%, LinkedIn 0.4%. Higher CTR indicates relevance and ad quality.' },
+  { q: 'What is a good ROAS?', a: 'A suitable ROAS depends on contribution margin and the costs being covered. A 25% contribution margin before ads gives a 4× break-even threshold; a 40% margin gives 2.5×. Uncounted overhead can require a higher return.' },
+  { q: 'What is CPA in marketing?', a: 'CPA is campaign cost divided by the number of defined conversions. It equals customer acquisition cost only when those conversions are new customers and the cost basis matches. Compare with contribution per action and the relevant cost scope.' },
+  { q: 'What is CTR and what is a good click-through rate?', a: 'CTR (Click-Through Rate) equals clicks divided by impressions, multiplied by 100. Compare matching channels, formats, periods and click definitions; higher CTR alone does not establish more sales or profit.' },
   { q: 'Is this calculator free?', a: 'Yes — completely free, no signup, no email required.' },
 ];
 
@@ -100,7 +100,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
 
     <div class="related-box">
       <p class="related-box__label">Related Guides &amp; Calculators</p>
-      <p style="color: var(--text-mid); margin-bottom: var(--space-4);">The five metrics here have dedicated tools: the <a href="/cpm-calculator/">CPM Calculator</a>, <a href="/cpc-calculator/">CPC Calculator</a>, <a href="/cpv-calculator/">CPV Calculator</a> and <a href="/roas-calculator/">ROAS Calculator</a>. The <a href="/blog/what-is-cpm/">What Is CPM?</a> guide explains cost per mille in depth.</p>
+      <p style="color: var(--text-mid); margin-bottom: var(--space-4);">The five metrics here have dedicated tools: the <a href="/cpm-calculator/">CPM Calculator</a>, <a href="/cpc-calculator/">CPC Calculator</a>, <a href="/ctr-calculator/">CTR Calculator</a>, <a href="/cpa-calculator/">CPA Calculator</a> and <a href="/roas-calculator/">ROAS Calculator</a>. The <a href="/blog/what-is-cpm/">What Is CPM?</a> guide explains cost per mille in depth.</p>
       <div class="link-grid"><a href="/cpm-calculator/" class="link-tile">CPM Calculator →</a><a href="/cpc-calculator/" class="link-tile">CPC Calculator →</a><a href="/cpv-calculator/" class="link-tile">CPV Calculator →</a><a href="/blog/what-is-cpm/" class="link-tile">What Is CPM? →</a></div>
     </div>
 

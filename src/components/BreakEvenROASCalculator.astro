@@ -1,0 +1,39 @@
+---
+const fields = [
+  ['revenue', 'Net revenue per order ($)', 'e.g. 100', 'Revenue retained after discounts and refunds; exclude tax collected for others.'],
+  ['goods', 'Product cost per order ($)', 'e.g. 40', 'Cost of the goods sold.'],
+  ['shipping', 'Shipping subsidy per order ($)', 'e.g. 10', 'Fulfilment and shipping cost that your net revenue must cover.'],
+  ['fees', 'Payment and marketplace fees per order ($)', 'e.g. 5', 'Fees excluded from the other cost fields.'],
+  ['other', 'Other non-ad variable costs per order ($)', 'e.g. 5', 'Enter zero if none. Count every cost only once and exclude advertising here.'],
+];
+---
+<div class="calc-card break-even-tool" id="calculator">
+  <div class="calc-card__header"><div><div class="calc-card__title">Break-Even ROAS Calculator</div><div class="calc-card__subtitle">Use contribution margin or enter per-order costs</div></div></div>
+  <form class="calc-card__body" data-campaign-tool="breakEven" novalidate>
+    <div class="field"><label for="beroas-mode">Calculate from</label><select id="beroas-mode" data-mode><option value="margin">Contribution margin</option><option value="costs">Per-order costs</option></select></div>
+    <div class="field-group" data-input-group="margin">
+      <div class="field"><label for="beroas-margin">Contribution margin before advertising (%)</label><input type="number" id="beroas-margin" data-input="margin" min="0" max="100" step="any" inputmode="decimal" placeholder="e.g. 40" aria-describedby="beroas-margin-hint" /><p class="hint" id="beroas-margin-hint">After the non-ad variable costs you want to cover. Enter 40 for 40%. Gross margin alone can omit shipping or transaction costs.</p></div>
+    </div>
+    <div class="field-group" data-input-group="costs" hidden>
+      {fields.map(([id, label, placeholder, hint]) => <div class="field"><label for={`beroas-${id}`}>{label}</label><input type="number" id={`beroas-${id}`} data-input={id} min="0" step="any" inputmode="decimal" placeholder={placeholder} aria-describedby={`beroas-${id}-hint`} /><p class="hint" id={`beroas-${id}-hint`}>{hint}</p></div>)}
+    </div>
+    <div class="calculator-actions"><button type="submit" class="btn-calc">Calculate</button><button type="reset" class="btn-reset">Reset</button></div>
+    <p class="calculator-error" data-calc-error role="alert"></p>
+    <div class="result-panel" aria-live="polite" aria-atomic="true">
+      <div class="result-panel__label" data-result-label>Break-even ROAS</div><div class="result-panel__primary" data-result-value></div>
+      <p data-result-formula></p><p data-result-details></p><p class="result-note" data-result-note></p>
+    </div>
+    <noscript><p>Enable JavaScript to use the calculator, or use the worked formulas below.</p></noscript>
+  </form>
+</div>
+<style>
+  .field-group[hidden] { display: none; }
+  .calculator-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .calculator-actions .btn-calc { flex: 1; margin: 0; }
+  .btn-reset { min-height: 48px; padding: 10px 18px; border: 1px solid var(--c-border); border-radius: 8px; background: var(--c-surface); color: var(--c-heading); cursor: pointer; }
+  .calculator-error { color: #9c2020; font-size: 15px; margin: 0; }
+  .calculator-error:empty { display: none; }
+  .result-note { margin-top: 16px; font-size: 14px; color: var(--c-on-panel-muted); }
+  [data-result-details] { margin-top: 16px; }
+</style>
+<script>import '../scripts/campaign-calculators.js';</script>

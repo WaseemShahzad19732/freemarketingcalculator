@@ -1,0 +1,38 @@
+---
+import CalculatorPage from '../components/CalculatorPage.astro';
+import CampaignCalculator from '../components/CampaignCalculator.astro';
+const faqs = [
+  { q: 'What is the cost-per-lead formula?', a: 'CPL equals the matching lead-generation cost divided by recorded leads. For example, $3,600 spent to generate 120 leads gives a $30 CPL. State whether the cost is media-only or fully loaded and whether leads are raw or qualified.' },
+  { q: 'How do I plan a lead-generation budget?', a: 'Multiply target CPL by the lead target. A $30 CPL and 200 leads imply $6,000 if that average cost is maintained. Budget divided by assumed CPL estimates lead volume; the within-budget mode rounds that modeled count down to whole leads.' },
+  { q: 'Is CPL the same as CPA or CAC?', a: 'CPL counts leads. CPA counts a specified conversion action, which may or may not be a lead. CAC counts new customers against the relevant sales and marketing costs. They are directly comparable only when both the outcome and cost basis match.' },
+  { q: 'Should I include agency and software fees?', a: 'Include them when reporting fully loaded lead-generation cost and exclude them when deliberately reporting an ad-only CPL. Label the scope, match the reporting period, and count a service once if it is already included in a retainer.' },
+  { q: 'What if a campaign produces no leads?', a: 'CPL is undefined with zero leads. The calculator does not report a fabricated zero or finite CPL. Zero cost with a positive lead count produces a zero CPL for that stated cost scope.' },
+  { q: 'Is a lower CPL always better?', a: 'No. Compare qualification rate, customer close rate and contribution per acquired customer as well as CPL. Cheap low-quality leads can cost more per customer than fewer expensive leads that convert.' },
+];
+---
+<CalculatorPage slug="cost-per-lead-calculator" title="Cost Per Lead Calculator: CPL, Budget & Lead Targets" description="Calculate CPL from campaign cost and leads, budget for a lead target, or leads within a budget. Includes raw versus qualified leads, cost scope and examples." name="Cost Per Lead Calculator" intro="Calculate your cost per lead, or plan spend and lead volume at an assumed CPL. Declare the cost scope and lead definition before comparing campaigns." badges={['3 calculation modes', 'Lead quality explained', 'No signup']} faqs={faqs} features={['CPL from cost and leads', 'Budget for a lead target', 'Modeled whole leads within a budget']}>
+  <CampaignCalculator kind="cpl" />
+  <section class="bench-section" aria-labelledby="cpl-formula">
+    <h2 id="cpl-formula">Cost Per Lead Formula</h2>
+    <div class="definition-box"><p><strong>CPL = matching lead-generation cost ÷ recorded leads</strong></p><p>$3,600 ÷ 120 leads = <strong>$30 per lead</strong>.</p></div>
+    <p>A lead could mean a completed enquiry, a trial request or a qualified contact, depending on your measurement. Define it once and use a deduplicated count for the same campaign and period as the cost. A click or page view is not automatically a lead.</p>
+    <div class="bench-table-wrap"><table class="bench-table"><thead><tr><th scope="col">Find</th><th scope="col">Formula</th><th scope="col">Illustrative result</th></tr></thead><tbody>
+      <tr><td>CPL</td><td>Cost ÷ leads</td><td>$3,600 ÷ 120 = $30</td></tr><tr><td>Budget</td><td>Target CPL × target leads</td><td>$30 × 200 = $6,000</td></tr><tr><td>Lead estimate</td><td>Budget ÷ assumed CPL</td><td>$5,000 ÷ $30 ≈ 166.67; 166 whole leads</td></tr>
+    </tbody></table></div>
+    <p>The budget estimate assumes an unchanged average CPL. The whole-lead result rounds down to stay within the budget at that assumed cost; campaign results are variable and do not arrive in guaranteed equal-cost units.</p>
+  </section>
+  <section class="bench-section" aria-labelledby="cpl-cost-scope">
+    <h2 id="cpl-cost-scope">Ad-Only CPL Versus Fully Loaded CPL</h2>
+    <p>Suppose $3,600 is only the media spend. An additional $600 of campaign creative and software brings included costs to $4,200. For the same 120 leads, ad-only CPL is $30 and fully loaded campaign CPL is $35. Both can be useful when their scope is explicit.</p>
+    <p>Include the attributable labour, software, agency and production costs needed for your decision, without counting a retained service twice. Use the <a href="/blog/inbound-marketing-cost/#cost-model">six-month inbound cost worksheet</a> to organize the costs before entering a total.</p>
+    <h3>Qualified Leads Need Their Own Denominator</h3>
+    <p>If 40 of the 120 leads qualify, $4,200 ÷ 40 = $105 per qualified lead. Compare qualification criteria and close rates alongside CPL. Do not compare a raw-lead campaign's $35 CPL with another campaign's $105 qualified-lead cost as though the outcomes were identical.</p>
+  </section>
+  <section class="bench-section" aria-labelledby="cpl-customer">
+    <h2 id="cpl-customer">Connect Leads With Customer Economics</h2>
+    <p>A lower CPL can still produce a higher customer cost when fewer leads qualify or buy. At an assumed 10% lead-to-customer rate, a $30 CPL represents $300 of lead-generation spend per modeled new customer. Additional sales or acquisition costs can raise a fully loaded CAC further.</p>
+    <p>Use the <a href="/cac-calculator/">CAC calculator</a> for matched sales/marketing costs and new customers, the <a href="/inbound-marketing-calculator/">inbound funnel calculator</a> for traffic and stage targets, and the <a href="/cpa-calculator/">CPA calculator</a> for a different conversion action. Your acceptable lead cost depends on customer contribution, measured close rates and payback timing.</p>
+    <p class="bench-source">Definition: <a href="https://blog.hubspot.com/sales/cost-per-lead" target="_blank" rel="noopener noreferrer">HubSpot's cost-per-lead guide</a>. All amounts above are original hypothetical examples, not market averages; reviewed October 22, 2026.</p>
+  </section>
+  <div class="related-box"><p class="related-box__label">Related Calculations</p><div class="link-grid"><a class="link-tile" href="/inbound-marketing-calculator/">Inbound Funnel →</a><a class="link-tile" href="/cac-calculator/">Customer Acquisition Cost →</a><a class="link-tile" href="/cpc-calculator/">Cost Per Click →</a><a class="link-tile" href="/blog/inbound-marketing-cost/">Inbound Cost Worksheet →</a></div></div>
+</CalculatorPage>

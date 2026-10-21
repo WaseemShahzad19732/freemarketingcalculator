@@ -1,0 +1,37 @@
+---
+import CalculatorPage from '../components/CalculatorPage.astro';
+import BreakEvenROASCalculator from '../components/BreakEvenROASCalculator.astro';
+const faqs = [
+  { q: 'How do I calculate break-even ROAS?', a: 'Divide 1 by your contribution margin before advertising, expressed as a decimal. With 40% contribution margin, 1 divided by 0.40 is 2.5× ROAS, or 250%. This covers ads and the non-ad costs included in that margin.' },
+  { q: 'Which costs belong in the calculation?', a: 'Include the non-ad costs the revenue must cover, such as product cost, shipping subsidies, transaction fees and other variable fulfilment costs. Use net revenue on the same basis, count each cost once, and exclude ad spend from these cost fields because ROAS already measures revenue relative to ads.' },
+  { q: 'What if my contribution margin is zero or negative?', a: 'There is no finite break-even ROAS under that cost structure. Net revenue must exceed the included non-ad costs before any contribution is available to pay for advertising. The calculator shows an error instead of returning zero or infinity as a usable target.' },
+  { q: 'Is gross margin sufficient?', a: 'Only for the costs that gross margin includes. A margin that subtracts product cost but omits shipping, marketplace fees and other variable costs will understate the required ROAS if those costs also need to be covered.' },
+  { q: 'Does beating break-even ROAS guarantee profit?', a: 'It leaves contribution after advertising for the stated cost scope. It does not establish whole-business profit when fixed overhead, additional acquisition costs or other expenses are excluded, and attribution may differ between reporting systems.' },
+  { q: 'Is break-even ROAS the same as target ROAS?', a: 'No. Break-even ROAS describes the threshold for the declared costs. A target may also need to fund overhead and desired profit. The appropriate target depends on your own economics rather than a universal platform multiple.' },
+];
+---
+<CalculatorPage slug="break-even-roas-calculator" title="Break-Even ROAS Calculator: Include Your Variable Costs" description="Find break-even ROAS from contribution margin or per-order revenue and variable costs. Includes shipping, fees, a worked example and clear profit limitations." name="Break-Even ROAS Calculator" intro="Find the revenue return needed to cover advertising and your included non-ad costs. Enter a contribution margin or build it from net revenue and per-order costs." badges={['2 input modes', 'Costs and margin shown', 'No signup']} faqs={faqs} features={['Break-even ROAS from contribution margin', 'Per-order revenue and variable cost model', 'ROAS multiplier and percentage', 'Amount available for ads per order']}>
+  <BreakEvenROASCalculator />
+  <section class="bench-section" aria-labelledby="beroas-formula">
+    <h2 id="beroas-formula">Break-Even ROAS Formula</h2>
+    <div class="definition-box"><p><strong>Contribution margin before ads = (net revenue − included non-ad costs) ÷ net revenue</strong></p><p><strong>Break-even ROAS = 1 ÷ contribution margin</strong></p><p>Use the decimal margin: 40% = 0.40, so 1 ÷ 0.40 = <strong>2.5× ROAS (250%)</strong>.</p></div>
+    <p>The existing <a href="/roas-calculator/">ROAS calculator</a> divides attributed revenue by advertising spend. This tool answers a separate question: how high that ratio needs to be for a declared cost structure. Its threshold is based on the costs you include, rather than a platform average.</p>
+  </section>
+  <section class="bench-section" aria-labelledby="beroas-example">
+    <h2 id="beroas-example">Worked Example: A $100 Net Order</h2>
+    <div class="bench-table-wrap"><table class="bench-table"><thead><tr><th scope="col">Per-order item</th><th scope="col">Amount</th></tr></thead><tbody>
+      <tr><td>Net revenue</td><td>$100</td></tr><tr><td>Product cost</td><td>$40</td></tr><tr><td>Shipping subsidy</td><td>$10</td></tr><tr><td>Payment and marketplace fees</td><td>$5</td></tr><tr><td>Other non-ad variable costs</td><td>$5</td></tr><tr><td>Total included non-ad costs</td><td>$60</td></tr><tr><td>Contribution available before ads</td><td>$40 / 40%</td></tr><tr><td>Break-even ROAS</td><td>2.5× / 250%</td></tr>
+    </tbody></table></div>
+    <p>At $40 of ad spend for this order, $100 − $60 − $40 = $0 contribution after advertising. At a 3× actual ROAS, ad spend is about $33.33 and contribution after ads is about $6.67, before any uncounted overhead. These are hypothetical inputs, not a promised campaign result.</p>
+    <p>Using product cost alone would give a 60% gross margin and roughly 1.67× break-even ROAS. That smaller threshold would omit $20 of shipping, fees and other variable costs. Use the cost-input mode when the supplied margin does not cover the costs you need.</p>
+  </section>
+  <section class="bench-section" aria-labelledby="beroas-scope">
+    <h2 id="beroas-scope">Keep the Revenue and Cost Basis Consistent</h2>
+    <p>Use the revenue you retain after the discounts and refunds reflected in your model. Exclude tax collected for others, and do not subtract a refund again if it is already removed from net revenue. Treat shipping revenue and fulfilment costs consistently. The currency label is USD; this tool performs no currency conversion.</p>
+    <p>Do not put advertising into the non-ad cost fields. Advertising is already the denominator of ROAS and is the amount the remaining contribution is meant to cover. Revisit margins when product mix, payment fees, returns or shipping subsidies change.</p>
+    <h3>A Threshold Is Not a Business Profit Forecast</h3>
+    <p>The output covers the stated costs at the assumed order value and margin. It excludes expenses not entered into that scope and does not solve attribution or incrementality. Use the <a href="/marketing-roi-calculator/">marketing ROI calculator</a> with the appropriate cost basis when evaluating a broader programme, and read <a href="/blog/what-is-ad-spend/">what ad spend includes</a> before comparing reports.</p>
+    <p class="bench-source">Reference: <a href="https://advertising.amazon.com/library/guides/ads-math" target="_blank" rel="noopener noreferrer">Amazon Ads practical calculations</a> explains the margin-based break-even relationship. Our example explicitly extends the cost basis to declared non-ad variable costs; original arithmetic reviewed October 22, 2026.</p>
+  </section>
+  <div class="related-box"><p class="related-box__label">Related Calculations</p><div class="link-grid"><a class="link-tile" href="/roas-calculator/">Actual ROAS →</a><a class="link-tile" href="/marketing-roi-calculator/">Marketing ROI →</a><a class="link-tile" href="/cpa-calculator/">Cost Per Action →</a><a class="link-tile" href="/blog/what-is-ad-spend/">Ad Spend Explained →</a></div></div>
+</CalculatorPage>

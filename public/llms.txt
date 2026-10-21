@@ -1,6 +1,6 @@
 # Free Marketing Calculators — Free Marketing Calculators
 # https://freemarketingcalculator.com
-# llms.txt v1.2 — October 2026
+# llms.txt v1.3 — October 22, 2026
 
 > Free marketing calculator tools for ROI, budget planning, salary benchmarks, conversion rates, and campaign metrics. All tools are free, require no signup, and produce instant results.
 
@@ -12,7 +12,7 @@
 
 - [Conversion Rate Calculator](https://freemarketingcalculator.com/conversion-rate-calculator/): Calculates marketing conversion rate from visits and conversions, reverse-computes traffic needed to hit a sales goal, and benchmarks results against 2026 industry averages by channel.
 
-- [Email Marketing ROI Calculator](https://freemarketingcalculator.com/email-marketing-roi-calculator/): Computes email marketing ROMI from list size, send frequency, open rate, click rate, conversion rate, and monthly platform cost — with platform cost comparison table.
+- [Email Marketing ROI Calculator](https://freemarketingcalculator.com/email-marketing-roi-calculator/): Computes email marketing ROMI from list size, send frequency, open rate, click rate, conversion rate, and monthly platform cost — with an explicit click-to-open denominator and cost-input guidance.
 
 - [Digital Marketing Budget Calculator](https://freemarketingcalculator.com/digital-marketing-budget-calculator/): Splits a marketing budget into a digital budget (Gartner 2025 average 61.1%) and a monthly allocation across paid search, social ads, display and video, SEO and content, email, and tools by business model and goal.
 
@@ -20,7 +20,7 @@
 
 - [Digital Marketing Calculator](https://freemarketingcalculator.com/digital-marketing-calculator/): Computes CPM, CPC, CTR, ROAS, and CPA simultaneously from a single set of digital campaign inputs.
 
-- [ROAS Calculator](https://freemarketingcalculator.com/roas-calculator/): Calculates Return on Ad Spend as a percentage and multiplier from ad spend and ad revenue, with Target ROAS guidance and 2026 benchmarks by platform (Google, Meta, TikTok, Amazon, LinkedIn).
+- [ROAS Calculator](https://freemarketingcalculator.com/roas-calculator/): Calculates Return on Ad Spend as a percentage and multiplier from ad spend and ad revenue, with contribution-margin scenarios and a link to the separate break-even ROAS tool.
 
 - [CAC Calculator](https://freemarketingcalculator.com/cac-calculator/): Calculates Customer Acquisition Cost from total sales and marketing spend and new customers acquired, with payback period guidance and 2026 benchmarks by industry (eCommerce, SaaS, Enterprise, Fintech, Healthcare, Real Estate).
 
@@ -38,6 +38,14 @@
 
 - [CPV Calculator](https://freemarketingcalculator.com/cpv-calculator/): Calculates cost per video view, spend or views.
 
+- [CTR Calculator](https://freemarketingcalculator.com/ctr-calculator/): Calculates click-through rate, expected clicks or impressions for a target using explicit denominators.
+
+- [CPA Calculator](https://freemarketingcalculator.com/cpa-calculator/): Calculates cost per defined action, target budget or modeled conversion count; distinguishes CPA from CAC.
+
+- [Break-Even ROAS Calculator](https://freemarketingcalculator.com/break-even-roas-calculator/): Calculates a revenue-return threshold from contribution margin or per-order net revenue and non-ad variable costs.
+
+- [Cost Per Lead Calculator](https://freemarketingcalculator.com/cost-per-lead-calculator/): Calculates CPL, budget for a lead target or modeled whole leads within a budget; distinguishes raw and qualified leads.
+
 ## Formulas Used
 
 Marketing ROI (ROMI) = (Revenue from marketing - Marketing cost) / Marketing cost * 100
@@ -48,7 +56,10 @@ CPM = (Cost / Impressions) * 1000
 CPC = Cost / Clicks
 ROAS = (Ad revenue / Ad spend) * 100
 CAC = Total sales & marketing spend / New customers acquired
-CPA = Cost / Conversions
+CPA = Matching campaign cost / Defined conversions
+CTR (%) = Clicks / Impressions * 100
+CPL = Matching lead-generation cost / Recorded leads
+Break-even ROAS (multiplier) = 1 / Contribution margin before ads (decimal)
 
 ## About
 

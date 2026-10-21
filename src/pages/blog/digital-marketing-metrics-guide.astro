@@ -210,7 +210,7 @@ const breadcrumbSchema = {
         <div class="definition-box" style="margin-top: var(--space-6);">
           <div class="definition-box__label">Key Takeaways</div>
           <ul style="margin: var(--space-2) 0 0 var(--space-5); color: var(--text-mid); line-height: 1.8;">
-            <li>CPM prices reach, CPC prices clicks, CTR measures ad relevance, ROAS measures revenue per ad dollar, and CPA measures the cost of one customer.</li>
+            <li>CPM prices reach, CPC prices clicks, CTR measures ad relevance, ROAS measures revenue per ad dollar, and CPA measures the cost of one defined conversion; CAC specifically counts new customers.</li>
             <li>Use CPM and CTR to diagnose a campaign, CPA and ROAS to optimise it, and ROI to decide whether a channel is worth funding.</li>
             <li>WordStream's 2025 Facebook benchmarks show a 2.59% CTR, a $1.92 CPC and a $27.66 cost per lead for leads campaigns.</li>
             <li>WordStream by LocaliQ reports a $70.11 average Google Ads cost per lead in 2025, up 5.13% from 2024.</li>
@@ -221,6 +221,7 @@ const breadcrumbSchema = {
         <section class="bench-section" id="quick-reference-heading" aria-labelledby="campaign-reference">
           <h2 id="campaign-reference">Five Metrics, One Campaign: Formulas and Denominators</h2>
           <p>Illustrative inputs: $5,000 ad spend, 500,000 impressions, 4,500 clicks, 90 conversions and $22,000 attributed revenue. Keep the campaign dates, currency and attribution window the same for every row.</p>
+          <p>For one metric or a reverse calculation, use the <a href="/ctr-calculator/">CTR calculator</a> to work between clicks and impressions, or the <a href="/cpa-calculator/">CPA calculator</a> to plan conversion costs. Use the <a href="/break-even-roas-calculator/">break-even ROAS calculator</a> when the decision depends on contribution margin.</p>
           <div class="bench-table-wrap"><table class="bench-table"><thead><tr><th scope="col">Metric</th><th scope="col">Formula</th><th scope="col">Denominator</th><th scope="col">Result</th></tr></thead><tbody><tr><td><a href="/cpm-calculator/">CPM</a></td><td>Spend ÷ impressions × 1,000</td><td>Impressions</td><td>$10.00</td></tr><tr><td><a href="/cpc-calculator/">CPC</a></td><td>Spend ÷ clicks</td><td>Clicks</td><td>$1.11</td></tr><tr><td><a href="/digital-marketing-calculator/">CTR</a></td><td>Clicks ÷ impressions × 100</td><td>Impressions</td><td>0.9%</td></tr><tr><td><a href="/digital-marketing-calculator/">CPA</a></td><td>Spend ÷ conversions</td><td>Defined conversions</td><td>$55.56</td></tr><tr><td><a href="/roas-calculator/">ROAS</a></td><td>Attributed revenue ÷ ad spend</td><td>Ad spend</td><td>4.4×</td></tr></tbody></table></div>
           <p>CPA means cost per the conversion you selected. It equals customer acquisition cost only if those 90 conversions are newly acquired customers and the spend includes the acquisition costs being evaluated. CPV additionally needs a defined video-view count; see the <a href="/cpv-calculator/">CPV calculator's view comparison</a>.</p>
           <p><a href="/marketing-metrics-worked-example.csv" download>Download the worked campaign as CSV</a>. The data is an original teaching example, not an observed client campaign or a platform benchmark. Reference this table with its <a href="#campaign-reference">permanent section link</a>.</p>
@@ -444,7 +445,7 @@ const breadcrumbSchema = {
             Or calculate a single metric:
             <a href="/roas-calculator/" style="color: var(--teal); font-weight: 700;">ROAS</a> ·
             <a href="/cpc-calculator/" style="color: var(--teal); font-weight: 700;">CPC</a> ·
-            <a href="/cpm-calculator/" style="color: var(--teal); font-weight: 700;">CPM</a>
+            <a href="/cpm-calculator/" style="color: var(--teal); font-weight: 700;">CPM</a> · <a href="/ctr-calculator/" style="color: var(--teal); font-weight: 700;">CTR</a> · <a href="/cpa-calculator/" style="color: var(--teal); font-weight: 700;">CPA</a>
           </p>
         </div>
 
