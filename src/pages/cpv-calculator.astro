@@ -148,6 +148,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
 </Base>
 
 <script>
+import { validateCalculator } from '../scripts/calc-validation.js';
 (function(){
   'use strict';
   const mBtns = { cpv: document.getElementById('cpv-mode-cpv'), spend: document.getElementById('cpv-mode-spend'), views: document.getElementById('cpv-mode-views') };
@@ -175,6 +176,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
   }
 
   btn.addEventListener('click', () => {
+    if (!validateCalculator(btn)) return;
     const p = document.getElementById('cpv-primary');
     const rl = document.getElementById('cpv-rlabel');
     const s1 = document.getElementById('cpv-s1'), l1 = document.getElementById('cpv-l1');
@@ -185,7 +187,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     if (mode === 'cpv') {
       const spend = parseFloat(document.getElementById('cpv-spend').value) || 0;
       const views = parseFloat(document.getElementById('cpv-views').value) || 0;
-      if (!spend || !views) return;
+      
       const cpv = spend / views;
       rl.textContent = 'Cost Per View (CPV)';
       p.textContent = '$' + cpv.toFixed(3);
@@ -196,7 +198,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     } else if (mode === 'spend') {
       const rate = parseFloat(document.getElementById('cpv-rate').value) || 0;
       const views = parseFloat(document.getElementById('cpv-views-b').value) || 0;
-      if (!rate || !views) return;
+      
       const spend = rate * views;
       rl.textContent = 'Total Spend Required';
       p.textContent = '$' + spend.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
@@ -207,7 +209,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     } else {
       const spend = parseFloat(document.getElementById('cpv-spend-c').value) || 0;
       const rate = parseFloat(document.getElementById('cpv-rate-c').value) || 0;
-      if (!spend || !rate) return;
+      
       const views = Math.floor(spend / rate);
       rl.textContent = 'Estimated Views';
       p.textContent = views.toLocaleString();
