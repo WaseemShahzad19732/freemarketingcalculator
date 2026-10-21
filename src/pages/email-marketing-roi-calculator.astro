@@ -15,7 +15,7 @@ const platforms = [
 ];
 
 const faqItems = [
-  { q: 'What is a good email marketing ROI?', a: 'Email marketing ROI is widely quoted at $36–$42 for every $1 spent, a 3,600–4,200% return. Primary sources checked include Litmus (38:1 in 2018) and the DMA (£42 per £1 in 2019). These are survey-based figures from marketers who measure ROI, so use them as a reference rather than a target.' },
+  { q: 'What is a good email marketing ROI?', a: 'Email marketing ROI is widely quoted at $36–$42 for every $1 spent, a revenue-to-cost ratio; if those figures mean revenue, basic ROI would be 3,500–4,100% after subtracting cost. Primary sources checked include Litmus (38:1 in 2018) and the DMA (£42 per £1 in 2019). These are survey-based figures from marketers who measure ROI, so use them as a reference rather than a target.' },
   { q: 'How do I calculate email marketing ROI?', a: 'Email ROI = (Revenue from emails − Email marketing cost) ÷ Email marketing cost × 100. Count platform cost, creative, copywriting and staff time in the cost. Attribute revenue with UTM parameters so the revenue figure comes from tracked email clicks.' },
   { q: 'What is a good email open rate?', a: 'Mailchimp reports an average open rate of 35.63% and a click rate of 2.62% across all users, as of December 2023. Industry averages for opens range from 29.81% for ecommerce to 40.55% for government. Apple Mail Privacy Protection inflates opens, so click rate is a more reliable engagement metric.' },
   { q: 'How do I improve email marketing ROI?', a: 'Segment the list by behaviour and purchase history, clean inactive subscribers regularly, and automate triggered sequences such as welcome, abandoned cart and re-engagement emails. Test subject lines and send times on a portion of the list first. Judge tests by clicks and revenue rather than opens.' },
@@ -116,7 +116,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       <div class="definition-box__label">How to Use This Email Marketing ROI Calculator</div>
       <p style="white-space: pre-line; line-height: 1.9;">1. Enter your email list size and number of sends per month. 2. Enter your open rate and click rate (use your ESP's analytics or the 2026 industry benchmarks shown below). 3. Enter conversion rate of clicks, average order value, and monthly platform cost. 4. Click Calculate — your monthly revenue, conversions, and full ROMI appear.</p>
       <div class="formula-example" style="margin-top: var(--space-3);">
-        <strong>Example:</strong> Example: 5,000 subscribers, 4 sends/month, 22% open rate, 2.5% CTR, 5% conversion, $150 AOV, $50 platform cost. Monthly revenue = 5,000 × 4 × 0.22 × 0.025 × 0.05 × $150 = $825. ROMI = ($825 − $50) ÷ $50 × 100 = 1,550%.
+        <strong>Example:</strong> Example: 5,000 subscribers, 4 sends/month, 22% open rate, 2.5% click-to-open rate, 5% conversion, $150 AOV, $50 platform cost. Monthly revenue = 5,000 × 4 × 0.22 × 0.025 × 0.05 × $150 = $825. ROMI = ($825 − $50) ÷ $50 × 100 = 1,550%.
       </div>
     </div>
 
@@ -140,8 +140,8 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
         <table class="bench-table">
           <thead><tr><th scope="col">Example</th><th scope="col">Inputs</th><th scope="col">Conversions / mo</th><th scope="col">Monthly Revenue</th><th scope="col">Cost</th><th scope="col">ROI</th></tr></thead>
           <tbody>
-            <tr><td><strong>1. Platform cost only</strong></td><td>5,000 subscribers, 4 sends, 22% open, 2.5% click, 5% conversion, $150 AOV</td><td>5.5</td><td>$825</td><td>$50</td><td><strong>1,550%</strong></td></tr>
-            <tr style="background:var(--off-white)"><td><strong>2. Larger list</strong></td><td>20,000 subscribers, 4 sends, 25% open, 3% click, 4% conversion, $80 AOV</td><td>24</td><td>$1,920</td><td>$150</td><td><strong>1,180%</strong></td></tr>
+            <tr><td><strong>1. Platform cost only</strong></td><td>5,000 subscribers, 4 sends, 22% open, 2.5% click-to-open, 5% conversion, $150 AOV</td><td>5.5</td><td>$825</td><td>$50</td><td><strong>1,550%</strong></td></tr>
+            <tr style="background:var(--off-white)"><td><strong>2. Larger list</strong></td><td>20,000 subscribers, 4 sends, 25% open, 3% click-to-open, 4% conversion, $80 AOV</td><td>24</td><td>$1,920</td><td>$150</td><td><strong>1,180%</strong></td></tr>
             <tr><td><strong>3. Fully loaded cost</strong></td><td>Example 1 with $50 platform + $200 creative + $400 staff time</td><td>5.5</td><td>$825</td><td>$650</td><td><strong>27%</strong></td></tr>
           </tbody>
         </table>
@@ -183,6 +183,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
 </style>
 
 <script>
+import { validateCalculator } from '../scripts/calc-validation.js';
 (function(){
   'use strict';
   const btn = document.getElementById('em-calc-btn');
@@ -190,23 +191,23 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
   if (!btn) return;
   function fmt(n) { return n >= 1000000 ? '$' + (n/1000000).toFixed(2) + 'M' : '$' + Math.round(n).toLocaleString(); }
   btn.addEventListener('click', () => {
+    if (!validateCalculator(btn)) return;
     const list   = parseFloat(document.getElementById('em-listsize').value) || 0;
-    const sends  = parseFloat(document.getElementById('em-sends').value) || 1;
+    const sends  = parseFloat(document.getElementById('em-sends').value);
     const open   = parseFloat(document.getElementById('em-openrate').value) / 100 || 0;
     const ctr    = parseFloat(document.getElementById('em-ctr').value) / 100 || 0;
     const cvr    = parseFloat(document.getElementById('em-cvr').value) / 100 || 0;
     const aov    = parseFloat(document.getElementById('em-aov').value) || 0;
-    const cost   = parseFloat(document.getElementById('em-cost').value) || 1;
-    if (!list || !aov) return;
+    const cost   = parseFloat(document.getElementById('em-cost').value);
     const convs   = list * sends * open * ctr * cvr;
     const revenue = convs * aov;
     const roi     = cost > 0 ? ((revenue - cost) / cost) * 100 : 0;
     const perSub  = list > 0 ? revenue / list : 0;
     document.getElementById('em-primary').textContent    = roi.toFixed(0) + '%';
     document.getElementById('em-revenue').textContent    = fmt(revenue);
-    document.getElementById('em-conversions').textContent = Math.round(convs).toLocaleString();
-    document.getElementById('em-per-sub').textContent    = '$' + perSub.toFixed(2);
-    document.getElementById('em-verdict').textContent    = roi >= 3600 ? '✅ At or above the $36:$1 industry benchmark' : roi >= 1000 ? '🟡 Positive ROI — optimise open rate and CTR for more' : '⚠️ Below average — review subject lines, list quality, and offer';
+    document.getElementById('em-conversions').textContent = convs.toLocaleString('en-US', { maximumFractionDigits: 2 });
+    document.getElementById('em-per-sub').textContent    = list > 0 ? '$' + perSub.toFixed(2) : 'N/A';
+    document.getElementById('em-verdict').textContent    = roi < 0 ? 'Revenue is below the costs entered. Review attribution and fully loaded costs.' : 'Positive return on the costs entered. Product costs and overhead may reduce profit.';
     result.classList.add('visible');
     result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   });
