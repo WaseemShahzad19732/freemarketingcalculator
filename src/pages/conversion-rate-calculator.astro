@@ -188,6 +188,7 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
 </Base>
 
 <script>
+import { validateCalculator } from '../scripts/calc-validation.js';
 (function(){
   'use strict';
   const modes = ['cvr','reverse','revenue'];
@@ -224,10 +225,10 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
   }
 
   calcBtn.addEventListener('click', () => {
+    if (!validateCalculator(calcBtn)) return;
     if (mode === 'cvr') {
       const v = parseFloat(document.getElementById('cvr-visitors').value);
       const c = parseFloat(document.getElementById('cvr-conversions').value);
-      if (!v || !c) return;
       const cvr = (c / v) * 100;
       label.textContent = 'Conversion Rate';
       primary.textContent = cvr.toFixed(2) + '%';
@@ -238,7 +239,6 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
     } else if (mode === 'reverse') {
       const t = parseFloat(document.getElementById('rev-target').value);
       const r = parseFloat(document.getElementById('rev-cvr').value);
-      if (!t || !r) return;
       const needed = Math.ceil(t / (r / 100));
       label.textContent = 'Monthly Visitors Needed';
       primary.textContent = needed.toLocaleString();
@@ -250,7 +250,6 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
       const v = parseFloat(document.getElementById('rrev-visitors').value);
       const r = parseFloat(document.getElementById('rrev-cvr').value);
       const aov = parseFloat(document.getElementById('rrev-aov').value);
-      if (!v || !r || !aov) return;
       const convs = Math.round(v * (r / 100));
       const revenue = convs * aov;
       label.textContent = 'Estimated Monthly Revenue';
