@@ -126,19 +126,20 @@ const howToSchema = { "@type": "HowTo", "name": `How to Use ${title}`, "descript
 </Base>
 
 <script>
+import { validateCalculator } from '../scripts/calc-validation.js';
 (function(){
   'use strict';
   const btn = document.getElementById('ib-calc-btn');
   const result = document.getElementById('ib-result');
   if (!btn) return;
   btn.addEventListener('click', () => {
+    if (!validateCalculator(btn)) return;
     const revenue    = parseFloat((document.getElementById('ib-revenue') as HTMLInputElement).value) || 0;
-    const deal       = parseFloat((document.getElementById('ib-deal') as HTMLInputElement).value) || 1;
-    const closeRate  = parseFloat((document.getElementById('ib-close') as HTMLInputElement).value) / 100 || 0.25;
-    const mqlSql     = parseFloat((document.getElementById('ib-mql-sql') as HTMLInputElement).value) / 100 || 0.25;
-    const leadMql    = parseFloat((document.getElementById('ib-lead-mql') as HTMLInputElement).value) / 100 || 0.35;
-    const visitLead  = parseFloat((document.getElementById('ib-visit-lead') as HTMLInputElement).value) / 100 || 0.025;
-    if (!revenue) return;
+    const deal       = parseFloat((document.getElementById('ib-deal') as HTMLInputElement).value);
+    const closeRate  = parseFloat((document.getElementById('ib-close') as HTMLInputElement).value) / 100;
+    const mqlSql     = parseFloat((document.getElementById('ib-mql-sql') as HTMLInputElement).value) / 100;
+    const leadMql    = parseFloat((document.getElementById('ib-lead-mql') as HTMLInputElement).value) / 100;
+    const visitLead  = parseFloat((document.getElementById('ib-visit-lead') as HTMLInputElement).value) / 100;
     const customers = revenue / deal;
     const sqls      = customers / closeRate;
     const mqls      = sqls / mqlSql;
