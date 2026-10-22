@@ -1,0 +1,33 @@
+<div class="calc-card clv-tool" id="calculator">
+  <div class="calc-card__header"><div><div class="calc-card__title">Customer Lifetime Value Calculator</div><div class="calc-card__subtitle">Use a stated lifetime and matching purchase period</div></div></div>
+  <form class="calc-card__body" data-clv-tool novalidate>
+    <div class="field"><label for="clv-mode">Calculate</label><select id="clv-mode" data-clv-input="mode"><option value="revenue">Revenue CLV</option><option value="contribution">Contribution CLV</option></select></div>
+    <div class="field"><label for="clv-period">Purchase and lifetime period</label><select id="clv-period" data-clv-input="period" aria-describedby="clv-period-hint"><option value="year">Years</option><option value="month">Months</option></select><p class="hint" id="clv-period-hint">Frequency and lifetime use this same unit. Changing it does not convert your numbers; re-enter both if needed.</p></div>
+    <div class="field"><label for="clv-value">Average net order value ($)</label><input id="clv-value" data-clv-input="value" type="number" inputmode="decimal" min="0" step="any" placeholder="e.g. 100" aria-describedby="clv-value-hint" /><p class="hint" id="clv-value-hint">Revenue per order after discounts and refunds. Use the same customer segment throughout.</p></div>
+    <div class="field"><label for="clv-frequency" data-frequency-label>Average purchases per customer per year</label><input id="clv-frequency" data-clv-input="frequency" type="number" inputmode="decimal" min="0" step="any" placeholder="e.g. 4" aria-describedby="clv-frequency-hint" /><p class="hint" id="clv-frequency-hint">An average can be fractional, such as 0.5 orders per month. Do not enter the total orders for all customers.</p></div>
+    <div class="field"><label for="clv-lifetime" data-lifetime-label>Expected active customer lifetime (years)</label><input id="clv-lifetime" data-clv-input="lifetime" type="number" inputmode="decimal" min="0" step="any" placeholder="e.g. 3" aria-describedby="clv-lifetime-hint" /><p class="hint" id="clv-lifetime-hint">Enter a finite observed or assumed active lifetime; this tool does not infer lifetime from churn.</p></div>
+    <div class="field-group" data-contribution-fields hidden>
+      <div class="field"><label for="clv-margin">Contribution margin before acquisition (%)</label><input id="clv-margin" data-clv-input="margin" type="number" inputmode="decimal" min="0" max="100" step="any" placeholder="e.g. 40" aria-describedby="clv-margin-hint" /><p class="hint" id="clv-margin-hint">Enter 40 for 40%. Deduct the variable costs you want to cover, such as goods, fulfilment and payment fees; keep acquisition costs out if entering CAC below.</p></div>
+      <div class="field"><label for="clv-cac">Customer acquisition cost ($, optional)</label><input id="clv-cac" data-clv-input="cac" type="number" inputmode="decimal" min="0" step="any" placeholder="e.g. 200" aria-describedby="clv-cac-hint" /><p class="hint" id="clv-cac-hint">Use sales and marketing cost per new customer for the same cohort. Leave blank to omit the comparison.</p></div>
+    </div>
+    <div class="calculator-actions"><button class="btn-calc" type="submit">Calculate</button><button class="btn-reset" type="reset">Reset</button></div>
+    <p class="calculator-error" data-calc-error role="alert"></p>
+    <div class="result-panel" aria-live="polite" aria-atomic="true">
+      <div class="result-panel__label" data-clv-label>Customer lifetime value</div>
+      <div class="result-panel__primary" data-clv-value></div>
+      <p data-clv-formula></p><p data-clv-details></p><p data-clv-cac-result></p>
+      <p class="result-note">A constant-average planning estimate, before uncounted fixed costs and discounting. It is not a guaranteed customer outcome or net present value.</p>
+    </div>
+    <noscript><p>Enable JavaScript to calculate. The formulas and worked example below remain available.</p></noscript>
+  </form>
+</div>
+<style>
+  [data-contribution-fields][hidden] { display: none; }
+  .calculator-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .calculator-actions .btn-calc { flex: 1; margin: 0; }
+  .btn-reset { min-height: 48px; padding: 10px 18px; border: 1px solid var(--c-border); border-radius: 8px; background: var(--c-surface); color: var(--c-heading); cursor: pointer; }
+  .calculator-error { color: #9c2020; font-size: 15px; margin: 0; }
+  .calculator-error:empty, [data-clv-cac-result]:empty { display: none; }
+  .result-note { margin-top: 16px; font-size: 14px; color: var(--c-on-panel-muted); }
+</style>
+<script>import '../scripts/clv-calculator.js';</script>

@@ -1,0 +1,28 @@
+<div class="calc-card" id="calculator">
+  <div class="calc-card__header"><div><div class="calc-card__title">Email Engagement Calculator</div><div class="calc-card__subtitle">One campaign, three explicit denominators</div></div></div>
+  <form class="calc-card__body" data-email-engagement novalidate>
+    <div class="field"><label for="email-delivered">Delivered emails</label><input id="email-delivered" data-email-input="delivered" type="number" min="0" step="1" inputmode="numeric" placeholder="e.g. 50000" aria-describedby="email-count-hint" /></div>
+    <div class="field"><label for="email-opens">Unique recipients with tracked opens</label><input id="email-opens" data-email-input="opens" type="number" min="0" step="1" inputmode="numeric" placeholder="e.g. 20000" aria-describedby="email-count-hint" /></div>
+    <div class="field"><label for="email-clicks">Unique recipients who clicked</label><input id="email-clicks" data-email-input="clicks" type="number" min="0" step="1" inputmode="numeric" placeholder="e.g. 1250" aria-describedby="email-count-hint" /></div>
+    <p class="hint" id="email-count-hint">Use unique recipients, not total opens or repeated link clicks. Delivered emails exclude bounces.</p>
+    <div class="email-actions"><button type="submit" class="btn-calc">Calculate</button><button type="reset" class="email-reset">Reset</button></div>
+    <p data-calc-error class="email-error" role="alert"></p>
+    <div class="result-panel" aria-live="polite" aria-atomic="true">
+      <div class="result-panel__label">Click-to-open rate (CTOR)</div><div class="result-panel__primary" data-email-ctor></div>
+      <div class="result-row"><span>Open rate</span><strong data-email-open></strong></div>
+      <div class="result-row"><span>Email click-through rate</span><strong data-email-ctr></strong></div>
+      <p data-email-formula></p><p data-email-note></p>
+    </div>
+    <noscript><p>Enable JavaScript to calculate all three rates. The formulas and worked example below remain available.</p></noscript>
+  </form>
+</div>
+<style>
+  .email-actions { display:flex; flex-wrap:wrap; gap:12px; }
+  .email-actions .btn-calc { flex:1; margin:0; }
+  .email-reset { min-height:48px; padding:10px 18px; border:1px solid var(--c-border); border-radius:var(--r-input); background:var(--c-surface); color:var(--c-heading); cursor:pointer; }
+  .email-error { color:var(--c-heading); margin:0; }
+  .email-error:empty { display:none; }
+  .result-panel p { font-size:14px; }
+  .result-row { display:flex; gap:12px; justify-content:space-between; margin:18px 0; }
+</style>
+<script>import '../scripts/email-engagement.js';</script>

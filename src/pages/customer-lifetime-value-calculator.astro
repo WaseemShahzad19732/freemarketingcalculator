@@ -1,0 +1,48 @@
+---
+import CalculatorPage from '../components/CalculatorPage.astro';
+import CLVCalculator from '../components/CLVCalculator.astro';
+const faqs = [
+  { q: 'What is the customer lifetime value formula?', a: 'For this finite-lifetime model, revenue CLV equals average net order value multiplied by average purchases per customer per period, multiplied by expected active lifetime in the same periods. For example, $100 × 4 purchases per year × 3 years = $1,200 revenue CLV.' },
+  { q: 'How is contribution CLV different from revenue CLV?', a: 'Contribution CLV multiplies revenue CLV by the declared contribution margin before acquisition costs. A 40% margin on $1,200 revenue CLV gives $480 contribution CLV. It is not automatically net profit: fixed costs, discounting and costs omitted from the margin still matter.' },
+  { q: 'Can I use monthly purchase frequency?', a: 'Yes. Select Months and enter lifetime in months too. For example, 0.5 purchases per month over 24 months means 12 expected purchases. Changing the unit does not convert your numbers; re-enter frequency and lifetime if their units change.' },
+  { q: 'Does the calculator estimate lifetime from churn?', a: 'No. Enter a finite observed or assumed active lifetime. Automatically using one divided by churn requires additional assumptions about stable churn and matching periods. This tool does not fit a retention curve or model changes in customer behavior.' },
+  { q: 'How should I compare CLV with CAC?', a: 'Use contribution CLV before acquisition and CAC for the same customer cohort, without deducting acquisition cost twice. The optional comparison divides contribution CLV by positive CAC and also shows contribution less CAC. At zero CAC, the ratio is undefined. No universal ratio guarantees a profitable business.' },
+  { q: 'Is this the same as loan-to-value or discounted CLV?', a: 'No. This calculator concerns customer lifetime value, not mortgage loan-to-value. It uses constant order value, frequency and margin across a stated lifetime without discounting future cash flows. A discounted or cohort-based model needs more detailed time-specific data.' },
+];
+---
+<CalculatorPage slug="customer-lifetime-value-calculator" title="Customer Lifetime Value Calculator: Revenue & Contribution" description="Estimate revenue and contribution CLV from order value, purchase frequency and customer lifetime. Match monthly or annual periods and optionally compare CAC." name="Customer Lifetime Value Calculator" intro="Estimate customer revenue and contribution over a stated active lifetime. Keep purchase frequency, duration, margin and acquisition cost on a consistent customer basis." badges={['Revenue and contribution modes', 'Monthly or annual periods', 'No signup']} faqs={faqs} features={['Finite-lifetime revenue CLV', 'Contribution CLV with a stated margin', 'Matching monthly or annual periods', 'Optional contribution CLV:CAC comparison']}>
+  <div class="definition-box"><p>Customer lifetime value extends one customer's average order value and purchase frequency across a stated lifetime. Compare contribution CLV with the <a href="/cac-calculator/">customer acquisition cost calculator</a> using a consistent cohort and cost scope.</p></div>
+  <CLVCalculator />
+  <section class="bench-section" aria-labelledby="clv-formula">
+    <h2 id="clv-formula">Customer Lifetime Value Formula</h2>
+    <div class="definition-box"><p><strong>Revenue CLV = average net order value × purchases per customer per period × active lifetime in those periods</strong></p><p><strong>Contribution CLV = revenue CLV × contribution margin before acquisition</strong></p></div>
+    <p>CLV asks how much one customer may generate across a relationship. The revenue model extends a typical order and purchase rate over a chosen lifetime; the contribution model then applies the margin you supply. Fractional purchase frequency and lifetime are allowed because these can be averages across customers.</p>
+    <p>For example, 4 orders per year and a 3-year lifetime means 12 expected lifetime orders. If you instead use monthly frequency, lifetime must be measured in months. The period selector changes the labels, not the numbers.</p>
+  </section>
+  <section class="bench-section" aria-labelledby="clv-example">
+    <h2 id="clv-example">Worked Retail Example: Revenue Is Not Contribution</h2>
+    <p>Consider an illustrative customer segment with $100 average net order value, 4 purchases per customer per year and a 3-year expected active lifetime. A declared 40% contribution margin includes the chosen variable costs and excludes acquisition spending.</p>
+    <div class="bench-table-wrap"><table class="bench-table"><thead><tr><th scope="col">Measure</th><th scope="col">Calculation</th><th scope="col">Result</th></tr></thead><tbody>
+      <tr><td>Expected lifetime purchases</td><td>4 × 3</td><td>12 orders</td></tr>
+      <tr><td>Revenue CLV</td><td>$100 × 4 × 3</td><td>$1,200</td></tr>
+      <tr><td>Contribution CLV before acquisition</td><td>$1,200 × 0.40</td><td>$480</td></tr>
+      <tr><td>Contribution CLV:CAC at $200 CAC</td><td>$480 ÷ $200</td><td>2.4:1</td></tr>
+      <tr><td>Contribution less CAC</td><td>$480 − $200</td><td>$280 before uncounted costs</td></tr>
+    </tbody></table></div>
+    <p>If the same customer buys only twice per year, revenue CLV falls to $600 and contribution CLV to $240 at the same margin and lifetime. The input assumptions change the result; the tool does not predict that future purchases will occur.</p>
+  </section>
+  <section class="bench-section" aria-labelledby="clv-cost-scope">
+    <h2 id="clv-cost-scope">Define the Margin and Customer Cohort</h2>
+    <p>Use revenue after refunds and discounts, and decide which variable costs the margin includes. Product cost, shipping, payment fees and customer-specific service costs can matter. A gross margin that covers only product cost can overstate the contribution available for acquisition and fixed overhead.</p>
+    <p>Keep acquisition cost separate when using the optional comparison. If CAC is already deducted from the margin, subtracting it again would double-count it. Use the <a href="/cac-calculator/">CAC calculator</a> to estimate sales and marketing cost per new customer, then use the same customer cohort and comparable period for the CLV assumptions.</p>
+    <h3>Read CLV:CAC With Its Assumptions</h3>
+    <p>The ratio uses contribution CLV rather than revenue in this tool. A positive ratio alone does not establish cash-flow timing, payback, capacity or overall profit. A zero CAC allows a dollar comparison but has no finite CLV:CAC ratio. The <a href="/marketing-roi-calculator/">marketing ROI calculator</a> handles campaign return questions separately.</p>
+  </section>
+  <section class="bench-section" aria-labelledby="clv-assumptions">
+    <h2 id="clv-assumptions">What This Estimate Assumes</h2>
+    <p>Order value, purchase frequency and margin remain constant during the stated active lifetime. The model does not infer retention from churn, forecast expansion, fit a survival curve, discount future money or include referrals. Use comparable cohorts and conservative scenarios when the relationship is still young.</p>
+    <p>For a subscription, the same arithmetic can describe a fixed number of active billing periods only if the order value and frequency represent those periods consistently. It does not turn monthly churn into annual lifetime. For an email campaign's immediate return, use the <a href="/email-marketing-roi-calculator/">email ROI calculator</a> rather than treating projected lifetime purchases as observed campaign revenue.</p>
+    <p>Method references: <a href="https://blog.hubspot.com/service/how-to-calculate-customer-lifetime-value" target="_blank" rel="noopener noreferrer">HubSpot's purchase-value, frequency and lifespan explanation</a> and the <a href="https://www.ama.org/toolkits/ama-lifetime-value-calculator/" target="_blank" rel="noopener noreferrer">American Marketing Association's revenue/contribution LTV framework</a>. This page uses an explicit finite-lifetime model with original examples, reviewed October 22, 2026.</p>
+  </section>
+  <div class="related-calcs"><p>Continue Your Customer Economics Analysis</p><a href="/cac-calculator/">CAC Calculator →</a><a href="/marketing-roi-calculator/">Marketing ROI →</a><a href="/email-marketing-roi-calculator/">Email ROI →</a><a href="/break-even-roas-calculator/">Break-Even ROAS →</a></div>
+</CalculatorPage>

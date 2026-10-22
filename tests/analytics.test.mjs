@@ -21,6 +21,7 @@ function harness(hostname = 'freemarketingcalculator.com') {
   vm.runInNewContext(source, context);
   return { calls, state, card, input, listeners,
     calculate() { listeners.click({ target: { closest: selector => selector === 'button.btn-calc' ? button : null } }); },
+    submit() { listeners.submit({ target: { closest: () => card } }); },
     checkpoint() { while (microtasks.length) microtasks.shift()(); },
     flush() { while (tasks.length) tasks.shift()(); },
   };
@@ -36,6 +37,15 @@ test('one start per calculator, with a completion only after a valid rendered re
   h.state.visible = true;
   h.flush();
   assert.deepEqual(h.calls.map(c => c[1]), ['calculator_start', 'calculator_complete']);
+});
+
+test('native keyboard submit is tracked and click plus submit is deduplicated', () => {
+  const keyboard = harness(); keyboard.submit(); keyboard.state.visible = true; keyboard.flush();
+  assert.deepEqual(keyboard.calls.map(c => c[1]), ['calculator_start', 'calculator_complete']);
+  const pointer = harness(); pointer.calculate(); pointer.submit(); pointer.state.visible = true; pointer.flush();
+  assert.deepEqual(pointer.calls.map(c => c[1]), ['calculator_start', 'calculator_complete']);
+  const invalid = harness(); invalid.submit(); invalid.state.error = 'Enter a value'; invalid.flush();
+  assert.deepEqual(invalid.calls.map(c => c[1]), ['calculator_start', 'calculator_validation_error']);
 });
 
 test('invalid calculation is an error, never a completion, even if an old result exists', () => {
