@@ -1,0 +1,27 @@
+<div class="calc-card mer-tool" id="calculator">
+  <div class="calc-card__header"><div><div class="calc-card__title">Marketing Efficiency Ratio Calculator</div><div class="calc-card__subtitle">Revenue ÷ spend, with the inverse spend share shown separately</div></div></div>
+  <form class="calc-card__body" data-mer-calculator novalidate>
+    <div class="field"><label for="mer-scope">Spend scope</label><select id="mer-scope" aria-describedby="mer-scope-hint"><option value="marketing">Total marketing cost</option><option value="advertising">Advertising only</option></select><p class="hint" id="mer-scope-hint">Total marketing can include media, agency, creative, marketing staff and tools. Count costs once. Advertising-only results are labeled blended ROAS here.</p></div>
+    <div class="field"><label for="mer-period">Matching reporting period</label><select id="mer-period"><option value="month">One month</option><option value="quarter">One quarter</option><option value="year">One year</option><option value="custom">Other matching date range</option></select></div>
+    <div class="field"><label for="mer-revenue">Total business revenue ($)</label><input id="mer-revenue" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 120000" aria-describedby="mer-revenue-hint" /><p class="hint" id="mer-revenue-hint">All channels, not only revenue attributed to ads. Choose a revenue definition, such as net sales after discounts and refunds, and keep it consistent.</p></div>
+    <div class="field"><label for="mer-spend">Matching spend for the chosen scope ($)</label><input id="mer-spend" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 30000" aria-describedby="mer-spend-hint" /><p class="hint" id="mer-spend-hint">Use the same dates, business coverage and currency as revenue. Spend must be greater than zero.</p></div>
+    <div class="mer-actions"><button class="btn-calc" type="submit">Calculate</button><button class="mer-reset" type="reset">Reset</button></div>
+    <p class="mer-error" data-calc-error role="alert"></p>
+    <div class="result-panel" aria-live="polite" aria-atomic="true">
+      <div class="result-panel__label" data-mer-label></div>
+      <div class="result-panel__primary" data-mer-value></div>
+      <p data-mer-formula></p><p data-mer-share></p><p data-mer-scope></p><p class="mer-note" data-mer-note></p>
+    </div>
+    <noscript><p>Enable JavaScript to calculate, or use the formula and worked example below.</p></noscript>
+  </form>
+</div>
+<style>
+  .mer-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .mer-actions .btn-calc { flex: 1; margin: 0; }
+  .mer-reset { min-height: 48px; padding: 10px 18px; border: 1px solid var(--c-border); border-radius: 8px; background: var(--c-surface); color: var(--c-heading); cursor: pointer; }
+  .mer-error { margin: 0; color: #9c2020; font-size: 15px; }
+  .mer-error:empty { display: none; }
+  .result-panel p { margin-top: 16px; }
+  .mer-note { font-size: 14px; color: var(--c-on-panel-muted); }
+</style>
+<script>import '../scripts/mer-calculator.js';</script>

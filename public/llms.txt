@@ -1,6 +1,6 @@
 # Free Marketing Calculators — Free Marketing Calculators
 # https://freemarketingcalculator.com
-# llms.txt v1.3 — October 22, 2026
+# llms.txt v1.4 — October 22, 2026
 
 > Free marketing calculator tools for ROI, budget planning, salary benchmarks, conversion rates, and campaign metrics. All tools are free, require no signup, and produce instant results.
 
@@ -46,6 +46,16 @@
 
 - [Cost Per Lead Calculator](https://freemarketingcalculator.com/cost-per-lead-calculator/): Calculates CPL, budget for a lead target or modeled whole leads within a budget; distinguishes raw and qualified leads.
 
+- [Customer Lifetime Value Calculator](https://freemarketingcalculator.com/customer-lifetime-value-calculator/): Finite-lifetime revenue and contribution CLV with matching monthly or annual periods and optional CAC comparison.
+
+- [Email Engagement Calculator](https://freemarketingcalculator.com/email-engagement-calculator/): Open rate, email CTR and CTOR from matching unique-recipient counts; zero denominators remain undefined.
+
+- [Marketing Efficiency Ratio Calculator and Guide](https://freemarketingcalculator.com/blog/marketing-efficiency-ratio/): Total business revenue divided by declared marketing cost or advertising-only spend, with inverse cost share and convention caveats.
+
+## Resources
+
+- [Marketing Budget Template](https://freemarketingcalculator.com/marketing-budget-template/): A free monthly/channel plan-versus-actual workbook with formulas and a blank CSV fallback; no signup.
+
 ## Formulas Used
 
 Marketing ROI (ROMI) = (Revenue from marketing - Marketing cost) / Marketing cost * 100
@@ -60,6 +70,11 @@ CPA = Matching campaign cost / Defined conversions
 CTR (%) = Clicks / Impressions * 100
 CPL = Matching lead-generation cost / Recorded leads
 Break-even ROAS (multiplier) = 1 / Contribution margin before ads (decimal)
+Revenue CLV = Average net order value * Purchases per period * Active lifetime in matching periods
+Contribution CLV = Revenue CLV * Contribution margin before acquisition (decimal)
+MER (revenue-to-cost convention) = Total business revenue / Declared marketing cost
+Email CTR (%) = Unique click recipients / Delivered emails * 100
+CTOR (%) = Unique click recipients / Unique tracked open recipients * 100
 
 ## About
 

@@ -1,0 +1,83 @@
+---
+import Base from '../../layouts/Base.astro';
+import FAQ from '../../components/FAQ.astro';
+import MERCalculator from '../../components/MERCalculator.astro';
+
+const slug = 'blog/marketing-efficiency-ratio';
+const title = 'Marketing Efficiency Ratio (MER): Formula & Calculator';
+const description = 'Calculate marketing efficiency ratio with a clear spend scope. Compare MER, blended ROAS and profit using a worked example and free calculator.';
+const url = `https://freemarketingcalculator.com/${slug}/`;
+const faqs = [
+  { q: 'What does MER mean in marketing?', a: 'MER means marketing efficiency ratio. This guide uses total business revenue divided by total marketing cost for the same period, reported as a multiplier. Some dashboards use spend divided by revenue instead, so confirm the formula and cost scope before comparing results.' },
+  { q: 'How do you calculate marketing efficiency ratio?', a: 'Divide total business revenue by the matching marketing cost. With $120,000 of revenue and $30,000 of total marketing cost, MER is 4×. The inverse cost share is $30,000 divided by $120,000, or 25% of revenue.' },
+  { q: 'Is MER the same as ROAS or blended ROAS?', a: 'Platform ROAS uses revenue attributed to ads divided by their ad spend. This guide uses MER for total business revenue divided by total marketing cost. Total business revenue divided by advertising spend only is labeled blended ROAS here. Names vary between tools, so compare the actual numerator and denominator.' },
+  { q: 'What is a good marketing efficiency ratio?', a: 'There is no universal good MER. The revenue definition, included costs, contribution margin, customer mix and timing affect interpretation. At the same 4× revenue-to-marketing-cost ratio, a 35% contribution margin leaves more to cover fixed costs than a 20% margin. Compare consistent periods and review contribution after marketing.' },
+  { q: 'Can I calculate MER when revenue or spend is zero?', a: 'With positive spend and zero revenue, the revenue-to-spend ratio is 0×, while spend as a percentage of revenue is undefined. When spend is zero, revenue divided by spend is undefined; this calculator requires positive spend and does not display an infinite return.' },
+  { q: 'Does a higher MER prove marketing caused more revenue?', a: 'No. MER blends all business revenue, including existing-customer demand and activity with delayed effects. Revenue can change because of seasonality, prices or other factors. Use channel diagnostics and suitable incrementality analysis alongside MER; the ratio alone does not establish causation or profit.' },
+];
+const schema = [
+  { '@type': 'Article', headline: title, description, datePublished: '2026-10-22', dateModified: '2026-10-22', author: { '@type': 'Person', name: 'Waseem Shahzad', url: 'https://freemarketingcalculator.com/about/' }, publisher: { '@id': 'https://freemarketingcalculator.com/#org' }, mainEntityOfPage: url },
+  { '@type': 'WebApplication', name: 'Marketing Efficiency Ratio Calculator', url: `${url}#calculator`, description: 'Calculate a revenue-to-marketing-cost ratio or advertising-only blended ROAS, with the inverse spend share and declared cost scope.', applicationCategory: 'BusinessApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, creator: { '@id': 'https://freemarketingcalculator.com/#org' } },
+  { '@type': 'FAQPage', mainEntity: faqs.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://freemarketingcalculator.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Guides', item: 'https://freemarketingcalculator.com/blog/' },
+    { '@type': 'ListItem', position: 3, name: 'Marketing Efficiency Ratio', item: url },
+  ] },
+];
+---
+<Base title={title} description={description} slug={slug} schema={schema}>
+  <section class="page-hero" aria-labelledby="mer-h1">
+    <div class="container">
+      <p class="eyebrow">Marketing Measurement · 7 min read</p>
+      <h1 id="mer-h1">Marketing Efficiency Ratio (MER)</h1>
+      <p class="citation">Marketing efficiency ratio, using the convention in this guide, is total business revenue divided by total marketing cost for the same period. A $120,000 revenue month with $30,000 of marketing cost gives a 4× ratio. It measures blended revenue efficiency, not profit or the sales caused by marketing.</p>
+      <div class="meta-badges"><span class="badge">✓ Formula and cost scope</span><span class="badge">✓ Free calculator</span><span class="badge">Reviewed October 22, 2026</span></div>
+      <a class="btn-hero-cta" href="#calculator">Calculate Your Ratio ↓</a>
+    </div>
+  </section>
+  <div class="container">
+    <MERCalculator />
+    <article class="article-body prose mer-article">
+      <h2 id="mer-formula">The MER formula and its inverse</h2>
+      <div class="formula-box"><p class="formula-title">Revenue-to-spend convention</p><p class="formula-text">MER = total business revenue ÷ total marketing cost</p><p class="formula-example">Inverse spend share (%) = total marketing cost ÷ total business revenue × 100</p></div>
+      <p>A 4× ratio means $4 of business revenue for each $1 of included marketing cost. Its inverse is a 25% spend share. Those are two descriptions of the same inputs, rather than two different outcomes.</p>
+      <p><strong>Confirm the convention:</strong> <a href="https://www.shopify.com/blog/marketing-efficiency-ratio">Shopify's MER guide</a> uses revenue divided by marketing spend. <a href="https://www.triplewhale.com/blog/marketing-efficiency-ratio">Triple Whale's explanation</a> uses advertising spend divided by order revenue and calls the inverse blended ROAS. Consequently, “higher is better” for a revenue-to-spend multiplier becomes “lower is better” for an otherwise equivalent spend percentage. A number labeled MER is incomplete without its formula.</p>
+
+      <h2 id="cost-scope">Declare what is in the denominator</h2>
+      <p>This calculator labels its two scopes explicitly. <strong>Total marketing cost</strong> can include media, agency or contractor fees, creative production, marketing staff and marketing tools. <strong>Advertising only</strong> includes the media spend being compared with all business revenue and is labeled blended ROAS here. Use a reconciliation sheet to count each cost once; for example, do not count creative fees separately if an agency total already includes them.</p>
+      <p>Use revenue and costs for the same dates, business units and currency. Choose a revenue basis—such as net sales after discounts and refunds—and retain it in later reports. Document how you handle sales tax, shipping revenue, refunds and accrued versus paid invoices. Changing those decisions changes the ratio even if demand stays the same. Shopify's guide also stresses a consistent date window, revenue basis and cost categories.</p>
+      <p>See <a href="/blog/what-is-ad-spend/">what counts as ad spend</a> and the <a href="/blog/inbound-marketing-cost/#cost-model">inbound cost worksheet</a> for help reconciling a spend total. The reporting-period selector labels your calculation; it does not convert monthly amounts to quarterly or annual amounts.</p>
+
+      <h2 id="worked-example">Worked example: the same business, different scopes</h2>
+      <p>Suppose one month has $120,000 of net sales. The business spends $20,000 on advertising, $5,000 on agency work, $3,000 on creative and $2,000 on tools and allocated marketing staff time. These are illustrative inputs, not industry averages.</p>
+      <div class="bench-table-wrap" tabindex="0" role="region" aria-label="Worked MER scope comparison"><table class="bench-table"><thead><tr><th scope="col">Measure</th><th scope="col">Calculation</th><th scope="col">Result</th></tr></thead><tbody>
+        <tr><td>Total marketing cost</td><td>$20,000 + $5,000 + $3,000 + $2,000</td><td>$30,000</td></tr>
+        <tr><td>MER, revenue / total marketing</td><td>$120,000 ÷ $30,000</td><td>4×</td></tr>
+        <tr><td>Total marketing share of revenue</td><td>$30,000 ÷ $120,000 × 100</td><td>25%</td></tr>
+        <tr><td>Blended ROAS, advertising only</td><td>$120,000 ÷ $20,000</td><td>6×</td></tr>
+        <tr><td>Advertising share of revenue</td><td>$20,000 ÷ $120,000 × 100</td><td>16.67%, rounded</td></tr>
+      </tbody></table></div>
+      <p>The 6× advertising-only figure is larger because it excludes $10,000 of other marketing cost. It does not show an improvement over 4×; it answers a different question. Retain both measures if useful, with their scope labels.</p>
+
+      <h2 id="mer-versus-roas">MER versus platform ROAS</h2>
+      <p>Now suppose a subset of the advertising has $15,000 of spend and $45,000 of revenue credited by its platform. Its platform ROAS is 3×. That $45,000 is an attributed subset of revenue, whereas the MER calculation uses all $120,000 of business sales. Do not substitute one numerator for the other or add multiple platforms' credited revenue without reconciling overlap.</p>
+      <p>Use the <a href="/roas-calculator/">ROAS calculator</a> to evaluate a defined advertising scope. Use the blended ratio to monitor the overall revenue-and-spend relationship. Neither ratio by itself explains whether an ad caused a purchase. A budget cut can raise a short-term ratio while reducing future demand, and repeat-customer sales can support revenue after acquisition spending changes.</p>
+
+      <h2 id="mer-and-profit">A 4× MER can coexist with a loss</h2>
+      <p>Return to the $120,000 revenue and $30,000 total marketing cost example. If contribution margin before these marketing costs is 35%, the contribution available is $42,000. Subtracting marketing leaves <strong>$12,000 before fixed costs and other excluded items</strong>. At a 20% contribution margin, available contribution is $24,000, so the same 4× MER leaves <strong>a $6,000 shortfall before fixed costs</strong>.</p>
+      <p>For a simplified cost-coverage check, a 35% contribution margin requires a revenue-to-marketing-cost ratio of 1 ÷ 0.35, or about 2.86×, to cover the included marketing cost. This assumes the margin excludes the marketing cost already in the denominator; subtracting that cost twice would misstate the result. Fixed overhead, timing and costs omitted from the margin still matter.</p>
+      <p><a href="https://blog.hubspot.com/marketing/marketing-efficiency-ratio">HubSpot's MER guide</a> cautions that there is no universal good target and recommends considering margin and business context. Use the <a href="/marketing-roi-calculator/">marketing ROI calculator</a> for a stated return-and-cost model and the <a href="/break-even-roas-calculator/">break-even ROAS calculator</a> for an advertising threshold based on your included non-ad costs.</p>
+
+      <h2 id="reporting-checklist">How to use MER in a monthly review</h2>
+      <ol><li>Reconcile revenue and included costs to a reliable reporting source for one matching period.</li><li>Write the formula, cost scope, revenue basis and reporting dates beside the result.</li><li>Compare like-for-like periods, accounting for promotions, seasonality, refunds and the length of the sales cycle.</li><li>Review contribution after marketing, new-customer acquisition cost and retention alongside the blended ratio.</li><li>Investigate the channels and customer cohorts behind a change before reallocating spend. A correlation in a blended ratio is not an incrementality test.</li></ol>
+      <p>Zero revenue with positive spend produces 0× revenue-to-spend MER; its inverse percentage is undefined. Zero spend also makes the revenue-to-spend ratio undefined. The calculator shows these distinctions rather than reporting an infinite return.</p>
+      <p class="mer-reviewed">Formula conventions and source pages reviewed October 22, 2026. The calculations above are original illustrative examples. No business results or ranking outcomes are promised.</p>
+    </article>
+    <FAQ items={faqs} title="Marketing Efficiency Ratio — FAQ" />
+  </div>
+</Base>
+<style>
+  .mer-article { max-width: 900px; margin: var(--s-8) auto 0; }
+  .mer-reviewed { font-size: 14px; color: var(--c-muted); }
+</style>

@@ -665,6 +665,16 @@ details[open] > .faq-question .faq-icon svg { transform: rotate(45deg); }
 .section-head a { min-height: 44px; display: inline-flex; align-items: center; font-weight: 600; text-decoration: none; }
 
 /* home hero */
+/* Keep offscreen directory sections available while deferring their initial layout. */
+@supports (content-visibility: auto) {
+  main[data-kind="home"] .cat-block,
+  main[data-kind="home"] #guides { content-visibility: auto; contain-intrinsic-size: auto 1600px; }
+  @media (min-width: 1024px) {
+    main[data-kind="home"] .cat-block,
+    main[data-kind="home"] #guides { contain-intrinsic-size: auto 800px; }
+  }
+}
+.home-hero .citation { text-wrap: wrap; }
 .home-hero { padding: clamp(40px, 7vw, 96px) 0; }
 .home-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: center; }
 @media (min-width: 1024px) { .home-hero-grid { grid-template-columns: 1.05fr .95fr; gap: 56px; } }

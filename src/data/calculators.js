@@ -36,7 +36,7 @@ export const categories = [
   {
     id: 'roi', icon: 'roi', navName: 'ROI & Performance',
     title: 'ROI & Performance Calculators',
-    subtitle: '5 calculators — measure what your marketing actually returns',
+    subtitle: '8 calculators — measure what your marketing actually returns',
     blurb: 'Measure return on spend and what each customer costs.',
     tools: [
       { href: '/marketing-roi-calculator/', name: 'Marketing ROI Calculator', short: 'ROI', navDesc: 'Return on any campaign', icon: 'trend',
@@ -45,6 +45,15 @@ export const categories = [
       { href: '/cac-calculator/', name: 'CAC Calculator', short: 'CAC', navDesc: 'Cost to win a customer', icon: 'userPlus',
         desc: 'Customer acquisition cost from spend and new customers, plus payback period.',
         metric: '$390 planning CAC (B2B SMB)', badge: 'new' },
+      { href: '/customer-lifetime-value-calculator/', name: 'Customer Lifetime Value Calculator', short: 'Customer lifetime value', navDesc: 'Revenue and contribution over time', icon: 'userPlus',
+        desc: 'Finite-lifetime revenue and contribution CLV with matching periods and optional CAC comparison.',
+        metric: '$100 × 4/year × 3 years = $1,200', badge: 'new' },
+      { href: '/email-engagement-calculator/', name: 'Email Engagement Calculator', short: 'Email engagement', navDesc: 'Open rate, email CTR and CTOR', icon: 'mail',
+        desc: 'Three email engagement rates using unique recipients and explicit denominators.',
+        metric: 'CTR uses deliveries; CTOR uses opens', badge: 'new' },
+      { href: '/blog/marketing-efficiency-ratio/', name: 'MER Calculator & Guide', short: 'Marketing efficiency', navDesc: 'Business revenue against marketing cost', icon: 'trend',
+        desc: 'A blended revenue-to-cost ratio with declared spend scope and inverse cost share.',
+        metric: '$120,000 ÷ $30,000 = 4× MER', badge: 'new' },
       { href: '/email-marketing-roi-calculator/', name: 'Email Marketing ROI', short: 'Email ROI', navDesc: 'Return on email spend', icon: 'mail',
         desc: 'Email ROMI from list size, open rate, click rate, and platform cost.',
         metric: '$36–$42 per $1 (quoted)', badge: '' },
@@ -130,6 +139,8 @@ export const categories = [
 export const calculatorCount = categories.reduce((n, c) => n + c.tools.length, 0);
 
 export const guides = [
+  { href: '/marketing-budget-template/', name: 'Marketing Budget Template', tag: 'Free download', desc: 'Editable monthly plan-versus-actual workbook with channel summaries and a CSV fallback.' },
+  { href: '/blog/marketing-efficiency-ratio/', name: 'Marketing Efficiency Ratio', tag: 'Metrics', desc: 'MER, inverse spend share and blended ROAS with a calculator and worked cost examples.' },
   { href: '/marketing-budget-benchmarks/', name: 'Marketing Budget Benchmarks', tag: 'Benchmarks', desc: 'Budget as a percentage of revenue: Gartner 7.8% average, B2B vs B2C survey figures and industry planning ranges.' },
   { href: '/blog/what-is-a-good-marketing-roi/', name: 'What Is a Good Marketing ROI?', tag: 'ROI', desc: 'ROI benchmarks by channel and the 5:1 rule of thumb, with sources.' },
   { href: '/blog/romi-calculator-formula/', name: 'ROMI Formula', tag: 'ROI', desc: 'How to calculate return on marketing investment, with worked examples.' },

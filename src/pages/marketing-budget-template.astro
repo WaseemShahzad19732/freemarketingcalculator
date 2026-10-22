@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+import FAQ from '../components/FAQ.astro';
+
+const title = 'Free Marketing Budget Template: Excel Plan & Actuals';
+const description = 'Download a free marketing budget template in Excel or CSV. Track 12 months of channel plans, actual spend, budget variance and annual allocation.';
+const url = 'https://freemarketingcalculator.com/marketing-budget-template/';
+const faqs = [
+  { q: 'Is the marketing budget template free?', a: 'Yes. Download the Excel workbook or CSV directly without an account or email address. The workbook has editable inputs and formulas; the CSV is a simple blank input grid without formulas or formatting.' },
+  { q: 'What does the Excel marketing budget template include?', a: 'It includes 12 months and eight editable channel names, with plan and actual inputs, monthly and annual spend totals, variance amounts and percentages, and each channel’s share of a complete annual plan. The Budget sheet summarizes the Monthly inputs sheet.' },
+  { q: 'How is marketing budget variance calculated?', a: 'Variance equals actual spend minus planned spend. A positive amount means overspend; a negative amount means underspend. Variance percentage divides that difference by planned spend. With a zero plan, the percentage is n.a. rather than a fabricated zero.' },
+  { q: 'Should future actual spend be blank or zero?', a: 'Leave it blank while the amount is unknown. Enter zero when the period is closed and no spend occurred. Monthly and annual variances wait for complete matching plan and actual inputs, so missing future costs do not look like underspending.' },
+  { q: 'Does this template recommend a channel allocation?', a: 'No. All spending inputs start blank. Rename the eight channel or cost-category labels on the Budget sheet and enter your own plans. The annual plan-share column calculates your allocation once all 96 plan cells contain numbers; it does not supply a benchmark split.' },
+  { q: 'Can I use the marketing budget template in Google Sheets?', a: 'You can import the XLSX into Google Sheets or open it in Excel. Check that formulas and number formats remain correct after import. The CSV is a portable input grid; it has no worksheet formulas, summaries, formatting or separate tabs.' },
+];
+const schema = [
+  { '@type': 'SpreadsheetDigitalDocument', name: 'Marketing budget template', url, description, dateModified: '2026-10-22', isAccessibleForFree: true, creator: { '@id': 'https://freemarketingcalculator.com/#org' }, encoding: [
+    { '@type': 'MediaObject', name: 'Excel budget workbook', contentUrl: 'https://freemarketingcalculator.com/marketing-budget-template.xlsx', encodingFormat: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' },
+    { '@type': 'MediaObject', name: 'CSV budget input grid', contentUrl: 'https://freemarketingcalculator.com/marketing-budget-template.csv', encodingFormat: 'text/csv' },
+  ] },
+  { '@type': 'FAQPage', mainEntity: faqs.map(({q,a})=>({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://freemarketingcalculator.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Marketing Budget Template', item: url },
+  ] },
+];
+const example = [
+  ['Paid search', '$1,200', '$1,350', '+$150'],
+  ['Paid social', '$800', '$700', '−$100'],
+  ['Content and SEO', '$1,000', '$1,000', '$0'],
+  ['Email', '$200', '$150', '−$50'],
+  ['Events', '$0', '$0', '$0'],
+  ['Tools and software', '$300', '$300', '$0'],
+  ['Agency and freelance', '$1,200', '$1,200', '$0'],
+  ['Other', '$300', '$250', '−$50'],
+];
+---
+<Base title={title} description={description} slug="marketing-budget-template" schema={schema}>
+  <section class="page-hero" aria-labelledby="budget-template-h1">
+    <div class="container">
+      <p class="eyebrow">Free Marketing Resource</p>
+      <h1 id="budget-template-h1">Marketing Budget Template</h1>
+      <p class="citation">Plan channel spend, record actual costs, and see where the difference comes from. Download a blank Excel workbook with formulas or a simple CSV input grid.</p>
+      <div class="meta-badges"><span class="badge">✓ 12 months, 8 channels</span><span class="badge">✓ Plan versus actuals</span><span class="badge">✓ No signup</span></div>
+      <a href="#downloads" class="btn-hero-cta">Get the Template ↓</a>
+    </div>
+  </section>
+  <div class="container">
+    <section id="downloads" class="bench-section budget-download" aria-labelledby="budget-download-heading">
+      <h2 id="budget-download-heading">Download the Marketing Budget Template</h2>
+      <div class="budget-downloads">
+        <a class="budget-download-link budget-download-link--primary" href="/marketing-budget-template.xlsx" download="marketing-budget-template.xlsx">Download Excel Workbook (.xlsx)</a>
+        <a class="budget-download-link" href="/marketing-budget-template.csv" download="marketing-budget-template.csv">Download CSV Input Grid (.csv)</a>
+      </div>
+      <p><strong>Excel:</strong> two sheets with editable inputs, monthly/channel summaries and formulas. <strong>CSV:</strong> 96 blank month/channel rows for importing into another workflow; it does not include formulas or summaries.</p>
+      <p>Spending inputs start blank. The channel labels are editable, and no budget percentages are preselected. Use the <a href="/marketing-budget-calculator/">marketing budget calculator</a> to explore a total, then assign that total deliberately in the workbook.</p>
+    </section>
+
+    <section class="bench-section" aria-labelledby="budget-template-includes">
+      <h2 id="budget-template-includes">What the Excel Workbook Includes</h2>
+      <div class="bench-table-wrap"><table class="bench-table"><thead><tr><th scope="col">Sheet</th><th scope="col">What you change</th><th scope="col">What updates</th></tr></thead><tbody>
+        <tr><th scope="row">Budget</th><td>Your planning period, currency label and eight channel names</td><td>Entered plan, recorded actuals, completed-period variances and annual channel allocation</td></tr>
+        <tr><th scope="row">Monthly inputs</th><td>Planned spend, actual spend and optional notes for each month/channel</td><td>Each row’s variance and matching summaries on the Budget sheet</td></tr>
+      </tbody></table></div>
+      <p>The <strong>entered plan</strong> and <strong>recorded actual</strong> totals include numeric entries so far. Completion counts show whether eight channel inputs are filled for a month, or 96 for the full year. These partial totals are not automatically a finished annual comparison.</p>
+      <p>Monthly variance appears after all eight plans and eight actuals are entered for that month. The annual variance waits for all 96 matching pairs. Each channel’s annual plan share appears only after all 96 plan cells are filled and the annual plan is positive.</p>
+    </section>
+
+    <section class="bench-section" aria-labelledby="budget-template-how">
+      <h2 id="budget-template-how">How to Fill In the Template</h2>
+      <ol class="budget-steps">
+        <li><strong>Set the period and currency.</strong> On Budget, enter your year or fiscal period in C4 and currency label in C5. All amounts must use that currency; changing the label does not convert money. The month labels can be renamed for a different fiscal sequence.</li>
+        <li><strong>Choose eight categories.</strong> Edit Budget cells B29:B36 once. Their names update on Monthly inputs. Start with channels or cost categories that match your reporting. Keep one cost in one place.</li>
+        <li><strong>Enter monthly plans.</strong> Fill the yellow Plan cells on Monthly inputs. Enter zero for a planned no-spend item, rather than leaving a required plan unknown. Annual plan totals should reconcile with the amount you approved.</li>
+        <li><strong>Close actuals consistently.</strong> Enter invoices, media charges and other included costs for the matching period. Leave future or unknown actuals blank. Enter zero when you have confirmed that no cost occurred.</li>
+        <li><strong>Explain material differences.</strong> Use Notes for timing changes, extra creative, credits or shifted campaigns. Review results alongside business outcomes before moving budget between channels.</li>
+      </ol>
+      <p>Choose whether your plan is media-only or fully loaded. For a fully loaded plan, account for relevant software, creative, agency and internal work. If an agency retainer already includes content production, do not count that production fee again under Content and SEO. The <a href="/blog/inbound-marketing-cost/#cost-model">inbound cost worksheet</a> shows how to separate recurring and setup costs.</p>
+    </section>
+
+    <section class="bench-section" aria-labelledby="budget-template-example">
+      <h2 id="budget-template-example">Example: A $5,000 Monthly Marketing Plan</h2>
+      <p>This original example uses hypothetical amounts to demonstrate the workbook. It is not a recommended channel split, industry average or forecast. Enter all eight rows for January, including explicit zeros.</p>
+      <div class="bench-table-wrap"><table class="bench-table"><caption>Illustrative January plan and actual spend (USD)</caption><thead><tr><th scope="col">Channel or cost category</th><th scope="col">Plan</th><th scope="col">Actual</th><th scope="col">Actual − plan</th></tr></thead><tbody>
+        {example.map(row=><tr>{row.map((cell,i)=>i===0?<th scope="row">{cell}</th>:<td>{cell}</td>)}</tr>)}
+        <tr><th scope="row">Total</th><td><strong>$5,000</strong></td><td><strong>$4,950</strong></td><td><strong>−$50</strong></td></tr>
+      </tbody></table></div>
+      <div class="definition-box"><p><strong>Variance = actual − plan = $4,950 − $5,000 = −$50</strong></p><p><strong>Variance % = variance ÷ plan = −$50 ÷ $5,000 = −1%</strong></p></div>
+      <p>The negative result means spend was $50 under plan. Paid search was $150 over plan, offset by underspending elsewhere. A net underspend alone does not prove good performance; an unlaunched campaign can also cost less than planned.</p>
+      <p>If this same plan were entered for all 12 months, the annual plan would be $60,000. Paid search would have a $14,400 annual plan and a 24% share: $14,400 ÷ $60,000. Annual shares sum to 100% when the complete plan is positive. Repeating a monthly plan is an illustration, not a seasonality assumption built into the file.</p>
+    </section>
+
+    <section class="bench-section" aria-labelledby="budget-template-variance">
+      <h2 id="budget-template-variance">Read Variance Without Hiding Missing Costs</h2>
+      <p><strong>Positive variance means overspend; negative variance means underspend.</strong> The workbook uses actual minus plan throughout. A $0 plan and $100 actual produces a $100 variance, but its variance percentage is <strong>n.a.</strong> because division by zero is undefined.</p>
+      <p>Blank actuals mean the cost has not been recorded. Treating an unknown future cost as zero would make the year look artificially under budget. The completion counts and comparison rules keep that difference visible. With a complete $0 plan and $0 actual, monetary variance is $0 and percentage variance remains n.a.</p>
+      <p>Decide whether you record expenses when incurred or payments when paid, then apply the same basis to plan and actual. For expenses covering several months, allocate them consistently. Keep revenue, margin and attributed outcomes separate from this spend tracker; use the <a href="/marketing-roi-calculator/">ROI calculator</a> for a matched return calculation.</p>
+      <p class="bench-source">Planning context: <a href="https://business.gov.au/planning/business-plans/develop-your-marketing-plan" target="_blank" rel="noopener noreferrer">business.gov.au’s marketing-plan guidance</a> covers estimating activity costs, setting a budget and reviewing the plan. The workbook design and worked figures here are original; reviewed October 22, 2026.</p>
+    </section>
+    <div class="related-box"><p class="related-box__label">Plan the Total and Channel Mix</p><div class="link-grid"><a class="link-tile" href="/marketing-budget-calculator/">Marketing Budget Calculator →</a><a class="link-tile" href="/digital-marketing-budget-calculator/">Digital Channel Allocation →</a><a class="link-tile" href="/blog/marketing-budget-small-business/">Small-Business Budget Guide →</a><a class="link-tile" href="/cost-per-lead-calculator/">Cost Per Lead Calculator →</a></div></div>
+    <FAQ items={faqs} title="Marketing Budget Template — FAQ" />
+  </div>
+</Base>
+
+<style>
+  .budget-download { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--r-card); padding: 28px; margin-top: var(--s-7); }
+  .budget-downloads { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0; }
+  .budget-download-link { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 12px 20px; border: 1px solid var(--c-border); border-radius: var(--r-btn); font-weight: 600; text-decoration: none; color: var(--c-heading); background: var(--c-surface); }
+  .budget-download-link--primary { background: var(--c-accent); color: var(--c-on-accent); border-color: var(--c-accent); }
+  .budget-download-link:hover { border-color: var(--c-link); text-decoration: underline; }
+  .budget-download-link:focus-visible { outline: 3px solid var(--c-link); outline-offset: 3px; }
+  .budget-steps { padding-left: 24px; }
+  .budget-steps li { padding-left: 5px; margin: 12px 0; }
+  caption { text-align: left; padding: 10px 0; color: var(--c-muted); }
+  @media(max-width:640px) { .budget-download { padding: 20px; } .budget-downloads { flex-direction: column; } .budget-download-link { width: 100%; text-align: center; } }
+</style>
